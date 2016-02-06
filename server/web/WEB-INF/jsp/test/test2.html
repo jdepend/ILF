@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+$(function () {
+	$.fn.hello = function(){
+		alert($(this).html());
+	}
+});
+</script>
+</head>
+<body>
+
+<div id= "test">111</div>
+
+<table id="t1">
+<tr>
+	<td>222</td>
+</tr>
+</table>
+
+</body>
+
+<script type="text/javascript">
+$(function () {
+	
+	$("#test").hello();
+	
+	$("#t1").hello();
+	
+});
+</script>
+</html>

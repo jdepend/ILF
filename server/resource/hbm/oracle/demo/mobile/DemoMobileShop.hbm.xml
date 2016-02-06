@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 
+    	门店信息
+-->
+<hibernate-mapping>
+    <class name="com.qeweb.demo.mobile.bo.ShopBO" table="DEMO_MOBILE_SHOP" dynamic-update="true">
+        <id name="id" column="ID" type="long">
+            <generator class="native" />
+        </id>
+		<property name="shopCode" column="SHOP_CODE" type="string" />
+		<property name="shopName" column="SHOP_NAME" type="string" />
+		<property name="address" column="ADDRESS" type="string" />
+		<property name="shopType" column="SHOP_TYPE" type="string" />
+		<property name="remark" column="REMARK" type="string" />
+		<property name="shopMaster" column="SHOP_MASTER" type="string" />
+		<property name="province" column="PROVINCE_ID" type="integer" />
+		<property name="city" column="CITY_ID" type="integer" />
+		<property name="area" column="AREA_ID" type="integer" />
+			
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+    </class>
+</hibernate-mapping>

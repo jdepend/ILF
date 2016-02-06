@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 发货看板 -->
+<hibernate-mapping>
+    <class name="com.qeweb.busplatform.goodsdelivery.bo.BP_PendingDeliveryBO" table="vw_qeweb_bp_pending_dlv">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+
+		<property name="purchaseNO" type="string" column="PURCHASE_NO"/>
+		<property name="itemId" type="long" column="ITEM_ID"/>
+		<property name="vendorId" type="long" column="VENDOR_ID"/>
+		<property name="buyerId" type="long" column="BUYER_ID"/>
+		<property name="itemNO" type="java.lang.Integer" column="ITEM_NO"/>
+		<property name="orderTime" type="timestamp" column="ORDER_TIME"/>
+		<property name="confirmStatus" type="java.lang.Integer" column="CONFIRM_STATUS"/>
+		<property name="planDeliveryStatus" type="java.lang.Integer" column="plan_delivery_status"/>
+		<property name="itemDeliveryStatus" type="java.lang.Integer" column="item_delivery_status"/>
+		<property name="poDeliveryStatus" type="java.lang.Integer" column="po_delivery_status"/>
+
+		<many-to-one name="material" column="MATERIAL_ID" class="com.qeweb.busplatform.masterdata.bo.manage.BP_MaterialBO"
+			 update="false" fetch="select" lazy="false"/>
+		<property name="materialId" type="long" column="MATERIAL_ID" insert="false" update="false"/>
+		<property name="materialCode" type="string" column="MATERIAL_CODE"/>
+		<property name="materialName" type="string" column="MATERIAL_NAME"/>
+		<property name="unitName" type="string" column="UNIT_NAME"/>
+		<property name="orderQty" type="java.lang.Double" column="ORDER_QTY" insert="false" update="false"/>
+		<property name="deliveryQty" type="java.lang.Double" column="delivery_Qty" insert="false" update="false"/>
+		<property name="receiveQty" type="java.lang.Double" column="receive_Qty" insert="false" update="false"/>
+		<property name="goodsRejectQty" type="java.lang.Double" column="GOODS_REJECT_QTY" insert="false" update="false"/>
+		<property name="varianceQty" type="java.lang.Double" column="variance_qty" insert="false" update="false"/>
+		<property name="shuldDlvQty" type="java.lang.Double" column="shuld_dlv_qty" insert="false" update="false"/>
+		<property name="lockStatus" type="java.lang.Integer" column="LOCK_STATUS"/>
+		<property name="manlockStatus" type="java.lang.Integer" column="MAN_LOCK_STATUS"/>
+
+        <property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+    </class>
+</hibernate-mapping>

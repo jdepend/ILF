@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form id="userForm" bind="userBO" queryRange="true">
+    <textField bind="userCode" />
+    <textField bind="userName" />
+    <textField bind="organizationBO.orgName" />
+    <radio bind="organizationBO.orgType"/>
+    <commandButton name="query" operate="query"/>
+    <commandButton name="sysReset" operate="sysReset"/>
+</form>

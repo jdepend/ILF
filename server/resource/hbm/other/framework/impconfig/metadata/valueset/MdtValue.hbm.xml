@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.qeweb.framework.impconfig.mdt.metadata.valueset.bo.MdtValueBO" table="qeweb_mdt_value">
+        <id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="mdtValue" column="value" type="string"/>
+		<property name="text" column="text" type="string"/>
+		<many-to-one name="valueSet" column="value_set_id" class="com.qeweb.framework.impconfig.mdt.metadata.valueset.bo.MdtValueSetBO"
+			lazy="false" fetch="select"/>
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+    </class>
+</hibernate-mapping>

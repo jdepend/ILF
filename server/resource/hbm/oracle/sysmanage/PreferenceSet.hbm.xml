@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="com.qeweb.sysmanage.preference.bo.PreferenceSetBO" table="QEWEB_SYS_PREFERENCE">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="userId" type="long" column="USER_ID"/>
+        <property name="themeType" type="string" column="THEME_TYPE"/>
+       	<property name="menuType" type="string" column="MENU_TYPE" />
+       	<property name="language" type="string" column="LANGUAGE" />
+       	
+        <property name="tipType" type="string" column="MESSAGE_TYPE"/>
+       	<property name="popupStatus" type="string" column="POPUP_MSG_STATUS" />
+       	<property name="confirmStatus" type="string" column="OPT_MSG_STATUS" />
+       	<property name="showTipsDelay" type="string" column="SHOW_TIPS_DELAY" />   
+       	<property name="logoType" type="string" column="LOGO_TYPE" />
+       	<property name="logoImgPath" type="string" column="LOGO_IMG_PATH" />
+       	<property name="bottomMsg" type="string" column="BOTTOM_MSG" />
+       	<property name="progressBarPager" type="string" column="PROGRESS_BAR" />
+	</class>
+</hibernate-mapping>

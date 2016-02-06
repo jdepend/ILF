@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<page source="/WEB-INF/pages/sysmanage/onlineUser/onlineUserMgt.jsp">
+		<bolist id='onlineUserBOTable' bind="onlineUserBO">
+			<columninfo selectionmodel='empty'>
+			</columninfo>
+		</bolist>
+	</page>
+</root>

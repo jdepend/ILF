@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.qeweb.framework.impconfig.mdt.use.bean.MDTVertical" table="qeweb_mdt_vertical">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		
+        <property name="mdtFieldId" type="long" column="MDT_FIELD_ID" />
+        <property name="relTableName" type="string" column="REL_TABLE_NAME" />
+       	<property name="relTableFileName" type="string" column="REL_FIELD_NAME" />
+       	<property name="mdtCaseField" type="string" column="MDT_CASE_FIELD" />
+       	<property name="relCaseField" type="string" column="REL_CASE_FIELD" />
+    </class>
+</hibernate-mapping>

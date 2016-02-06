@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.qeweb.framework.impconfig.ddt.use.bean.DDTSchema" table="vw_qeweb_ddt_schema">
+		<id name="id" type="string" column="ID">
+			<generator class="native" />
+		</id>
+		
+		<property name="schemaCode" type="string" column="schema_code" />
+        <property name="sourcePage" type="string" column="url" />
+        <property name="containerId" type="string" column="container_id" />
+       	<property name="boName" type="string" column="bo_name" />
+       	<property name="bopName" type="string" column="bopName" />
+       	<property name="type" type="int" column="fc_type" />
+	   	<property name="dataType" type="string" column="datatype" />
+	   	<property name="valueSetId" type="string" column="value_set_id" />
+	   	<property name="isRequired" type="boolean" column="isrequired" />
+	   	<property name="maxLength" type="java.lang.Integer" column="max_length" />
+	   	<property name="maxValue" type="java.lang.Double" column="max_value" />
+	   	<property name="minValue" type="java.lang.Double" column="min_value" />
+	   	<property name="stepValue" type="java.lang.Double" column="step_value" />
+	   	<property name="tableName" type="string" column="table_name" />
+	   	<property name="fieldId" type="string" column="field_id" />
+	   	<property name="fieldName" type="string" column="field_name" />
+	   	<property name="alias" type="string" column="alias" />
+	   	<property name="contextName" type="string" column="context_Name" />
+	   	<property name="prevBopName" type="string" column="prev_bop_name" />
+    </class>
+</hibernate-mapping>

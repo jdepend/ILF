@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<!-- 用户组管理 -->
+	<class name="com.qeweb.sysmanage.purview.bo.UserGroupBO" table="QEWEB_SYS_USERGROUP">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="groupName" type="string">
+			<column name="GROUP_NAME" length="20" />
+		</property>
+		<property name="groupNotes" type="string">
+			<column name="GROUP_NOTES" length="50" />
+		</property>
+		
+		<set name="users" table="QEWEB_SYS_USERGROUP_USER" lazy="false" inverse="false" cascade="save-update" batch-size="5">
+			<key>
+				<column name="GROUP_ID" not-null="true" />
+			</key>
+			<many-to-many class="com.qeweb.sysmanage.purview.bo.UserBO" column="USER_ID" />
+		</set>
+		
+		<property name="deleteFlag" column="DELETE_FLAG" length="1" type="int" />
+		<property name="createUserId" column="CREATE_USER_ID" type="long"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+	</class>
+</hibernate-mapping>

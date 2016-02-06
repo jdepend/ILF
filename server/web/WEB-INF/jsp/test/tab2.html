@@ -1,0 +1,123 @@
+<html>
+ <head>
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.408/styles/kendo.common-bootstrap.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.408/styles/kendo.bootstrap.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.408/styles/kendo.dataviz.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.408/styles/kendo.dataviz.bootstrap.min.css" />
+ 	<link href="../../../../../client/assets/www/resource/css/styles.css" rel="stylesheet">
+ 	
+ 	<script src="http://cdn.kendostatic.com/2015.1.408/js/kendo.all.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2015.1.408/js/kendo.timezones.min.js"></script>
+ </head>
+ <body>
+  <div id="orders" class="ra-section k-grid k-widget" data-role="grid">
+   <div class="k-grouping-header" data-role="droptarget">
+    Drag a column header and drop it here to group by that column
+   </div>
+   <table role="grid">
+    <colgroup>
+     <col style="width:70px" />
+     <col style="width:20%" />
+     <col />
+    </colgroup>
+    <thead class="k-grid-header" role="rowgroup">
+     <tr role="row">
+      <th role="columnheader" data-field="OrderID" rowspan="1" data-index="0" class="k-header" data-role="columnsorter"><a class="k-link" href="#">OrderID</a></th>
+      <th role="columnheader" data-field="ShipCountry" rowspan="1" data-title="Ship Country" data-index="1" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Ship Country</a></th>
+      <th role="columnheader" data-field="ShipAddress" rowspan="1" data-title="Ship Address" data-index="2" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Ship Address</a></th>
+     </tr>
+    </thead>
+    <tbody role="rowgroup">
+     <tr data-uid="06df35f2-9aa2-491c-aa3a-d9318cebb0d3" role="row">
+      <td role="gridcell">10248</td>
+      <td role="gridcell">France</td>
+      <td role="gridcell">59 rue de l'Abbaye</td>
+     </tr>
+     <tr class="k-alt" data-uid="765f7044-41b1-4fd3-8340-ec351f211366" role="row">
+      <td role="gridcell">10249</td>
+      <td role="gridcell">Germany</td>
+      <td role="gridcell">Luisenstr. 48</td>
+     </tr>
+     <tr data-uid="ef64651f-1644-43be-8f21-e81e22ba1241" role="row">
+      <td role="gridcell">10250</td>
+      <td role="gridcell">Brazil</td>
+      <td role="gridcell">Rua do Pa&ccedil;o, 67</td>
+     </tr>
+     <tr class="k-alt" data-uid="747bab69-db51-4d65-9b06-2ec9f3528825" role="row">
+      <td role="gridcell">10251</td>
+      <td role="gridcell">France</td>
+      <td role="gridcell">2, rue du Commerce</td>
+     </tr>
+     <tr data-uid="9c5198b5-2af1-41c6-b62d-4dd671248054" role="row">
+      <td role="gridcell">10252</td>
+      <td role="gridcell">Belgium</td>
+      <td role="gridcell">Boulevard Tirou, 255</td>
+     </tr>
+     <tr class="k-alt" data-uid="0f8db347-cfa4-4483-986e-e6bd9fa02def" role="row">
+      <td role="gridcell">10253</td>
+      <td role="gridcell">Brazil</td>
+      <td role="gridcell">Rua do Pa&ccedil;o, 67</td>
+     </tr>
+     <tr data-uid="10e9261c-f7f6-43f4-9e60-b02ab61d346b" role="row">
+      <td role="gridcell">10254</td>
+      <td role="gridcell">Switzerland</td>
+      <td role="gridcell">Hauptstr. 31</td>
+     </tr>
+     <tr class="k-alt" data-uid="ebba1517-32a5-41a6-a8fd-51941b33e0e1" role="row">
+      <td role="gridcell">10255</td>
+      <td role="gridcell">Switzerland</td>
+      <td role="gridcell">Starenweg 5</td>
+     </tr>
+     <tr data-uid="734c571d-a708-4913-a04e-97408265f681" role="row">
+      <td role="gridcell">10256</td>
+      <td role="gridcell">Brazil</td>
+      <td role="gridcell">Rua do Mercado, 12</td>
+     </tr>
+     <tr class="k-alt" data-uid="24c305ce-5f6f-42d5-8546-ad3f26ceb8f8" role="row">
+      <td role="gridcell">10257</td>
+      <td role="gridcell">Venezuela</td>
+      <td role="gridcell">Carrera 22 con Ave. Carlos Soublette #8-35</td>
+     </tr>
+    </tbody>
+   </table>
+   <div class="k-pager-wrap k-grid-pager k-widget" data-role="pager">
+    <a href="#" title="Go to the first page" class="k-link k-pager-nav k-pager-first k-state-disabled" data-page="1" tabindex="-1"><span class="k-icon k-i-seek-w">Go to the first page</span></a>
+    <a href="#" title="Go to the previous page" class="k-link k-pager-nav  k-state-disabled" data-page="1" tabindex="-1"><span class="k-icon k-i-arrow-w">Go to the previous page</span></a>
+    <ul class="k-pager-numbers k-reset">
+     <li class="k-current-page"><span class="k-link k-pager-nav">1</span></li>
+     <li><span class="k-state-selected">1</span></li>
+     <li><a tabindex="-1" href="#" class="k-link" data-page="2">2</a></li>
+     <li><a tabindex="-1" href="#" class="k-link" data-page="3">3</a></li>
+     <li><a tabindex="-1" href="#" class="k-link" data-page="4">4</a></li>
+     <li><a tabindex="-1" href="#" class="k-link" data-page="5" title="More pages">...</a></li>
+    </ul>
+    <a href="#" title="Go to the next page" class="k-link k-pager-nav" data-page="2" tabindex="-1"><span class="k-icon k-i-arrow-e">Go to the next page</span></a>
+    <a href="#" title="Go to the last page" class="k-link k-pager-nav k-pager-last" data-page="83" tabindex="-1"><span class="k-icon k-i-seek-e">Go to the last page</span></a>
+    <span class="k-pager-info k-label">1 - 10 of 830 items</span>
+   </div>
+  </div>
+ </body>
+ <script type="text/javascript">
+ $("#orders").kendoGrid({
+     dataSource: {
+         type: "odata",
+         transport: {
+             read: "http://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+         },
+         serverPaging: true,
+         serverSorting: true,
+         serverFiltering: true,
+         pageSize: 10
+     },
+     scrollable: false,
+     sortable: true,
+     groupable: true,
+     pageable: { buttonCount: 4 },
+     columns: [
+         { field: "OrderID", width: "70px" },
+         { field: "ShipCountry", title:"Ship Country", width: "20%" },
+         { field: "ShipAddress", title:"Ship Address" }
+     ]
+ });
+ </script>
+</html>

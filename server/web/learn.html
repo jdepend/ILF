@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="resources/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="resources/css/starter-template.css" rel="stylesheet">
+
+
+    <script src="resources/js/jquery.min.js"></script>
+    <script src="resources/js/bootstrap.js"></script>
+
+    <title>ILF</title>
+</head>
+<body>
+<div class="container" style="width: 100%; padding-left: 20px;padding-right: 20px;">
+    <div class="page-header">
+        <h1>ILF
+            <small>Interactive Layout Framework</small>
+        </h1>
+    </div>
+    <p>ILF 是将应用中的手机页面进行布局总结，通过向研发人员提供一整套<strong>布局</strong>以及布局下的<strong>可复用页面区块</strong>，来提高开发手机端页面的效率。同时，ILF通过在布局中内嵌成熟的交互模式，来提高框架的复用价值。</p>
+    <p>目录</p>
+    <p><a href="#1F">如何使用ILF？</a></p>
+    <p><a href="#1.1F">PageModel</a></p>
+    <p><a href="#1.2F">系统预置的Layout</a></p>
+    <p><a href="#1.3F">Dept Demo</a></p>
+    <p><a href="#1.4F">User Demo</a></p>
+    <p><a href="#1.5F">Notice Demo</a></p>
+    <p><a href="#1.6F">Taglib</a></p>
+    <p><a href="#1.7F">ILF 中已有的交互效果</a></p>
+    <p><a href="#1.8F">ILF 中与服务器的交互模式</a></p>
+    <p><a href="#1.9F">ILF 中的事件模型和对象模型</a></p>
+    <p><a href="#2F">如何构建新的Layout？</a></p>
+    <p><a href="#3F">ILF 使用的开源项目</a></p>
+
+    <h3 name="1F">如何使用ILF？</h3>
+
+    <p>ILF的用户分为两类，一类是<strong>后端业务逻辑编写人员</strong>，一类是采用该框架进行<strong>页面开发的人员</strong>。</p>
+
+    <p>对于后端业务逻辑编写人员，框架提供了一个<strong>PageModel</strong>对象来承载业务数据，后端业务逻辑人员只要将业务数据添加到该对象中，并指定输出的页面标识即可。</p>
+
+    <p><a  name="1.1F">PageModel:</a></p>
+    <a class="thumbnail">
+        <img src="resources/images/pageModel.png"/>
+    </a><br>
+    <p>pageModel采用List结构来装载后台数据。它有多个装载数据的结构，其中object为装载单条数据的容器；listData为装载列表数据的容器；groupListData和subListIndex为装载组列表数据的容器。</p>
+    <p>当后端业务逻辑编写人员在编写Controller的时候，将后台返回的数据添加到pageModel中，页面就会根据pageModel信息显示页面。</p>
+    <a class="thumbnail">
+        <img src="resources/images/controller.png"/>
+    </a><br>
+    <p>用户可以通过ArrayUtil.toArray将VO数据转化为pageModel要求的格式数据。</p>
+    <p>
+        对于页面开发人员，首先需要根据自己要做的页面特征选择一个框架预置好的<strong>Layout</strong>，并通过Layout说明（<strong>tiles-core-templates.xml</strong>和<strong>tiles-ext-templates.xml</strong>）来编写页面中的<strong>自定义页面区域</strong>。
+    </p>
+
+    <p><a  name="1.2F">系统预置的Layout:</a></p>
+    <a class="thumbnail">
+        <img src="resources/images/layout.png"/>
+    </a><br>
+
+    <p>Layout分为两种类别，一种是Page级的Layout，即对应整个页面的Layout（以<strong>defpage</strong>结尾），一种是区域级的Layout（以<strong>defarea</strong>结尾），可以根据自己页面的特征选择合适的布局。
+    </p>
+
+    <p>当填充内容时，需编写对应的JSP，并在布局声明文件中进行声明。</p>
+
+    <p><a name="1.3F">Dept Demo:</a></p>
+    <a class="thumbnail">
+        <img src="resources/images/dept.png"/>
+    </a><br>
+
+    <a class="thumbnail">
+        <img src="resources/images/deptHtml.png"/>
+    </a><br>
+
+    <p>除了在布局声明文件中声明新的布局外，也可以通过<strong>通配符方案</strong>直接在代码中使用。</p>
+
+    <p><a name="1.4F">User Demo:</a></p>
+    <a class="thumbnail">
+        <img src="resources/images/user.png"/>
+    </a><br>
+    <a class="thumbnail">
+        <img src="resources/images/extLayout.png"/>
+    </a><br>
+
+    <p>框架除了提供预置好的Layout以外，还提供了一定量的预置好的区域级复用块儿（title、tab），甚至是全页面的复用块儿（notice）</p>
+
+    <p><a name="1.5F">Notice Demo:</a></p>
+    <a class="thumbnail">
+        <img src="resources/images/notice.png"/>
+    </a><br>
+    <p>Notice Tiles:</p>
+    <a class="thumbnail">
+        <img src="resources/images/notice-tiles.png"/>
+    </a><br>
+
+    <p>对于页面的通用控件，框架提供了Taglib的方式进行了封装</p>
+    <p><a name="1.6F">Taglib:</a></p>
+    <a class="thumbnail">
+        <img src="resources/images/taglib.png"/>
+    </a><br>
+
+    <p><a name="1.7F">ILF 中已有的交互效果:</a></p>
+    <p>&nbsp;&nbsp;页面飞出、飞入</p>
+    <p>&nbsp;&nbsp;图片加载</p>
+    <p>&nbsp;&nbsp;翻页</p>
+    <p>&nbsp;&nbsp;日期</p>
+    <p>&nbsp;&nbsp;提示框</p>
+    <p>&nbsp;&nbsp;自动登录</p>
+    <p>&nbsp;&nbsp;断网提醒</p>
+
+    <p><a name="1.8F">ILF 中与服务器的交互模式:</a></p>
+    <p>&nbsp;&nbsp;ILF中提供了分别加载表现和数据，并缓存表现的与服务器的交互模式：</p>
+    <a class="thumbnail">
+        <img src="resources/images/interactive2.png"/>
+    </a><br>
+    <a class="thumbnail">
+        <img src="resources/images/interactive2_jsp.png"/>
+    </a><br>
+    <a class="thumbnail">
+        <img src="resources/images/interactive2_js.png"/>
+    </a><br>
+    <a class="thumbnail">
+        <img src="resources/images/interactive2_cache.png"/>
+    </a><br>
+
+    <p><a name="1.9F">ILF 中的事件模型和对象模型:</a></p>
+    <p>&nbsp;&nbsp;在ILF中除了静态的布局外，还支持区块间和区块内基于发布订阅模式的事件模型，系统提供的可复用区块除了表现外还有对应的事件，用户可以在Controller中配置<strong>EventModel</strong>来将这些事件进行<strong>绑定</strong>。另外，用户也可以使用该机制定义自己的事件模型。</p>
+    <a class="thumbnail">
+        <img src="resources/images/eventModel_url.png"/>
+    </a><br>
+    <a class="thumbnail">
+        <img src="resources/images/eventModel_create.png"/>
+    </a><br>
+    <a class="thumbnail">
+        <img src="resources/images/eventModel_defaultEvent.png"/>
+    </a><br>
+    <p>&nbsp;&nbsp;有时候触发事件的链条来自业务对象间的关系，系统设计了一个<strong>ObjectModel</strong>，通过向<strong>EventModel</strong>中设置ObjectModel信息，可以在事件触发的过程中获得业务对象的关联信息。</p>
+    <a class="thumbnail">
+        <img src="resources/images/objectModel_set.png"/>
+    </a><br>
+    <a class="thumbnail">
+        <img src="resources/images/objectModel_create.png"/>
+    </a><br>
+    <a class="thumbnail">
+        <img src="resources/images/objectModel_ui.png"/>
+    </a><br>
+    <p>&nbsp;&nbsp;<strong>EventModel</strong>结构：</p>
+    <a class="thumbnail">
+        <img src="resources/images/eventModel_structure.png"/>
+    </a><br>
+    <p>&nbsp;&nbsp;<strong>ObjectModel</strong>结构：</p>
+    <a class="thumbnail">
+        <img src="resources/images/eventModel_structure.png"/>
+    </a><br>
+
+    <h3><a name="2F">如何构建新的Layout？</a></h3>
+
+    <p>Layout是针对一类相似页面总结出的通用布局（仅对应一个页面的Layout是不存在的，也不需要定义）。当识别多个页面的通用布局时，可以将个性化的区块看成黑盒，通过框架提供的机制未来在生成页面时插入。</p>
+    <p>以下是一个识别Layout的例子：</p>
+    <a class="thumbnail">
+        <img src="resources/images/layout-demo.png"/>
+    </a><br>
+    <p>其中红颜色的为共性区块，蓝颜色的为个性区块。</p>
+    <p>另外也可以将整个中部区域视其为个性化区块：</p>
+    <a class="thumbnail">
+        <img src="resources/images/layout-demo1.png"/>
+    </a><br>
+    <p>当平台提供的Layout不够用时，用户可以根据自己的情况创建新的Layout。</p>
+    <p>一个Layout由多个子区域构成：</p>
+    <a class="thumbnail">
+        <img src="resources/images/layout-list.png"/>
+    </a><br>
+    <p>框架在layout/template下定义了大量的区块，用户可以通过使用这些区块构建新的Layout。用户也可以把自己新创建的区块添加到该目录下，以供他人使用或者其他项目复用。</p>
+    <a class="thumbnail">
+        <img src="resources/images/layout-template.png"/>
+    </a><br>
+    <p>另外，框架在content下为具有未来通用性的个性化区块保留了空间，用户也可以把自己新创建的具有通用性的个性化区块添加到该目录下，以供他人使用或者其他项目复用。</p>
+    <a class="thumbnail">
+        <img src="resources/images/layout-content.png"/>
+    </a><br>
+    <p>ILF 将随着使用的深入和广泛，生成跟多预置好的<strong>Layout</strong>、<strong>区域级复用块儿</strong>和<strong>全页面的复用块儿</strong>，将会大幅提高开发的效率！</p>
+
+    <p><a name="3F">ILF 使用的开源项目：</a></p>
+    <p>&nbsp;&nbsp;Bootstrap3+JQuery1.11.3（布局、交互）</p>
+    <p>&nbsp;&nbsp;html5（飞出、飞入、保存用户名密码等）</p>
+    <p>&nbsp;&nbsp;iscroll（翻页）</p>
+    <p>&nbsp;&nbsp;Jquery.lazyload（图片加载）</p>
+    <p>&nbsp;&nbsp;notificationFx（提示框）</p>
+    <p>&nbsp;&nbsp;phoneGap2.9（Android交互）</p>
+    <p>&nbsp;&nbsp;Tiles3（布局）</p>
+    <p>&nbsp;&nbsp;Spring4（后端前端框架）</p>
+    <p>&nbsp;&nbsp;Jstl1.2（数据绑定）</p>
+
+</div>
+<!-- /.container -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+</body>
+</html>
+

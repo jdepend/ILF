@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 
+    工作计划管理
+-->
+<hibernate-mapping>
+    <class name="com.qeweb.demo.mobile.bo.DemoMobileWorkPlanBO" table="DEMO_MOBILE_WORKPLAN" dynamic-update="true">
+        <id name="id" column="ID" type="long">
+            <generator class="native" />
+        </id>
+		<property name="planTime" column="PLAN_TIME" type="timestamp" />
+		<property name="checkingTime" column="CHECKING_TIME" type="timestamp" />
+		<property name="store" column="STORE" type="string" />
+									
+		<property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" length="5" type="int" />
+    </class>
+</hibernate-mapping>

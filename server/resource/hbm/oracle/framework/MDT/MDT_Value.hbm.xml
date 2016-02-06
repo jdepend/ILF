@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.qeweb.framework.impconfig.mdt.use.bean.MDT_Value" table="qeweb_mdt_value">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="value" column="value" type="string"/>
+		<property name="text" column="text" type="string"/>
+		<property name="valueSetId" column="value_set_id" type="long"/>
+		
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+	</class>
+</hibernate-mapping>

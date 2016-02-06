@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="*.*/one.page2.title.defpage" extends="one.page2.title.defpage">
+        <put-attribute name="contentBody" value="/WEB-INF/jsp/demo/{1}/{2}.jsp"/>
+    </definition>
+
+    <definition name="*.*.*.*/group.title.list2.defpage" extends="group.list2.defpage">
+        <put-attribute name="groupTitleBody" value="/WEB-INF/jsp/demo/{1}/{2}.jsp"/>
+        <put-attribute name="elementBody" value="/WEB-INF/jsp/demo/{1}/{3}.jsp"/>
+        <put-attribute name="groupFooterBody" value="/WEB-INF/jsp/layout/template/blank.jsp"/>
+        <put-attribute name="javascriptBody" value="/WEB-INF/jsp/demo/{1}/{4}.jsp"/>
+    </definition>
+
+</tiles-definitions>

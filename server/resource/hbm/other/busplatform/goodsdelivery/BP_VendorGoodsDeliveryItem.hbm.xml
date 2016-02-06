@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.qeweb.busplatform.goodsdelivery.bo.BP_VendorGoodsDeliveryItemBO" table="qeweb_bp_ven_go_dlv_item">
+        <id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+
+		<property name="deliveryId" column="DELIVERY_ID" type="java.lang.Long"/>
+		<property name="purchaseItemId" column="PURCHASE_ITEM_ID" type="java.lang.Long"/>
+		<property name="purchaseGoodsPlanId" column="PURCHASE_GOODS_PLAN_ID" type="java.lang.Long"/>
+		<property name="deliveryQty" type="java.lang.Double" column="DELIVERY_QTY" precision="11" scale="3"/>
+
+        <many-to-one name="vendorGoodsDelivery" class="com.qeweb.busplatform.goodsdelivery.bo.BP_VendorGoodsDeliveryBO"
+        	fetch="select" update="false" insert="false">
+            <column name="DELIVERY_ID" />
+        </many-to-one>
+		<many-to-one name="purchaseOrderItemBO" class="com.qeweb.busplatform.pomanage.bo.BP_PurchaseOrderItemBO"
+			fetch="select" update="false" insert="false" lazy="false">
+            <column name="PURCHASE_ITEM_ID" />
+        </many-to-one>
+		<many-to-one name="purchaseGoodsPlan" class="com.qeweb.busplatform.pomanage.bo.BP_PurchaseGoodsPlanBO"
+			fetch="select" update="false" insert="false" lazy="false">
+            <column name="PURCHASE_GOODS_PLAN_ID" />
+        </many-to-one>
+       	<property name="itemNo" column="ITEM_NO" type="integer" not-null="true"/>
+       	<property name="remark" column="REMARK" type="string" />
+       	<property name="lockStatus" type="java.lang.Integer" column="LOCK_STATUS" not-null="true"/>
+        <property name="lockMsg" type="java.lang.String" column="LOCK_MSG" length="500"/>
+
+       	<property name="attr_1" column="ATTR_1" length="150" type="string"/>
+		<property name="attr_2" column="ATTR_2" length="150" type="string"/>
+		<property name="attr_3" column="ATTR_3" length="150" type="string"/>
+		<property name="attr_4" column="ATTR_4" length="150" type="string"/>
+		<property name="attr_5" column="ATTR_5" length="150" type="string"/>
+		<property name="attr_6" column="ATTR_6" length="150" type="string"/>
+		<property name="attr_7" column="ATTR_7" length="150" type="string"/>
+		<property name="attr_8" column="ATTR_8" length="150" type="string"/>
+		<property name="attr_9" column="ATTR_9" length="150" type="string"/>
+		<property name="attr_10" column="ATTR_10" length="150" type="string"/>
+
+        <property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+    </class>
+</hibernate-mapping>

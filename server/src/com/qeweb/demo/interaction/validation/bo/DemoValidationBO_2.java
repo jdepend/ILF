@@ -1,0 +1,76 @@
+package com.qeweb.demo.interaction.validation.bo;
+
+import java.util.List;
+
+import com.qeweb.demo.common.bo.DemoPurchaseOrderBO;
+import com.qeweb.framework.bc.BusinessObject;
+import com.qeweb.framework.common.Page;
+import com.qeweb.framework.exception.BOException;
+import com.qeweb.framework.frameworkbop.NotEmptyBop;
+import com.qeweb.framework.frameworkbop.SelectMdBOP;
+
+/**
+ * demo: 粗粒度组件校验示例
+ * 路径: 交互-校验
+ */
+public class DemoValidationBO_2 extends DemoPurchaseOrderBO {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6681743646421802645L;
+	
+	public DemoValidationBO_2() {
+		super();
+		//行级按钮的select模式, 仅传递选中的数据
+		addOperateBOP("saveBtn", new SelectMdBOP());
+		addBOP("purchaseNo", new NotEmptyBop());
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	protected Class getSearchClass() {
+		return DemoPurchaseOrderBO.class;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	protected void initPreferencePage(Page page) {
+		super.initPreferencePage(page);
+		List<DemoPurchaseOrderBO> boList = (List<DemoPurchaseOrderBO>) page.getBOList();
+		for (int i = 0; i < boList.size(); i++) {
+			if((i & 1) == 0) {
+				DemoPurchaseOrderBO bo = boList.get(i);
+				bo.getBOP("purchaseNo").setValue("");;
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 * @param boList
+	 * @throws BOException 
+	 */
+	public void save(List<BusinessObject> boList) throws BOException {
+		System.out.println("--------------------------------------------------execute save---------------------------------------------------");
+		System.out.println("|\t\t\t\t\t\tboList.size = " + boList.size() + "\t\t\t\t\t\t\t|");
+		System.out.println("|\t\t\tid\t\t\tpoNO\t\t\torgCode\t\t\tpublishStatus\t|");
+		for (BusinessObject bo : boList) {
+			System.out.println("|\t\t\t" + bo.getId() + "\t\t\t" +
+					((DemoPurchaseOrderBO)bo).getPurchaseNo() + "\t\t\t" +
+					((DemoPurchaseOrderBO)bo).getVendor().getOrgCode() + "\t\t\t" +
+					((DemoPurchaseOrderBO)bo).getPublishStatus() + "\t\t|");
+		}
+		System.out.println("--------------------------------------------------------end------------------------------------------------------");
+		validate(boList);
+	}
+	
+	/**
+	 * 校验操作
+	 * @param boList
+	 * @throws BOException
+	 */
+	private void validate(List<BusinessObject> boList) throws BOException {
+		throw new BOException("请选择已发布的订单");
+	}
+}

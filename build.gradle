@@ -1,0 +1,68 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.7
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    def springFrameworkVersion = '4.1.8.RELEASE'
+    def hibernateVersion = '4.3.4.Final'
+    def junitVersion = '4.11'
+    def jstlVersion = '1.2'
+    def tilesVersion = '3.0.5'
+    def mysqlVersion = '5.1.26'
+    def slf4jVersion = '1.7.7'
+    def jsonlibVersion = '2.4'
+    def log4jVersion = '1.2.17'
+    def slf4jlog4j12Version = '1.7.13'
+    def jacksonVersion = '2.6.4'
+
+
+    def springDataVersion = '1.9.1.RELEASE'
+
+    testCompile group: 'junit', name: 'junit', version: "$junitVersion"
+
+    compile group: 'log4j', name: 'log4j', version: "$log4jVersion"
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: "$slf4jlog4j12Version"
+
+    /**
+     * spring相关依赖
+     */
+    compile group: 'org.springframework', name: 'spring-context', version: "$springFrameworkVersion"
+    compile group: 'org.springframework', name: 'spring-context-support', version: "$springFrameworkVersion"
+    compile group: 'org.springframework', name: 'spring-core', version: "$springFrameworkVersion"
+    compile group: 'org.springframework', name: 'spring-web', version: "$springFrameworkVersion"
+    compile group: 'org.springframework', name: 'spring-webmvc', version: "$springFrameworkVersion"
+    compile group: 'org.springframework', name: 'spring-aop', version: "$springFrameworkVersion"
+    compile group: 'org.springframework', name: 'spring-beans', version: "$springFrameworkVersion"
+    compile group: 'org.springframework', name: 'spring-jdbc', version: "$springFrameworkVersion"
+    compile group: 'org.springframework', name: 'spring-orm', version: "$springFrameworkVersion"
+
+    /**
+     * springData 相关依赖
+     */
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: "$springDataVersion"
+
+    /**
+     * hibernate相关依赖
+     */
+    compile group: 'org.hibernate', name: 'hibernate-core', version: "$hibernateVersion"
+    // for JPA, use hibernate-entitymanager instead of hibernate-core
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: "$hibernateVersion"
+
+
+    /**
+     * javaEE相关依赖
+     */
+    compile group: 'jstl', name: 'jstl', version: "$jstlVersion"
+    compile group: 'org.apache.tiles', name: 'tiles-jsp', version: "$tilesVersion"
+    compile group: 'net.sf.json-lib', name: 'json-lib', classifier: 'jdk15', version: "$jsonlibVersion"
+
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: "$jacksonVersion"
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: "$jacksonVersion"
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: "$jacksonVersion"
+}

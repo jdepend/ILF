@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<modules>
+	<menu id="100" name="示例" parentId="0" path="" sortIndex="1" />
+	<menu id="1001" name="装载" parentId="100" path="" sortIndex="1" />
+	<menu id="100101" name="表单" parentId="1001" path="" sortIndex="1" />
+	<menu id="10010101" name="1-普通表单" parentId="100101" path="/WEB-INF/pages/demo/load/container/form/demoForm_1.jsp" sortIndex="1" />
+	<menu id="10010102" name="2-展示历史信息的表单(暂无示例)" parentId="100101" path="/WEB-INF/pages/demo/load/container/form/demoForm_2.jsp" sortIndex="2" />
+	<menu id="100102" name="表格" parentId="1001" path="" sortIndex="2" />
+	<menu id="10010201" name="1-简单表格" parentId="100102" path="/WEB-INF/pages/demo/load/container/table/demoTable_1.jsp" sortIndex="1" />
+	<menu id="10010202" name="2-可编辑表格" parentId="100102" path="/WEB-INF/pages/demo/load/container/table/demoTable_2.jsp" sortIndex="2" />
+	<menu id="10010203" name="3-翻页时记忆选中行" parentId="100102" path="/WEB-INF/pages/demo/load/container/table/demoTable_3.jsp" sortIndex="3" />
+	<menu id="10010204" name="4-加载时不刷新" parentId="100102" path="/WEB-INF/pages/demo/load/container/table/demoTable_4.jsp" sortIndex="4" />
+	<menu id="10010205" name="5-加载全部数据" parentId="100102" path="/WEB-INF/pages/demo/load/container/table/demoTable_5.jsp" sortIndex="5" />
+	<menu id="10010206" name="6-高亮显示" parentId="100102" path="/WEB-INF/pages/demo/load/container/table/demoTable_6.jsp" sortIndex="6" />
+	<menu id="10010207" name="7-显示状态图标" parentId="100102" path="/WEB-INF/pages/demo/load/container/table/demoTable_7.jsp" sortIndex="7" />
+	<menu id="10010208" name="8-排序" parentId="100102" path="/WEB-INF/pages/demo/load/container/table/demoTable_8.jsp" sortIndex="8" />
+	<menu id="10010209" name="9-隐藏操作列" parentId="100102" path="/WEB-INF/pages/demo/load/container/table/demoTable_9.jsp" sortIndex="9" />
+	<menu id="10010210" name="10-列锁定(暂无示例)" parentId="100102" path="/WEB-INF/pages/demo/load/container/table/demoTable_10.jsp" sortIndex="10" />
+	<menu id="100103" name="树" parentId="1001" path="" sortIndex="3" />
+	<menu id="10010301" name="1-展示树" parentId="100103" path="/WEB-INF/pages/demo/load/container/tree/demoTree_1.jsp" sortIndex="1" />
+	<menu id="10010302" name="2-选择树" parentId="100103" path="/WEB-INF/pages/demo/load/container/tree/demoTree_2.jsp" sortIndex="2" />
+	<menu id="10010303" name="3-菜单" parentId="100103" path="/WEB-INF/pages/demo/load/container/tree/demoTree_3.jsp" sortIndex="3" />
+	<menu id="10010304" name="4-border菜单" parentId="100103" path="/WEB-INF/pages/demo/load/container/tree/demoTree_4.jsp" sortIndex="4" />
+	<menu id="10010305" name="5-下拉树" parentId="100103" path="/WEB-INF/pages/demo/load/container/tree/demoTree_5.jsp" sortIndex="5" />
+	<menu id="100104" name="按钮" parentId="1001" path="" sortIndex="3" />
+	<menu id="10010401" name="1-全部按钮样式" parentId="100104" path="/WEB-INF/pages/demo/load/button/demoBtn_1.jsp" sortIndex="1" />
+	<menu id="10010402" name="2-表格中的按钮" parentId="100104" path="/WEB-INF/pages/demo/load/button/demoBtn_2.jsp" sortIndex="2" />
+	<menu id="10010403" name="3-全局按钮" parentId="100104" path="/WEB-INF/pages/demo/load/button/demoBtn_3.jsp" sortIndex="3" />
+	<menu id="100105" name="其它控件" parentId="1001" path="" sortIndex="4" />
+	<menu id="10010501" name="标签页" parentId="100105" path="/WEB-INF/pages/demo/load/container/tab/demoTab.jsp" sortIndex="1" />
+	<menu id="10010502" name="超链接" parentId="100105" path="/WEB-INF/pages/demo/load/fc/demoAnchor.jsp" sortIndex="2" />
+	<menu id="10010503" name="图片" parentId="100105" path="/WEB-INF/pages/demo/load/fc/demoImage.jsp" sortIndex="3" />
+	<menu id="10010504" name="文件上传" parentId="100105" path="/WEB-INF/pages/demo/load/fc/demoFileUpload.jsp" sortIndex="4" />
+	<menu id="10010505" name="文件下载" parentId="100105" path="/WEB-INF/pages/demo/load/fc/demoFileDownload.jsp" sortIndex="5" />
+	<menu id="10010506" name="日期控件" parentId="100105" path="/WEB-INF/pages/demo/load/fc/demoDate.jsp" sortIndex="6" />
+	<menu id="100106" name="布局管理器" parentId="1001" path="" sortIndex="6" />
+	<menu id="10010601" name="1-细粒度组件布局" parentId="100106" path="/WEB-INF/pages/demo/load/layout/demoFclayout.jsp" sortIndex="1" />
+	<menu id="10010602" name="2-粗粒度组件布局" parentId="100106" path="/WEB-INF/pages/demo/load/layout/demoContainerlayout.jsp" sortIndex="2" />
+	<menu id="10010603" name="3-表格布局" parentId="100106" path="/WEB-INF/pages/demo/load/layout/demoTablelayout.jsp" sortIndex="3" />
+	<menu id="100107" name="样式管理器" parentId="1001" path="/WEB-INF/pages/demo/load/style/demoStyle.jsp" sortIndex="7" />
+	<menu id="100108" name="国际化" parentId="1001" path="/WEB-INF/pages/demo/load/localization/demoLocalization.jsp?load=onLoad" sortIndex="8" />
+	
+	<menu id="1002" name="交互" parentId="100" path="" sortIndex="2" />
+	<menu id="100201" name="检验" parentId="1002" path="" sortIndex="1" />
+	<menu id="10020101" name="1-细粒度组件校验" parentId="100201" path="/WEB-INF/pages/demo/interaction/validation/demoValidation_1.jsp" sortIndex="1" />
+	<menu id="10020102" name="2-粗粒度组件校验" parentId="100201" path="/WEB-INF/pages/demo/interaction/validation/demoValidation_2.jsp" sortIndex="2" />
+	<menu id="10020103" name="3-查询条件校验" parentId="100201" path="/WEB-INF/pages/demo/interaction/validation/demoValidation_3.jsp" sortIndex="3" />
+	<menu id="100202" name="关联" parentId="1002" path="" sortIndex="2" />
+	<menu id="10020201" name="1-细粒度组件关联1" parentId="100202" path="/WEB-INF/pages/demo/interaction/relation/demoRelation_1.jsp" sortIndex="1" />
+	<menu id="10020202" name="2-细粒度组件关联2" parentId="100202" path="/WEB-INF/pages/demo/interaction/relation/demoRelation_2.jsp" sortIndex="2" />
+	<menu id="10020203" name="3-粗粒度组件关联1" parentId="100202" path="/WEB-INF/pages/demo/interaction/relation/demoRelation_3.jsp" sortIndex="3" />
+	<menu id="10020204" name="4-粗粒度组件关联2" parentId="100202" path="/WEB-INF/pages/demo/interaction/relation/demoRelation_4.jsp" sortIndex="4" />
+	<menu id="10020205" name="5-粗粒度组件关联3" parentId="100202" path="/WEB-INF/pages/demo/interaction/relation/demoRelation_5.jsp" sortIndex="5" />
+	<menu id="100203" name="页面流" parentId="1002" path="" sortIndex="3" />
+	<menu id="10020301" name="1-跳转页面" parentId="100203" path="/WEB-INF/pages/demo/interaction/pageflow/demoPageFlow_1.jsp" sortIndex="1" />
+	<menu id="10020302" name="2-弹出页面1" parentId="100203" path="/WEB-INF/pages/demo/interaction/pageflow/demoPageFlow_2.jsp" sortIndex="2" />
+	<menu id="10020303" name="3-弹出页面2(暂无示例)" parentId="100203" path="" sortIndex="3" />
+	<menu id="10020304" name="4-弹出页面3(暂无示例)" parentId="100203" path="" sortIndex="4" />
+	<menu id="100204" name="弹出选择" parentId="1002" path="" sortIndex="4" />
+	<menu id="10020401" name="1-表单中的弹出" parentId="100204" path="/WEB-INF/pages/demo/interaction/popselect/demoPopSelect_1.jsp" sortIndex="1" />
+	<menu id="10020402" name="2-表格中的弹出" parentId="100204" path="/WEB-INF/pages/demo/interaction/popselect/demoPopSelect_2.jsp" sortIndex="2" />
+	<menu id="10020403" name="3-弹出框的翻页记忆" parentId="100204" path="/WEB-INF/pages/demo/interaction/popselect/demoPopSelect_3.jsp" sortIndex="3" />
+	<menu id="100205" name="弹出其它页面" parentId="1002" path="" sortIndex="5" />
+	<menu id="10020501" name="1-弹出页面接收参数" parentId="100205" path="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_1.jsp" sortIndex="1" />
+	<menu id="10020502" name="2-关闭后刷新源组件" parentId="100205" path="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_2.jsp" sortIndex="2" />
+	<menu id="10020503" name="3-关闭后刷新源页面" parentId="100205" path="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_3.jsp" sortIndex="3" />
+	<menu id="10020504" name="4-关闭后刷新指定组件" parentId="100205" path="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_4.jsp" sortIndex="4" />
+	<menu id="10020505" name="5-关闭后不执行操作" parentId="100205" path="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_5.jsp" sortIndex="5" />
+	<menu id="10020506" name="6-关闭按钮执行方法" parentId="100205" path="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_6.jsp" sortIndex="6" />
+	<menu id="10020507" name="7-关闭后刷新全局按钮" parentId="100205" path="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_7.jsp" sortIndex="7" />
+	<menu id="10020508" name="8-多层弹出(暂无示例)" parentId="100205" path="" sortIndex="8" />
+	<menu id="100206" name="执行自定义JS" parentId="1002" path="" sortIndex="6" />
+	<menu id="10020601" name="1-仅执行JS" parentId="100206" path="/WEB-INF/pages/demo/interaction/exejs/demoExeJs_1.jsp" sortIndex="1" />
+	<menu id="10020602" name="2-先执行JS(暂无示例)" parentId="100206" path="" sortIndex="2" />
+	<menu id="10020603" name="3-后执行JS(暂无示例)" parentId="100206" path="" sortIndex="3" />
+	<menu id="10020604" name="4-环绕执行JS(暂无示例)" parentId="100206" path="" sortIndex="4" />
+	<menu id="100207" name="消息提醒" parentId="1002" path="" sortIndex="7" />
+	<menu id="10020701" name="1-文字消息提醒" parentId="100207" path="/WEB-INF/pages/demo/interaction/tipmessage/demoTipMsg_1.jsp" sortIndex="1" />
+	<menu id="10020702" name="2-超链接消息提醒" parentId="100207" path="/WEB-INF/pages/demo/interaction/tipmessage/demoTipMsg_2.jsp" sortIndex="2" />
+	
+	<menu id="1003" name="持久化" parentId="100" path="" sortIndex="3" />
+	<menu id="100301" name="1-可编辑表格" parentId="1003" path="/WEB-INF/pages/demo/persistence/demoPresistence_1.jsp" sortIndex="1" />
+	<menu id="100302" name="2-动态新增行" parentId="1003" path="/WEB-INF/pages/demo/persistence/demoPresistence_2.jsp" sortIndex="2" />
+	<menu id="100303" name="3-表格中自带的增/删/改" parentId="1003" path="/WEB-INF/pages/demo/persistence/demoPresistence_3.jsp" sortIndex="3" />
+	<menu id="100304" name="4-按钮的模式" parentId="1003" path="" sortIndex="4" />
+	<menu id="10030401" name="1-表格级按钮的模式" parentId="100304" path="/WEB-INF/pages/demo/persistence/btnmode/demoBtnMode_1.jsp" sortIndex="1" />
+	<menu id="10030402" name="2-全局按钮的模式" parentId="100304" path="/WEB-INF/pages/demo/persistence/btnmode/demoBtnMode_2.jsp" sortIndex="2" />
+	<menu id="10030403" name="3-提交时不执行前台校验" parentId="100304" path="/WEB-INF/pages/demo/persistence/btnmode/demoBtnMode_3.jsp" sortIndex="3" /> 
+	<menu id="10030404" name="4-按钮的其它特性(提交,刷新,弹出提示)(暂无示例)" parentId="100304" path="" sortIndex="4" />
+	<menu id="100305" name="导入与导出" parentId="1003" path="" sortIndex="5" />
+	<menu id="10030501" name="导入(暂无示例)" parentId="100305" path="" sortIndex="1" />
+	<menu id="10030502" name="导出" parentId="100305" path="/WEB-INF/pages/demo/persistence/exp/DemoExp.jsp" sortIndex="2" />
+
+	<menu id="1004" name="高级功能(暂无示例)" parentId="100" path="" sortIndex="5" />
+	<menu id="1005" name="终端功能演示(暂无示例)" parentId="100" path="" sortIndex="6" />
+	
+	
+	<menu id="200" name="示例2" parentId="0" path="" sortIndex="2" />
+	<menu id="2001" name="test1" parentId="200" path="aaaa" sortIndex="1" />
+	<menu id="2002" name="test2" parentId="200" path="aaaa" sortIndex="2" />
+	
+	<menu id="300" name="示例3" parentId="0" path="" sortIndex="3"/>
+	<menu id="3001" name="test1" parentId="300" path="aaaa" sortIndex="1" />
+	<menu id="3002" name="test2" parentId="300" path="aaaa" sortIndex="2" />
+</modules>
+
+

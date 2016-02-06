@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.qeweb.framework.impconfig.ddt.manage.bo.DdtSysContainerBO" table="QEWEB_DDT_SYS_CONTAINER" where="delete_flag=0">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+
+		<property name="containerType" column="CONTAINER_TYPE" type="integer"
+			not-null="true" length="10" />
+		<property name="containerId" column="CONTAINER_ID" type="string"
+			not-null="true" length="20" />
+		<property name="boName" column="BO_NAME" type="string"
+			not-null="true" length="20" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+		
+		<many-to-one name="page" column="PAGE_ID" class="com.qeweb.framework.impconfig.ddt.manage.bo.DdtSysPagesBO"
+			not-null="true">
+		</many-to-one>
+
+		<set name="ddtSysFcs" inverse="true" where="delete_flag=0">
+			<key column="CONTAINER_ID" />
+			<one-to-many class="com.qeweb.framework.impconfig.ddt.manage.bo.DdtSysFcBO" />
+		</set>
+	</class>
+</hibernate-mapping>

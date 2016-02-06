@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 按物料发货 -->
+<hibernate-mapping>
+    <class name="com.qeweb.busplatform.goodsdelivery.bo.BP_PendingDeliveryMaterialBO" table="VW_QEWEB_BP_PENDING_DLV_MTL">
+
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		
+        <property name="vendorId" type="long" column="VENDOR_ID" />
+        <property name="buyerId" type="long" column="BUYER_ID"/>
+       	<property name="materialId" type="long" column="MATERIAL_ID" not-null="true" />
+       	<property name="unDlvQty" type="java.lang.Double" column="UN_DLV_QTY" precision="11" scale="3"/>
+	    <property name="deliveryQty" type="java.lang.Double" column="DLV_QTY" precision="11" scale="3"/>
+	    <property name="unitName" type="string" column="UNIT_NAME"/>
+	    
+       	<many-to-one name="buyer" column="BUYER_ID"
+       		class="com.qeweb.sysmanage.purview.bo.OrganizationBO"
+			lazy="false" insert="false" update="false" fetch="select"/>
+       	<many-to-one name="vendor" column="VENDOR_ID"
+       		class="com.qeweb.sysmanage.purview.bo.OrganizationBO"
+			lazy="false" insert="false" update="false" fetch="select"/>
+        <many-to-one name="material" column="MATERIAL_ID"
+			class="com.qeweb.busplatform.masterdata.bo.manage.BP_MaterialBO"
+			lazy="false" insert="false" update="false" fetch="select"/>
+
+		<property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+    </class>
+</hibernate-mapping>

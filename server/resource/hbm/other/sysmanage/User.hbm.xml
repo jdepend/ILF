@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="com.qeweb.sysmanage.purview.bo.UserBO" table="QEWEB_SYS_USER" >
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		
+		<many-to-one name="organizationBO" column="ORG_ID"
+			class="com.qeweb.sysmanage.purview.bo.OrganizationBO" lazy="false"
+			fetch="select"/>
+		<property name="userCode" type="string" column="USER_CODE" length="30"/>
+		<property name="userName" type="string" column="USER_NAME" length="20"/>
+		<property name="userNameEn" type="string" column="USER_NAME_EN" length="50"/>
+		<property name="cellphone" type="string" column="CELLPHONE" length="50"/>
+		<property name="telephone" type="string" column="TELEPHONE" length="20"/>
+		<property name="userStatus" type="integer" column="STATUS" length="1"/>
+		<property name="fax" type="string" column="FAX" length="20"/>
+		<property name="email" type="string" column="EMAIL" length="20"/>
+		<property name="postCode" type="string" column="POSTCODE" length="10"/>
+		<property name="address" type="string" column="ADDRESS" length="200"/>
+		<property name="password" type="string" column="PASSWORD" length="50"/>
+		
+		<property name="deleteFlag" column="DELETE_FLAG" length="1" type="int" />
+		<property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		
+		<property name="attr_1" type="string" column="ATTR_1" length="50"/>
+		<property name="attr_2" type="string" column="ATTR_2" length="50"/>
+		<property name="attr_3" type="string" column="ATTR_3" length="50"/>
+		<property name="attr_4" type="string" column="ATTR_4" length="50"/>
+		<property name="attr_5" type="string" column="ATTR_5" length="50"/>
+	</class>
+</hibernate-mapping>

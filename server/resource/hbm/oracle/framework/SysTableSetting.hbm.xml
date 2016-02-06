@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.qeweb.framework.common.syssetting.tablesetting.bo.TableSettingBO" table="QEWEB_SYS_TABLESETTING">
+        <id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+        <property name="userId" type="long">
+            <column name="USER_ID"/>
+        </property>
+        <property name="pagePath" type="string">
+            <column name="PAGE_PATH" length="256" />
+        </property>
+        <property name="tableId" type="string">
+            <column name="TABLE_ID" length="32" />
+        </property>
+        <property name="hiddenBop" type="string">
+            <column name="HIDDEN_BOP" length="256" />
+        </property>
+        <property name="position" type="string">
+            <column name="POSITION" length="256" />
+        </property>
+        <property name="columnWidth" type="string">
+            <column name="COLUMN_WIDTH" length="256" />
+        </property>
+    </class>
+</hibernate-mapping>

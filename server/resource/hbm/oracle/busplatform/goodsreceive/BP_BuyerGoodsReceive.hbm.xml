@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.qeweb.busplatform.goodsreceive.bo.BP_BuyerGoodsReceiveBO" table="qeweb_bp_buy_goods_rec">
+        <id name="id" type="long" column="ID">
+			<generator class="sequence">
+				<param name="sequence">BP_BUY_GOODS_REC_SEQ</param>
+			</generator>
+		</id>
+        <property name="receiveNo" type="java.lang.String">
+            <column name="RECEIVE_NO" length="64" not-null="true" />
+        </property>
+        <property name="buyerId" type="long">
+            <column name="BUYER_ID" not-null="true" />
+        </property>
+        <property name="vendorId" type="long">
+            <column name="VENDOR_ID" not-null="true" />
+        </property>
+        <property name="receiveTime" type="timestamp">
+            <column name="RECEIVE_TIME" />
+        </property>
+        <property name="modifyTime" column="MODIFY_TIME" length="8" type="timestamp"/>
+
+  		<many-to-one name="vendor" column="VENDOR_ID" class="com.qeweb.sysmanage.purview.bo.OrganizationBO"
+			lazy="false" update="false" insert="false" fetch="select"/>
+
+        <many-to-one name="vendorGoodsDeliveryBO" column="DELIVERY_ID" class="com.qeweb.busplatform.goodsdelivery.bo.BP_VendorGoodsDeliveryBO"
+			lazy="false" fetch="select"/>
+
+        <set name="buyerGoodsReceiveItemBOs" inverse="true" where="delete_flag=0">
+            <key>
+                <column name="RECEIVE_ID" />
+            </key>
+            <one-to-many class="com.qeweb.busplatform.goodsreceive.bo.BP_BuyerGoodsReceiveItemBO" />
+        </set>
+
+        <property name="attr_1" column="ATTR_1" type="string"/>
+		<property name="attr_2" column="ATTR_2" type="string"/>
+		<property name="attr_3" column="ATTR_3" type="string"/>
+		<property name="attr_4" column="ATTR_4" type="string"/>
+		<property name="attr_5" column="ATTR_5" type="string"/>
+		<property name="attr_6" column="ATTR_6" type="string"/>
+		<property name="attr_7" column="ATTR_7" type="string"/>
+		<property name="attr_8" column="ATTR_8" type="string"/>
+		<property name="attr_9" column="ATTR_9" type="string"/>
+		<property name="attr_10" column="ATTR_10" type="string"/>
+		<property name="attr_11" column="ATTR_11" type="string"/>
+		<property name="attr_12" column="ATTR_12" type="string"/>
+		<property name="attr_13" column="ATTR_13" type="string"/>
+		<property name="attr_14" column="ATTR_14" type="string"/>
+		<property name="attr_15" column="ATTR_15" type="string"/>
+		<property name="attr_16" column="ATTR_16" type="string"/>
+		<property name="attr_17" column="ATTR_17" type="string"/>
+		<property name="attr_18" column="ATTR_18" type="string"/>
+		<property name="attr_19" column="ATTR_19" type="string"/>
+		<property name="attr_20" column="ATTR_20" type="string"/>
+
+        <property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+    </class>
+</hibernate-mapping>
+

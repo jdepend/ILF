@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.qeweb.demo.mobile.bo.DemoMobileSecondMenuBO" table="DEMO_MOBILE_MODULE" dynamic-update="true">
+		<id name="id" column="ID" type="long">
+            <generator class="native" />
+        </id>
+        <property name="moduleName" type="string">
+            <column name="MODULE_NAME" length="100" />
+        </property>
+         <property name="moduleNotes" type="string">
+            <column name="MODULE_NOTES" length="100" />
+        </property>
+        <property name="moduleUrl" type="string">
+            <column name="MODULE_URL" length="50" />
+        </property>
+        <property name="parentId" type="long">
+            <column name="PARENT_ID" precision="9" scale="0" />
+        </property>
+         <property name="sortIndex" type="int">
+            <column name="SORT_INDEX" precision="9" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

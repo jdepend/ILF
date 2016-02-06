@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 供货计划 -->
+<hibernate-mapping>
+    <class name="com.qeweb.busplatform.pomanage.bo.BP_PurchaseGoodsPlanBO" table="qeweb_bp_pur_goods_plan">
+       	<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+
+        <property name="itemNo" type="java.lang.Integer">
+            <column name="ITEM_NO" not-null="true" />
+        </property>
+        <property name="orderQty" type="java.lang.Double">
+            <column name="ORDER_QTY" precision="11" scale="3" not-null="true" />
+        </property>
+        <property name="orderTime" type="timestamp" column="ORDER_TIME" length="8" not-null="true"/>
+        <property name="deliveryStatus" type="integer" column="DELIVERY_STATUS" />
+
+        <many-to-one name="purchaseOrderItemBO" class="com.qeweb.busplatform.pomanage.bo.BP_PurchaseOrderItemBO" lazy="false" fetch="select">
+            <column name="PURCHASE_ITEM_ID" not-null="true" />
+        </many-to-one>
+        <property name="confirmStatus" type="java.lang.Integer">
+            <column name="CONFIRM_STATUS" />
+        </property>
+        <property name="confirmTime" type="timestamp">
+            <column name="CONFIRM_TIME" length="8"/>
+        </property>
+        <many-to-one name="confirmUser" column="CONFIRM_USER_ID"  class="com.qeweb.sysmanage.purview.bo.UserBO"
+			 fetch="select"/>
+		<property name="remark" type="java.lang.String">
+            <column name="REMARK" length="500" />
+        </property>
+
+        <property name="attr_1" column="ATTR_1" type="string"/>
+		<property name="attr_2" column="ATTR_2" type="string"/>
+		<property name="attr_3" column="ATTR_3" type="string"/>
+		<property name="attr_4" column="ATTR_4" type="string"/>
+		<property name="attr_5" column="ATTR_5" type="string"/>
+		<property name="attr_6" column="ATTR_6" type="string"/>
+		<property name="attr_7" column="ATTR_7" type="string"/>
+		<property name="attr_8" column="ATTR_8" type="string"/>
+		<property name="attr_9" column="ATTR_9" type="string"/>
+		<property name="attr_10" column="ATTR_10" type="string"/>
+		<property name="attr_11" column="ATTR_11" type="string"/>
+		<property name="attr_12" column="ATTR_12" type="string"/>
+		<property name="attr_13" column="ATTR_13" type="string"/>
+		<property name="attr_14" column="ATTR_14" type="string"/>
+		<property name="attr_15" column="ATTR_15" type="string"/>
+		<property name="attr_16" column="ATTR_16" type="string"/>
+		<property name="attr_17" column="ATTR_17" type="string"/>
+		<property name="attr_18" column="ATTR_18" type="string"/>
+		<property name="attr_19" column="ATTR_19" type="string"/>
+		<property name="attr_20" column="ATTR_20" type="string"/>
+
+        <property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+    </class>
+</hibernate-mapping>

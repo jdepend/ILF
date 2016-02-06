@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<!-- 角色管理 -->
+	<class name="com.qeweb.sysmanage.purview.bo.RoleBO" table="QEWEB_SYS_ROLE">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="roleName" type="string">
+			<column name="ROLE_NAME" length="20" />
+		</property>
+		<property name="roleNotes" type="string">
+			<column name="ROLE_NOTES" length="50" />
+		</property>
+		
+		<set name="modules" table="QEWEB_SYS_ROLE_MODULE" lazy="false" inverse="false" cascade="save-update" batch-size="5">
+			<key>
+				<column name="ROLE_ID" not-null="true" />
+			</key>
+			<many-to-many class="com.qeweb.sysmanage.purview.bo.ModuleBO" column="MODULE_ID" />
+		</set>
+		
+		<set name="users" table="QEWEB_SYS_ROLE_USER" lazy="false" inverse="false" cascade="save-update" batch-size="5">
+			<key>
+				<column name="ROLE_ID" not-null="true" />
+			</key>
+			<many-to-many class="com.qeweb.sysmanage.purview.bo.UserBO" column="USER_ID" />
+		</set>
+		<!-- 供应商 -->
+		<set name="vendors" table="QEWEB_SYS_ROLE_ORG" lazy="false" inverse="false" cascade="save-update" batch-size="5" where="ORG_TYPE=2">
+			<key>
+				<column name="ROLE_ID" not-null="true" />
+			</key>
+			<many-to-many class="com.qeweb.sysmanage.purview.bo.OrganizationBO" column="ORG_ID" />
+		</set>
+		<!-- 采购商 -->
+		<set name="buyers" table="QEWEB_SYS_ROLE_ORG" lazy="false" inverse="false" cascade="save-update" batch-size="5" where="ORG_TYPE=1">
+			<key>
+				<column name="ROLE_ID" not-null="true" />
+			</key>
+			<many-to-many class="com.qeweb.sysmanage.purview.bo.OrganizationBO" column="ORG_ID" />
+		</set>
+		
+		<property name="roleCode" column="ROLE_CODE" length="100" type="string"/>
+		<property name="enableModify" column="ENABLE_MODIFY" length="1" type="int"/>
+		
+		<property name="deleteFlag" column="DELETE_FLAG" length="1" type="int" />
+		<property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+	</class>
+</hibernate-mapping>

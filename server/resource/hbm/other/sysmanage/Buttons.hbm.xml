@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="com.qeweb.sysmanage.purview.bo.Buttons" table="QEWEB_SYS_BUTTONS" >
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		
+		<property name="moduleId" type="long" column="MODULE_ID"/>
+		<property name="btnName" type="string" column="BTN_NAME" length="50"/>
+		<property name="sourcePage" type="string" column="SOURCE_PAGE" length="100"/>
+		<property name="btnText" type="string" column="BTN_TEXT" length="100"/>
+	</class>
+</hibernate-mapping>

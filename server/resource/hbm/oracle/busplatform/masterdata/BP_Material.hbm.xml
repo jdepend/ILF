@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="com.qeweb.busplatform.masterdata.bo.manage.BP_MaterialBO" table="QEWEB_SYS_MATERIAL">
+		<id name="id" type="long" column="ID">
+			<generator class="sequence">
+				<param name="sequence">BP_MATERIAL_SEQ</param>
+			</generator>
+		</id>
+		<property name="materialCode" type="java.lang.String">
+			<column name="MATERIAL_CODE" length="64" not-null="true" />
+		</property>
+		<property name="materialName" type="java.lang.String">
+			<column name="MATERIAL_NAME" length="64" not-null="true" />
+		</property>
+		<property name="materialDesc" type="java.lang.String">
+			<column name="MATERIAL_DESC" length="64"/>
+		</property>
+		<property name="materialSpec" type="java.lang.String">
+			<column name="MATERIAL_SPEC" length="64"/>
+		</property>
+		<property name="stockUnit" type="java.lang.String">
+			<column name="STOCK_UNIT" length="64"/>
+		</property>
+		<property name="purchaseUnit" type="java.lang.String">
+			<column name="PURCHASE_UNIT" length="64"/>
+		</property>
+
+        <many-to-one name="materialType" column="TYPE_ID" class="com.qeweb.busplatform.masterdata.bo.manage.BP_MaterialTypeBO"
+			update="false" fetch="select"/>
+
+		<property name="materialStatus" column="MATERIAL_STATUS" length="1" type="java.lang.Integer"/>
+
+		<property name="attr_1" column="ATTR_1" length="128" type="string"/>
+		<property name="attr_2" column="ATTR_2" length="128" type="string"/>
+		<property name="attr_3" column="ATTR_3" length="128" type="string"/>
+		<property name="attr_4" column="ATTR_4" length="128" type="string"/>
+		<property name="attr_5" column="ATTR_5" length="128" type="string"/>
+		<property name="attr_6" column="ATTR_6" length="128" type="string"/>
+		<property name="attr_7" column="ATTR_7" length="128" type="string"/>
+		<property name="attr_8" column="ATTR_8" length="128" type="string"/>
+		<property name="attr_9" column="ATTR_9" length="128" type="string"/>
+		<property name="attr_10" column="ATTR_10" length="128" type="string"/>
+
+		<property name="createUserId" column="CREATE_USER_ID" type="long" update="false" />
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false" />
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+	</class>
+</hibernate-mapping>

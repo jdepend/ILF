@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!-- 不带翻页的列表页面 -->
+    <definition name="dept.list2.defpage" extends="list2.defpage">
+        <put-attribute name="elementBody" value="/WEB-INF/jsp/demo/dept2/deptStatisticsInfo.jsp"/><!-- 对应行内内容 -->
+        <put-attribute name="javascriptBody" value="/WEB-INF/jsp/demo/dept2/deptListJs.jsp"/><!-- 页面js -->
+    </definition>
+
+    <!-- 带翻页的列表首页面 -->
+    <definition name="dept.list2.page.defpage" extends="list2.page.defpage">
+        <put-attribute name="elementBody" value="/WEB-INF/jsp/demo/dept2/deptStatisticsInfo.jsp"/><!-- 对应行内内容 -->
+        <put-attribute name="javascriptBody" value="/WEB-INF/jsp/demo/dept2/deptPageListJs.jsp"/><!-- 页面js -->
+    </definition>
+
+</tiles-definitions>

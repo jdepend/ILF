@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="base.defitem">
+        <put-attribute name="javascriptBody" value="/WEB-INF/jsp/layout/template/javascript.jsp"/>
+    </definition>
+
+    <definition name="title.defitem" extends="base.defitem">
+        <put-attribute name="titleBody" value="/WEB-INF/jsp/layout/content/title/TitleBody.jsp"/>
+    </definition>
+
+    <definition name="tab.defitem" extends="base.defitem">
+        <put-attribute name="tabBody" value="/WEB-INF/jsp/layout/content/tab/TabBody.jsp"/>
+    </definition>
+
+    <definition name="main.definition" extends="base.defitem" template="/WEB-INF/jsp/layout/defaultLayout.jsp"/>
+
+    <definition name="one.page.defpage" extends="base.defitem" template="/WEB-INF/jsp/layout/onePageLayout.jsp"/>
+
+    <definition name="one.page.title.defpage" extends="title.defitem" template="/WEB-INF/jsp/layout/onePageTitleLayout.jsp"/>
+
+    <definition name="list.defpage" extends="title.defitem" template="/WEB-INF/jsp/layout/listLayout.jsp"/>
+
+    <definition name="list.defarea" extends="base.defitem" template="/WEB-INF/jsp/layout/listItemLayout.jsp"/>
+
+    <definition name="list.page.defpage" extends="title.defitem" template="/WEB-INF/jsp/layout/listPageLayout.jsp"/>
+
+    <definition name="list.page.defarea" extends="base.defitem" template="/WEB-INF/jsp/layout/listPageItemLayout.jsp"/>
+
+    <definition name="list.page.more.defarea" template="/WEB-INF/jsp/layout/listPageMoreLayout.jsp"/>
+
+    <definition name="group.list.defpage" extends="title.defitem" template="/WEB-INF/jsp/layout/groupListLayout.jsp"/>
+
+    <definition name="group.list.defarea" extends="base.defitem" template="/WEB-INF/jsp/layout/groupListItemLayout.jsp"/>
+
+    <definition name="page.tab.defpage" extends="tab.defitem" template="/WEB-INF/jsp/layout/TabLayout.jsp"/>
+
+</tiles-definitions>

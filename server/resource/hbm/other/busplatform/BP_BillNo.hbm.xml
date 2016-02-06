@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.qeweb.busplatform.common.bo.BP_BillNoBO" table="QEWEB_SYS_BILL_NO">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="keyName" column="KEY_NAME" length="30" type="string" />
+		<property name="nextValue" column="NEXT_VALUE" length="30" type="string" />
+
+		<property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+
+	</class>
+</hibernate-mapping>

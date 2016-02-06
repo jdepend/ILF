@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!-- 不带翻页的列表页面 -->
+    <definition name="dept.list.defpage" extends="list.defpage">
+        <put-attribute name="elementBody" value="/WEB-INF/jsp/demo/dept/deptStatisticsInfo.jsp"/><!-- 对应行内内容 -->
+        <put-attribute name="javascriptBody" value="/WEB-INF/jsp/demo/dept/deptListJs.jsp"/><!-- 页面js -->
+    </definition>
+
+    <!-- 查询表单页面 -->
+    <definition name="dept.query.page.defpage" extends="one.page.defpage">
+        <put-attribute name="workspaceBody" value="/WEB-INF/jsp/demo/dept/deptQueryInfo.jsp"/><!-- 对应查询表单 -->
+        <put-attribute name="javascriptBody" value="/WEB-INF/jsp/demo/dept/deptQueryJs.jsp"/><!-- 查询js -->
+    </definition>
+
+    <!-- 带翻页的列表首页面（可定制查询条件）-->
+    <definition name="dept.list.query.page.defpage" extends="list.page.defpage">
+        <put-attribute name="titleBody" value="/WEB-INF/jsp/layout/content/title/queryTitleBody.jsp"/><!-- 对应查询区域 -->
+        <put-attribute name="elementBody" value="/WEB-INF/jsp/demo/dept/deptStatisticsInfo.jsp"/><!-- 对应行内内容 -->
+        <put-attribute name="javascriptBody" value="/WEB-INF/jsp/demo/dept/deptListJs.jsp"/><!-- 页面js -->
+    </definition>
+
+    <!-- 带翻页的列表首页面 -->
+    <definition name="dept.list.page.defpage" extends="list.page.defpage">
+        <put-attribute name="elementBody" value="/WEB-INF/jsp/demo/dept/deptStatisticsInfo.jsp"/><!-- 对应行内内容 -->
+        <put-attribute name="javascriptBody" value="/WEB-INF/jsp/demo/dept/deptListJs.jsp"/><!-- 页面js -->
+    </definition>
+
+    <!-- 带翻页的列表加载更多页面 -->
+    <definition name="dept.list.morePage.defarea" extends="list.page.more.defarea">
+        <put-attribute name="elementBody" value="/WEB-INF/jsp/demo/dept/deptStatisticsInfo.jsp"/><!-- 对应行内内容 -->
+    </definition>
+
+</tiles-definitions>

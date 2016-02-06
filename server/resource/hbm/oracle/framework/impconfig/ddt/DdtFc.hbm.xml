@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.qeweb.framework.impconfig.ddt.config.bo.DdtFcBO"
+		table="QEWEB_DDT_FC" where="delete_flag=0">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+
+		<many-to-one name="ddtContainerBO" column="DDT_CONTAINER_ID" class="com.qeweb.framework.impconfig.ddt.config.bo.DdtContainerBO"
+			not-null="true">
+		</many-to-one>
+		<many-to-one name="ddtSysFcBO" column="FC_ID" class="com.qeweb.framework.impconfig.ddt.manage.bo.DdtSysFcBO"
+			not-null="true">
+		</many-to-one>
+		
+		<property name="contextName" column="CONTEXT_NAME" type="string" length="50" />
+		<property name="prevBopName" column="PREV_BOP_NAME" type="string" length="50" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" not-null="true" />
+	</class>
+</hibernate-mapping>

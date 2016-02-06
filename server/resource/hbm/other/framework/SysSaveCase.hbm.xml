@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.qeweb.framework.common.syssetting.savecase.bo.QueryCaseBO" table="QEWEB_SYS_QUERYCASE">
+        <id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+        <property name="caseName" type="string">
+            <column name="CASE_NAME" length="64" />
+        </property>
+        <property name="userId" type="long">
+            <column name="USER_ID"/>
+        </property>
+        <property name="pagePath" type="string">
+            <column name="PAGE_PATH" length="256" />
+        </property>
+        <property name="dislandBlob" type="blob">
+            <column name="DISLANDBLOB" />
+        </property> 
+    </class>
+</hibernate-mapping>

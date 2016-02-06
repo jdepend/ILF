@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.qeweb.framework.frameworkbop.ProvinceBOP" table="COMMON_PROVINCE">
+        <id name="id" type="long">
+            <column name="ID" precision="9" scale="0" />
+            <generator class="sequence">
+			  <param name="sequence">PROVINCE_SEQ</param> 
+			</generator>
+        </id>
+        <property name="provinceName" type="java.lang.String">
+            <column name="NAME" length="64" />
+        </property>
+        <many-to-one name="country" column="COUNTRY_ID"
+			class="com.qeweb.framework.frameworkbop.CountryBOP" lazy="false"
+			fetch="select">
+		</many-to-one>
+        
+		<property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+    </class>
+</hibernate-mapping>

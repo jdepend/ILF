@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.qeweb.framework.impconfig.mdt.phymag.bo.PhyTableBO" table="QEWEB_MDT_PHY_TABLE" where="delete_flag=0">
+        <id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+        
+		<property name="name" column="name" type="string"/>
+		<property name="alias" column="alias" type="string"/>
+		<property name="remark" column="remark" type="string" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+		
+		<set name="phyColumnSet" table="QEWEB_MDT_PHY_COLUMN" cascade="all" inverse="true" >
+			<key column="table_id" />
+			<one-to-many class="com.qeweb.framework.impconfig.mdt.phymag.bo.PhyColumnBO"/>
+		</set>
+    </class>
+</hibernate-mapping>

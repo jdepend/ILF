@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.qeweb.busplatform.pomanage.bo.BP_PurchaseOrderStatisticsBO" table="qeweb_bp_pur_order_statistics">
+        <id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+        <property name="receiveQty" type="java.lang.Double">
+            <column name="RECEIVE_QTY" precision="11" scale="3"/>
+        </property>
+        <property name="goodsRejectQty" type="java.lang.Double">
+            <column name="GOODS_REJECT_QTY" precision="11" scale="3"/>
+        </property>
+        <property name="onwayQty" type="java.lang.Double">
+            <column name="ONWAY_QTY" precision="11" scale="3"/>
+        </property>
+        <property name="unsendQty" type="java.lang.Double">
+            <column name="UNSEND_QTY" precision="11" scale="3"/>
+        </property>
+        <property name="purchaseOrderItemId" column="PURCHASE_ITEM_ID"></property>
+        <property name="isStatistics" column="IS_STATISTICS"/>
+        <many-to-one name="purchaseOrderItemBO" class="com.qeweb.busplatform.pomanage.bo.BP_PurchaseOrderItemBO"
+        column="PURCHASE_ITEM_ID" insert="false" update="false"/>
+
+        <property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+    </class>
+</hibernate-mapping>

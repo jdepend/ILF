@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.qeweb.framework.impconfig.ddt.use.bean.DDTAppConfig" table="qeweb_ddt_app_config" where="delete_flag=0">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		
+        <property name="schemaCode" type="string" column="SCHEMA_CODE" />
+        <property name="appName" type="string" column="APP_NAME" />
+       	<property name="userCode" type="string" column="USER_CODE" />
+       	<property name="roleName" type="string" column="ROLE_NAME" />
+       	<property name="attr_1" type="string" column="ATTR_1" />
+	   	<property name="attr_2" type="string" column="ATTR_2" />
+	   	<property name="attr_3" type="string" column="ATTR_3" />
+    </class>
+</hibernate-mapping>

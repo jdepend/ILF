@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.qeweb.demo.common.bo.DemoPOItemBO" table="demo_po_item">
+       	<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+
+		<property name="itemNO" type="java.lang.Integer">
+            <column name="ITEM_NO" />
+        </property>
+  		<property name="deliveryStatus" type="java.lang.Integer">
+            <column name="DELIVERY_STATUS" not-null="true" />
+        </property>
+        <property name="deliveryStatusChangeTime" type="timestamp">
+            <column name="DELIVERY_STATUS_CHANGE_TIME" length="8"/>
+        </property>
+        <property name="confirmStatus" type="java.lang.Integer">
+            <column name="CONFIRM_STATUS" not-null="true" />
+        </property>
+        <property name="closeStatus" type="java.lang.Integer">
+            <column name="CLOSE_STATUS" />
+        </property>
+        <property name="closeTime" type="timestamp">
+            <column name="CLOSE_TIME" length="8" />
+        </property>
+        <property name="orderQty" type="java.lang.Double">
+            <column name="ORDER_QTY" precision="11" scale="3" not-null="true" />
+        </property>
+        <property name="unitName" type="java.lang.String">
+            <column name="UNIT_NAME" length="20" />
+        </property>
+        <property name="orderTime" type="timestamp">
+            <column name="ORDER_TIME" length="8" not-null="true" />
+        </property>
+		<property name="confirmTime" type="timestamp">
+            <column name="CONFIRM_TIME" length="8"/>
+        </property>
+        <property name="amount" type="java.lang.Double">
+            <column name="AMOUNT" precision="11" scale="3"/>
+        </property>
+        <property name="taxesCategories" type="java.lang.String">
+            <column name="TAXES_CATEGORIES" length="64" />
+        </property>
+        <property name="taxesRate" type="java.lang.Double">
+            <column name="TAXES_RATE" precision="11" scale="3"/>
+        </property>
+        <property name="taxIncludePrice" type="java.lang.Double">
+            <column name="TAX_INCLUDE_PRICE" precision="11" scale="3"/>
+        </property>
+        <property name="remark" type="java.lang.String">
+            <column name="REMARK" length="500" />
+        </property>
+        <property name="lockStatus" type="java.lang.Integer">
+            <column name="LOCK_STATUS " not-null="true" />
+        </property>
+        <property name="lockMsg" type="java.lang.String">
+            <column name="LOCK_MSG" length="500" />
+        </property>
+
+        <many-to-one name="purchaseOrderBO" class="com.qeweb.demo.common.bo.DemoPurchaseOrderBO" fetch="select">
+            <column name="PURCHASE_ID" not-null="true" />
+        </many-to-one>
+        
+        <many-to-one name="material" column="MATERIAL_ID" class="com.qeweb.demo.common.bo.DemoMaterial"
+			 update="false" fetch="select" lazy="false"/>
+
+        <property name="attr_1" column="ATTR_1" type="string"/>
+		<property name="attr_2" column="ATTR_2" type="string"/>
+		<property name="attr_3" column="ATTR_3" type="string"/>
+		<property name="attr_4" column="ATTR_4" type="string"/>
+		<property name="attr_5" column="ATTR_5" type="string"/>
+
+        <property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+    </class>
+</hibernate-mapping>

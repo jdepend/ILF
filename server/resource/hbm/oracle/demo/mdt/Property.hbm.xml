@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.qeweb.demo.mdt.bo.PropertyBO" table="demo_mdt_property">
+		<id name="id" type="long" column="ID">
+			<generator class="sequence">
+				<param name="sequence">D_MDT_PROPERTY_SEQ</param> 
+			</generator>
+		</id>
+		<property name="type" column="type" length="2" type="int"/>
+		<property name="amount" column="amount" type="double"/>
+		
+		<property name="attr_1" column="attr_1" type="string"/>
+		<property name="attr_2" column="attr_2" type="string"/>
+		<property name="attr_3" column="attr_3" type="string"/>
+		<property name="attr_4" column="attr_4" type="string"/>
+		<property name="attr_5" column="attr_5" type="string"/>
+		
+		<property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+	</class>
+</hibernate-mapping>

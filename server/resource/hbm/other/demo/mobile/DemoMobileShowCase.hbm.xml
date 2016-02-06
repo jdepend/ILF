@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 
+   柜台美陈管理
+-->
+<hibernate-mapping>
+    <class name="com.qeweb.demo.mobile.bo.DemoMobileShowCaseBO" table="DEMO_MOBILE_SHOWCASE" dynamic-update="true">
+        <id name="id" column="ID" type="long">
+            <generator class="native" />
+        </id>
+	
+		<property name="comeInTime" column="COMEIN_TIME" type="timestamp" />
+		<property name="numy" column="NUM_Y" type="int" />
+		<property name="numu" column="NUM_U" type="int" />
+		<property name="nums" column="NUM_S" type="int" />
+		<property name="advertisment" column="ADVERTISMENT" type="string" />
+		<property name="picture" column="PICTURE" type="string" />
+		<property name="submitFlag" column="SUBMIT_FLAG" length="1" type="int" />
+		<property name="comparateId" column="COMPARATE_ID" type="string" />
+		<many-to-one name="location" column="LOCATION_ID" class="com.qeweb.framework.bc.sysbop.mobilebop.LocationBOP"
+			update="false" fetch="select"/>
+		<many-to-one name="visitor" column="VISITOR_ID" class="com.qeweb.sysmanage.purview.bo.UserBO"
+			update="false" fetch="select"/>
+		<many-to-one name="shopBO" column="SHOP_ID" class="com.qeweb.demo.mobile.bo.ShopBO"
+			update="false" fetch="select"/>	
+			
+		<property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" length="5" type="int" />
+    </class>
+</hibernate-mapping>

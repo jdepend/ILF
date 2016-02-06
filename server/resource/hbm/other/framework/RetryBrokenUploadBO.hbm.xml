@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.qeweb.framework.frameworkbo.RetryBrokenUploadBO" table="QEWEB_FILE_UPLOAD">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		
+		<property name="fileId" column="FILEID" type="string" length="20"/>
+		<property name="fileUrl" column="FILE_URL" type="string" length="100"/>
+		<property name="filePosition" column="FILE_POSITION" type="long" length="20"/>
+		<property name="fileSize" column="FILE_SIZE" type="long" length="20"/>
+		
+		<property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+	</class>
+</hibernate-mapping>

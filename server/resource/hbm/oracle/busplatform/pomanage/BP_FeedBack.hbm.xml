@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 反馈 -->
+<hibernate-mapping>
+    <class name="com.qeweb.busplatform.pomanage.bo.BP_FeedBackBO" table="QEWEB_BP_FEEDBACK">
+       <id name="id" type="long" column="ID">
+			<generator class="sequence">
+				<param name="sequence">BP_FEEDBACK_SEQ</param>
+			</generator>
+		</id>
+
+        <property name="billId" type="long" column="BILL_ID"/>
+        <property name="billType" type="integer" column="BILL_TYPE"/>
+
+        <many-to-one name="feedOrgBO" column="FEED_ORG_ID" class="com.qeweb.sysmanage.purview.bo.OrganizationBO"
+			lazy="false" update="false" fetch="select"/>
+
+        <many-to-one name="recOrgBO" column="REC_ORG_ID" class="com.qeweb.sysmanage.purview.bo.OrganizationBO"
+			lazy="false" update="false" fetch="select"/>
+
+		<property name="feedbackContent" type="java.lang.String" column="FEEDBACK_CONTENT" length="1024"/>
+
+        <property name="createUserId" column="CREATE_USER_ID" type="long" update="false" insert="false"/>
+
+        <many-to-one name="feedUserBO" column="CREATE_USER_ID" class="com.qeweb.sysmanage.purview.bo.UserBO"
+			lazy="false" update="false" fetch="select"/>
+
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+		<property name="deleteFlag" column="DELETE_FLAG" type="int" />
+    </class>
+</hibernate-mapping>

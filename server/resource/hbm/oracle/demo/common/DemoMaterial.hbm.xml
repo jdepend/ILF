@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="com.qeweb.demo.common.bo.DemoMaterial" table="DEMO_MATERIAL">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="materialCode" column="MATERIAL_CODE" length="50" type="string" />
+		<property name="materialName" column="MATERIAL_NAME" length="50" type="string" />
+
+		<property name="deleteFlag" column="DELETE_FLAG" length="1" type="int" />
+		<property name="createUserId" column="CREATE_USER_ID" type="long" update="false"/>
+		<property name="createTime" column="CREATE_TIME" length="8" type="timestamp" update="false"/>
+		<property name="lastModifyUserId" column="LAST_MODIFY_USER_ID" type="long" />
+		<property name="lastModifyTime" column="LAST_MODIFY_TIME" length="8" type="timestamp" />
+	</class>
+</hibernate-mapping>
