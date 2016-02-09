@@ -16,6 +16,9 @@ public class HTMLSelect extends Select {
 		HTMLWebHelper.appendHead(sbr, this);
 		HTMLWebHelper.appendStartTag(sbr, "select");
 		HTMLWebHelper.appendAttr(sbr, "name", getName());
+        //增加ID属性-2016
+        HTMLWebHelper.appendAttr(sbr, "id", getId());
+
 		HTMLWebHelper.appendAttr(sbr, "style",
 				"width:" + HTMLWebHelper.getFcDefaultWidth());
 		HTMLWebHelper.appendStatus(sbr, bop.getStatus());

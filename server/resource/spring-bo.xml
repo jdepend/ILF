@@ -13,21 +13,15 @@
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd"
        default-lazy-init="false">
 
-    <description>Spring公共配置</description>
-    <!-- production环境 -->
-    <context:property-placeholder ignore-resource-not-found="true" location="classpath*:/platform.properties" />
-    <!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
-    <context:component-scan base-package="com.rofine.platform">
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
-    </context:component-scan>
+    <description>Spring bo配置</description>
+    <!-- 组织结构管理(供应商与采购商统一管理)  -->
+    <bean id="organizationBO" class="com.qeweb.sysmanage.purview.bo.OrganizationBO" scope="prototype"/>
+    <!-- 采购商管理  -->
+    <bean id="buyerBO" class="com.qeweb.sysmanage.purview.bo.org.BuyerBO" scope="prototype"/>
+    <!-- 供应商管理  -->
+    <bean id="vendorBO" class="com.qeweb.sysmanage.purview.bo.org.VendorBO" scope="prototype"/>
 
-    <bean id="cachePropertyConfigurer"
-          class="com.rofine.platform.web.filter.CachePropertyConfigurer">
-        <property name="fileEncoding" value="utf-8" />
-        <property name="location" value="classpath:cache.properties" />
-    </bean>
+    <bean id="userBO" class="com.qeweb.sysmanage.purview.bo.UserBO" scope="prototype"/>
 
-    <bean id="ctx" class="com.qeweb.framework.common.SpringConstant"/>
-    <import resource="spring-bo.xml"/>
+
 </beans>

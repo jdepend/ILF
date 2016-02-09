@@ -7,6 +7,9 @@ import com.qeweb.framework.pal.coarsegrained.Container;
  */
 public class FCBean {
 
+    private String id;//-2016.2.9新扩充ID属性，对外开放元素控制
+
+
 	private String bind ;		//绑定的bop对象名称
 	private String groupName; 	//groupName相同，表示是一组细粒度组件
 	private String text; 		//显示文本
@@ -52,6 +55,12 @@ public class FCBean {
 	public void setAlign(String align) {
 		this.align = align;
 	}
-	
-	
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

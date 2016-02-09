@@ -19,6 +19,10 @@ public class HTMLTextField extends TextField {
 		HTMLWebHelper.appendHead(sbr, this);
 		HTMLWebHelper.appendStartTag(sbr, "input");
 		HTMLWebHelper.appendAttr(sbr, "type", "text");
+
+        //增加ID属性-2016
+        HTMLWebHelper.appendAttr(sbr, "id", getId());
+
 		HTMLWebHelper.appendAttr(sbr, "name", getName());
 		HTMLWebHelper.appendAttr(sbr, "style",
 				"width:" + HTMLWebHelper.getFcDefaultWidth());

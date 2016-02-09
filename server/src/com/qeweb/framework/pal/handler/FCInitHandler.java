@@ -19,8 +19,16 @@ public class FCInitHandler {
 	public void init(FinegrainedComponent fc, FCBean fcBean) {
 		Container container = fcBean.getParent();
 		fc.setName(VCUtil.createFinegrainedName(container.getName(), fcBean.getBind()));
-		fc.setId(VCUtil.createFinegrainedID(container.getName(), fcBean.getBind()));
-		fc.setBcId(fcBean.getBind());
+
+        /**更改默认ID的设置，改为界面属性定义-2016 */
+        //fc.setId(VCUtil.createFinegrainedID(container.getName(), fcBean.getBind()));
+        if(StringUtils.isNotEmpty(fcBean.getId())){
+		    fc.setId(fcBean.getId());
+        }else{
+            fc.setId(VCUtil.createFinegrainedID(container.getName(), fcBean.getBind()));
+        }
+
+        fc.setBcId(fcBean.getBind());
 		fc.setText(fcBean.getText());
 		fc.setGroupName(fcBean.getGroupName());
 		fc.setParent(container);

@@ -121,7 +121,8 @@ final public class DisplayType {
 	 * @return
 	 */
 	static public String getDisplayType() {
-		String displayType = null;
+        //2016.2.9 硬编码成HTML  yuanbz
+		String displayType = ConstantAppProp.DISPLAYTYPE_HTML;
 
 		//注：此处不能使用 else if
 		//从request参数中获取

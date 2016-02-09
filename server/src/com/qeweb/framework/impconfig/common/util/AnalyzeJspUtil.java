@@ -296,6 +296,8 @@ public class AnalyzeJspUtil {
 			fcBean.setText(el.getAttributeValue("text"));
 			fcBean.setWidth(el.getAttributeValue("width"));
 			fcBean.setParent(container);
+            //扩充ID属性-2016
+            fcBean.setId(el.getAttributeValue("id"));
 
 			new FCInitHandler().init(fc, fcBean);
 			container.addVC(fc.getBcId(), fc);

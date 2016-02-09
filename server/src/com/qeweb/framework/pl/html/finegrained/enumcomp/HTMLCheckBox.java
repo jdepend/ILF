@@ -24,7 +24,8 @@ public class HTMLCheckBox extends CheckBox {
 	        	HTMLWebHelper.appendStartTag(sbr, "input");
 				HTMLWebHelper.appendAttr(sbr, "type", "checkbox");
 				HTMLWebHelper.appendAttr(sbr, "name", getName());
-				HTMLWebHelper.appendAttr(sbr, "id", getName() + ConstantDataIsland.HORIZONTAL_SPLIT + index++);
+                //增加ID属性-2016
+                HTMLWebHelper.appendAttr(sbr, "id", getId() + ConstantDataIsland.HORIZONTAL_SPLIT + index++);
 				HTMLWebHelper.appendStatus(sbr, bop.getStatus());
 				HTMLWebHelper.appendAttr(sbr, "value", key);
 				HTMLWebHelper.appendAttr(sbr, "checked", checked.containsKey(key));

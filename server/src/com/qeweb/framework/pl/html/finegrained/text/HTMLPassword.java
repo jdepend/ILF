@@ -17,6 +17,10 @@ public class HTMLPassword extends Password {
 		HTMLWebHelper.appendAttr(sbr, "type" , "password");
 		HTMLWebHelper.appendAttr(sbr, "style",
 				"width:" + HTMLWebHelper.getFcDefaultWidth());
+
+        //增加ID属性
+        HTMLWebHelper.appendAttr(sbr, "id", getId());
+
 		HTMLWebHelper.appendAttr(sbr, "name", getName());
 		HTMLWebHelper.appendStatus(sbr, bop.getStatus());
 		HTMLWebHelper.appendAttr(sbr, "value", bop.toText(), StringUtils.isNotEmpty(bop.toText()));

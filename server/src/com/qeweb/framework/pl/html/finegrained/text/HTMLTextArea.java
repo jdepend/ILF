@@ -14,6 +14,10 @@ public class HTMLTextArea extends TextArea {
 
 		HTMLWebHelper.appendHead(sbr, this);
 		HTMLWebHelper.appendStartTag(sbr, "textarea");
+
+        //增加ID属性
+        HTMLWebHelper.appendAttr(sbr, "id", getId());
+
 		HTMLWebHelper.appendAttr(sbr, "name", getName());
 
 		HTMLWebHelper.appendStatus(sbr, bop.getStatus());

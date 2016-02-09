@@ -15,6 +15,9 @@ public class HTMLHidden extends Hidden {
 		HTMLWebHelper.appendHead(sbr, this);
 		HTMLWebHelper.appendStartTag(sbr, "input");
 		HTMLWebHelper.appendAttr(sbr, "type", "hidden");
+        //增加ID属性-2016
+        HTMLWebHelper.appendAttr(sbr, "id", getId());
+
 		HTMLWebHelper.appendAttr(sbr, "name", getName());
 		HTMLWebHelper.appendAttr(sbr, "value", bop.toText(), StringUtils.isNotEmpty(bop.toText()));
 		HTMLWebHelper.appendEndTag(sbr);
