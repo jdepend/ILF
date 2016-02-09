@@ -18,6 +18,7 @@
       <root url="jar://$PROJECT_DIR$/lib/commons-net-2.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-fileupload-1.2.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/svnkit-1.7.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jaxen-1.1.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
