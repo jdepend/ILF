@@ -1,6 +1,9 @@
 package com.qeweb.framework.pal.parse;
 
+import com.qeweb.framework.common.dataisland.DataIsland;
+import com.qeweb.framework.common.utils.StringUtils;
 import com.qeweb.framework.impconfig.common.util.AnalyzeJspUtil;
+import com.qeweb.framework.manager.AppManager;
 import com.qeweb.framework.pal.PageContextInfo;
 import com.qeweb.framework.pal.coarsegrained.Container;
 import org.apache.commons.io.FileUtils;
@@ -60,9 +63,24 @@ public class HtmlParseEngine {
         pageContextInfo.write("<body>");
         for(Container container :cn) {
             container.paint();
+            //wangdg
+            this.paintDataIsland(container, pageContextInfo);
         }
         pageContextInfo.write("</body>");
         pageContextInfo.write("</html>");
+    }
+
+    /**
+     * wangdg
+     *
+     * 画出数据岛
+     * @return
+     */
+    private void paintDataIsland(Container container, PageContextInfo pageContextInfo){
+        //创建数据岛对象
+        DataIsland dataIsland = AppManager.createDataIsland();
+        String diStr = dataIsland.createFormDataIsland(container);
+        pageContextInfo.write("<input type='hidden' id='dataIsland' value=\"" + diStr + "\"/>");
     }
 	
 	public static void main(String args[]){

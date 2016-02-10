@@ -44,6 +44,12 @@
                     </ul>
                 </li>
                 <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">VSR</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" id="html_create">Html生成</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">内部测试</a>
                     <ul class="dropdown-menu">
                         <li><a href="#" id="table">表格</a></li>
@@ -72,6 +78,11 @@
 </nav>
 <script type="text/javascript">
     $(function () {
+        $("#html_create").click(
+                function(){
+                    requestFirstPage("<%=basePath%>/htmlparse/getHtmlByPalTemplet/vendorManage");
+                }
+        );
         //例子
         $("#group_list").click(
                 function(){
