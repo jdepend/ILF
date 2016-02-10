@@ -33,7 +33,7 @@ public class VendorBO extends OrganizationBO implements Serializable {
 	public VendorBO() {
 		super();
 		getBOP("orgType").setValue(OrgTypeBOP.TYPE_VENDOR + "");
-		getBOP("orgType").getStatus().setHidden(true);
+//		getBOP("orgType").getStatus().setHidden(true); wangdg
 		setOrgType(OrgTypeBOP.TYPE_VENDOR);
 	}
 	
