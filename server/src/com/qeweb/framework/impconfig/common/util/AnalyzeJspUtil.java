@@ -182,7 +182,7 @@ public class AnalyzeJspUtil {
 	 * @param initSign
 	 * @return
 	 */
-	private static Container loadContainer(Element element, PageContextInfo pageContextInfo, boolean initSign){
+	public static Container loadContainer(Element element, PageContextInfo pageContextInfo, boolean initSign){
 		Container container = null;
 
 		ContainerBean containerBean = null;

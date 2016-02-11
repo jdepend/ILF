@@ -24,4 +24,11 @@
     <bean id="userBO" class="com.qeweb.sysmanage.purview.bo.UserBO" scope="prototype"/>
 
 
+    <bean id="ExeBOMethod" class="com.qeweb.framework.app.pageflow.ExeBOMethod" scope="prototype"/>
+
+    <bean id="msgService" class="com.qeweb.framework.common.msgctx.MsgServiceImpl" scope="prototype"/>
+
+    <bean id="userCtx" class="com.qeweb.framework.common.userctx.UserContextImpl" scope="prototype"/>
+
+
 </beans>

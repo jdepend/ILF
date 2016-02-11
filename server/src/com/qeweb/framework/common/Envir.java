@@ -16,6 +16,8 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.qeweb.framework.common.appconfig.AppConfig;
 import com.qeweb.framework.common.utils.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  * http上下文环境信息公用类
@@ -41,10 +43,12 @@ public class Envir {
 	}
 
 	final public static ServletContext getContext() {
-		if(ActionContext.getContext() == null)
-			return null;
-		else
-			return ServletActionContext.getServletContext();
+//		if(ActionContext.getContext() == null)
+//			return null;
+//		else
+//			return ServletActionContext.getServletContext();
+
+        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getServletContext();
 	}
 
 	final public static String getFileUploadPath(){
@@ -52,8 +56,10 @@ public class Envir {
 	}
 
 	final public static HttpServletRequest getRequest() {
-		return ServletActionContext.getRequest();
-	}
+//		return ServletActionContext.getRequest(); wangdg
+        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+
+    }
 
 	final public static HttpServletResponse getResponse() {
 		return ServletActionContext.getResponse();
@@ -79,7 +85,8 @@ public class Envir {
 	}
 
 	final public static String getRequestBaseURI() {
-		return ServletActionContext.getRequest().getRequestURI();
+//		return ServletActionContext.getRequest().getRequestURI(); wangdg
+        return getRequest().getRequestURI();
 	}
 
 	final public static String getRequestURI() {

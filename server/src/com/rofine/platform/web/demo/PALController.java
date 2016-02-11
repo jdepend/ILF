@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
         @RequestMapping("/getHtmlByPalTemplet/{key}")
         public String getHtmlByPalTemplet(HttpServletRequest req,@PathVariable String key) throws Exception{
             String webpath = req.getServletContext().getRealPath("");
-            HtmlParseEngine.getInstance().parseXmlToLocalFile(webpath,key);
+            HtmlParseEngine.getInstance().parseXmlPageToLocalFile(webpath,key);
             return "redirect:/pal/"+key+".html";
         }
     }
