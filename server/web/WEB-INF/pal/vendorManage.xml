@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<qeweb:page onLoad="orgForm.query">
+<qeweb:page onLoad="orgForm.query" javascript="vendor">
 	<qeweb:group relations="orgForm:orgTable">
 		<qeweb:form id="orgForm" bind="vendorBO" queryRange="true" text="com.qeweb.sysmanage.purview.bo.org.VendorBO" layout="3;C3:textArea">
 			<qeweb:textField id="id1" bind="orgCode" text="com.qeweb.sysmanage.purview.bo.org.VendorBO.orgCode"/>

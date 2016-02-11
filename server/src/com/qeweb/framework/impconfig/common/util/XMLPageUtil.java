@@ -62,6 +62,7 @@ public class XMLPageUtil {
         page.setTitle(element.getAttributeValue("title"));
         page.setLevel(element.getAttributeValue("level"));
         page.setLayoutStr(element.getAttributeValue("layout"));
+        page.setJavascript(element.getAttributeValue("javascript"));
 
         List<Container> containerList = new LinkedList<Container>();
         loadContainer(containerList, element, pageContextInfo);
