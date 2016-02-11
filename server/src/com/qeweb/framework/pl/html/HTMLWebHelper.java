@@ -16,7 +16,7 @@ public class HTMLWebHelper {
 
 	final static public void appendHead(StringBuilder sbr, FinegrainedComponent fc) {
 		appendStartTag(sbr, "div");
-		appendAttr(sbr, "id", fc.getId());
+//		appendAttr(sbr, "id", fc.getId()); wangdg
 		appendAttr(sbr, "style", "display:none", fc.getBc().getStatus().isHidden());
 		appendEndTag(sbr);
 		

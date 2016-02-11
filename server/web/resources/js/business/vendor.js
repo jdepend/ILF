@@ -3,6 +3,10 @@
  */
 $(function(){
     $("#id1").change(function(){
-        alert("xxxx");
+        if($(this).val() == "1"){
+            alert("a1");
+        }else if($(this).val() == "2"){
+            alert("a2");
+        }
     })
 })
