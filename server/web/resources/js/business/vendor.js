@@ -8,5 +8,7 @@ $(function(){
         }else if($(this).val() == "2"){
             alert("a2");
         }
+
+        //changeRange("id5", "range:" + $(this).val());
     })
 })
