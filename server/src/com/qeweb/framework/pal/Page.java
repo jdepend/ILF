@@ -169,7 +169,9 @@ abstract public class Page extends ViewComponent {
 		//创建数据岛对象
 		DataIsland dataIsland = AppManager.createDataIsland();
 		String diStr = dataIsland.createDataIsland(this);
-		getPageContextInfo().write("<input type='hidden' id='dataIsland' layout='" + StringUtils.isNotEmpty(getLayoutStr()) + "' value=\"" + diStr + "\"/>");
+
+        getPageContextInfo().write("<div id='dataIsland' style='display:none'>"+diStr+"</div>");
+		//getPageContextInfo().write("<input type='hidden' id='dataIsland' layout='" + StringUtils.isNotEmpty(getLayoutStr()) + "' value=\"" + diStr + "\"/>");
 		//粗粒度组件关联关系
 		getPageContextInfo().write("<input type='hidden' id='groupString' value=\"" + dataIsland.createConRelationIsland(getContainerRelationGroup()) + "\"/>");
 	}
