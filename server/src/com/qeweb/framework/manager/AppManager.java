@@ -3,6 +3,7 @@ package com.qeweb.framework.manager;
 import com.qeweb.framework.common.Constant;
 import com.qeweb.framework.common.appconfig.AppConfig;
 import com.qeweb.framework.common.dataisland.DataIsland;
+import com.qeweb.framework.common.dataisland.JSONDataIsland;
 import com.qeweb.framework.common.dataisland.XMLDataIsland;
 import com.qeweb.framework.common.utils.StringUtils;
 import com.qeweb.framework.pal.ViewComponent;
@@ -47,11 +48,10 @@ public class AppManager {
 	 * @return DataIsland
 	 */
 	final static public DataIsland createDataIsland(){
-		if(StringUtils.isEqual(Constant.DATAISLANDTYPE_XML, AppConfig.getPropValue(AppConfig.PROPFILE_DATAISLANDTYPE)))
+		if(StringUtils.isEqual(Constant.DATAISLANDTYPE, AppConfig.getPropValue(AppConfig.PROPFILE_DATAISLANDTYPE)))
 			return new XMLDataIsland();
 		else
-			//return new JSONDataIsland();
-			return null;
+			return new JSONDataIsland();
 	}
 
 }

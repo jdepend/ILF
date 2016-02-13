@@ -2,6 +2,8 @@ package com.qeweb.framework.common;
 
 public class Constant {
 	//数据岛类型
+    final public static String DATAISLANDTYPE = "json";
+
 	final public static String DATAISLANDTYPE_XML = "xml";
 
 	final public static String ENCODING_UTF8 = "utf-8";

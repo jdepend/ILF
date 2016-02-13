@@ -24,6 +24,9 @@ public class HTMLTextField extends TextField {
         HTMLWebHelper.appendAttr(sbr, "id", getId());
 
 		HTMLWebHelper.appendAttr(sbr, "name", getName());
+        //增加bind属性-2016
+        HTMLWebHelper.appendAttr(sbr, "bind",this.getParent().getBcId()+"."+this.getBcId());
+
 		HTMLWebHelper.appendAttr(sbr, "style",
 				"width:" + HTMLWebHelper.getFcDefaultWidth());
 		HTMLWebHelper.appendStatus(sbr, bop.getStatus());
