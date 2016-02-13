@@ -103,8 +103,8 @@ public class HtmlParseEngine {
         pageContextInfo.write("</head>");
         pageContextInfo.write("<body>");
         page.paint();
-        pageContextInfo.write("</body>");
-        pageContextInfo.write("</html>");
+//        pageContextInfo.write("</body>");
+//        pageContextInfo.write("</html>");
     }
 
     private void paintHeader(PageContextInfo pageContextInfo) {
@@ -126,6 +126,8 @@ public class HtmlParseEngine {
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/ilf-metadata.js\"></script>");
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/ilf-event.js\"></script>");
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/mlt.js\"></script>");
+        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/vsr/common.js\"></script>");
+
         pageContextInfo.write("<script>");
         pageContextInfo.write("    var basePath = \"" + Envir.getContextPath() + "\";");
         //pageContextInfo.write("    var loadDataUrl = \"${pageModel.loadDataUrl}\";");
