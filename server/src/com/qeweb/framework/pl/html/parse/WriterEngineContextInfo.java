@@ -1,22 +1,15 @@
-package com.qeweb.framework.pal.parse;
+package com.qeweb.framework.pl.html.parse;
 
 import com.qeweb.framework.pal.PageContextInfo;
+
 import java.io.*;
 
-public class HtmlEngineContextInfo extends PageContextInfo {
+public class WriterEngineContextInfo extends PageContextInfo {
 
 	Writer fw = null;
-	
-	public HtmlEngineContextInfo(String fileName) {
-		try {
-			fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "UTF-8"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
-    public HtmlEngineContextInfo(Writer fw) {
-          fw = this.fw;
+    public WriterEngineContextInfo(Writer fw) {
+        this.fw = fw;
     }
 
 	public void close() throws Exception{

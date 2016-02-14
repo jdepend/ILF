@@ -1,6 +1,6 @@
 package com.rofine.platform.web.demo;
 
-import com.qeweb.framework.pal.parse.HtmlParseEngine;
+import com.qeweb.framework.pl.html.parse.HtmlParseEngine;
 import com.rofine.platform.web.filter.CachePropertyConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

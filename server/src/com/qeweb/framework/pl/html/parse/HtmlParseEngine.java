@@ -1,4 +1,4 @@
-package com.qeweb.framework.pal.parse;
+package com.qeweb.framework.pl.html.parse;
 
 import com.qeweb.framework.common.Envir;
 import com.qeweb.framework.common.dataisland.DataIsland;
@@ -6,7 +6,6 @@ import com.qeweb.framework.common.utils.StringUtils;
 import com.qeweb.framework.impconfig.common.util.AnalyzeJspUtil;
 import com.qeweb.framework.impconfig.common.util.XMLPageUtil;
 import com.qeweb.framework.manager.AppManager;
-import com.qeweb.framework.pal.Page;
 import com.qeweb.framework.pal.PageContextInfo;
 import com.qeweb.framework.pal.coarsegrained.Container;
 import com.qeweb.framework.pl.html.HTMLPage;
