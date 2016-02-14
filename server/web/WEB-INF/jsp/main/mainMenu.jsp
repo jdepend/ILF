@@ -82,7 +82,7 @@
                 function(){
                     requestFirstPage("<%=basePath%>/vsr/page/init/vendorManage");
                 }
-        );e
+        );
         //例子
         $("#group_list").click(
                 function(){
