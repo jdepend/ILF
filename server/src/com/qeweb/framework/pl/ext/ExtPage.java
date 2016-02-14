@@ -85,7 +85,7 @@ public class ExtPage extends Page {
 	}
 
 	@Override
-	protected void patinBodyEnd() {
+	protected void paintBodyEnd() {
 		PageContextInfo out = getPageContextInfo();
         out.write("if(itemArray.length >= 1){");
         paintContainerLayout();

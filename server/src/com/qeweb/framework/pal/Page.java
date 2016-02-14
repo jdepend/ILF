@@ -68,6 +68,11 @@ abstract public class Page extends ViewComponent {
 	 */
 	private String level;
 
+    /**
+     * 本页引用的js文件
+     */
+    private String javascript;
+
 	/**
 	 * 画出整个页面信息
 	 */
@@ -77,8 +82,8 @@ abstract public class Page extends ViewComponent {
 		paintContent();
 		paintDataIsland();
 		paintReturnMsg();
-		getPageContextInfo().write("</body>");
-		getPageContextInfo().write("</html>");
+//		getPageContextInfo().write("</body>");
+//        getPageContextInfo().write("</html>");
 	}
 
 	public void init() {
@@ -199,7 +204,7 @@ abstract public class Page extends ViewComponent {
 		paintContainer();
 		paintFootButton();
 		paintContainerRelation();
-		patinBodyEnd();
+		paintBodyEnd();
 	}
 
 	protected void paintIncludeScript() {}
@@ -264,7 +269,7 @@ abstract public class Page extends ViewComponent {
 		}
 	}
 
-	abstract protected void patinBodyEnd();
+	abstract protected void paintBodyEnd();
 
 	/**
 	 * 构造粗粒度组件的关联
@@ -322,6 +327,7 @@ abstract public class Page extends ViewComponent {
 		this.styleStr = null;
 		this.onLoad = null;
 		this.level = null;
+        this.javascript = null;
 
 		if(containerList != null)
 			containerList.clear();
@@ -399,6 +405,14 @@ abstract public class Page extends ViewComponent {
 	public void setLayoutStr(String layoutStr) {
 		this.layoutStr = layoutStr;
 	}
+
+    public String getJavascript() {
+        return javascript;
+    }
+
+    public void setJavascript(String javascript) {
+        this.javascript = javascript;
+    }
 
     public List<CommandButton> getHeadBtnList() {
 		return headBtnList;

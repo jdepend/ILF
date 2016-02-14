@@ -71,8 +71,15 @@ public class VendorBO extends OrganizationBO implements Serializable {
 	     	bo.insert();
 		 }
 	}
-	
-	@SuppressWarnings({ "unchecked", "deprecation" })
+
+    @Override
+    public List<String> getCodes() {
+        List<String> codes = new ArrayList<String>();
+        codes.add("vendor");
+        return codes;
+    }
+
+    @SuppressWarnings({ "unchecked", "deprecation" })
 	public void export(BOTemplate bot) {
 		ExpExlUtil expExlUtil = null;
 		DetachedCriteria dc = BOTHelper.getDetachedCriteria(bot, getSearchClass());

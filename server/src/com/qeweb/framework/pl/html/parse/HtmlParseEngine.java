@@ -4,6 +4,7 @@ import com.qeweb.framework.common.Envir;
 import com.qeweb.framework.common.utils.StringUtils;
 import com.qeweb.framework.impconfig.common.util.AnalyzeJspUtil;
 import com.qeweb.framework.impconfig.common.util.XMLPageUtil;
+import com.qeweb.framework.pal.Page;
 import com.qeweb.framework.pal.PageContextInfo;
 import com.qeweb.framework.pal.coarsegrained.Container;
 import com.qeweb.framework.pl.html.HTMLPage;
@@ -106,22 +107,15 @@ public class HtmlParseEngine {
         pageContextInfo.write("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
         pageContextInfo.write("<head>");
         pageContextInfo.write("<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\" />");
-        this.paintHeader(pageContextInfo);
-
-        List<String> javascripts = this.javascripts.get(file.getName().substring(0, file.getName().indexOf(".")));
-        if(javascripts != null && javascripts.size() > 0){
-            for(String javascript : javascripts){
-                pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/business/" + javascript + ".js\"></script>");
-            }
-        }
+        this.paintHeader(page, pageContextInfo);
         pageContextInfo.write("</head>");
         pageContextInfo.write("<body>");
         page.paint();
-//        pageContextInfo.write("</body>");
-//        pageContextInfo.write("</html>");
+        pageContextInfo.write("</body>");
+        pageContextInfo.write("</html>");
     }
 
-    private void paintHeader(PageContextInfo pageContextInfo) {
+    private void paintHeader(Page page, PageContextInfo pageContextInfo) {
 
         pageContextInfo.write("<link href=\"" + Envir.getContextPath() + "/resources/css/bootstrap.css\" rel=\"stylesheet\">");
         pageContextInfo.write("<link href=\"" + Envir.getContextPath() + "/resources/css/slider_1.css\" rel=\"stylesheet\">");
@@ -141,6 +135,17 @@ public class HtmlParseEngine {
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/ilf-event.js\"></script>");
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/mlt.js\"></script>");
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/vsr/common.js\"></script>");
+        List<Container> containers = page.getContainerList();
+        if(containers != null && containers.size() > 0) {
+            for(Container container : containers) {
+                List<String> javascripts = container.getBc().getCodes();
+                if (javascripts != null && javascripts.size() > 0) {
+                    for (String javascript : javascripts) {
+                        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/business/" + javascript + ".js\"></script>");
+                    }
+                }
+            }
+        }
 
         pageContextInfo.write("<script>");
         pageContextInfo.write("    var basePath = \"" + Envir.getContextPath() + "\";");

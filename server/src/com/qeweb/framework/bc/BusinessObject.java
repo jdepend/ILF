@@ -570,6 +570,14 @@ public class BusinessObject extends BusinessComponent implements Serializable {
 		return this;
 	}
 
+
+    /**
+     * 获得BO在页面上对应的代码
+     *
+     * @return
+     */
+    public List<String> getCodes(){ return null;}
+
 	@Override
 	public void free() {
 		if(getBcList() != null) {
