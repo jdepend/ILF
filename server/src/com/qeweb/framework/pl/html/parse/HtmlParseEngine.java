@@ -134,14 +134,15 @@ public class HtmlParseEngine {
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/ilf-metadata.js\"></script>");
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/ilf-event.js\"></script>");
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/mlt.js\"></script>");
-        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/vsr/common.js\"></script>");
+
+        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/js/vsr/common.js\"></script>");
         List<Container> containers = page.getContainerList();
         if(containers != null && containers.size() > 0) {
             for(Container container : containers) {
                 List<String> javascripts = container.getBc().getCodes();
                 if (javascripts != null && javascripts.size() > 0) {
                     for (String javascript : javascripts) {
-                        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/business/" + javascript + ".js\"></script>");
+                        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/js/business/" + javascript + ".js\"></script>");
                     }
                 }
             }
