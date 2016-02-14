@@ -37,7 +37,7 @@ public class Envir {
 
 	final public static String getHome() {
 		if(realPath == null)
-			realPath = ServletActionContext.getServletContext().getRealPath("/");
+			realPath = getContext().getRealPath("/");
 		
 		return realPath;
 	}
@@ -48,7 +48,7 @@ public class Envir {
 //		else
 //			return ServletActionContext.getServletContext();
 
-        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getServletContext();
+        return getRequest().getServletContext();
 	}
 
 	final public static String getFileUploadPath(){

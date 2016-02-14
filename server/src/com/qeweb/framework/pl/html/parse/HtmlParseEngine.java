@@ -1,19 +1,20 @@
 package com.qeweb.framework.pl.html.parse;
 
 import com.qeweb.framework.common.Envir;
-import com.qeweb.framework.common.dataisland.DataIsland;
 import com.qeweb.framework.common.utils.StringUtils;
 import com.qeweb.framework.impconfig.common.util.AnalyzeJspUtil;
 import com.qeweb.framework.impconfig.common.util.XMLPageUtil;
-import com.qeweb.framework.manager.AppManager;
 import com.qeweb.framework.pal.PageContextInfo;
 import com.qeweb.framework.pal.coarsegrained.Container;
 import com.qeweb.framework.pl.html.HTMLPage;
+import com.rofine.platform.web.filter.CacheBean;
+import net.sf.json.JSONObject;
 import org.apache.commons.io.FileUtils;
 import org.springframework.util.ResourceUtils;
 
-import java.io.PrintWriter;
-import java.util.List;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * html解析引擎
@@ -21,10 +22,36 @@ import java.util.List;
  */
 public class HtmlParseEngine {
 
+    private Map<String, List<String>> javascripts;
+
+    private static final String JAVASCRIPT_FILE = "html/javascript_files.ini";
+
     private static HtmlParseEngine htmlParseEngine;
 
     private HtmlParseEngine() {
-
+        javascripts = new LinkedHashMap<String, List<String>>();
+        List<String> jsFiles;
+        Properties props = new Properties();
+        try {
+            props.load(new FileInputStream(Envir.getClassesPath() + File.separator + JAVASCRIPT_FILE));
+            for (Object key : props.keySet()) {
+                String keyStr = key.toString();
+                String value = props.getProperty(keyStr);
+                jsFiles = new ArrayList<String>();
+                for(String jsFile : value.split(",")){
+                    if(!StringUtils.isEmpty(jsFile.trim())){
+                        jsFiles.add(jsFile.trim());
+                    }
+                }
+                if(jsFiles.size() > 0) {
+                    javascripts.put(keyStr, jsFiles);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static HtmlParseEngine getInstance() {
@@ -32,20 +59,6 @@ public class HtmlParseEngine {
             htmlParseEngine = new HtmlParseEngine();
         }
         return htmlParseEngine;
-    }
-
-    /**
-     * 解析界面展现文件名生成本地HTML
-     *
-     * @param webPath 应用路径
-     * @param plName  界面展现文件名
-     * @throws Exception
-     */
-    public void parseXmlToLocalFile(String webPath, String plName) throws Exception {
-        String xmlPath = getXMlPath(webPath, plName);
-        HtmlEngineContextInfo pageContextInfo = new HtmlEngineContextInfo(getHtmlPath(webPath, plName));
-        parseXmlToOutStream(xmlPath, pageContextInfo);
-        pageContextInfo.close();
     }
 
     /**
@@ -84,36 +97,22 @@ public class HtmlParseEngine {
         return webPath + "/pal/" + plName + ".html";
     }
 
-    public void parseXmlToOutStream(String xmlPath, PageContextInfo pageContextInfo) throws Exception {
-
-        String plContent = FileUtils.readFileToString(ResourceUtils.getFile(xmlPath));
-
-        List<Container> cn = AnalyzeJspUtil.getContainers(plContent, pageContextInfo);
-        pageContextInfo.write("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
-        pageContextInfo.write("<head>");
-        pageContextInfo.write("<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\" />");
-        pageContextInfo.write("</head>");
-        pageContextInfo.write("<body>");
-        for (Container container : cn) {
-            container.paint();
-            //wangdg
-            this.paintDataIsland(container, pageContextInfo);
-        }
-        pageContextInfo.write("</body>");
-        pageContextInfo.write("</html>");
-    }
-
     public void parseXmlPageToOutStream(String xmlPath, PageContextInfo pageContextInfo) throws Exception {
 
-        String plContent = FileUtils.readFileToString(ResourceUtils.getFile(xmlPath));
+        File file = ResourceUtils.getFile(xmlPath);
+        String plContent = FileUtils.readFileToString(file);
 
         HTMLPage page = XMLPageUtil.getPage(plContent, pageContextInfo);
         pageContextInfo.write("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
         pageContextInfo.write("<head>");
         pageContextInfo.write("<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\" />");
         this.paintHeader(pageContextInfo);
-        if (!StringUtils.isEmpty(page.getJavascript())) {
-            pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/business/" + page.getJavascript() + ".js\"></script>");
+
+        List<String> javascripts = this.javascripts.get(file.getName().substring(0, file.getName().indexOf(".")));
+        if(javascripts != null && javascripts.size() > 0){
+            for(String javascript : javascripts){
+                pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/business/" + javascript + ".js\"></script>");
+            }
         }
         pageContextInfo.write("</head>");
         pageContextInfo.write("<body>");
@@ -148,20 +147,6 @@ public class HtmlParseEngine {
         //pageContextInfo.write("    var loadDataUrl = \"${pageModel.loadDataUrl}\";");
         pageContextInfo.write("</script>");
 
-    }
-
-    /**
-     * wangdg
-     * <p/>
-     * 画出数据岛
-     *
-     * @return
-     */
-    private void paintDataIsland(Container container, PageContextInfo pageContextInfo) {
-        //创建数据岛对象
-        DataIsland dataIsland = AppManager.createDataIsland();
-        String diStr = dataIsland.createFormDataIsland(container);
-        pageContextInfo.write("<input type='hidden' id='dataIsland' value=\"" + diStr + "\"/>");
     }
 
     public static void main(String args[]) {
