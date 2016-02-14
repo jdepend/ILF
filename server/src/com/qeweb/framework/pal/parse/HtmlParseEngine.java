@@ -9,9 +9,11 @@ import com.qeweb.framework.manager.AppManager;
 import com.qeweb.framework.pal.Page;
 import com.qeweb.framework.pal.PageContextInfo;
 import com.qeweb.framework.pal.coarsegrained.Container;
+import com.qeweb.framework.pl.html.HTMLPage;
 import org.apache.commons.io.FileUtils;
 import org.springframework.util.ResourceUtils;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -61,6 +63,20 @@ public class HtmlParseEngine {
         pageContextInfo.close();
     }
 
+    /**
+     * 解析界面展现文件名生成HTML
+     *
+     * @param webPath 应用路径
+     * @param plName  界面展现文件名
+     * @throws Exception
+     */
+    public void parseXmlPage(String webPath, PrintWriter writer, String plName) throws Exception {
+        String xmlPath = getXMlPath(webPath, plName);
+        WriterEngineContextInfo pageContextInfo = new WriterEngineContextInfo(writer);
+        parseXmlPageToOutStream(xmlPath, pageContextInfo);
+        pageContextInfo.close();
+    }
+
     public String getXMlPath(String webPath, String plName) {
         return webPath + "/WEB-INF/pal/" + plName + ".xml";
     }
@@ -92,7 +108,7 @@ public class HtmlParseEngine {
 
         String plContent = FileUtils.readFileToString(ResourceUtils.getFile(xmlPath));
 
-        Page page = XMLPageUtil.getPage(plContent, pageContextInfo);
+        HTMLPage page = XMLPageUtil.getPage(plContent, pageContextInfo);
         pageContextInfo.write("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
         pageContextInfo.write("<head>");
         pageContextInfo.write("<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\" />");

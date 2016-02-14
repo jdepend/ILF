@@ -68,11 +68,6 @@ abstract public class Page extends ViewComponent {
 	 */
 	private String level;
 
-    /**
-     * 本页引用的js文件
-     */
-    private String javascript;
-
 	/**
 	 * 画出整个页面信息
 	 */
@@ -327,7 +322,6 @@ abstract public class Page extends ViewComponent {
 		this.styleStr = null;
 		this.onLoad = null;
 		this.level = null;
-        this.javascript = null;
 
 		if(containerList != null)
 			containerList.clear();
@@ -405,14 +399,6 @@ abstract public class Page extends ViewComponent {
 	public void setLayoutStr(String layoutStr) {
 		this.layoutStr = layoutStr;
 	}
-
-    public String getJavascript() {
-        return javascript;
-    }
-
-    public void setJavascript(String javascript) {
-        this.javascript = javascript;
-    }
 
     public List<CommandButton> getHeadBtnList() {
 		return headBtnList;

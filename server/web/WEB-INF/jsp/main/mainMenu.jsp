@@ -80,9 +80,9 @@
     $(function () {
         $("#html_create").click(
                 function(){
-                    requestFirstPage("<%=basePath%>/htmlparse/getHtmlByPalTemplet/vendorManage");
+                    requestFirstPage("<%=basePath%>/vsr/page/init/vendorManage");
                 }
-        );
+        );e
         //例子
         $("#group_list").click(
                 function(){

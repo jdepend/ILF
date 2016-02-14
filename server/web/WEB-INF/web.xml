@@ -50,7 +50,6 @@
         <url-pattern>*.html</url-pattern>
     </servlet-mapping>
 
-
     <!-- 编码过滤器 解决资源文件中有中文导致乱码问题-->
     <filter>
         <filter-name>encodingFilter</filter-name>
