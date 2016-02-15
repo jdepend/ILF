@@ -103,7 +103,7 @@ public class HtmlParseEngine {
         pageContextInfo.write("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
         pageContextInfo.write("<head>");
         pageContextInfo.write("<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\" />");
-        this.paintHeader(page, pageContextInfo);
+        this.paintHeader2(file, page, pageContextInfo);
         pageContextInfo.write("</head>");
         pageContextInfo.write("<body>");
         page.paint();
@@ -111,7 +111,7 @@ public class HtmlParseEngine {
         pageContextInfo.write("</html>");
     }
 
-    private void paintHeader(Page page, PageContextInfo pageContextInfo) {
+    private void paintHeader(File file, Page page, PageContextInfo pageContextInfo) {
 
         pageContextInfo.write("<link href=\"" + Envir.getContextPath() + "/resources2/css/projectIcon.css\" rel=\"stylesheet\" type=\"text/css\">\n");
         pageContextInfo.write("<link href=\"" + Envir.getContextPath() + "/resources2/css/projectStyleDefault.css\" type=\"text/css\" rel=\"stylesheet\">\n");
@@ -192,22 +192,17 @@ public class HtmlParseEngine {
         pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/js/projectStyle.js\"></script>");
 
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/vsr/common.js\"></script>");
-        List<Container> containers = page.getContainerList();
-        if (containers != null && containers.size() > 0) {
-            for (Container container : containers) {
-                List<String> javascripts = container.getBc().getCodes();
-                if (javascripts != null && javascripts.size() > 0) {
-                    for (String javascript : javascripts) {
-                        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/business/" + javascript + ".js\"></script>");
-                    }
-                }
+        List<String> javascriptFiles = this.javascripts.get(file.getName().substring(0, file.getName().indexOf(".")));
+        if (javascriptFiles != null && javascriptFiles.size() > 0) {
+            for (String javascriptFile : javascriptFiles) {
+                pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/business/" + javascriptFile + ".js\"></script>");
             }
         }
 
         pageContextInfo.write("<script>");
     }
 
-    private void paintHeader2(Page page, PageContextInfo pageContextInfo) {
+    private void paintHeader2(File file, Page page, PageContextInfo pageContextInfo) {
 
         pageContextInfo.write("<link href=\"" + Envir.getContextPath() + "/resources/css/bootstrap.css\" rel=\"stylesheet\">");
         pageContextInfo.write("<link href=\"" + Envir.getContextPath() + "/resources/css/slider_1.css\" rel=\"stylesheet\">");
@@ -227,16 +222,11 @@ public class HtmlParseEngine {
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/ilf-event.js\"></script>");
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/mlt.js\"></script>");
 
-        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/js/vsr/common.js\"></script>");
-        List<Container> containers = page.getContainerList();
-        if (containers != null && containers.size() > 0) {
-            for (Container container : containers) {
-                List<String> javascripts = container.getBc().getCodes();
-                if (javascripts != null && javascripts.size() > 0) {
-                    for (String javascript : javascripts) {
-                        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/js/business/" + javascript + ".js\"></script>");
-                    }
-                }
+        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/vsr/common.js\"></script>");
+        List<String> javascriptFiles = this.javascripts.get(file.getName().substring(0, file.getName().indexOf(".")));
+        if (javascriptFiles != null && javascriptFiles.size() > 0) {
+            for (String javascriptFile : javascriptFiles) {
+                pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/business/" + javascriptFile + ".js\"></script>");
             }
         }
 

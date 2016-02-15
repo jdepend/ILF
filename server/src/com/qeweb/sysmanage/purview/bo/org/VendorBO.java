@@ -72,13 +72,6 @@ public class VendorBO extends OrganizationBO implements Serializable {
 		 }
 	}
 
-    @Override
-    public List<String> getCodes() {
-        List<String> codes = new ArrayList<String>();
-        codes.add("vendor");
-        return codes;
-    }
-
     @SuppressWarnings({ "unchecked", "deprecation" })
 	public void export(BOTemplate bot) {
 		ExpExlUtil expExlUtil = null;
