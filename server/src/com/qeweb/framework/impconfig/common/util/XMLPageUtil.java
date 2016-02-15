@@ -44,7 +44,7 @@ public class XMLPageUtil {
      * @param pageContextInfo 	组件绘制时使用的上下文信息
      * @return
      */
-    final static public HTMLPage getPage(String jspContent, PageContextInfo pageContextInfo) {
+    final static public Page getPage(String jspContent, PageContextInfo pageContextInfo) {
         Document doc = AnalyzeJspUtil.getJSPDoc(jspContent);
         if(doc == null)
             return null;
@@ -52,7 +52,7 @@ public class XMLPageUtil {
         List<Element> containerElements = getXmlDao().getElmentsByXpath(getXPath_Container(), doc.getRootElement());
         Element element = containerElements.get(0);
 
-        HTMLPage page = (HTMLPage) AppManager.createVC(HTMLPage.class);
+        Page page = (Page) AppManager.createVC(Page.class);
         page.setPageContextInfo(pageContextInfo);
         page.setBcId(element.getAttributeValue("bind"));
         page.setName(element.getAttributeValue("bind"));

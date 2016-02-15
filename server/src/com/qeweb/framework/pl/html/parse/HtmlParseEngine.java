@@ -100,7 +100,7 @@ public class HtmlParseEngine {
         File file = ResourceUtils.getFile(xmlPath);
         String plContent = FileUtils.readFileToString(file);
 
-        HTMLPage page = XMLPageUtil.getPage(plContent, pageContextInfo);
+        Page page = XMLPageUtil.getPage(plContent, pageContextInfo);
         pageContextInfo.write("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
         pageContextInfo.write("<head>");
         pageContextInfo.write("<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\" />");

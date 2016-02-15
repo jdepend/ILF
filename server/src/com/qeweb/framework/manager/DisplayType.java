@@ -122,7 +122,7 @@ final public class DisplayType {
 	 */
 	static public String getDisplayType() {
 
-    	String displayType = null;
+    	String displayType = ConstantAppProp.DISPLAYTYPE_EXT;
 
 		//注：此处不能使用 else if
 		//从request参数中获取
