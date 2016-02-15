@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/2/11.
  */
-$(function(){
+function pageInit(){
 
     $("#id1").change(function(){
         if($(this).val() == "a"){
@@ -9,6 +9,5 @@ $(function(){
         }else if($(this).val() == "b"){
             setBopValueByBopCode("vendorBO.orgName","bbb");
         }
-
-    })
-})
+    });
+}

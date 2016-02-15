@@ -279,6 +279,7 @@ public class HtmlParseEngine {
                 pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/business/" + javascriptFile + ".js\"></script>");
             }
         }
+        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/vsr/onload.js\"></script>");
     }
 
     private void paintHeader2(File file, Page page, PageContextInfo pageContextInfo) {
@@ -308,6 +309,7 @@ public class HtmlParseEngine {
                 pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/business/" + javascriptFile + ".js\"></script>");
             }
         }
+        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/vsr/onload.js\"></script>");
 
         pageContextInfo.write("<script>");
         pageContextInfo.write("    var basePath = \"" + Envir.getContextPath() + "\";");
