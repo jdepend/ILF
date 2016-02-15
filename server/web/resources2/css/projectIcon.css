@@ -1,0 +1,233 @@
+/*后退 */ 
+.back {
+	background-image: url(images/button/back.gif) !important;
+	background-repeat: no-repeat;
+}
+/*清空 */
+.claer {
+	background-image: url(images/button/clear.gif) !important;
+	background-repeat: no-repeat;
+}
+/*重置 */
+.reset {
+	background-image: url(images/button/reset.gif) !important;
+	background-repeat: no-repeat;
+}
+/*还原*/
+.restore {
+	background-image: url(images/button/arrow_refresh.png) !important;
+	background-repeat: no-repeat;
+}
+/*选择*/
+.check {
+	background-image: url(images/button/check.png) !important;
+	background-repeat: no-repeat;
+}
+/*编辑*/
+.edit {
+	background-image: url(images/button/Edit.gif) !important;
+	background-repeat: no-repeat;
+}
+/*查看*/
+.view {
+	background-image: url(images/button/view.gif) !important;
+	background-repeat: no-repeat;
+}
+
+/*新增*/
+.add {
+	background-image: url(images/button/add.gif) !important;
+	background-repeat: no-repeat;
+}
+/*删除*/
+.remove {
+	background-image: url(images/button/remove.gif) !important;
+	background-repeat: no-repeat;
+}
+
+/*保存*/
+.save {
+	background-image: url(images/button/save2.gif) !important;
+	background-repeat: no-repeat;
+}
+/*查询*/
+.search {
+	background-image: url(images/button/search.gif) !important;
+	background-repeat: no-repeat;
+}
+
+
+/*下载*/
+.downLoad {
+	background-image: url(images/button/Download.gif) !important;
+	background-repeat: no-repeat;
+}
+/*上传*/
+.upload {
+	background-image: url(images/button/upload.PNG) !important;
+	background-repeat: no-repeat;
+}
+/*执行*/
+.execute {
+	background-image: url(images/button/Execute.gif) !important;
+	background-repeat: no-repeat;
+}
+/*退出*/
+.exit {
+	background-image: url(images/button/exit-icon.gif) !important;
+	background-repeat: no-repeat;
+}
+/*打印*/
+.print {
+	background-image: url(images/button/Print.gif) !important;
+	background-repeat: no-repeat;
+}
+/*并发*/
+.concurrency {
+	background-image: url(images/button/Process.gif) !important;
+	background-repeat: no-repeat;
+}
+/*重置密码*/
+.resetPwd {
+	background-image: url(images/button/Reset-Password.gif) !important;
+	background-repeat: no-repeat;
+}
+/*设置*/
+.setting {
+	background-image: url(images/button/Setting.gif) !important;
+	background-repeat: no-repeat;
+}
+/*否定*/
+.no {
+	background-image: url(images/button/no.gif) !important;
+	background-repeat: no-repeat;
+}
+/*确定*/
+.yes {
+	background-image: url(images/button/yes.gif) !important;
+	background-repeat: no-repeat;
+}
+/*锁定*/
+.hmenu-lock {
+	background-image: url(images/button/hmenu-lock.png) !important;
+	background-repeat: no-repeat;
+}
+/*解锁*/
+.hmenu-unlock {
+	background-image: url(images/button/hmenu-unlock.png) !important;
+	background-repeat: no-repeat;
+}
+/*下一步*/
+.next {
+	background-image: url(images/button/next.png) !important;
+	background-repeat: no-repeat;
+}
+/*上一步*/
+.prev {
+	background-image: url(images/button/prev.png) !important;
+	background-repeat: no-repeat;
+}
+/*刷新*/
+.refresh {
+	background-image: url(images/button/refresh.gif) !important;
+	background-repeat: no-repeat;
+}
+/*导出Exl*/
+.expExl {
+	background-image: url(images/button/excel-ico.gif) !important;
+	background-repeat: no-repeat;
+}
+/*查看统计图表*/
+.chart {
+	background-image: url(images/button/Gantt-Chart.gif) !important;
+	background-repeat: no-repeat;
+}
+/*导入*/
+.imp {
+	background-image: url(images/button/imp.png) !important;
+	background-repeat: no-repeat;
+}
+/*导出*/
+.exp {
+	background-image: url(images/button/exp.png) !important;
+	background-repeat: no-repeat;
+}
+/*清空*/
+.clear {
+	background-image: url(images/button/clear.png) !important;
+	background-repeat: no-repeat;
+}
+/*警告*/
+.warning {
+	background-image: url(images/button/warning.png) !important;
+	background-repeat: no-repeat;
+}
+/*同步*/
+.syn {
+	background-image: url(images/button/syn.png) !important;
+	background-repeat: no-repeat;
+}
+/*文件*/
+.file {
+	background-image: url(images/button/file.png) !important;
+	background-repeat: no-repeat;
+}
+/*文件夹*/
+.folder {
+	background-image: url(images/button/folder.png) !important;
+	background-repeat: no-repeat;
+}
+/*重做*/
+.redo {
+	background-image: url(images/button/redo.png) !important;
+	background-repeat: no-repeat;
+}
+.redo2 {
+	background-image: url(images/button/redo2.png) !important;
+	background-repeat: no-repeat;
+}
+/*展开*/
+.icon-expand-all {
+	background-image: url(images/button/expand-all.gif) !important;
+	background-repeat: no-repeat;
+}
+/*收缩*/
+.icon-collapse-all {
+	background-image: url(images/button/collapse-all.gif) !important;
+	background-repeat: no-repeat;
+}
+
+/*退出系统*/
+.logout {
+	background-image:url(images/button/cancel_48.png) !important;
+}
+
+/*配置*/
+.config2 {
+    background-image:url(images/button/config2.png) !important;
+}
+.config {
+    background-image:url(images/button/config.png) !important;
+}
+
+/*钥匙*/
+.keyIcon {
+    background-image:url(images/button/key.png) !important;
+}
+ 
+/*窗口*/
+.applicationIcon {
+    background-image:url(images/button/application.png) !important;
+}
+/*双窗口*/
+.application_doubleIcon {
+    background-image:url(images/button/application_double.png) !important;
+}
+/*叠加窗口*/
+.application_cascadeIcon {
+    background-image:url(images/button/application_cascade.png) !important;
+}
+/*消息*/
+.commentsIcon {
+    background-image:url(images/button/comments.png) !important;
+}

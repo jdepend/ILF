@@ -1,0 +1,169 @@
+body {
+	background: #fff;
+	width: 98%;
+}
+
+table a:visited {
+	color: red
+}
+
+/* @group Toolbar */
+.toolbar {
+	-webkit-box-sizing: border-box;
+	border-bottom: 1px solid #4286F5;
+	padding: 10px;
+	height: 80px;
+	background: url(../../images/android/toggleOn.png) #4286F5 repeat-x;
+	position: relative;
+}
+
+.button,.back,.cancel,.add {
+	position: absolute;
+	overflow: hidden;
+	top: 15px;
+	right: 10px;
+	margin: 0;
+	border-width: 0 5px;
+	padding: 0 3px;
+	width: auto;
+	height: 50px;
+	line-height: 50px;
+	font-family: inherit;
+	font-size: 23px;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0;
+	text-overflow: ellipsis;
+	text-decoration: none;
+	white-space: nowrap;
+	background: none;
+	-webkit-border-image: url(../../images/android/button.png) 0 5 0 5;
+}
+
+ul {
+	color: #aaaaaa;
+	border: 1px solid #333333;
+	font: bold 20px "Helvetica Neue", Helvetica;
+	padding: 0;
+	margin: 15px 10px 17px 10px;
+}
+
+ul li {
+	color: #ddd;
+	border-top: 1px solid #333;
+	border-bottom: #555858;
+	list-style-type: none;
+	padding: 15px 10px 10px 10px;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e),
+		to(#404142) );
+	overflow: hidden;
+}
+
+ul li.arrow {
+	background-color: #4c4d4e !important;
+	background-image: url(../../images/android/chevron.png),
+		-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142) );
+	background-position: right center !important;
+	background-repeat: no-repeat !important;
+}
+
+/* universal links on list */
+ul li a,li.img a+a {
+	color: #fff;
+	text-decoration: none;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	display: block;
+	padding: 12px 10px 12px 10px;
+	margin: -10px;
+	text-shadow: rgba(0, 0, 0, .2) 0 1px 1px;
+}
+
+ul li.arrow a.active {
+	background-image: url(../../images/android/chevron.png);
+	background-position: right center;
+	background-repeat: no-repeat;
+}
+
+input[type="text"],input[type="password"],input[type="tel"],input[type="number"],input[type="search"],input[type="email"],input[type="url"],select
+	{
+	color: #777;
+	background: transparent
+		url('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
+	border: 1px solid #aaaaaa;
+	font: normal 20px "Helvetica Neue", Helvetica;
+	padding: 0;
+	display: inline-block;
+	margin-left: 0px;
+	-webkit-appearance: textarea;
+	width: 200px;
+}
+
+textarea {
+	color: #777;
+	background: transparent
+		url('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
+	border: 2px solid #aaaaaa;
+	font: normal 25px "Helvetica Neue", Helvetica;
+	padding: 0;
+	display: inline-block;
+	margin-left: 0px;
+	-webkit-appearance: textarea;
+}
+
+select {
+	text-indent: 0px;
+	background: transparent url(../../images/android/chevron.png) no-repeat
+		right center;
+	-webkit-appearance: textfield;
+	margin-left: -6px;
+}
+
+ul li input[type="checkbox"],ul li input[type="radio"] {
+	margin: 0;
+	padding: 15px 15px;
+}
+
+ul li input[type="checkbox"]:after,ul li input[type="radio"]:after {
+	content: attr(title);
+	font: 17px "Helvetica Neue", Helvetica;
+	display: block;
+	width: 246px;
+	color: #777;
+	margin: -12px 0 0 17px;
+}
+
+.android ul li input[type="checkbox"]:after,.android ul li input[type="radio"]:after
+	{
+	margin: 3px 0 0 24px;
+}
+
+form div {
+	display: inline;
+}
+
+.usual {
+	background: #FFF;
+	padding: 15px 20px;
+	width: 97%;
+	border: 1px solid #222;
+	margin: 8px auto;
+}
+
+.usual div {
+	padding: 10px 10px 8px 10px;
+	padding-top: 3px;
+	margin-top: 20px;
+	font-size: 20px;
+	clear: left;
+	color: #000;
+}
+
+.usual ul a.selected {
+	margin-bottom: 0;
+	color: #000;
+	background: snow;
+	border: 1px solid gray;
+	cursor: default;
+}

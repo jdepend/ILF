@@ -1,0 +1,16 @@
+.history-icon {
+    width:16px;
+    height:18px;
+    visibility: visible;
+    position:absolute;
+    z-index: 20002;
+    background:transparent no-repeat 0 2px;
+ 	background-image:url(../images/warning.gif); 
+}
+.history-tip {
+	position: absolute;
+    visibility: hidden;
+	z-index: 20002;
+    border:1 solid;
+    background:white;
+}

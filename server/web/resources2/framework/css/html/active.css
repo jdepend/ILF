@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+.active_pro_infor{
+	background-color:#11111-moz-border-radius:1px 1px 1px 1px;
+	-webkit-border-radius:1px 1px 1px 1px;
+	border-radius:8px;
+	position:relative;
+	behavior:url(/qeweb/framework/css/html/pie.htc);
+	-moz-box-shadow:3px 3px 3px #7F7874;
+	-webkit-box-shadow:3px 3px 3px #7F7874;
+	box-shadow:4px 4px 4px #7F7874; 
+	border:solid 1px #EEEDEC;
+}
+.active_pro_infor{
+	background:-webkit-gradient(linear, 0 0, 0 bottom, from(#FEFEFE), to(#DEDEDF));
+	background:-moz-linear-gradient(#FEFEFE, #DEDEDF);
+	-pie-background:linear-gradient(#FEFEFE, #DEDEDF);	
+}

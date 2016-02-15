@@ -1,0 +1,30 @@
+/*
+ * 表格单元格的文字能自动换行 
+ */
+.x-grid3-cell-inner, .x-grid3-hd-inner {
+    overflow: hidden;
+    padding: 3px 3px 3px 5px;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+/*
+ *表格的字体样式
+ */
+.x-grid3-row td, .x-grid3-summary-row td{
+	font:normal 12px/13px arial, tahoma, helvetica, sans-serif;
+}
+
+/**
+ * 表单的字体样式
+ */
+.x-form-item {
+    font:normal 12px tahoma, arial, helvetica, sans-serif;
+}
+
+/**
+ * 按钮的字体样式
+ */
+.x-btn button{
+    font:normal 12px arial,tahoma,verdana,helvetica;
+}

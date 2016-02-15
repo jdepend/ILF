@@ -1,0 +1,32 @@
+
+.saveIcon {
+	background-image: url(../images/button/save.gif) !important;
+}
+
+.modifyIcon {
+	background-image: url(../images/button/modify.gif) !important;
+}
+
+.removeIcon {
+	background-image: url(../images/button/remove.gif) !important;
+}
+
+.searchIcon {
+	background-image: url(../images/button/search.gif) !important;
+}
+
+.refreshIcon {
+	background-image: url(../images/button/arrow_refresh.png) !important;
+}
+
+.yesIcon {
+	background-image: url(../images/button/yes.gif) !important;
+}
+
+.noIcon {
+	background-image: url(../images/button/no.gif) !important;
+}
+
+.backIcon {
+	background-image: url(../images/button/back.gif) !important;
+}
