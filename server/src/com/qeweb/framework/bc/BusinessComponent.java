@@ -33,12 +33,12 @@ public abstract class BusinessComponent implements Serializable {
 	private boolean success = true;			//是否操作成功
 	private String message;					//提示信息,可保存自定义成功提示或失败提示
 	
-	private long id;						//主键
-	private long createUserId;				//创建人
-	private Timestamp createTime;			//创建时间
-	private long lastModifyUserId; 			//最后修改人
-	private Timestamp lastModifyTime; 		//最后修改时间
-	private int deleteFlag;					//删除标识 
+	private long id;	    //主键
+    private long createUserId;				//创建人
+    private Timestamp createTime;			//创建时间
+    private long lastModifyUserId; 			//最后修改人
+    private Timestamp lastModifyTime; 		//最后修改时间
+    private int deleteFlag;					//删除标识
 
 	private IBaseDao dao;
 	
