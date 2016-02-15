@@ -1,8 +1,10 @@
 package com.qeweb.framework.pl.html.parse;
 
 import com.qeweb.framework.common.Envir;
+import com.qeweb.framework.common.appconfig.AppConfig;
 import com.qeweb.framework.common.utils.StringUtils;
 import com.qeweb.framework.impconfig.common.util.XMLPageUtil;
+import com.qeweb.framework.manager.DisplayType;
 import com.qeweb.framework.pal.Page;
 import com.qeweb.framework.pal.PageContextInfo;
 import com.qeweb.framework.pal.coarsegrained.Container;
@@ -113,6 +115,13 @@ public class HtmlParseEngine {
 
     private void paintHeader(File file, Page page, PageContextInfo pageContextInfo) {
 
+        String ctx = Envir.getContextPath();
+        String lang = "-" + DisplayType.getLanguageType();
+        String ajaxTimeout = AppConfig.getPropValue(AppConfig.AJAX_TIMEOUT);
+        String optRemember = AppConfig.getPropValue(AppConfig.OPT_OPTREMEMBER);
+        boolean isAutoSearch = AppConfig.isAutoSearch();
+        String themeType = DisplayType.getThemeType();
+
         pageContextInfo.write("<link href=\"" + Envir.getContextPath() + "/resources2/framework/js/ext/ext3.2/resources/css/ext-all.css\" type=\"text/css\" rel=\"stylesheet\">\n");
         pageContextInfo.write("<link href=\"" + Envir.getContextPath() + "/resources2/framework/js/ext/ext3.2/ux/css/history.css\" type=\"text/css\" rel=\"stylesheet\">\n");
         pageContextInfo.write("<link id=\"theme\" href=\"" + Envir.getContextPath() + "/resources2/framework/js/ext/ext3.2/resources/css/xtheme-blue.css\" type=\"text/css\" rel=\"stylesheet\">\n");
@@ -130,6 +139,23 @@ public class HtmlParseEngine {
         pageContextInfo.write("<link href=\"" + Envir.getContextPath() + "/resources2/css/projectIcon.css\" rel=\"stylesheet\" type=\"text/css\">\n");
         pageContextInfo.write("<link href=\"" + Envir.getContextPath() + "/resources2/css/projectStyleDefault.css\" type=\"text/css\" rel=\"stylesheet\">\n");
         pageContextInfo.write("<script type=\"text/javascript\">\n");
+
+        pageContextInfo.write("var appConfig = {\n");
+        pageContextInfo.write("ctx : '" + ctx + "',\n");
+        pageContextInfo.write("ajaxTimeout : '" + ajaxTimeout  + "',\n");
+        pageContextInfo.write("//记忆操作(弹出确认信息和提示信息)\n");
+        pageContextInfo.write("optRemember : '" + optRemember + "',\n");
+        pageContextInfo.write("//使用查询条件时是否自动触发查询\n");
+        pageContextInfo.write("isAutoSearch : " + isAutoSearch+ ",\n");
+        pageContextInfo.write("//终端使用百度地图\n");
+        pageContextInfo.write("isBaiduMap : " + AppConfig.isBaiduMap() + ",\n");
+        pageContextInfo.write("//弹出框是否默认带有关闭按钮\n");
+        pageContextInfo.write("hasCloseBtn : " + AppConfig.hasCloseBtn()+ ",\n");
+        pageContextInfo.write("//如果在没有配置粗粒度组件布局的情况下, 最后一个组件是表格, 则表格高度撑满剩余区域\n");
+        pageContextInfo.write("isTableHeightFull : " + AppConfig.isTableHeightFull()+ ",\n");
+        pageContextInfo.write("//当行级按钮全部隐藏时, 操作列是否自动隐藏 \n");
+        pageContextInfo.write("isTableAutoHideOptCol : " + AppConfig.isTableAutoHideOptCol()+ "\n");
+        pageContextInfo.write("}; ");
 
         pageContextInfo.write("</script>\n");
         pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/qewebi18n-zh_CN.js\"></script>\n");
