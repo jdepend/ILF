@@ -7,7 +7,6 @@ import com.qeweb.framework.impconfig.common.util.XMLPageUtil;
 import com.qeweb.framework.manager.DisplayType;
 import com.qeweb.framework.pal.Page;
 import com.qeweb.framework.pal.PageContextInfo;
-import com.qeweb.framework.pal.coarsegrained.Container;
 import com.qeweb.framework.pl.html.HTMLPage;
 import org.apache.commons.io.FileUtils;
 import org.springframework.util.ResourceUtils;
@@ -109,6 +108,7 @@ public class HtmlParseEngine {
         pageContextInfo.write("</head>");
         pageContextInfo.write("<body>");
         page.paint();
+        this.paintFooter(pageContextInfo);
         pageContextInfo.write("</body>");
         pageContextInfo.write("</html>");
     }
@@ -142,19 +142,19 @@ public class HtmlParseEngine {
 
         pageContextInfo.write("var appConfig = {\n");
         pageContextInfo.write("ctx : '" + ctx + "',\n");
-        pageContextInfo.write("ajaxTimeout : '" + ajaxTimeout  + "',\n");
+        pageContextInfo.write("ajaxTimeout : '" + ajaxTimeout + "',\n");
         pageContextInfo.write("//记忆操作(弹出确认信息和提示信息)\n");
         pageContextInfo.write("optRemember : '" + optRemember + "',\n");
         pageContextInfo.write("//使用查询条件时是否自动触发查询\n");
-        pageContextInfo.write("isAutoSearch : " + isAutoSearch+ ",\n");
+        pageContextInfo.write("isAutoSearch : " + isAutoSearch + ",\n");
         pageContextInfo.write("//终端使用百度地图\n");
         pageContextInfo.write("isBaiduMap : " + AppConfig.isBaiduMap() + ",\n");
         pageContextInfo.write("//弹出框是否默认带有关闭按钮\n");
-        pageContextInfo.write("hasCloseBtn : " + AppConfig.hasCloseBtn()+ ",\n");
+        pageContextInfo.write("hasCloseBtn : " + AppConfig.hasCloseBtn() + ",\n");
         pageContextInfo.write("//如果在没有配置粗粒度组件布局的情况下, 最后一个组件是表格, 则表格高度撑满剩余区域\n");
-        pageContextInfo.write("isTableHeightFull : " + AppConfig.isTableHeightFull()+ ",\n");
+        pageContextInfo.write("isTableHeightFull : " + AppConfig.isTableHeightFull() + ",\n");
         pageContextInfo.write("//当行级按钮全部隐藏时, 操作列是否自动隐藏 \n");
-        pageContextInfo.write("isTableAutoHideOptCol : " + AppConfig.isTableAutoHideOptCol()+ "\n");
+        pageContextInfo.write("isTableAutoHideOptCol : " + AppConfig.isTableAutoHideOptCol() + "\n");
         pageContextInfo.write("}; ");
 
         pageContextInfo.write("</script>\n");
@@ -279,8 +279,6 @@ public class HtmlParseEngine {
                 pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/business/" + javascriptFile + ".js\"></script>");
             }
         }
-
-        pageContextInfo.write("<script>");
     }
 
     private void paintHeader2(File file, Page page, PageContextInfo pageContextInfo) {
@@ -316,6 +314,19 @@ public class HtmlParseEngine {
         //pageContextInfo.write("    var loadDataUrl = \"${pageModel.loadDataUrl}\";");
         pageContextInfo.write("</script>");
 
+    }
+
+    private void paintFooter(PageContextInfo pageContextInfo) {
+        pageContextInfo.write("<script type=\"text/javascript\">\n");
+
+        pageContextInfo.write("$(document).ready(function(){\n");
+        pageContextInfo.write("setTimeout(function() {\n");
+        pageContextInfo.write("\tExt.get('loading').remove();\n");
+        pageContextInfo.write("\tExt.get('loading-mask').fadeOut({remove:true});\n");
+        pageContextInfo.write("}, 100); \n");
+        pageContextInfo.write("});");
+
+        pageContextInfo.write("</script>\n");
     }
 
     public static void main(String args[]) {
