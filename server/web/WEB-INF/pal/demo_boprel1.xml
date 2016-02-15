@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<qeweb:page>
+
+    <qeweb:form bind="demoValidationBO1" id="demo3" text="细粒度-关联">
+        <qeweb:textField bind="prop1" text="关联1"/>
+        <qeweb:textField bind="prop2" text="关联2-关联1-V"/>
+    </qeweb:form>
+</qeweb:page>

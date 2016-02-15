@@ -18,7 +18,9 @@ var actionURL = {
 	
 	//细粒度组件关联（细细）提交url
 	getFcToBopSubmit : function() {
-		return this.getSecurityURL("/system/finegrainedSubmitToBopAC.action");
+        //扩展 eric  2016  spring mvc
+        //this.getSecurityURL("/system/finegrainedSubmitToBopAC.action");
+		return this.getSecurityURL("/vsr/boprelation");
 	},
 	
 	//细粒度组件关联（细粗）提交url

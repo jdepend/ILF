@@ -47,6 +47,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">VSR</a>
                     <ul class="dropdown-menu">
                         <li><a href="#" id="html_create">Html生成</a></li>
+                        <li><a href="#" id="bop_rel1">BOP 关联</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -78,6 +79,11 @@
 </nav>
 <script type="text/javascript">
     $(function () {
+        $("#bop_rel1").click(
+                function(){
+                    requestFirstPage("<%=basePath%>/vsr/page/init/demo_boprel1");
+                }
+        );
         $("#html_create").click(
                 function(){
                     requestFirstPage("<%=basePath%>/vsr/page/init/vendorManage");

@@ -10,10 +10,11 @@ var XMLDomFactory = (function() {
 			if(!dataIslandStr)
 				dataIslandStr = $('#' + DISLAND.hiddenId).val();
 			
-			if($.browser.msie && !!dataIslandStr) {
+			if(window.ActiveXObject && !!dataIslandStr) {
 				xmlDom = new ActiveXObject("Microsoft.XMLDOM");
 				xmlDom.loadXML(dataIslandStr);
 			}
+
 			else if(!!dataIslandStr){
 				var domParser = new DOMParser();
 				xmlDom = domParser.parseFromString(dataIslandStr, "text/xml");
