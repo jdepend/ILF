@@ -13,22 +13,10 @@
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd"
        default-lazy-init="false">
 
-    <description>Spring公共配置</description>
-    <!-- production环境 -->
-    <context:property-placeholder ignore-resource-not-found="true" location="classpath*:/platform.properties" />
-    <!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
-    <context:component-scan base-package="com.rofine.platform">
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
-    </context:component-scan>
+    <description>Spring bo demo 配置</description>
 
-    <bean id="cachePropertyConfigurer"
-          class="com.rofine.platform.web.filter.CachePropertyConfigurer">
-        <property name="fileEncoding" value="utf-8" />
-        <property name="location" value="classpath:cache.properties" />
-    </bean>
+    <bean id="demoValidationBO1" class="com.qeweb.demo.interaction.validation.bo.DemoValidationBO_1" scope="prototype"/>
+    <bean id="demoValidationBO2" class="com.qeweb.demo.interaction.validation.bo.DemoValidationBO_2" scope="prototype"/>
+    <bean id="demoValidationBO3" class="com.qeweb.demo.interaction.validation.bo.DemoValidationBO_3" scope="prototype"/>
 
-    <bean id="ctx" class="com.qeweb.framework.common.SpringConstant"/>
-    <import resource="spring-bo.xml"/>
-    <import resource="spring-bo-demo.xml"/>
 </beans>
