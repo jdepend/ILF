@@ -1,7 +1,7 @@
 package com.qeweb.demo.interaction.validation.bo;
 
 import com.qeweb.demo.interaction.relation.bop.DemoEmployeeNameBOP;
-import com.qeweb.demo.interaction.validation.bop.DemoServerValidateBOP;
+import com.qeweb.demo.interaction.validation.bop.*;
 import com.qeweb.framework.bc.BOProperty;
 import com.qeweb.framework.bc.BusinessObject;
 import com.qeweb.framework.frameworkbop.EmailBopDec;
@@ -34,7 +34,12 @@ public class DemoValidationBO_1 extends BusinessObject {
 	private String clientLabel5;
 	private String serverLabel;
 	private String serverLabel2;
-	
+
+    private String prop1;
+    private String prop2;
+    private String prop3;
+    private String prop4;
+
 	public DemoValidationBO_1() {
 		super();
 		addBOP("clientBOP", new NotEmptyBopDec(new SequenceBop(new BOProperty(), 5, 60, 5), 1, 2));
@@ -52,6 +57,11 @@ public class DemoValidationBO_1 extends BusinessObject {
 		getBOP("clientLabel5").setValue("必填，最大值60，最小值5，步进值2");
 		getBOP("serverLabel").setValue("仅当值是500时符合条件");
 		getBOP("serverLabel2").setValue("Email校验");
+
+        addBOP("prop1", new Prop1BOP());
+        addBOP("prop2", new Prop2BOP());
+        addBOP("prop3", new Prop3BOP());
+        addBOP("prop4", new Prop4BOP());
 	}
 
 	public String getClientBOP() {

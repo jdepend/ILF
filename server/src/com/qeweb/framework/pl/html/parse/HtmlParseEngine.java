@@ -98,7 +98,7 @@ public class HtmlParseEngine {
     public void parseXmlPageToOutStream(String xmlPath, PageContextInfo pageContextInfo) throws Exception {
 
         File file = ResourceUtils.getFile(xmlPath);
-        String plContent = FileUtils.readFileToString(file);
+        String plContent = FileUtils.readFileToString(file,"UTF-8");
 
         Page page = XMLPageUtil.getPage(plContent, pageContextInfo);
         pageContextInfo.write("<html xmlns=\"http://www.w3.org/1999/xhtml\">");

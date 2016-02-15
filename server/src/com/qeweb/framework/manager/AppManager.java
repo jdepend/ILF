@@ -48,9 +48,10 @@ public class AppManager {
 	 * @return DataIsland
 	 */
 	final static public DataIsland createDataIsland(){
-		if(StringUtils.isEqual(Constant.DATAISLANDTYPE, AppConfig.getPropValue(AppConfig.PROPFILE_DATAISLANDTYPE)))
+		if(StringUtils.isEqual(Constant.DATAISLANDTYPE_XML, AppConfig.getPropValue(AppConfig.PROPFILE_DATAISLANDTYPE)))
 			return new XMLDataIsland();
 		else
+           //扩展 2016 eric 简单form容器 支持JSON
 			return new JSONDataIsland();
 	}
 

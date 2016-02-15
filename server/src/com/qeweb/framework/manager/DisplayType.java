@@ -123,7 +123,23 @@ final public class DisplayType {
 	static public String getDisplayType() {
 
     	String displayType = ConstantAppProp.DISPLAYTYPE_EXT;
-
+        /**
+         * 通过请求head UserAgent 获取客户终端类型
+         */
+//        String userAgent = Envir.getRequest().getHeader("User-Agent");
+//        System.out.println(userAgent);
+//        if(StringUtils.isNotEmpty(userAgent)){
+//           //windows系统
+//           if(StringUtils.hasSubString(userAgent,"Windows")){
+//                displayType = ConstantAppProp.DISPLAYTYPE_HTML;
+//           //终端Android 系统
+//           }else if(StringUtils.hasSubString(userAgent,"Android")){
+//                displayType = ConstantAppProp.DISPLAYTYPE_HTML;
+//           }
+//
+//        }else{
+//           displayType = ConstantAppProp.DISPLAYTYPE_HTML;
+//        }
 		//注：此处不能使用 else if
 		//从request参数中获取
 		if(StringUtils.isEmptyStr(displayType)) {
