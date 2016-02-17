@@ -108,7 +108,7 @@ public class HtmlParseEngine {
         pageContextInfo.write("</head>");
         pageContextInfo.write("<body>");
         page.paint();
-        this.paintFooter(pageContextInfo);
+//        this.paintFooter(pageContextInfo);
         pageContextInfo.write("</body>");
         pageContextInfo.write("</html>");
     }
@@ -272,7 +272,7 @@ public class HtmlParseEngine {
         pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/js/projectStyle.js\"></script>");
 
 
-        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/vsr/common.js\"></script>");
+//        pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/vsr/common.js\"></script>");
         List<String> javascriptFiles = this.javascripts.get(file.getName().substring(0, file.getName().indexOf(".")));
         if (javascriptFiles != null && javascriptFiles.size() > 0) {
             for (String javascriptFile : javascriptFiles) {

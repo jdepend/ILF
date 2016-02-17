@@ -1,5 +1,6 @@
 package com.qeweb.framework.bc;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
@@ -22,11 +23,7 @@ import com.qeweb.framework.common.UserContext;
 import com.qeweb.framework.common.appconfig.AppConfig;
 import com.qeweb.framework.common.constant.ConstantSplit;
 import com.qeweb.framework.common.internation.AppLocalization;
-import com.qeweb.framework.common.utils.BoOperateUtil;
-import com.qeweb.framework.common.utils.ContainerUtil;
-import com.qeweb.framework.common.utils.DateUtils;
-import com.qeweb.framework.common.utils.PropertyUtils;
-import com.qeweb.framework.common.utils.StringUtils;
+import com.qeweb.framework.common.utils.*;
 
 /**
  *
@@ -566,4 +563,59 @@ public class BOHelper {
 		String key = cglibFilter(boClass) + "." + fieldName;
 		return AppLocalization.getLocalization(key);
 	}
+
+    final public static void initBop(BusinessObject bo, Map<String, List<String>> bopConfig){
+        List<String> values;
+        String className;
+        Object[] params = null;
+        String[] paramStrs;
+        for(String name : bopConfig.keySet()){
+            values = bopConfig.get(name);
+            className = values.get(0);
+
+            if(values.size() == 2){
+                paramStrs = values.get(1).split(",");
+                params = new Object[paramStrs.length];
+                for(int i = 0; i < paramStrs.length; i++){
+                    if(org.apache.commons.lang.StringUtils.isNumeric(paramStrs[i])){
+                        params[i] = Integer.valueOf(paramStrs[i]).intValue();
+                    }
+                }
+            }
+
+            try {
+                Class classDef = Class.forName(className);
+                if(params == null) {
+                    bo.addBOP(name, (BOProperty) classDef.newInstance());
+                }else{
+                    Constructor c = null;
+                    if(params.length == 1) {
+                        if(params[0] instanceof Integer){
+                            c = classDef.getDeclaredConstructor(int.class);
+                        }else {
+                            c = classDef.getDeclaredConstructor(params[0].getClass());
+                        }
+                    }else if(params.length == 2) {
+                        if(params[0] instanceof Integer && params[1] instanceof Integer){
+                            c = classDef.getDeclaredConstructor(int.class, int.class);
+                        }else {
+                            c = classDef.getDeclaredConstructor(params[0].getClass(), params[1].getClass());
+                        }
+                    }
+                    bo.addBOP(name, (BOProperty) c.newInstance(params));
+                }
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
 }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<bopconfig>
+    <bop name="orgCode" class="com.qeweb.framework.frameworkbop.NotEmptyBop" param="1,20"/>
+
+</bopconfig>
+
