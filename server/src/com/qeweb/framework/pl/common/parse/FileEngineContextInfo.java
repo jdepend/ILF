@@ -1,13 +1,13 @@
-package com.qeweb.framework.pl.html.parse;
+package com.qeweb.framework.pl.common.parse;
 
 import com.qeweb.framework.pal.PageContextInfo;
 import java.io.*;
 
-public class HtmlEngineContextInfo extends PageContextInfo {
+public class FileEngineContextInfo extends PageContextInfo {
 
 	Writer fw = null;
 	
-	public HtmlEngineContextInfo(String fileName) {
+	public FileEngineContextInfo(String fileName) {
 		try {
 			fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "UTF-8"));
 		} catch (IOException e) {
@@ -15,7 +15,7 @@ public class HtmlEngineContextInfo extends PageContextInfo {
 		}
 	}
 
-    public HtmlEngineContextInfo(Writer fw) {
+    public FileEngineContextInfo(Writer fw) {
           fw = this.fw;
     }
 

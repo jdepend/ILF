@@ -2,8 +2,7 @@ package com.rofine.platform.web.controller;
 
 import com.qeweb.framework.app.handler.BOPRelation;
 import com.qeweb.framework.common.Constant;
-import com.qeweb.framework.pl.html.parse.HtmlParseEngine;
-import org.springframework.data.repository.query.Param;
+import com.qeweb.framework.pl.common.parse.HTMLParseEngine;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +22,7 @@ public class MainFrameworkController {
     @RequestMapping("/page/init/{id}")
     public void pageInit(HttpServletRequest req, HttpServletResponse resp, @PathVariable String id) throws Exception{
         String webpath = req.getServletContext().getRealPath("");
-        HtmlParseEngine.getInstance().parseXmlPage(webpath, resp.getWriter(), id);
+        HTMLParseEngine.getInstance().parseXmlPage(webpath, resp.getWriter(), id);
     }
 
 

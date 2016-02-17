@@ -1,6 +1,6 @@
 package com.rofine.platform.web.demo;
 
-import com.qeweb.framework.pl.html.parse.HtmlParseEngine;
+import com.qeweb.framework.pl.common.parse.HTMLParseEngine;
 import com.rofine.platform.web.filter.CachePropertyConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
         @RequestMapping("/getHtmlByPalTemplet/{key}")
         public String getHtmlByPalTemplet(HttpServletRequest req,@PathVariable String key) throws Exception{
             String webpath = req.getServletContext().getRealPath("");
-            HtmlParseEngine.getInstance().parseXmlPageToLocalFile(webpath,key);
+            HTMLParseEngine.getInstance().parseXmlPageToLocalFile(webpath,key);
             return "redirect:/pal/"+key+".html";
         }
     }

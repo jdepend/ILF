@@ -1,4 +1,4 @@
-package com.qeweb.framework.pl.html.parse;
+package com.qeweb.framework.pl.common.parse;
 
 import com.qeweb.framework.pal.PageContextInfo;
 
