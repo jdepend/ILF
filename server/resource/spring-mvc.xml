@@ -67,5 +67,6 @@
     </mvc:annotation-driven>
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/resources2/**" location="/resources2/"/>
 
 </beans>
