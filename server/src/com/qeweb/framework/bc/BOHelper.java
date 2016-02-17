@@ -565,6 +565,9 @@ public class BOHelper {
 	}
 
     final public static void initBop(BusinessObject bo, Map<String, List<String>> bopConfig){
+        if(bopConfig == null){
+            return;
+        }
         List<String> values;
         String className;
         Object[] params = null;

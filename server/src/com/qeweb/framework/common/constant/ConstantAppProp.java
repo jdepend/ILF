@@ -35,6 +35,7 @@ public interface ConstantAppProp {
 	//pl层的类型
 	final public static String DISPLAYTYPE_HTML = "html";
 	final public static String DISPLAYTYPE_EXT = "ext";
+    final public static String DISPLAYTYPE_BOOTSTRAP = "bootstrap";
 	final public static String DISPLAYTYPE_ANDROID = "Android";
 	final public static String DISPLAYTYPE_IPHONE = "iphone";
 	final public static String DISPLAYTYPE_PAD = "Android_PAD";

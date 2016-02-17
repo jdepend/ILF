@@ -48,6 +48,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="#" id="html_create">Html生成</a></li>
                         <li><a href="#" id="bop_rel1">BOP 关联</a></li>
+                        <li><a href="#" id="bop_form">表单</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -79,14 +80,19 @@
 </nav>
 <script type="text/javascript">
     $(function () {
-        $("#bop_rel1").click(
-                function(){
-                    requestFirstPage("<%=basePath%>/vsr/page/init/demo_boprel1");
-                }
-        );
         $("#html_create").click(
                 function(){
-                    requestFirstPage("<%=basePath%>/vsr/page/init/vendorManage");
+                    requestFirstPage("<%=basePath%>/vsr/page/init/vendorManage?displayType=ext");
+                }
+        );
+        $("#bop_rel1").click(
+                function(){
+                    requestFirstPage("<%=basePath%>/vsr/page/init/demo_boprel1?displayType=ext");
+                }
+        );
+        $("#bop_form").click(
+                function(){
+                    requestFirstPage("<%=basePath%>/vsr/page/init/vendorManage2?displayType=bootstrap");
                 }
         );
         //例子

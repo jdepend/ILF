@@ -122,7 +122,8 @@ final public class DisplayType {
 	 */
 	static public String getDisplayType() {
 
-    	String displayType = ConstantAppProp.DISPLAYTYPE_EXT;
+//    	String displayType = ConstantAppProp.DISPLAYTYPE_EXT;
+        String displayType = Envir.getRequest().getParameter("displayType");
         /**
          * 通过请求head UserAgent 获取客户终端类型
          */
