@@ -16,7 +16,9 @@ public class VCManager {
 			return new ExtFactory();
 		else if(DisplayType.isHtml())
 			return new HtmlFactory();
-		else if(DisplayType.isAndroid())
+        else if(DisplayType.isBootstrap())
+            return new BootstrapFactory();
+        else if(DisplayType.isAndroid())
 			return new AndroidFactory();
 		else if(DisplayType.isPad())
 			return new PadFactory();

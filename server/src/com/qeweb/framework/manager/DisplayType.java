@@ -24,8 +24,12 @@ final public class DisplayType {
 	}
 	
 	static public boolean isHtml(String displayType) {
-		return StringUtils.isEqual(ConstantAppProp.DISPLAYTYPE_HTML, displayType);
-	}
+        return StringUtils.isEqual(ConstantAppProp.DISPLAYTYPE_HTML, displayType);
+    }
+
+    static public boolean isBootstrap(String displayType) {
+        return StringUtils.isEqual(ConstantAppProp.DISPLAYTYPE_BOOTSTRAP, displayType);
+    }
 	
 	static public boolean isAndroid(String displayType) {
 		return StringUtils.isEqual(ConstantAppProp.DISPLAYTYPE_ANDROID, displayType);
@@ -46,6 +50,10 @@ final public class DisplayType {
 	static public boolean isHtml() {
 		return isHtml(getDisplayType());
 	}
+
+    static public boolean isBootstrap() {
+        return isBootstrap(getDisplayType());
+    }
 
 	static public boolean isAndroid() {
 		return StringUtils.isEqual(ConstantAppProp.DISPLAYTYPE_ANDROID, getDisplayType());
