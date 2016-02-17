@@ -235,6 +235,12 @@ public class AnalyzeJspUtil {
 		containerBean.setIcon(element.getAttributeValue("icon"));
 		containerBean.setPageContextInfo(pageContextInfo);
 
+        //扩展属性判定容器是否有head，根据text属性来判定  by eric 2016
+        if(StringUtils.isNotEmpty(containerBean.getText())){
+            containerBean.setHeader(true);
+        }
+        //扩展属性判定容器是否有head
+
 		containerHandler.initStart(container, containerBean);
 		if(initSign){
 			addFC(container, element);
