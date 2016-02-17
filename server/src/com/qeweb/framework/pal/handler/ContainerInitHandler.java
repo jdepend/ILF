@@ -20,8 +20,7 @@ public class ContainerInitHandler {
 		container.setBcId(containerBean.getBind());
 		container.setId(containerBean.getId());
 		container.setName(VCUtil.createContainerName(containerBean.getId(), containerBean.getBind()));
-//		container.setBc(BOManager.getBOInstance(containerBean.getBind())); wangdg
-        container.setBc(BOManager.createBO(containerBean.getBind()));
+		container.setBc(BOManager.getBOInstance(containerBean.getBind()));
 		container.setText(containerBean.getText());
 		container.setParam(containerBean.getParam());
 		container.setIcon(containerBean.getIcon());
