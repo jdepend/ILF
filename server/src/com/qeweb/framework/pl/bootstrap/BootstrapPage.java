@@ -30,14 +30,6 @@ public class BootstrapPage extends Page {
 
 	}
 
-    @Override
-    protected void paintContainer() {
-        //绘制顺序
-        for(Container container : getContainerList()) {
-            container.paint();
-        }
-    }
-
 	@Override
     protected void paintBodyEnd() {
         getPageContextInfo().write("</div>");
