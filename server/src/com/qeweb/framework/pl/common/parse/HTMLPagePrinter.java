@@ -15,7 +15,7 @@ public interface HTMLPagePrinter {
 
     /**
      * 打印页面
-     * 
+     *
      * @param page
      * @param javascriptFiles
      * @param pageContextInfo

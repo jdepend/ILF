@@ -22,6 +22,20 @@ import java.util.*;
  */
 public class ExtHTMLPrinter implements HTMLPagePrinter {
 
+    @Override
+    public void print(Page page, List<String> javascriptFiles, PageContextInfo pageContextInfo) {
+        pageContextInfo.write("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
+        pageContextInfo.write("<head>");
+        pageContextInfo.write("<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\" />");
+        this.paintHeader(page, javascriptFiles, pageContextInfo);
+        pageContextInfo.write("</head>");
+        pageContextInfo.write("<body>");
+        page.paint();
+//        this.paintFooter(pageContextInfo);
+        pageContextInfo.write("</body>");
+        pageContextInfo.write("</html>");
+    }
+
     private void paintHeader(Page page, List<String> javascriptFiles, PageContextInfo pageContextInfo) {
 
         String ctx = Envir.getContextPath();
@@ -203,17 +217,5 @@ public class ExtHTMLPrinter implements HTMLPagePrinter {
         pageContextInfo.write("</script>\n");
     }
 
-    @Override
-    public void print(Page page, List<String> javascriptFiles, PageContextInfo pageContextInfo) {
-        pageContextInfo.write("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
-        pageContextInfo.write("<head>");
-        pageContextInfo.write("<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\" />");
-        this.paintHeader(page, javascriptFiles, pageContextInfo);
-        pageContextInfo.write("</head>");
-        pageContextInfo.write("<body>");
-        page.paint();
-//        this.paintFooter(pageContextInfo);
-        pageContextInfo.write("</body>");
-        pageContextInfo.write("</html>");
-    }
+
 }
