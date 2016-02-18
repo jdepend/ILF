@@ -2,7 +2,7 @@
 <script>
     var enterMode = "<%=request.getParameter("enterMode")%>";
 </script>
-<div class="navbar-default navbar-fixed-top mlt-frame-border" style="position: absolute;">
+<div class="navbar navbar-default navbar-fixed-top mlt-frame-border">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="col-xs-1" style="position: absolute; z-index: 1;">
         <a class="navbar-brand" href="javascript:pageBack(enterMode);">

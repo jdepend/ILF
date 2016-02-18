@@ -1,6 +1,7 @@
 package com.qeweb.framework.pl.bootstrap;
 
 import com.qeweb.framework.pal.Page;
+import com.qeweb.framework.pal.coarsegrained.Container;
 
 /**
  * BootstrapPage负责画出整个页面
@@ -29,21 +30,15 @@ public class BootstrapPage extends Page {
 
 	}
 
-	@Override
-	protected void paintHeadButton() {
-		getPageContextInfo().write("<div align='right'>");
-		super.paintHeadButton();
-		getPageContextInfo().write("</div>");
-	}
-
-	@Override
-	protected void paintFootButton() {
-		getPageContextInfo().write("<div align='right'>");
-		super.paintFootButton();
-		getPageContextInfo().write("</div>");
-	}
-
     @Override
+    protected void paintContainer() {
+        //绘制顺序
+        for(Container container : getContainerList()) {
+            container.paint();
+        }
+    }
+
+	@Override
     protected void paintBodyEnd() {
         getPageContextInfo().write("</div>");
         getPageContextInfo().write("</body>");
