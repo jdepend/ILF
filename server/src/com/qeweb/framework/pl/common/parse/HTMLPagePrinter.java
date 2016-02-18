@@ -7,11 +7,18 @@ import java.util.List;
 
 /**
  *
- * 用于打印HTML、BODY元素的页面打印器
+ * 鐢ㄤ簬鎵撳嵃HTML BODY鐨勬墦鍗板櫒
  *
  * Created by kingbox on 2016/2/17.
  */
 public interface HTMLPagePrinter {
 
+    /**
+     * 鎵撳嵃椤甸潰
+     * 
+     * @param page
+     * @param javascriptFiles
+     * @param pageContextInfo
+     */
     public void print(Page page, List<String> javascriptFiles, PageContextInfo pageContextInfo);
 }
