@@ -20,7 +20,7 @@ public class HTMLPage extends Page {
 	 * 画出页面标题
 	 */
 	@Override
-	protected void paintTitle() {
+    public void paintTitle() {
 		getPageContextInfo().write("<title>");
 		getPageContextInfo().write(getTitle());
 		getPageContextInfo().write("</title>");

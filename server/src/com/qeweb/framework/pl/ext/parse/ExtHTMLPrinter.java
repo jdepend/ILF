@@ -28,11 +28,11 @@ public class ExtHTMLPrinter implements HTMLPagePrinter {
         pageContextInfo.write("<head>");
         pageContextInfo.write("<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\" />");
         this.paintHeader(page, javascriptFiles, pageContextInfo);
+        page.setStyle();
+        page.paintTitle();
         pageContextInfo.write("</head>");
-        pageContextInfo.write("<body>");
         page.paint();
 //        this.paintFooter(pageContextInfo);
-        pageContextInfo.write("</body>");
         pageContextInfo.write("</html>");
     }
 

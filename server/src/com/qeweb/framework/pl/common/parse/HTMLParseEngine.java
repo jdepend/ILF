@@ -21,8 +21,6 @@ import java.util.*;
  */
 public class HTMLParseEngine {
 
-    private HTMLPagePrinter pagePrinter;
-
     private Map<String, List<String>> javascripts;
 
     private static final String JAVASCRIPT_FILE = "html/javascript_files.ini";
@@ -55,15 +53,7 @@ public class HTMLParseEngine {
             e.printStackTrace();
         }
 
-        if(DisplayType.isHtml()){
-            pagePrinter = new ExtHTMLPrinter();
-        }else if(DisplayType.isExt()){
-            pagePrinter = new ExtHTMLPrinter();
-        }else if(DisplayType.isBootstrap()){
-            pagePrinter = new BootstrapHTMLPrinter();
-        }else{
-            throw new IllegalArgumentException("DisplayType[" + DisplayType.getDisplayType() +"]不应该被HTMLParseEngine调用。");
-        }
+
     }
 
     public static HTMLParseEngine getInstance() {
@@ -71,6 +61,18 @@ public class HTMLParseEngine {
             htmlParseEngine = new HTMLParseEngine();
         }
         return htmlParseEngine;
+    }
+
+    private HTMLPagePrinter getHTMLPagePrinter(){
+        if(DisplayType.isHtml()){
+            return new ExtHTMLPrinter();
+        }else if(DisplayType.isExt()){
+            return new ExtHTMLPrinter();
+        }else if(DisplayType.isBootstrap()){
+            return new BootstrapHTMLPrinter();
+        }else{
+            throw new IllegalArgumentException("DisplayType[" + DisplayType.getDisplayType() +"]不应该被HTMLParseEngine调用。");
+        }
     }
 
     /**
@@ -117,7 +119,7 @@ public class HTMLParseEngine {
         Page page = XMLPageUtil.getPage(plContent, pageContextInfo);
         List<String> javascriptFiles = this.javascripts.get(file.getName().substring(0, file.getName().indexOf(".")));
 
-        this.pagePrinter.print(page, javascriptFiles,pageContextInfo);
+        this.getHTMLPagePrinter().print(page, javascriptFiles,pageContextInfo);
     }
 
     public static void main(String args[]) {

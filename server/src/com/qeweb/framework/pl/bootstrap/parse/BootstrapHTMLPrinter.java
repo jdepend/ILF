@@ -24,11 +24,11 @@ public class BootstrapHTMLPrinter implements HTMLPagePrinter {
         pageContextInfo.write("<meta name=\"viewport\" content=\"user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height\" />\n");
 
         this.paintHeader(page, javascriptFiles, pageContextInfo);
+        page.setStyle();
+        page.paintTitle();
         pageContextInfo.write("</head>");
-        pageContextInfo.write("<body>");
         page.paint();
 //        this.paintFooter(pageContextInfo);
-        pageContextInfo.write("</body>");
         pageContextInfo.write("</html>");
     }
 

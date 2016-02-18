@@ -75,8 +75,7 @@ abstract public class Page extends ViewComponent {
 	public void paint() {
 		init();
 		paintContent();
-		paintDataIsland();
-		paintReturnMsg();
+
 //		getPageContextInfo().write("</body>");
 //        getPageContextInfo().write("</html>");
 	}
@@ -160,7 +159,7 @@ abstract public class Page extends ViewComponent {
 	 * 画出数据岛
 	 * @return
 	 */
-	private void paintDataIsland(){
+	protected void paintDataIsland(){
 		//创建数据岛对象
         DataIsland dataIsland = AppManager.createDataIsland();
         String diStr = dataIsland.createDataIsland(this);
@@ -173,7 +172,7 @@ abstract public class Page extends ViewComponent {
 	/**
 	 * 画出返回的提示信息
 	 */
-	private void paintReturnMsg() {
+    protected void paintReturnMsg() {
 		getPageContextInfo().write("<input type='hidden' id='returnMsg' value=\"" + ContextUtil.getReturnMsg() + "\"/>");
 		ContextUtil.remvoeReturnMsg();
 	}
@@ -185,8 +184,6 @@ abstract public class Page extends ViewComponent {
 		if(ContainerUtil.isNull(getContainerList()))
 			return;
 
-		setStyle();
-		paintTitle();
 		paintBodyStart();
 		BusinessObject bo = getBc();
 		if (bo instanceof TipMessage) {
@@ -197,6 +194,8 @@ abstract public class Page extends ViewComponent {
 		paintContainer();
 		paintFootButton();
 		paintContainerRelation();
+        paintDataIsland();
+        paintReturnMsg();
 		paintBodyEnd();
 	}
 
@@ -207,12 +206,12 @@ abstract public class Page extends ViewComponent {
 	/**
 	 * 画出标题
 	 */
-	abstract protected void paintTitle();
+	abstract public void paintTitle();
 
 	/**
 	 * 引入页面样式
 	 */
-	protected void setStyle() {
+	public void setStyle() {
 		PageStyle pageStyle = new PageStyle(styleStr);
 		Style style = pageStyle.getStyle();
 		if(style == null)

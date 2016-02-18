@@ -14,7 +14,7 @@ public class AndroidPage extends HTMLPage {
 	 * 画出页面标题
 	 */
 	@Override
-	protected void paintTitle() {
+    public void paintTitle() {
 		PageContextInfo out = getPageContextInfo();
 		out.write("<div class=\"toolbar\">");
 		out.write("<h1>" + getTitle() + "</h1>");

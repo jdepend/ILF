@@ -11,13 +11,14 @@ public class BootstrapPage extends Page {
 	@Override
 	protected void paintBodyStart() {
 		getPageContextInfo().write("<body>");
+        getPageContextInfo().write("<div class=\"container\">");
 	}
 
 	/**
 	 * 画出页面标题
 	 */
 	@Override
-	protected void paintTitle() {
+    public void paintTitle() {
 		getPageContextInfo().write("<title>");
 		getPageContextInfo().write(getTitle());
 		getPageContextInfo().write("</title>");
@@ -44,7 +45,8 @@ public class BootstrapPage extends Page {
 
     @Override
     protected void paintBodyEnd() {
-
+        getPageContextInfo().write("</div>");
+        getPageContextInfo().write("</body>");
     }
 
     @Override

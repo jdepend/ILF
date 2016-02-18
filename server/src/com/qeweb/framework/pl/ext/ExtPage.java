@@ -9,6 +9,8 @@ import java.util.Set;
 
 import com.qeweb.framework.bc.BOHelper;
 import com.qeweb.framework.bc.BusinessComponent;
+import com.qeweb.framework.bc.BusinessObject;
+import com.qeweb.framework.bc.ia.TipMessage;
 import com.qeweb.framework.common.internation.AppLocalization;
 import com.qeweb.framework.common.pageflow.ContextUtil;
 import com.qeweb.framework.common.utils.ContainerUtil;
@@ -27,9 +29,40 @@ import com.qeweb.framework.pl.JSTemplate;
 import com.qeweb.framework.pl.ext.coarsegrained.ExtContainerHelper;
 
 public class ExtPage extends Page {
+
+    /**
+     * 画出整个页面信息
+     */
+    @Override
+    public void paint() {
+        init();
+        paintContent();
+        paintDataIsland();
+        paintReturnMsg();
+    }
+
+    /**
+     * 画出页面内容
+     */
+    public void paintContent() {
+        if(ContainerUtil.isNull(getContainerList()))
+            return;
+
+        paintBodyStart();
+        BusinessObject bo = getBc();
+        if (bo instanceof TipMessage) {
+            TipMessage tipMessage = (TipMessage) bo;
+            paintTipMessage(tipMessage.getTipMessageTitle(), tipMessage.getTipMessageContent());
+        }
+        paintHeadButton();
+        paintContainer();
+        paintFootButton();
+        paintContainerRelation();
+        paintBodyEnd();
+    }
 	
 	@Override
-	protected void paintTitle() {
+	public void paintTitle() {
 		PageContextInfo out = getPageContextInfo();
 		out.write("<title>");
 		out.write(getTitle());
@@ -38,25 +71,26 @@ public class ExtPage extends Page {
 
 	@Override
 	protected void paintBodyStart() {
-		PageContextInfo out = getPageContextInfo();
-		out.write("<body>");
+
+        PageContextInfo out = getPageContextInfo();
+//		out.write("<body>");
 //		out.write("<div id='extMain'></div>");
-		out.write(JSTemplate.getJsHead());
-		//粗粒度组件
-		out.write("var itemArray = [];");
-		//formPanelArr和recordWinArr是table组件的弹出框(新增/修改/查看弹出框),formPanel包含在recordWin中;
-		//formDislandlArr是其对应的数据岛;
-		//其中recordWinArr和formPanelArr的下标是按钮的id, 增/改/查看可公用同一个数据岛, 故formDislandlArr的下标是tableId
-		out.write("var recordWinArr = [];");
-		out.write("var formPanelArr = [];");
-		out.write("var formDislandlArr = [];");
-		out.write("var observableArr = [];");
-		out.write("Ext.onReady(function() {");
-		out.write("Ext.QuickTips.init();");
-		out.write("Ext.form.Field.prototype.msgTarget = '" + DisplayType.getMsgTarget() + "';");
-		out.write("Ext.apply(Ext.QuickTips.getQuickTip(), {maxWidth: 500,minWidth: 100,showDelay: 120,trackMouse: true});");
+        out.write(JSTemplate.getJsHead());
+        //粗粒度组件
+        out.write("var itemArray = [];");
+        //formPanelArr和recordWinArr是table组件的弹出框(新增/修改/查看弹出框),formPanel包含在recordWin中;
+        //formDislandlArr是其对应的数据岛;
+        //其中recordWinArr和formPanelArr的下标是按钮的id, 增/改/查看可公用同一个数据岛, 故formDislandlArr的下标是tableId
+        out.write("var recordWinArr = [];");
+        out.write("var formPanelArr = [];");
+        out.write("var formDislandlArr = [];");
+        out.write("var observableArr = [];");
+        out.write("Ext.onReady(function() {");
+        out.write("Ext.QuickTips.init();");
+        out.write("Ext.form.Field.prototype.msgTarget = '" + DisplayType.getMsgTarget() + "';");
+        out.write("Ext.apply(Ext.QuickTips.getQuickTip(), {maxWidth: 500,minWidth: 100,showDelay: 120,trackMouse: true});");
 	}
-	
+
 	/**
 	 * 页面加载时的提示信息, 通常可以用来实现消息提醒功能.
 	 * @param title			提示消息标题
@@ -86,22 +120,23 @@ public class ExtPage extends Page {
 
 	@Override
 	protected void paintBodyEnd() {
-		PageContextInfo out = getPageContextInfo();
+        PageContextInfo out = getPageContextInfo();
+
         out.write("if(itemArray.length >= 1){");
         paintContainerLayout();
         out.write("}");
         out.write("addDomListener();"); //事件注册
         out.write("showReturnMsg();"); 	//弹出操作成功提示信息
-		String errorMsg = ContextUtil.getTipMsg();
-		if(StringUtils.isNotEmpty(errorMsg)){
-			out.write("ResultMessage.showErrMsg('");
-			out.write(errorMsg);
-			out.write("');");
-		}	
-		out.write("});");
-		out.write(JSTemplate.getJsEnd());
+        String errorMsg = ContextUtil.getTipMsg();
+        if(StringUtils.isNotEmpty(errorMsg)){
+            out.write("ResultMessage.showErrMsg('");
+            out.write(errorMsg);
+            out.write("');");
+        }
+        out.write("});");
+        out.write(JSTemplate.getJsEnd());
 	}
-	
+
 
 	@Override
 	protected void paintHeadButton() {

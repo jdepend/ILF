@@ -129,9 +129,14 @@ final public class DisplayType {
 	 * @return
 	 */
 	static public String getDisplayType() {
-
-//    	String displayType = ConstantAppProp.DISPLAYTYPE_EXT;
         String displayType = Envir.getRequest().getParameter("displayType");
+        if(!StringUtils.isEmptyStr(displayType)){
+            setDisplayInSession(displayType);
+            return displayType;
+        }else{
+            return ContextUtil.getDisplayType_Session();
+        }
+//    	String displayType = ConstantAppProp.DISPLAYTYPE_EXT;
         /**
          * 通过请求head UserAgent 获取客户终端类型
          */
@@ -151,35 +156,35 @@ final public class DisplayType {
 //        }
 		//注：此处不能使用 else if
 		//从request参数中获取
-		if(StringUtils.isEmptyStr(displayType)) {
-			displayType = Envir.getRequest().getParameter(Constant.SESSION_DISPLAYTYPE);
-			setDisplayInSession(displayType);
-		}
-
-		//从消息上下文中获取
-		if(StringUtils.isEmptyStr(displayType) && MsgService.useable()) {
-			displayType = ContextUtil.getDisplayType_Session();
-		}
-
-		//从cookie中获取
-		if(StringUtils.isEmptyStr(displayType)) {
-			displayType = AppCookie.getDisplayType();
-			setDisplayInSession(displayType);
-		}
-
-		//从全局配置文件中获取
-		if(StringUtils.isEmptyStr(displayType)) {
-			displayType = AppConfig.getDisplayType();
-			setDisplayInSession(displayType);
-		}
-		
-		//最后的校验, 保证displayType不为空
-		if(StringUtils.isEmptyStr(displayType)) {
-			displayType = ConstantAppProp.DISPLAYTYPE_EXT;
-			setDisplayInSession(displayType);
-		}
-
-		return displayType;
+//		if(StringUtils.isEmptyStr(displayType)) {
+//			displayType = Envir.getRequest().getParameter(Constant.SESSION_DISPLAYTYPE);
+//			setDisplayInSession(displayType);
+//		}
+//
+//		//从消息上下文中获取
+//		if(StringUtils.isEmptyStr(displayType) && MsgService.useable()) {
+//			displayType = ContextUtil.getDisplayType_Session();
+//		}
+//
+//		//从cookie中获取
+//		if(StringUtils.isEmptyStr(displayType)) {
+//			displayType = AppCookie.getDisplayType();
+//			setDisplayInSession(displayType);
+//		}
+//
+//		//从全局配置文件中获取
+//		if(StringUtils.isEmptyStr(displayType)) {
+//			displayType = AppConfig.getDisplayType();
+//			setDisplayInSession(displayType);
+//		}
+//
+//		//最后的校验, 保证displayType不为空
+//		if(StringUtils.isEmptyStr(displayType)) {
+//			displayType = ConstantAppProp.DISPLAYTYPE_EXT;
+//			setDisplayInSession(displayType);
+//		}
+//
+//		return displayType;
 	}
 
 	private static void setDisplayInSession(String displayType) {
