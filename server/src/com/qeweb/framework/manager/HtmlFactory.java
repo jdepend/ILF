@@ -2,12 +2,7 @@ package com.qeweb.framework.manager;
 
 import com.qeweb.framework.pal.MainMenu;
 import com.qeweb.framework.pal.Page;
-import com.qeweb.framework.pal.coarsegrained.CheckTree;
-import com.qeweb.framework.pal.coarsegrained.Form;
-import com.qeweb.framework.pal.coarsegrained.Menu;
-import com.qeweb.framework.pal.coarsegrained.Tab;
-import com.qeweb.framework.pal.coarsegrained.Table;
-import com.qeweb.framework.pal.coarsegrained.Tree;
+import com.qeweb.framework.pal.coarsegrained.*;
 import com.qeweb.framework.pal.control.CommandButton;
 import com.qeweb.framework.pal.finegrained.SourceBtn;
 import com.qeweb.framework.pal.finegrained.enumcomp.CheckBox;
@@ -185,4 +180,9 @@ public class HtmlFactory extends VCFactory {
 	protected Editor createEditor() {
 		return new HtmlEditor();
 	}
+
+    @Override
+    protected Navbar createNavbar() {
+        return null;
+    }
 }

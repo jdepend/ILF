@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <qeweb:page>
-        <qeweb:navbar>
-            <qeweb:label text="演示页面"/>
-        </qeweb:navbar>
-		<qeweb:form id="orgForm" bind="vendorBO" queryRange="true" text="com.qeweb.sysmanage.purview.bo.org.VendorBO" layout="1;C3:textArea">
+        <qeweb:navbar text="演示页面"/>
+        <qeweb:form id="orgForm" bind="vendorBO" queryRange="true" text="com.qeweb.sysmanage.purview.bo.org.VendorBO" layout="1;C3:textArea">
 			<qeweb:textField id="id1" bind="orgCode" text="com.qeweb.sysmanage.purview.bo.org.VendorBO.orgCode"/>
 			<qeweb:textField id="id2" bind="orgName" text="com.qeweb.sysmanage.purview.bo.org.VendorBO.orgName"/>
 			<qeweb:textField id="id3" bind="orgEngName"/>

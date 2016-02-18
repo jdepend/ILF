@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import com.qeweb.framework.pal.coarsegrained.*;
 import org.jdom.Document;
 import org.jdom.Element;
 
@@ -16,10 +17,6 @@ import com.qeweb.framework.manager.BOManager;
 import com.qeweb.framework.pal.Page;
 import com.qeweb.framework.pal.PageContextInfo;
 import com.qeweb.framework.pal.ViewComponent;
-import com.qeweb.framework.pal.coarsegrained.Container;
-import com.qeweb.framework.pal.coarsegrained.Form;
-import com.qeweb.framework.pal.coarsegrained.Tab;
-import com.qeweb.framework.pal.coarsegrained.Table;
 import com.qeweb.framework.pal.control.CommandButton;
 import com.qeweb.framework.pal.finegrained.FinegrainedComponent;
 import com.qeweb.framework.pal.handler.BtnInitHandler;
@@ -48,6 +45,7 @@ public class AnalyzeJspUtil {
 	final static public String DOC_GROUP = "qeweb-group";
 	final static public String DOC_EXPEND = "qeweb-expend";
 
+    final static public String DOC_NAVBAR = "qeweb-navbar";
 	final static public String DOC_FORM = "qeweb-form";
 	final static public String DOC_TABLE = "qeweb-table";
 	final static public String DOC_TAB = "qeweb-tab";
@@ -221,7 +219,12 @@ public class AnalyzeJspUtil {
 			container = tab;
 			containerBean = new ContainerBean();
 			containerHandler = new ContainerInitHandler();
-		}
+		}else if(isNavbarEl((element))){
+            Navbar navbar = (Navbar)AppManager.createVC(Navbar.class);
+            container = navbar;
+            containerBean = new ContainerBean();
+            containerHandler = new ContainerInitHandler();
+        }
 
 		if(container == null)
 			return null;
@@ -249,6 +252,15 @@ public class AnalyzeJspUtil {
 		}
 		return container;
 	}
+
+    /**
+     * element 是否是narbar element
+     * @param element
+     * @return
+     */
+    private static boolean isNavbarEl(Element element) {
+        return StringUtils.isEqualIgnoreCase(DOC_NAVBAR, element.getName());
+    }
 
 	/**
 	 * element 是否是form element

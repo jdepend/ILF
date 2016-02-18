@@ -6,7 +6,7 @@ import com.qeweb.framework.pal.finegrained.text.TextField;
 import com.qeweb.framework.pl.html.HTMLWebHelper;
 
 /**
- * HTMLTextField
+ * BootstrapTextField
  */
 public class BootstrapTextField extends TextField {
 
