@@ -10,7 +10,7 @@ public class BootstrapCommandButton extends CommandButton {
 	public void paint() {
 		StringBuilder sbr = new StringBuilder();
         sbr.append("<div class=\"form-group\">\n");
-        sbr.append("<div class=\"col-xs-12\" style=\"text-align: center;\">\n");
+        sbr.append("<div class=\"col-xs-12 text-center\">\n");
 
         sbr.append("<button class=\"btn btn-primary\" style=\"width:20%\"");
         HTMLWebHelper.appendAttr(sbr, "id", getId());
