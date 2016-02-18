@@ -30,6 +30,7 @@ public class HTMLParseEngine {
     private static HTMLParseEngine htmlParseEngine;
 
     private HTMLParseEngine() {
+        //初始化javascripts
         javascripts = new LinkedHashMap<String, List<String>>();
         List<String> jsFiles;
         Properties props = new Properties();
