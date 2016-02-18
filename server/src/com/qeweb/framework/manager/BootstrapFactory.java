@@ -13,6 +13,7 @@ import com.qeweb.framework.pal.finegrained.other.*;
 import com.qeweb.framework.pal.finegrained.text.*;
 import com.qeweb.framework.pl.bootstrap.BootstrapPage;
 import com.qeweb.framework.pl.bootstrap.coarsegrained.BootstrapForm;
+import com.qeweb.framework.pl.bootstrap.finegrained.text.BootstrapTextField;
 import com.qeweb.framework.pl.html.HTMLPage;
 import com.qeweb.framework.pl.html.coarsegrained.*;
 import com.qeweb.framework.pl.html.control.HTMLCommandButton;
@@ -40,7 +41,7 @@ public class BootstrapFactory extends VCFactory {
 	
 	@Override
 	protected TextField createTextField() {
-		return new HTMLTextField();
+		return new BootstrapTextField();
 	}
 	
 	@Override
