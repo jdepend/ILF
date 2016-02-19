@@ -46,11 +46,18 @@ public class BootstrapForm extends Form {
 	private void paintBtnList() {
 		if (ContainerUtil.isNotNull(getButtonList())) {
 			PageContextInfo out = getPageContextInfo();
+
+            out.write("<div class=\"form-group\">\n");
+            out.write("<div class=\"col-xs-12 text-center\">\n");
+
 			Map<String, CommandButton> buttonList = getButtonList();
 			for (String bind : buttonList.keySet()) {
 				CommandButton commandButton = buttonList.get(bind);
 				commandButton.paint();
 			}
+
+            out.write("</div>\n");
+            out.write("</div>\n");
 		}
 	}
 

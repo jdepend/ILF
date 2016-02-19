@@ -9,8 +9,7 @@ public class BootstrapCommandButton extends CommandButton {
 	@Override
 	public void paint() {
 		StringBuilder sbr = new StringBuilder();
-        sbr.append("<div class=\"form-group\">\n");
-        sbr.append("<div class=\"col-xs-12 text-center\">\n");
+
 
         sbr.append("<button class=\"btn btn-primary\" style=\"width:20%\"");
         HTMLWebHelper.appendAttr(sbr, "id", getId());
@@ -19,9 +18,7 @@ public class BootstrapCommandButton extends CommandButton {
         HTMLWebHelper.appendEndTag(sbr);
         sbr.append(getText()+"</button>\n");
 
-        sbr.append("</div>\n");
-        sbr.append("</div>\n");
-		getPageContextInfo().write(sbr.toString());
+    	getPageContextInfo().write(sbr.toString());
 	}
 	
 }
