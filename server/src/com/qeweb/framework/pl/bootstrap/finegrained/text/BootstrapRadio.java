@@ -16,11 +16,7 @@ public class BootstrapRadio extends Radio {
 			BOProperty bop = getBc();
 			StringBuilder sbr = new StringBuilder();
 
-            sbr.append("<div class=\"form-group\" >\n");
-            sbr.append("<label for=\"" + getId() + "\" class=\"col-xs-4 control-label\" style=\"text-align: right;\">" + getText() + "：</label>\n");
-            sbr.append("<div class=\"col-xs-8\">\n");
-
-			int index = 0;
+     		int index = 0;
 			Map<String, String> store = bop.toMap();
 			for(String key : store.keySet()){
                 sbr.append("<label class=\"radio-inline\">\n");
@@ -35,11 +31,7 @@ public class BootstrapRadio extends Radio {
                 sbr.append("</label>\n");
 
 	        }
-
-            sbr.append("</div>\n");
-            sbr.append("</div>\n");
-
-			getPageContextInfo().write(sbr.toString());
+    		getPageContextInfo().write(sbr.toString());
 		} catch(Exception e){
 			e.printStackTrace();
 		}

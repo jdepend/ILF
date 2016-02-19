@@ -51,8 +51,18 @@ public class BootstrapForm extends Form {
 		Map<String, FinegrainedComponent> fcList = getFcList();
 
 		for (String bopBind : fcList.keySet()) {
-			FinegrainedComponent fc = fcList.get(bopBind);
-			fc.paint();
-		}
+            FinegrainedComponent fc = fcList.get(bopBind);
+
+            String id = this.getBcId() + "." + fc.getId();
+            String name = fc.getName();
+            String text = fc.getText();
+
+            out.write("<div class=\"form-group\" id=\"" + id + "_group\">\n");
+            out.write("<label for=\"" + name + "\" class=\"col-xs-4 control-label\" style=\"text-align: right;\">" + text + "：</label>\n");
+            out.write("<div class=\"col-xs-8\">\n");
+            fc.paint();
+            out.write("</div>\n");
+            out.write("</div>\n");
+	}
 	}
 }
