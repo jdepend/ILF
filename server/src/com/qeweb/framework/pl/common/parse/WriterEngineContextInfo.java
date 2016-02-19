@@ -1,5 +1,6 @@
 package com.qeweb.framework.pl.common.parse;
 
+import com.qeweb.framework.common.Envir;
 import com.qeweb.framework.pal.PageContextInfo;
 
 import java.io.*;
@@ -24,8 +25,7 @@ public class WriterEngineContextInfo extends PageContextInfo {
 
 	@Override
 	public String getContextPath() {
-		// TODO Auto-generated method stub
-		return null;
+		return Envir.getContextPath();
 	}
 
 	@Override

@@ -20,7 +20,19 @@ public class BootstrapForm extends Form {
 		PageContextInfo out = getPageContextInfo();
 		StringBuilder sbr = new StringBuilder();
 
-        sbr.append("<form class=\"form-horizontal\" style=\"padding: 10px 10px\">");
+        HTMLWebHelper.appendStartTag(sbr, "form");
+        HTMLWebHelper.appendAttr(sbr, "name", getName());
+        HTMLWebHelper.appendAttr(sbr, "class", "form-horizontal");
+        HTMLWebHelper.appendAttr(sbr, "action", out.getContextPath()
+                + ConstantURL.CONTAINER_SUBMIT);
+        if (getBc().getStatus().isHidden()) {
+            HTMLWebHelper.appendAttr(sbr, "style", "display:none");
+        }else{
+            HTMLWebHelper.appendAttr(sbr, "style", "padding: 10px 10px");
+        }
+        HTMLWebHelper.appendAttr(sbr, "method", "post");
+        HTMLWebHelper.appendEndTag(sbr);
+
 		out.write(sbr.toString());
 
 		paintFCList();
