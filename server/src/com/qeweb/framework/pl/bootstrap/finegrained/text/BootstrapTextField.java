@@ -18,7 +18,14 @@ public class BootstrapTextField extends TextField {
         String id = this.getParent().getBcId() + "." + getId();
         String name = getName();
 
-        sbr.append("<input class=\"form-control\" name=\"" + name + "\" id=\"" + id + "\" type=\"TEXT\" value=\"" + bop.toText() + "\" required=\"\">\n");
+        sbr.append("<input class=\"form-control\"");
+        HTMLWebHelper.appendAttr(sbr, "name", getName());
+        HTMLWebHelper.appendAttr(sbr, "id", id);
+        HTMLWebHelper.appendAttr(sbr, "value", bop.toText());
+        if(bop.getRange().isRequired()){
+            sbr.append(" required");
+        }
+        HTMLWebHelper.appendEndTag(sbr);
 
         getPageContextInfo().write(sbr.toString());
     }
