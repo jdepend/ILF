@@ -51,6 +51,10 @@
         <put-attribute name="workspaceBody" value="/WEB-INF/jsp/demo/{1}/{2}.jsp"/>
     </definition>
 
+    <definition name="*.*/form.defpage" extends="form.defpage">
+        <put-attribute name="javascriptBody" value="/WEB-INF/jsp/demo/{1}/{2}.jsp"/>
+    </definition>
+
     <definition name="*.*/test.page.defpage" extends="one.page.defpage">
         <put-attribute name="workspaceBody" value="/WEB-INF/jsp/{1}/{2}.jsp"/>
     </definition>

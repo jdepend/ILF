@@ -39,4 +39,6 @@
 
     <definition name="page.tab.defpage" extends="tab.defitem" template="/WEB-INF/jsp/layout/TabLayout.jsp"/>
 
+    <definition name="form.defpage" extends="base.defitem" template="/WEB-INF/jsp/layout/formLayout.jsp"/>
+
 </tiles-definitions>

@@ -21,6 +21,7 @@ public class BootstrapForm extends Form {
 		StringBuilder sbr = new StringBuilder();
 
         HTMLWebHelper.appendStartTag(sbr, "form");
+        HTMLWebHelper.appendAttr(sbr, "id", getId());
         HTMLWebHelper.appendAttr(sbr, "name", getName());
         HTMLWebHelper.appendAttr(sbr, "class", "form-horizontal");
         HTMLWebHelper.appendAttr(sbr, "action", out.getContextPath()
@@ -48,7 +49,7 @@ public class BootstrapForm extends Form {
 			PageContextInfo out = getPageContextInfo();
 
             out.write("<div class=\"form-group\">\n");
-            out.write("<div class=\"col-xs-12 text-center\">\n");
+            out.write("<div id=\"buttonArea\" class=\"col-xs-12 text-center\">\n");
 
 			Map<String, CommandButton> buttonList = getButtonList();
 			for (String bind : buttonList.keySet()) {

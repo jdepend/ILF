@@ -33,7 +33,7 @@ public class ObjectController extends BaseController{
 
         this.processModelMap(model, this.getPageMetaDataModel(), "object/sample/eventdata");
 
-        return "event.object/one.page.defpage";
+        return "event.object/form.defpage";
     }
 
     @RequestMapping(value = "sample/eventdata", method = RequestMethod.GET)
@@ -96,6 +96,12 @@ public class ObjectController extends BaseController{
         cycle_current.setUiState(FormElement.NODISPLAY);
 
         formObject.addElement(cycle_current);
+
+        FormElement submit = new FormElement("submitBtn");
+        submit.setTitle("提交");
+        submit.setUiType(FormElement.BUTTON);
+
+        formObject.addElement(submit);
 
         return new PageMetaDataModel(formObject);
 

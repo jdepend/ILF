@@ -15,6 +15,7 @@ public class BootstrapCommandButton extends CommandButton {
         HTMLWebHelper.appendAttr(sbr, "id", getId());
         HTMLWebHelper.appendAttr(sbr, "name", getName());
         HTMLWebHelper.appendAttr(sbr, "type", "button");
+        HTMLWebHelper.appendAttr(sbr, "operate", getOperate());
         HTMLWebHelper.appendEndTag(sbr);
         sbr.append(getText()+"</button>\n");
 

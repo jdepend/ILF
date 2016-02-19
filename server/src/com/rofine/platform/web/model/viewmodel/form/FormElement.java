@@ -22,6 +22,7 @@ public class FormElement {
     public static final String AREA = "AREA";
     public static final String SELECT = "SELECT";
     public static final String RADIO = "RADIO";
+    public static final String BUTTON = "BUTTON";
 
     //界面状态
     private String uiState;
