@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <qeweb:page>
-    <qeweb:navbar text="演示页面"/>
+    <qeweb:navbar text="组列表页面"/>
     <qeweb:title bind="queryInfoBO">
         <qeweb:icon bind="icon"/>
         <qeweb:label bind="info"/>
