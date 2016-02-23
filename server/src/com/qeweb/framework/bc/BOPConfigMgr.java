@@ -78,7 +78,13 @@ public class BOPConfigMgr {
     }
 
     public Map<String, List<String>> getConfig(String className){
-        return this.configs.get(className);
+
+        Map<String, List<String>> config = this.configs.get(className);
+        if(config == null){
+            config = this.configs.get(className.substring(className.lastIndexOf('.'), className.length()));
+        }
+
+        return config;
     }
 
     public void reset(){

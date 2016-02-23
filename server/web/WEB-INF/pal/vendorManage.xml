@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <qeweb:page onLoad="orgForm.query">
-	<qeweb:group relations="orgForm:orgTable">
-		<qeweb:form id="orgForm" bind="vendorBO" queryRange="true" text="com.qeweb.sysmanage.purview.bo.org.VendorBO" layout="3;C3:textArea">
-			<qeweb:textField id="id1" bind="orgCode" text="com.qeweb.sysmanage.purview.bo.org.VendorBO.orgCode"/>
-			<qeweb:textField id="id2" bind="orgName" text="com.qeweb.sysmanage.purview.bo.org.VendorBO.orgName"/>
-			<qeweb:textField id="id3" bind="orgEngName"/>
-			<qeweb:textArea id="id4" bind="orgDesc"/>
-			<qeweb:radio id="id5" bind="orgType" />
-			<qeweb:commandButton name="query" operate="query"/>
-			<qeweb:commandButton name="sysReset" operate="sysReset"/>
-			<qeweb:commandButton name="exp" operate="export" text="exp" />
-		</qeweb:form>
-		 
-	</qeweb:group>
+    <qeweb:form id="orgForm" bind="vendorBO" text="com.qeweb.sysmanage.purview.bo.org.VendorBO" layout="3;C3:textArea">
+        <qeweb:textField id="id1" bind="orgCode" text="com.qeweb.sysmanage.purview.bo.org.VendorBO.orgCode"/>
+        <qeweb:textField id="id2" bind="orgName" text="com.qeweb.sysmanage.purview.bo.org.VendorBO.orgName"/>
+        <qeweb:textField id="id3" bind="orgEngName"/>
+        <qeweb:textArea id="id4" bind="orgDesc"/>
+        <qeweb:radio id="id5" bind="orgType"/>
+        <qeweb:commandButton name="query" operate="query"/>
+        <qeweb:commandButton name="sysReset" operate="sysReset"/>
+        <qeweb:commandButton name="exp" operate="export" text="exp"/>
+    </qeweb:form>
 </qeweb:page>
 

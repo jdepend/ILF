@@ -48,7 +48,8 @@
                     <ul class="dropdown-menu">
                         <li><a href="#" id="html_create">Html生成</a></li>
                         <li><a href="#" id="bop_rel1">BOP 关联</a></li>
-                        <li><a href="#" id="bop_form">表单</a></li>
+                        <li><a href="#" id="bop_form">表单展示</a></li>
+                        <li><a href="#" id="bop_grouplist">组列表展示</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -93,6 +94,11 @@
         $("#bop_form").click(
                 function(){
                     requestFirstPage("<%=basePath%>/vsr/page/init/vendorManage2?displayType=bootstrap");
+                }
+        );
+        $("#bop_grouplist").click(
+                function(){
+                    requestFirstPage("<%=basePath%>/vsr/page/init/groupList?displayType=bootstrap");
                 }
         );
         //例子

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<bopconfig>
+    <bop bind="orgCode">
+        <value></value>
+        <status />
+        <range required="true" minlength="1" maxlength="20"></range>
+    </bop>
+    <bop bind="orgName">
+        <value></value>
+        <status />
+        <range required="true" minlength="1" maxlength="50"></range>
+    </bop>
+    <bop bind="orgEngName">
+        <value></value>
+        <status />
+        <range maxlength="100"></range>
+    </bop>
+    <bop bind="orgDesc">
+        <value></value>
+        <status />
+        <range maxlength="200"></range>
+    </bop>
+    <bop bind="orgType" isrelate="true" class="com.qeweb.sysmanage.purview.bop.OrgTypeBOP">
+        <value>
+            2
+        </value>
+        <status />
+        <range>
+            <enum rule="AND">
+                <item value="1" label="采购商" />
+                <item value="2" label="供应商" />
+            </enum>
+        </range>
+    </bop>
+
+</bopconfig>
