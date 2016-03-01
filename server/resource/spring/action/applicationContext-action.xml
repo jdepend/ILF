@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans default-autowire="byName" default-lazy-init="false">
+	
+	<!-- 服务器端校验 -->
+	<bean id="SValidate" class="com.qeweb.framework.app.action.SValidateAC" scope="prototype"></bean>
+	
+	<!-- bop提交 -->
+	<bean id="finegrainedSubmitAC" class="com.qeweb.framework.app.action.FinegrainedSubmitAC" scope="prototype"></bean>
+	
+	<!-- 查看jsp源码 -->
+	<bean id="seeJSPSrc" class="com.qeweb.framework.app.action.SeeJspSrc" scope="prototype"></bean>
+	
+	<!-- 遍历所有bop-->
+	<bean id="localizationAC" class="com.qeweb.framework.app.action.LocalizationAC" scope="prototype"></bean>
+	
+	<!-- bo操作 -->
+	<bean id="generalAC" class="com.qeweb.framework.app.pageflow.impl.GeneralACWebImpl" scope="prototype">
+		<property name="qewebLog" ref="qewebLog" />
+	</bean>
+	
+	<!-- 保存查询条件 -->
+	<bean id="saveCaseAC" class="com.qeweb.framework.app.action.SaveCaseAC" scope="prototype">
+		<property name="saveCaseService" ref="saveCaseService"></property>
+	</bean>
+	<bean id="saveCaseService" class="com.qeweb.framework.common.syssetting.savecase.service.impl.SaveCaseServiceImpl">
+		<property name="saveCaseDao" ref="saveCaseDao"></property>
+	</bean>
+	<bean id="saveCaseDao" class="com.qeweb.framework.common.syssetting.savecase.dao.impl.SaveCaseDaoImpl_DB">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	
+	<!-- 保存表格设置, 表格设置将记录表格的隐藏列,列宽,列的位置 -->
+	<bean id="tableSettingAC" class="com.qeweb.framework.app.action.TableSettingAC" scope="prototype">
+		<property name="tableSettingService" ref="tableSettingService"></property>
+	</bean>
+	<bean id="tableSettingService" class="com.qeweb.framework.common.syssetting.tablesetting.service.impl.TableSettingServiceImpl">
+		<property name="tableSettingDao" ref="tableSettingDao"></property>
+	</bean>
+	<bean id="tableSettingDao" class="com.qeweb.framework.common.syssetting.tablesetting.dao.impl.TableSettingDaoImpl_DB">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	
+	<!-- 文件上传 -->
+	<bean id="fileHandleAC" class="com.qeweb.framework.app.action.FileHandleAC" scope="prototype"></bean>
+	
+	<!-- 富文本编辑器中上传图片 -->
+	<bean id="imgUploadAC" class="com.qeweb.framework.app.action.ImgUploadAC" scope="prototype"></bean>
+	
+	<!-- 文件下载 -->
+	<bean id="downloadAC" class="com.qeweb.framework.app.action.DownloadAC" scope="prototype"></bean>
+	
+	<!-- 改变展示类型 -->
+	<bean id="changeDisplayTypeAC" class="com.qeweb.framework.app.action.ChangeDisplayTypeAC" scope="prototype"></bean>
+	
+	<!--	手机端程序升级-->
+	<bean id="mobileLevelUpAC" class="com.qeweb.framework.app.action.mobile.MobileLevelUpAC" scope="prototype"></bean>
+	
+	<!--	手机离线模式处理 -->
+	<bean id="mobileOffLineAC" class="com.qeweb.framework.app.action.mobile.MobileOffLineHandleAC" scope="prototype"></bean>
+	
+	<!-- 设置提示框不显示 -->
+	<bean id="changeDisplayStatusAC" class="com.qeweb.framework.app.action.ChangeDisplayStatusAC" scope="prototype"></bean>
+	
+	<!-- 将topMenu的节点信息保存至MsgService -->
+	<bean id="saveTopMenuNode" class="com.qeweb.framework.app.action.SaveTopMenuNode" scope="prototype"></bean>
+</beans>

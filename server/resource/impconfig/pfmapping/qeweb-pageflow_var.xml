@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 页面流-节点映射文件 -->
+<qeweb-pageflow-var>
+	<pageflow id="1368693050491" name="node1" moduleId="1358389945164"
+		btnName="btn1" boId="bo1" sourcePage="/WEB-INF/pages/test/test.jsp"
+		var="1369014279734,1368085522500" targetPage="/WEB-INF/pages/test/test1.jsp" />
+
+
+
+</qeweb-pageflow-var>

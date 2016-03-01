@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- qeweb平台相关配置信息 -->
+<struts>
+	<package name="qeweb" extends="struts-default" abstract="true">
+		<interceptors>
+			<interceptor-stack name="qewebStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="qewebStack" />
+	</package>
+
+	<package name="common" namespace="/system" extends="qeweb">
+		<interceptors>
+			<!-- 是否重复登录-->
+			<interceptor name="onlineUserInterceptor" class="com.qeweb.framework.app.interfactor.OnlineUserInterfactor"/>
+			<!-- 在线用户管理 -->
+			<interceptor name="onlineUserMgtInterceptor" class="com.qeweb.framework.app.interfactor.OnlineUserMgtInterceptor"/>
+			<!-- 是否需要GA处理对所有GA操作执行拦截, 判断执行哪类操作（查询、持久化、上下文跳转）-->
+			<interceptor name="operateInterceptor" class="com.qeweb.framework.app.interfactor.OperationInterceptor"/>
+			<!-- session拦截器，处理窜session问题-->
+			<interceptor name="sessionInterceptor" class="com.qeweb.framework.app.interfactor.SessionInterceptor"/>
+			<!-- 重复提交拦截器，处理窜重复提交问题(右键刷新)-->
+			<interceptor name="tokenInterceptor" class="com.qeweb.framework.app.interfactor.TokenInterceptor"/>
+			<interceptor-stack name="operateStack">
+			    <!-- 
+				<interceptor-ref name="sessionInterceptor"></interceptor-ref>
+				 -->
+				<interceptor-ref name="tokenInterceptor"></interceptor-ref>
+				<interceptor-ref name="onlineUserMgtInterceptor"></interceptor-ref>
+				<interceptor-ref name="operateInterceptor"></interceptor-ref>
+				<interceptor-ref name="qewebStack"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<!--  
+				<interceptor-ref name="onlineUserInterceptor"></interceptor-ref>
+				-->
+			</interceptor-stack>
+		</interceptors>
+		
+		<!-- 版本控制-供测试人员查看当前版本 -->
+		<action name="versionlistener">
+			 <result>/WEB-INF/pages/versionlistener/version.jsp</result>
+		</action>
+		
+		<!-- 树节点查询 -->
+		<action name="treeNodesAC" class="treeNodesAC"  method="getTreeNodes" />
+		<!-- 菜单节点查询 -->
+		<action name="menuNodesAC" class="treeNodesAC"  method="getMenuNodes" />
+		<!-- checkTree节点查询 -->
+		<action name="checkTreeNodesAC" class="treeNodesAC"  method="getCheckTreeNodes" />
+		<!-- 服务器端校验 -->
+		<action name="serverValidate" class="SValidate" />
+		<!-- bop提交 -->
+		<!-- 细细关联 -->
+		<action name="finegrainedSubmitToBopAC" class="finegrainedSubmitAC" method="executeBop"/>
+		<!-- 细粗关联 -->
+		<action name="finegrainedSubmitToBoAC" class="finegrainedSubmitAC" method="executeBo"/>
+		
+		<!-- BO的查找唯一记录操作 -->
+		<action name="generalRecordAC" class="generalAC" method="findRecord">
+			<interceptor-ref name="operateStack"/>
+		</action>
+		
+		<!-- BO的查询操作 -->
+		<action name="generalSearchAC" class="generalAC" method="search">
+			<interceptor-ref name="operateStack"/>
+		</action>
+		
+		<!-- BO的其他操作 -->
+		<action name="generalExeAC" class="generalAC">
+			<interceptor-ref name="operateStack"/>
+		</action>
+		
+		<!-- 设置上下文跳转的参数 -->
+		<action name="generalSaveParamAC" class="generalAC" method="saveParam"></action>
+		
+		<!-- 控制GA跳转 -->
+		<action name="generalredirectAC" class="generalAC" method="redirect">
+			<result>${redirectStr}</result>
+		</action>
+		
+		<!-- 文件上传操作 -->
+		<action name="fileUploadAC" class="fileHandleAC" method="upload">
+			<interceptor-ref name="qewebStack"/>
+			<interceptor-ref name="fileUpload"/>
+		</action>
+		
+		<!-- 富文本编辑器中上传图片 -->
+		<action name="imgUploadAC" class="imgUploadAC" method="upload">
+			<interceptor-ref name="qewebStack"/>
+			<interceptor-ref name="fileUpload"/>
+		</action>
+		
+		<!-- 保存查询条件 -->
+		<action name="saveCaseAC" class="saveCaseAC">
+			<!-- 
+			<interceptor-ref name="sessionInterceptor"></interceptor-ref>
+			 -->
+		</action>
+		
+		<!-- 保存表格设置, 表格设置将记录表格的隐藏列,列宽,列的位置 -->
+		<action name="tableSettingAC" class="tableSettingAC">
+			<!-- 
+			<interceptor-ref name="sessionInterceptor"></interceptor-ref>
+			 -->
+		</action>
+		
+		<!--手机端程序升级-->
+		<action name="mobileLevelUpAC" class="mobileLevelUpAC" />
+		
+		<!--手机离线模式处理 -->
+		<action name="mobileOffLineAC" class="mobileOffLineAC" />
+		
+		<!-- 导出 -->
+		<action name="export" class="generalAC" method="export"/>
+		
+		<!-- 登录界面国际化 -->
+		<action name="localization" class="localizationAC">
+			<result>/WEB-INF/pages/sysmanage/login/ext/login.jsp</result>
+		</action>
+		
+		<!-- 设置不再显示弹出式成功提示信息 -->
+		<action name="setPopupStatus" class="changeDisplayStatusAC" method="setPopupStatus"/>
+		
+		<!-- 设置不再显示操作提示信息 -->
+		<action name="setConfirmStatus" class="changeDisplayStatusAC" method="setConfirmStatus"/>
+		
+		<!-- 执行指定方法刷新指定组件 -->
+		<action name="reloadTargetVC" class="generalAC" method="reloadTargetVC">
+			<interceptor-ref name="operateStack"/>
+		</action>
+		
+		<!-- 根据页面流配置标签中的targetVC属性, 刷新全局按钮 -->
+		<action name="reloadPageBtn" class="generalAC" method="reloadPageBtn">
+			<interceptor-ref name="operateStack"/>
+		</action>
+		
+		<!-- 将topMenu的节点信息保存至MsgService -->
+		<action name="saveTopMenuNode" class="saveTopMenuNode" />
+	</package>
+</struts>

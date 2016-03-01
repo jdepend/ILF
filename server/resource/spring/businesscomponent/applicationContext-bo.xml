@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+
+<beans>
+	<!-- 断点续传 -->
+	<bean id="retryBrokenUploadBO" class="com.qeweb.framework.frameworkbo.RetryBrokenUploadBO" scope="prototype"/>
+	<!-- 自动升级 -->
+	<bean id="mobileLevelUpBO" class="com.qeweb.framework.frameworkbo.MobileLevelUpBO" scope="prototype"/>
+	<!-- 版本 -->
+	<bean id="versionBO" class="com.qeweb.framework.frameworkbo.VersionBO" scope="prototype"/>
+	<!-- 消息上下文 -->
+	<bean id="msgService" class = "com.qeweb.framework.common.msgctx.MsgServiceImpl" scope="prototype"/>
+</beans>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+
+<beans>
+	<!-- DDT -->
+	<bean id="DDTAppConfigCreator" class="com.qeweb.sysmanage.login.ddtappconfig.DDTAppConfigCreatorImpl"></bean>	
+	<!-- 当前登录用户信息 -->
+	<bean id="userCtx" class="com.qeweb.framework.common.userctx.UserContextImpl" scope="prototype"/>
+	<!-- 校验操作级权限 -->
+	<bean id="checkOptPermissions" class="com.qeweb.framework.app.permissions.CheckOptPermissionsImpl" scope="prototype"/>
+	<!-- 日志存储 -->
+	<bean id="qewebLog" class="com.qeweb.framework.log.QewebLogImpl" />
+</beans>

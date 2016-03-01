@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow-list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+          xsi:noNamespaceSchemaLocation="/WEB-INF/dtd/pageflow.xsd">
+          
+	<!-- ########################### 装载 start ########################### -->
+	<pageflow boId='demoLocalizationBO' btnName="changeToEn" 
+	    sourcePage="/WEB-INF/pages/demo/load/localization/demoLocalization.jsp"
+		targetPage="/WEB-INF/pages/demo/load/localization/demoLocalization.jsp?load=onLoad"/>
+	<pageflow boId='demoLocalizationBO' btnName="changeToZH" 
+	    sourcePage="/WEB-INF/pages/demo/load/localization/demoLocalization.jsp"
+		targetPage="/WEB-INF/pages/demo/load/localization/demoLocalization.jsp?load=onLoad"/>
+	<pageflow boId='demoDateBO' btnName="jump" isPopup="true"
+	    sourcePage="/WEB-INF/pages/demo/load/fc/demoDate.jsp"
+		targetPage="/WEB-INF/pages/demo/load/fc/demoDate.jsp"/>
+	<!-- ########################### 装载 start ########################### -->
+	
+	<!-- ########################### 交互 start ########################### -->
+	<pageflow boId='orgBO' 
+		bopBind="vendor.orgCode:orgCode;vendor.orgName:orgName" 
+		dialogWidth='800' dialogHeight='450' dialogTitle='选择组织' 
+		targetPage="/WEB-INF/pages/demo/common/demoOrgSelect.jsp"/>
+	<pageflow boId='orgBO' 
+		bopBind="orgCode1:orgCode;orgName1:orgName" 
+		targetPage="/WEB-INF/pages/demo/common/demoOrgSelect.jsp"/>
+	<pageflow boId='orgBO' 
+		bopBind="orgCode2:orgCode;orgName2:orgName" 
+		dialogWidth='800' dialogHeight='450'
+		targetPage="/WEB-INF/pages/demo/common/demoOrgSelect.jsp"/>
+	<pageflow boId='demoTreeBO' 
+		bopBind="nodeId1:id;nodeName1:value" 
+		dialogWidth='800' dialogHeight='450'
+		targetPage="/WEB-INF/pages/demo/common/demoTreeSelect.jsp"/>
+	<pageflow boId='demoTreeBO' 
+		bopBind="nodeId2:id;nodeName2:value" 
+		dialogWidth='800' dialogHeight='450'
+		targetPage="/WEB-INF/pages/demo/common/demoTreeSelect.jsp"/>
+		
+	<pageflow boId='demoPopPageBO1' 
+		bopBind="orgCode:orgCode;orgName:orgName" 
+		dialogWidth='800' dialogHeight='450'
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPop_1.jsp"/>	
+		
+	<pageflow boId='demoPopPageBO2' isPopup="true"
+		dialogWidth='500' dialogHeight='250'
+		btnName="insert" dialogTitle="新增"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_2.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPop_2.jsp"/>	
+	<pageflow boId='demoPopPageBO2' isPopup="true"
+		dialogWidth='500' dialogHeight='250'
+		btnName="update" dialogTitle="修改"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_2.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPop_2.jsp"/>
+	<pageflow boId='demoPopPageBO2' isPopup="true"
+		dialogWidth='500' dialogHeight='250'
+		btnName="freshCount" dialogTitle="刷新"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_2.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_2.jsp"/>
+	<pageflow boId='demoPopPageBO2' btnName="save" closePage="true"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPop_2.jsp"/>
+	<pageflow boId='demoPopPageBO2' btnName="fresh" closePage="true" targetVC="form.reload"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_2.jsp"/>		
+		
+	<pageflow boId='demoPopPageBO3' isPopup="true"
+		dialogWidth='500' dialogHeight='250'
+		btnName="freshCount" dialogTitle="刷新"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_3.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_3.jsp"/>
+	<pageflow boId='demoPopPageBO3' btnName="fresh" closePage="true"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_3.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_3.jsp"/>	
+		
+	<pageflow boId='demoPopPageBO4' isPopup="true"
+		dialogWidth='500' dialogHeight='250'
+		btnName="freshCount" dialogTitle="刷新"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_4.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_4.jsp"/>
+	<pageflow boId='demoPopPageBO4' btnName="fresh" closePage="true"
+		targetVC="form.reload,table"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_4.jsp"/>
+		
+	<pageflow boId='demoPopPageBO5' isPopup="true"
+		dialogWidth='500' dialogHeight='250'
+		btnName="insert" dialogTitle="新增"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_5.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPop_5.jsp"/>	
+	<pageflow boId='demoPopPageBO5' isPopup="true"
+		dialogWidth='500' dialogHeight='250'
+		btnName="update" dialogTitle="修改"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_5.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPop_5.jsp"/>
+	<pageflow boId='demoPopPageBO5' isPopup="true"
+		dialogWidth='500' dialogHeight='250'
+		btnName="freshCount" dialogTitle="刷新"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_5.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_5.jsp"/>
+	<pageflow boId='demoPopPageBO5' btnName="save" closePage="true" targetVC="empty"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPop_5.jsp"/>
+	<pageflow boId='demoPopPageBO5' btnName="fresh" closePage="true" targetVC="empty"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_5.jsp"/>		
+		
+	<pageflow boId='demoPopPageBO6' isPopup="true"
+		dialogWidth='500' dialogHeight='250'
+		btnName="freshCount" dialogTitle="刷新"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_6.jsp" closeTargetVC="form.reloadOnClosePage"
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_6.jsp"/>
+	<pageflow boId='demoPopPageBO6' btnName="fresh" closePage="true" targetVC="form.reload"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_6.jsp"/>	
+	
+	<pageflow boId='demoPopPageBO7' isPopup="true"
+		dialogWidth='500' dialogHeight='250'
+		btnName="btn3" 
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_7.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_7.jsp"/>
+	<pageflow boId='demoPopPageBO7' isPopup="true"
+		dialogWidth='500' dialogHeight='250'
+		btnName="freshCount" 
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/demoPopPage_7.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_7.jsp"/>
+	<pageflow boId='demoPopPageBO7' btnName="fresh" closePage="true" targetVC="page.hiddenBtn,form.reload"
+		sourcePage="/WEB-INF/pages/demo/interaction/poppage/pop/demoPopForm_7.jsp"/>	
+		
+	<!-- 弹出选择 - demo3-弹出框的翻页记忆 -->
+	<pageflow boId='demoPopSelect_PO3' 
+		bopBind="purchaseNo:purchaseNo;vendor.orgCode:vendor.orgCode;vendor.orgName:vendor.orgName;purchaseTime:purchaseTime;publishStatus:publishStatus;confirmStatus:confirmStatus" 
+		echo="purchaseNo"
+		dialogWidth='800' dialogHeight='450' dialogTitle='选择订单信息' 
+		targetPage="/WEB-INF/pages/demo/interaction/popselect/pop/demoPop_3.jsp"/>	
+	<pageflow boId='demoPopSelect_PO3' 
+		bopBind="purchaseNo:purchaseNo" 
+		dialogWidth='800' dialogHeight='450' dialogTitle='选择订单信息' 
+		targetPage="/WEB-INF/pages/demo/interaction/popselect/pop/demoPop_3.jsp"/>	
+		
+	<!-- 页面流示例 -->
+	<pageflow boId='demoPageflowBO1' btnName="showDesc"
+	    sourcePage="/WEB-INF/pages/demo/interaction/pageflow/demoPageFlow_1.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/pageflow/pop/demoPop_1.jsp"/>	
+	<pageflow boId='demoPageflowBO1' btnName="showDesc2" 
+	    sourcePage="/WEB-INF/pages/demo/interaction/pageflow/demoPageFlow_1.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/pageflow/pop/demoPop_1.jsp?load=onload"/>	
+	<pageflow boId='demoPageflowBO1' btnName="back" 
+	    sourcePage="/WEB-INF/pages/demo/interaction/pageflow/pop/demoPop_1.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/pageflow/demoPageFlow_1.jsp"/>	
+		
+	<pageflow boId='demoPageflowBO1' btnName="showDesc" isPopup="true" dialogTitle="订单明细" dialogIcon="view"
+	    sourcePage="/WEB-INF/pages/demo/interaction/pageflow/demoPageFlow_2.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/pageflow/pop/demoPop_2.jsp"/>	
+	<pageflow boId='demoPageflowBO1' btnName="showDesc2" isPopup="true" dialogTitle="订单明细" dialogIcon="view"
+	    sourcePage="/WEB-INF/pages/demo/interaction/pageflow/demoPageFlow_2.jsp"
+		targetPage="/WEB-INF/pages/demo/interaction/pageflow/pop/demoPop_2.jsp?load=onload"/>	
+	<!-- ########################### 交互 end ########################### -->
+	
+	<!-- ########################### 持久化 start ########################### -->
+	<pageflow boId='demoPurchaseOrderBO' 
+		bopBind="purchaseNo:purchaseNo;vendor.orgCode:vendor.orgCode;vendor.orgName:vendor.orgName;purchaseTime:purchaseTime;publishStatus:publishStatus;confirmStatus:confirmStatus" 
+		echo="purchaseNo"
+		dialogWidth='800' dialogHeight='450' dialogTitle='选择订单信息' 
+		targetPage="/WEB-INF/pages/demo/common/demoPOSelect.jsp"/>
+	
+	<!-- 表格中自带的增/删/改 -->
+	<pageflow boId='demoPresistenceBO3' dialogWidth='600' dialogHeight='250' isPopup="true"
+		sourcePage='/WEB-INF/pages/demo/persistence/demoPresistence_3.jsp'
+		targetPage='/WEB-INF/pages/demo/persistence/pop/demoPopView_3.jsp' 
+		btnName='view2' />
+		
+	<!-- 表格级按钮的模式 -->
+	<pageflow boId='demoBtnModeBO1' dialogWidth='600' dialogHeight='180' isPopup="true"
+		sourcePage='/WEB-INF/pages/demo/persistence/btnmode/demoBtnMode_1.jsp'
+		targetPage='/WEB-INF/pages/demo/persistence/btnmode/pop/demoBtnMode1_pop_1.jsp' 
+		btnName='saveBtn_7' />
+	<pageflow boId='demoBtnMod1_Pop_1' closePage="true"
+		sourcePage='/WEB-INF/pages/demo/persistence/btnmode/pop/demoBtnMode1_pop_1.jsp'
+		btnName='save' />
+	<!-- ########################### 持久化 end ########################### -->
+
+
+		
+	<!-- ########################### 移动巡检Demo start ###########################-->
+	<pageflow boId='DemoMobileMessageBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/message/demoMobileMessageMobile.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/message/demoMobileMessageViewMobile.jsp' 
+		btnName='viewMessageMobile' />
+		
+	<pageflow boId='DemoMobileWorkPlanBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/workPlan/demoMobileWorkPlanMobile.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/workPlan/demoMobileWorkPlanViewMobile.jsp' 
+		btnName='viewWorkPlanMobile' />
+		
+	<pageflow boId='DemoMobileShowCaseBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/showCase/demoMobileShowCase.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/showCase/demoMobileShowCaseReport.jsp' 
+		btnName='reportShowCase'/>
+		
+	<pageflow boId='DemoMobileShowCaseBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/showCase/demoMobileShowCase.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/showCase/demoMobileShowCaseDesc.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800"/>
+
+	<pageflow boId='DemoMobileShopStoreBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/shopstore/demoMobileShopStoreList.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopstore/demoMobileShopStoreDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800" />
+		
+	<pageflow boId='DemoMobileSalesclerkWorkplaceBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/shopvisit/salesclerkworkplace/demoMobileSalesclerkList.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopvisit/salesclerkworkplace/demoMobileSalesclerkDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800"/>
+		
+	<pageflow boId='DemoMobileMaterialManagementBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/shopvisit/materialmanagement/demoMobileMaterialManagementList.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopvisit/materialmanagement/demoMobileMaterialManagementDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800" />
+		
+	<pageflow boId='DemoMobilePromotionManagementBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/shopvisit/promotionmanagement/demoMobilePromotionManagementList.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopvisit/promotionmanagement/demoMobilePromotionManagementDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800" />
+	
+	<pageflow boId='DemoMobileInfoFeedbackBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/shopvisit/infofeedback/demoMobileInfoFeedbackReport.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopvisit/infofeedback/demoMobileInfoFeedbackDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800" />
+	
+	<pageflow boId='DemoMobileClockingInBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/shopvisit/clockingin/demoMobileClockingInReport.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopvisit/clockingin/demoMobileInfoFeedbackDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800" />
+		
+	<pageflow boId='DemoMobileShopSalesBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/shopvisit/shopsales/demoMobileShopsalesList.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopvisit/shopsales/demoMobileInfoShopsalesDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800" />
+		
+	<!-- 从进店考勤跳转到二级菜单界面 -->
+	<pageflow boId='ComeInShopBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/comeInShop.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/pollingMagMenu.jsp' msgFlag="false"
+		btnName='validateBarcode' />
+		
+	<!-- 离店操作   从离店考勤跳转到一级菜单界面 -->
+	<pageflow boId='LeaveOutShopBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/leaveOutShop.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/login/mobile/mobileIndex.jsp' 
+		btnName='save' />
+	<pageflow boId='LeaveOutShopBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/leaveOutShop.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/login/mobile/mobileIndex.jsp' 
+		btnName='submit' />
+		
+	<!-- 综合查询 -->
+	<pageflow boId='ShopBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/tab_demo/colligateSearch.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/tab_demo/comparteInOneShop.jsp' 
+		btnName='view'/>
+	<pageflow boId='DemoMobileShowCaseBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/tab_demo/comparteInOneShop.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/tab_demo/colligateSearch.jsp' 
+		btnName='goBack'/>
+	<pageflow boId='DemoMobileShowCaseBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/tab_demo/comparteInOneShop.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/tab_demo/colligateMag.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="500" dialogWidth="850"/>
+	
+	<pageflow boId='DemoMobileShowCaseBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/tab_demo/colligateMag.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/showCase/demoMobileShowCaseDesc.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800"/>
+
+	<pageflow boId='DemoMobileShopStoreBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/tab_demo/colligateMag.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopstore/demoMobileShopStoreDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800" />
+		
+	<pageflow boId='DemoMobileSalesclerkWorkplaceBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/tab_demo/colligateMag.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopvisit/salesclerkworkplace/demoMobileSalesclerkDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800"/>
+		
+	<pageflow boId='DemoMobileMaterialManagementBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/tab_demo/colligateMag.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopvisit/materialmanagement/demoMobileMaterialManagementDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800" />
+		
+	<pageflow boId='DemoMobilePromotionManagementBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/tab_demo/colligateMag.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopvisit/promotionmanagement/demoMobilePromotionManagementDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800" />
+	
+	<pageflow boId='DemoMobileInfoFeedbackBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/tab_demo/colligateMag.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopvisit/infofeedback/demoMobileInfoFeedbackDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800" />
+	
+	<pageflow boId='DemoMobileClockingInBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/tab_demo/colligateMag.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopvisit/clockingin/demoMobileInfoFeedbackDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800" />
+		
+	<pageflow boId='DemoMobileShopSalesBO' 
+		sourcePage='/WEB-INF/pages/demo/mobile/tab_demo/colligateMag.jsp'
+		targetPage='/WEB-INF/pages/demo/mobile/shopvisit/shopsales/demoMobileInfoShopsalesDetail.jsp' 
+		btnName='showDesc' isPopup="true" dialogHeight="450" dialogWidth="800" />
+		
+	<!-- ########################### 移动巡检Demo end ########################### -->
+</pageflow-list>

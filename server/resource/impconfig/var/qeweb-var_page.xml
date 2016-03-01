@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 变量关联页面: 1.变量可影响页面组件的值/状态/范围,页面组件即jsp页面标签代表的组件. 2.每个relate节点代表一组关联关系; 
+	3.vctype表示组件类型,21:表单,22:表格,23,tab; TEXTFEILD = 1;TEXTAREA = 2;LABEL = 3;PASSWORD 
+	= 4;HIDDEN = 5;SELECT = 6;RADIO = 7;CHECKBOX = 8;OPTIONTRANSERSELECT = 9;ANCHOR 
+	= 10;button = 0 -->
+<qeweb-var-vc>
+
+</qeweb-var-vc>

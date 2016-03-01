@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans default-autowire="byName" >
+
+	<!-- dao -->
+	<bean id="IPODownLoadFilterDao" class="com.qeweb.busplatform.pomanage.dao.impl.PODownLoadFilterDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="IReceiveDownLoadFilterDao" class="com.qeweb.busplatform.goodsreceive.dao.impl.ReceiveDownLoadFilterDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="IBP_PurchaseOrderItemDao" class="com.qeweb.busplatform.pomanage.dao.impl.BP_PurchaseOrderItemDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="IBP_FeedBackDao" class="com.qeweb.busplatform.pomanage.dao.impl.BP_FeedBackDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="IBP_PurchaseOrderExecutionDao" class="com.qeweb.busplatform.pomanage.dao.impl.BP_PurchaseOrderExecutionDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="IBP_PendingDeliveryDao" class="com.qeweb.busplatform.goodsdelivery.dao.impl.BP_PendingDeliveryDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="IBP_VendorGoodsDeliveryItemDao" class="com.qeweb.busplatform.goodsdelivery.dao.impl.BP_VendorGoodsDeliveryItemDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="IBP_BuyerGoodsReceiveDao" class="com.qeweb.busplatform.goodsreceive.dao.impl.BP_BuyerGoodsReceiveDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="IBP_BuyerGoodsReceiveItemDao" class="com.qeweb.busplatform.goodsreceive.dao.impl.BP_BuyerGoodsReceiveItemDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="IBP_MaterialTypeDao" class="com.qeweb.busplatform.masterdata.dao.impl.BP_MaterialTypeDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="IBP_SysModuleDao" class="com.qeweb.busplatform.common.dao.impl.IBP_SysModuleDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="IBusConsoleDao" class="com.qeweb.busplatform.businessseting.console.dao.impl.BusConsoleDaoImpl" scope="prototype"/>
+</beans>

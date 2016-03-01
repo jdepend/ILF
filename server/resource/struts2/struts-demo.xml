@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="demo" namespace="/demo" extends="qeweb">
+		<action name="top">
+			<result>/WEB-INF/pages/demo/main/top.jsp</result>
+		</action>
+		<!-- 首页菜单 -->
+		<action name="main">
+			<result>/WEB-INF/pages/demo/main/main.jsp</result>
+		</action>
+		<action name="desktop">
+			<result>/WEB-INF/pages/demo/main/desktop.jsp</result>
+		</action>
+		<action name="menu">
+			<result>/WEB-INF/pages/demo/main/demoMenu.jsp</result>
+		</action>
+	
+		<!-- 查看消息 -->
+		<action name="demoShowTipMsg">
+		    <result>/WEB-INF/pages/demo/interaction/tipmessage/demoTipMsgPop.jsp</result>
+		</action>
+		
+		<!-- 查看JSP源文件 -->
+        <action name="seeJSPSrc_*" method="{1}" class="seeJSPSrc"/>
+		
+		<!-- 移动巡检demo  进店扫描  -->
+		<action name="demoComeInShopAC" class="demoComeInShopAC">
+			<result name="success">/WEB-INF/pages/demo/mobile/pollingMagMenu.jsp</result>
+			<result name="barcodeScan">/WEB-INF/pages/demo/mobile/comeInShop.jsp</result>
+		</action>
+	</package>
+</struts>

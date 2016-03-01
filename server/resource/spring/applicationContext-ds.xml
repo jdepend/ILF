@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+	   	   http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+	default-autowire="byName" default-lazy-init="true">
+	
+	<bean id="transactionManager"
+        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory_bis" />
+        <!--<property name="dataSource" ref="dataSource_bis" />-->
+    </bean>
+	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:prop/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dataSource_bis"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName">
+			<value>${jdbc.driverClassName}</value>
+		</property>
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="username">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+		<property name="maxActive">
+			<value>${datasource.maxActive}</value>
+		</property>
+		<property name="maxIdle">
+			<value>${datasource.maxIdle}</value>
+		</property>
+		<property name="maxWait">
+			<value>${datasource.maxWait}</value>
+		</property>
+		<property name="defaultAutoCommit">
+			<value>${datasource.defaultAutoCommit}</value>
+		</property>
+		<property name="removeAbandoned">
+			<value>${datasource.removeAbandoned}</value>
+		</property>
+		<property name="logAbandoned">
+			<value>${datasource.logAbandoned}</value>
+		</property>
+		<property name="removeAbandonedTimeout">
+			<value>${datasource.removeAbandonedTimeout}</value>
+		</property>
+		<property name="timeBetweenEvictionRunsMillis">
+			<value>${datasource.timeBetweenEvictionRunsMillis}</value>
+		</property>
+		<property name="minEvictableIdleTimeMillis">
+			<value>${datasource.minEvictableIdleTimeMillis}</value>
+		</property>
+	</bean>
+
+	<bean id="hibernateTemplate_bis"
+		class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	
+	<bean id="frameworkJDBCTemplate" 
+		class="org.springframework.jdbc.core.JdbcTemplate" 
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="dataSource" ref="dataSource_bis" />
+  	</bean>  	
+  		
+	<bean id="ExeBOMethod" class="com.qeweb.framework.app.pageflow.ExeBOMethod" scope="prototype"/>
+		
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 按ID查找 -->
+			<tx:method name="find*" read-only="true" />
+			<!-- 分页查找 -->
+			<tx:method name="search*" read-only="true" />
+			<!-- 导出 -->
+			<tx:method name="export*" read-only="true" />
+			<!-- 持久化 -->		
+			<tx:method name="execute*" propagation="REQUIRED" rollback-for="Throwable"/>
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="Throwable"/>
+		</tx:attributes>
+	</tx:advice>	
+			
+	<tx:advice id="ebmAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 跳转后执行方法 -->
+			<!-- 组件加载 -->
+			<tx:method name="loadFCAndDDT" read-only="true"/>
+			<!-- 个人可提交事务 -->		
+			<tx:method name="executeCustomSubmitMethods" propagation="REQUIRED" rollback-for="Throwable"/>
+			<!-- 个人可提交事务 -->		
+			<tx:method name="executeCustomReadOnlyMethods" read-only="true"/>
+			<!-- 可提交事务 -->
+			<tx:method name="executeSubmitMethods" propagation="REQUIRED" rollback-for="Throwable"/>
+			<!-- 只读事务 -->
+			<tx:method name="executeReadOnlyMethods" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<tx:advice id="tmAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="set*" propagation="REQUIRED" rollback-for="Throwable"/>
+		</tx:attributes>
+	</tx:advice>
+	
+    <tx:advice id="acAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED" rollback-for="Throwable"/>
+        </tx:attributes>
+    </tx:advice>
+
+	<!-- 让用户在登陆时的数据库操作受到事务控制 -->	
+	<tx:advice id="loginAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 以AspectJ方式 定义 AOP -->
+	<aop:config proxy-target-class="true">
+		<aop:advisor pointcut="execution(* com.qeweb.framework.app.pageflow.impl.GeneralACWebImpl.*(..))" advice-ref="txAdvice" />
+		<aop:advisor pointcut="execution(* com.qeweb.framework.app.action.SaveCaseAC.*(..))" advice-ref="txAdvice" />
+		<aop:advisor pointcut="execution(* com.qeweb.framework.app.action.TableSettingAC.*(..))" advice-ref="txAdvice" />
+		<aop:advisor pointcut="bean(ExeBOMethod)" advice-ref="ebmAdvice" />
+		<aop:advisor pointcut="execution(* com.qeweb.framework.app.action.ChangeDisplayStatusAC.*(..))" advice-ref="tmAdvice" />
+		<aop:advisor pointcut="execution(* com.qeweb.sysmanage.login.LoginAC.*(..))" advice-ref="loginAdvice" />
+	</aop:config>
+</beans>

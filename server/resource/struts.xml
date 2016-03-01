@@ -1,0 +1,52 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="qeweb-default" extends="json-default" abstract="true">
+		<default-interceptor-ref name="defaultStack"/>
+
+		<global-results>
+			<result name="login">/system/index.action</result>
+			<result name="disallow">
+				/WEB-INF/pages/common/403.jsp
+			</result>
+			<result name="exception">
+				/WEB-INF/pages/common/exception.jsp
+			</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping result="exception" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+	</package>
+
+	<package name="default" extends="struts-default">
+		<!-- 文件下载 -->
+		<action name="download" class="downloadAC">
+			<result name="success" type="stream">
+			 	<!-- contentType 指定下载文件的文件类型 —— application/octet-stream 表示无限制 -->
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+			<result name="input">/WEB-INF/pages/common/downloadErrorMessage.jsp</result>
+		</action>
+	</package>
+
+	<!-- 允许动态指定方法-->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	<!-- 设置上传文件的临时目录 -->
+	<constant name="struts.multipart.saveDir" value="/tmp"/>
+	<!--限制文件上传大小lG-->
+	<constant name="struts.multipart.maxSize" value="1073741824" />
+
+	<!-- 加载资源配置文件 -->
+	<constant name="struts.custom.i18n.resources" value="i18n/messages" />
+	<!-- webSphere 下不支持通配符, 如:struts-*.xml -->
+	<include file="struts2/struts-demo.xml" />
+	<include file="struts2/struts-demo-mdt.xml" />
+	<include file="struts2/struts-qeweb.xml" />
+	<include file="struts2/struts-system.xml" />
+</struts>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+        http://myfaces.apache.org/orchestra">
+	
+	<bean id="ctx" class="com.qeweb.framework.common.SpringConstant"/>
+	<import resource="classpath:spring/applicationContext-quarantine.xml"/>
+	<import resource="classpath:spring/applicationContext-ds.xml"/>
+	<!-- oracle
+	<import resource="classpath:spring/applicationContext-ds-bis.xml"/>
+	 -->
+	<!-- mysql-->
+	<import resource="classpath:spring/applicationContext-ds-bis-mysql.xml"/>
+	<!-- sqlserver
+	<import resource="classpath:spring/applicationContext-ds-bis-sqlserver.xml"/>
+	 -->
+	<import resource="classpath:spring/dao/applicationContext-dao-*.xml"/>
+	<import resource="classpath:spring/action/applicationContext-*.xml"/>
+	<import resource="classpath:spring/businesscomponent/applicationContext-*.xml"/>
+	<import resource="classpath:spring/aop/applicationContext-aop-*.xml"/>
+
+    <import resource="classpath:spring-core.xml"/>
+</beans>

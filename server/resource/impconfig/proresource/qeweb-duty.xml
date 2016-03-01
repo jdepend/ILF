@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: 该文件用于项目经理规划整体包结构并为开发人员分配工作, 仅项目经理有权限修改. --><qeweb-duty>
+	
+	<module id="1358389945164" name="系统管理" remark="" deleteFlag="0">
+		<developers id="1358232619912,1358231002534" />
+		<package>
+			<src name="sysmanage" />
+			<jsp name="sysmanage" />
+			<hbm name="systemMgt" />
+			<spring name="sysmanage" />
+			<pageflow name="sysmanage" />
+			<var name="/" />
+			<i18n name="/" />
+		</package>
+	</module>
+	<module id="1358389821981" name="主数据管理" remark="" deleteFlag="0">
+		<developers id="1358390504292,1358231002534,4" />
+		<package>
+			<src name="busplatform.bo.masterdata" />
+			<jsp name="busplatform/masterdata" />
+			<hbm name="busplatform/masterdata" />
+			<spring name="masterdata" />
+			<pageflow name="masterdata" />
+			<var name="masterdata" />
+			<i18n name="masterdata" />
+		</package>
+	</module>
+</qeweb-duty>

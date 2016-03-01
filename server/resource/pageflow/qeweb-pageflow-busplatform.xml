@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pageflow-list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+          xsi:noNamespaceSchemaLocation="/WEB-INF/dtd/pageflow.xsd">
+          
+	<!-- ########################### 采购商业务  start ####################### -->
+	<!-- ############  订单管理(采)  start ########## -->
+	<!-- 查看订单详情 -->
+	<pageflow boId='bp_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderView.jsp' btnName='view' />
+	<!-- 弹出导入采购订单 -->
+	<pageflow boId='bp_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/importPurchaseOrder.jsp' btnName='importPOFromExcel'
+		isPopup='true' dialogWidth='600' dialogHeight='210'/>
+	<!-- 导入采购订单 -->
+	<pageflow boId='importPurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/importPurchaseOrder.jsp'
+		btnName='imp' msgFlag='true' closePage='true'/>
+	<!-- 订单反馈 按订单反馈 -->
+	<pageflow boId='bp_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/feedbackPOMaint.jsp' btnName='feedback'
+		isPopup='true' dialogHeight="450"/>
+	<!-- 反馈后关闭页面 -->
+	<pageflow boId='bp_FeedBackBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/feedbackPOItemMaint.jsp'
+		targetPage='' btnName='feedback' closePage="true"/>
+	<pageflow boId='bp_FeedBackBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/feedbackPOMaint.jsp'
+		targetPage='' btnName='feedback' msgFlag='true' closePage='true'/>
+	<!-- 订单锁定填写原因 -->
+	<pageflow boId='bp_page_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderLockReason.jsp' btnName='poManlock'
+		isPopup='true' dialogWidth="700" dialogHeight="300"/>
+	<pageflow boId='bp_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderLockReason.jsp'
+		targetPage='' btnName='save' closePage="true"/>
+
+	<!-- 订单反馈 按明细反馈-->
+	<pageflow boId='bp_PurchaseOrderItemBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/feedbackPOItemMaint.jsp' btnName='feedback'
+		isPopup='true' />
+	<!-- 订单详情返回 -->
+	<pageflow boId='bp_page_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderList.jsp' btnName='back' />
+	<!-- 订单发布 -->
+	<pageflow boId='bp_page_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderList.jsp' btnName='poPublish' msgFlag='true'/>
+	<!-- 取消发布 -->
+	<pageflow boId='bp_page_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderList.jsp' btnName='poCancelPublish' msgFlag='true'/>
+	<!-- 取消驳回 -->
+	<pageflow boId='bp_page_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderList.jsp' btnName='poCancelReject' msgFlag='true'/>
+	<!-- 订单详情历史 -->
+	<pageflow boId='bp_PurchaseOrderItemBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderItemHis.jsp' btnName='modifyCount' isPopup="true" dialogHeight='400' />
+	<!-- 订单关闭 -->
+	<pageflow boId='bp_page_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderList.jsp' btnName='poClose' />
+
+	<!-- 订单详情供货计划 -->
+	<pageflow boId='bp_PurchaseOrderItemBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseGoodsPlanView.jsp' btnName='viewGoodsPlan' isPopup="true" dialogHeight='420'/>
+	<!-- 供货计划历史 -->
+	<pageflow boId='bp_PurchaseGoodsPlanBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseGoodsPlanView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseGoodsPlanHis.jsp' btnName='modifyCount' isPopup="true" dialogHeight='300'/>
+	<!-- 供货计划反馈 -->
+	<pageflow boId='bp_PurchaseGoodsPlanBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseGoodsPlanView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/feedbackGoodsPlanMaint.jsp' btnName='feedback' dialogHeight='300'
+		isPopup='true' />
+	<pageflow boId='bp_GoodsPlanFeedBackBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/feedbackGoodsPlanMaint.jsp'
+		targetPage='' btnName='feedback' closePage="true"/>
+	<!-- 供货计划取消驳回 -->
+	<pageflow boId='bp_PurchaseGoodsPlanBO' sourcePage='/WEB-INF/pages/busplatform/purchase/buyer/purchaseGoodsPlanView.jsp'
+		targetPage='' btnName='cancelGoodsPlanReject' closePage='true'/>
+
+	<!-- ############  订单管理(采)  end ########## -->
+
+	<!-- ############  物流管理 start ########## -->
+	<!-- 收货单详情 -->
+	<pageflow boId='bp_BuyerGoodsReceiveBO' sourcePage='/WEB-INF/pages/busplatform/goodsreceive/buyer/goodsReceiveList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsreceive/buyer/goodsReceiveView.jsp' btnName='view'/>
+	<!-- 收货单详情返回 -->
+	<pageflow boId='bp_BuyerGoodsReceiveBO' sourcePage='/WEB-INF/pages/busplatform/goodsreceive/buyer/goodsReceiveView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsreceive/buyer/goodsReceiveList.jsp' btnName='back'/>
+	<!-- 待收货详情 -->
+	<pageflow boId='bp_PendingReceiveBO' sourcePage='/WEB-INF/pages/busplatform/goodsreceive/buyer/pendingReceiveList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsreceive/buyer/pendingReceiveView.jsp' btnName='view' />
+	<!-- 收货单审核通过 -->
+	<pageflow boId='bp_page_PendingReceiveBO' sourcePage='/WEB-INF/pages/busplatform/goodsreceive/buyer/pendingReceiveView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsreceive/buyer/pendingReceiveList.jsp' btnName='verifyPass'/>
+	<!-- 收货单审核不通过 -->
+	<pageflow boId='bp_page_PendingReceiveBO' sourcePage='/WEB-INF/pages/busplatform/goodsreceive/buyer/pendingReceiveView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsreceive/buyer/pendingReceiveList.jsp' btnName='verifyReject'/>
+	<!-- 收货单详细页面返回 -->
+	<pageflow boId='bp_page_PendingReceiveBO' sourcePage='/WEB-INF/pages/busplatform/goodsreceive/buyer/pendingReceiveView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsreceive/buyer/pendingReceiveList.jsp' btnName='back'/>
+	<!-- 弹出导入收货单页面 -->
+	<pageflow boId='bp_BuyerGoodsReceiveBO' sourcePage='/WEB-INF/pages/busplatform/goodsreceive/buyer/goodsReceiveList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsreceive/buyer/importReceiveOrder.jsp' btnName='goImp'
+		isPopup='true' dialogWidth='600' dialogHeight='210'/>
+	<!-- 导入收货单 -->
+	<pageflow boId='bp_ImpReceiveOrder' sourcePage='/WEB-INF/pages/busplatform/goodsreceive/buyer/importReceiveOrder.jsp'
+		btnName='imp' msgFlag='true' closePage='true'/>
+	<!-- ############  物流管理  end ########## -->
+
+	<!-- ########################### 采购商业务  end ####################### -->
+
+
+	<!-- ########################### 供应商业务  start ####################### -->
+
+	<!-- ############  订单管理(供)  start ########## -->
+	<!-- 查看订单详情 -->
+	<pageflow boId='bp_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderView.jsp' btnName='view' />
+	<!-- 订单详情返回 -->
+	<pageflow boId='bp_page_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderList.jsp' btnName='back' />
+	<!-- 订单确认 -->
+	<pageflow boId='bp_page_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderList.jsp' btnName='poConfirm' msgFlag="true"/>
+	<!-- 订单驳回 -->
+	<pageflow boId='bp_page_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderList.jsp' btnName='poReject' msgFlag="true"/>
+	<!-- 订单反馈 按订单反馈 -->
+	<pageflow boId='bp_PurchaseOrderBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/vendor/feedbackPOMaint.jsp' btnName='feedback'
+		isPopup='true' />
+	<pageflow boId='bp_FeedBackBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/feedbackPOMaint.jsp'
+		btnName='feedback' msgFlag='true' closePage='true'/>
+
+	<!-- 订单反馈 按明细反馈-->
+	<pageflow boId='bp_PurchaseOrderItemBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/buyer/feedbackPOItemMaint.jsp' btnName='feedback'
+		isPopup='true' />
+
+	<!-- 订单详情确认 -->
+	<pageflow boId='bp_PurchaseOrderItemBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderView.jsp'
+		targetPage='' btnName='confirm' targetVC='bp_po_main.viewDetial,bp_po_item'/>
+	<pageflow boId='bp_PurchaseOrderItemBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderView.jsp'
+		targetPage='' btnName='reject' targetVC='bp_po_main.viewDetial,bp_po_item'/>
+
+
+	<!-- 订单详情供货计划 -->
+	<pageflow boId='bp_PurchaseOrderItemBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseOrderView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseGoodsPlanView.jsp' btnName='viewGoodsPlan' isPopup="true" dialogHeight='400' />
+	<!-- 供货计划反馈 -->
+	<pageflow boId='bp_PurchaseGoodsPlanBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseGoodsPlanView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/purchase/vendor/feedbackGoodsPlanMaint.jsp' btnName='feedback' dialogHeight='300'
+		isPopup='true' />
+	<pageflow boId='bp_GoodsPlanFeedBackBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/feedbackGoodsPlanMaint.jsp'
+		targetPage='' btnName='feedback' closePage="true"/>
+	<!-- 供货计划确认-->
+	<pageflow boId='bp_PurchaseGoodsPlanBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseGoodsPlanView.jsp'
+		targetPage='' btnName='confirm' closePage='true' targetVC='bp_po_main.viewDetial,bp_po_item'/>
+	<pageflow boId='bp_PurchaseGoodsPlanBO' sourcePage='/WEB-INF/pages/busplatform/purchase/vendor/purchaseGoodsPlanView.jsp'
+		targetPage='' btnName='reject' closePage='true' targetVC='bp_po_main.viewDetial,bp_po_item'/>
+
+	<!-- ############  订单管理(供)  end ########## -->
+
+	<!-- ############  物流管理 start ########## -->
+		<!-- 跳转到创建发货单页面 -->
+	<pageflow boId='bp_PendingDeliveryBO' sourcePage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/pendingDeliveryList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/pendingDeliveryMaint.jsp' btnName='validatePlanItem' />
+	<!-- 建发货单页面 -->
+	<pageflow boId='bp_VendorGoodsDeliveryBO' sourcePage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/pendingDeliveryMaint.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/pendingDeliveryList.jsp' btnName='createDelivery' msgFlag='true' />
+	<!-- 创建发货单返回 -->
+	<pageflow boId='bp_VendorGoodsDeliveryBO' sourcePage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/pendingDeliveryMaint.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/pendingDeliveryList.jsp' btnName='back'/>
+	<!-- 跳转到创建发货单按物料 -->
+	<pageflow boId='bp_PendingDeliveryMaterialBO' sourcePage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/pendingDeliveryMaterialList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/pendingDeliveryMaterialMaint.jsp' btnName='createDelivery'/>
+	<!-- 建发货单页面 -->
+	<pageflow boId='bp_VendorGoodsDeliveryBO' sourcePage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/pendingDeliveryMaterialMaint.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/pendingDeliveryMaterialList.jsp' btnName='createDelivery' msgFlag="true"/>
+	<!-- 创建发货单按物料返回 -->
+	<pageflow boId='bp_VendorGoodsDeliveryBO' sourcePage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/pendingDeliveryMaterialMaint.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/pendingDeliveryMaterialList.jsp' btnName='back' />
+
+	<!-- 发货记录详情 -->
+	<pageflow boId='bp_VendorGoodsDeliveryBO' sourcePage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/goodsDeliveryList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/goodsDeliveryView.jsp' btnName='view' />
+	<!-- 发货记录详情返回-->
+	<pageflow boId='bp_page_VendorGoodsDeliveryBO' sourcePage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/goodsDeliveryView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/goodsDeliveryList.jsp' btnName='back' />
+	<!-- 发货 -->
+	<pageflow boId='bp_page_VendorGoodsDeliveryBO' sourcePage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/goodsDeliveryView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/goodsDeliveryList.jsp' btnName='delive' msgFlag="true"/>
+	<!-- 取消发货-->
+	<pageflow boId='bp_page_VendorGoodsDeliveryBO' sourcePage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/goodsDeliveryView.jsp'
+		targetPage='/WEB-INF/pages/busplatform/goodsdelivery/vendor/goodsDeliveryList.jsp' btnName='cancelDelive' msgFlag="true" />
+	<!-- ############  物流管理  end ########## -->
+	<!-- ########################### 供应商业务  end ####################### -->
+
+	<!-- ############  主数据管理 start ########## -->
+	<!-- 主数据模版 -->
+	<pageflow boId='masterdataTemplateBO' sourcePage='/WEB-INF/pages/busplatform/masterdata/masterdataTemplate.jsp'
+		targetPage='/WEB-INF/pages/busplatform/masterdata/masterdataTemplate.jsp' btnName='createTemplate'
+		msgFlag='true' />
+
+	<!-- 弹出导入物料页面 -->
+	<pageflow boId='materialBO' sourcePage='/WEB-INF/pages/busplatform/masterdata/material/materialList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/masterdata/material/importMaterial.jsp' btnName='goImp'
+		isPopup='true' dialogWidth='600' dialogHeight='210'/>
+	<!-- 导入物料 -->
+	<pageflow boId='importMaterialBO' sourcePage='/WEB-INF/pages/busplatform/masterdata/material/importMaterial.jsp'
+		btnName='imp' msgFlag='true' closePage='true'/>
+
+	<!-- 弹出导入供应商页面 -->
+	<pageflow boId='vendorBO' sourcePage='/WEB-INF/pages/sysmanage/vendorManage.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/importVendor.jsp' btnName='goImp'
+		isPopup='true' dialogWidth='600' dialogHeight='210'/>
+	<!-- 导入供应商 -->
+	<pageflow boId='importVendorBO' sourcePage='/WEB-INF/pages/sysmanage/importVendor.jsp'
+		btnName='imp' msgFlag='true' closePage='true'/>
+
+
+
+
+
+	<pageflow boId='materialBO' sourcePage='/WEB-INF/pages/busplatform/masterdata/material/materialList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/masterdata/material/changeMaterialType.jsp' btnName='modifyMaterialType'
+		msgFlag='false' isPopup='true' dialogWidth='600' dialogHeight='280'/>
+
+	<pageflow boId='materialTypeBO'
+		targetPage='/WEB-INF/pages/busplatform/masterdata/material/selectMaterialType.jsp'
+		bopBind='materialType.typeName:typeName;materialType.id:id'
+		msgFlag='false' />
+
+	<pageflow boId='materialTypeBO' sourcePage='/WEB-INF/pages/busplatform/masterdata/material/materialTypeList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/masterdata/material/addMaterialType.jsp' btnName='insert'
+		msgFlag='false' isPopup='true' dialogWidth='600' dialogHeight='300'/>
+	<pageflow boId='materialTypeBO' sourcePage='/WEB-INF/pages/busplatform/masterdata/material/addMaterialType.jsp'
+		targetPage='/WEB-INF/pages/busplatform/masterdata/material/materialTypeList.jsp' btnName='addMaterialType'
+		msgFlag='true' closePage='true'/>
+
+	<pageflow boId='materialTypeBO' sourcePage='/WEB-INF/pages/busplatform/masterdata/material/materialTypeList.jsp'
+		targetPage='/WEB-INF/pages/busplatform/masterdata/updateMaterialType.jsp' btnName='update'
+		msgFlag='false' isPopup='true' dialogWidth='600' dialogHeight='335'/>
+	<pageflow boId='materialTypeBO' sourcePage='/WEB-INF/pages/busplatform/masterdata/material/updateMaterialType.jsp'
+		targetPage='/WEB-INF/pages/busplatform/masterdata/materialTypeList.jsp' btnName='updateMaterialType'
+		msgFlag='true' closePage='true'/>
+
+	<pageflow boId='materialTypeBO'
+		targetPage='/WEB-INF/pages/busplatform/masterdata/material/selectMaterialType.jsp'
+		bopBind='parentTypeName:typeName;parentTypeId:id'
+		msgFlag='false' />
+
+	<pageflow boId='materialTypeBO'
+		targetPage='/WEB-INF/pages/busplatform/masterdata/material/selectTree.jsp'
+		bopBind='materialTypeShow:value;materialTypeId:id'/>
+	<pageflow boId='materialTypeBO'
+		targetPage='/WEB-INF/pages/busplatform/masterdata/material/selectTree.jsp'
+		bopBind='assistMaterialTypeShow:value;assistMaterialTypeIds:id'/>
+	<!-- ############  主数据管理 end ########## -->
+</pageflow-list>

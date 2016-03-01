@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow-list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+          xsi:noNamespaceSchemaLocation="/WEB-INF/dtd/pageflow.xsd">
+          
+	<!-- licence error page back to login -->
+	<pageflow boId='licenceBO' sourcePage='/WEB-INF/pages/common/licenceError.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/login/ext/login.jsp' btnName='goback'/>
+
+	<!-- 角色组管理-跳转到选择角色页面 -->
+	<pageflow boId='groupBO' sourcePage='/WEB-INF/pages/sysmanage/groupManage.jsp' isPopup="true" dialogHeight="450"
+		targetPage='/WEB-INF/pages/sysmanage/group_role.jsp' btnName='setRoles'/>
+	<!-- 角色组管理-选择角色-保存 -->
+	<pageflow boId='group_RoleBO' sourcePage='/WEB-INF/pages/sysmanage/group_role.jsp'
+		closePage="true" btnName='save' />
+
+	<!-- 用户管理-跳转到分配角色组页面 -->
+	<pageflow boId='userBO' sourcePage='/WEB-INF/pages/sysmanage/userManage.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/user_group.jsp' btnName='setGroups' dialogHeight="400" isPopup='true'/>
+	<!-- 编辑用户信息-弹出选择部门 -->
+	<pageflow boId='organizationBO' bopBind='organizationBO.id:id;organizationBO.orgName:orgName'
+		targetPage='/WEB-INF/pages/sysmanage/orgSelect.jsp' dialogHeight="450"/>
+	
+	<!-- 编辑部门信息-弹出选择上级部门 -->
+	<pageflow boId='organizationBO' bopBind='parentOrg.id:id;parentOrg.orgCode:orgCode;parentOrg.orgName:orgName;parentOrg.orgType:orgType'
+		targetPage='/WEB-INF/pages/sysmanage/orgSelect.jsp' dialogHeight="450"/>
+	
+	<!-- 为用户分配角色组 -->
+	<pageflow boId='user_GroupBO' sourcePage='/WEB-INF/pages/sysmanage/user_group.jsp' 
+		btnName='save' msgFlag='true' closePage='true'/>
+
+	<!-- 为用户组分配用户 -->
+	<pageflow boId='userGroupBO' sourcePage='/WEB-INF/pages/sysmanage/userGroupManage.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/userGroup_user.jsp' btnName='distUsers'/>
+	<pageflow boId='userGroup_UserBO' sourcePage='/WEB-INF/pages/sysmanage/userGroup_user.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/userGroupManage.jsp' btnName='goBack' />
+	<pageflow boId='userGroup_UserBO' sourcePage='/WEB-INF/pages/sysmanage/userGroup_user.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/userGroupManage.jsp' btnName='save' msgFlag="true"/>
+
+	<!-- 为用户组分配角色组 -->
+	<pageflow boId='userGroupBO' sourcePage='/WEB-INF/pages/sysmanage/userGroupManage.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/userGroup_group.jsp' btnName='distGroups'/>
+	<pageflow boId='userGroup_GroupBO' sourcePage='/WEB-INF/pages/sysmanage/userGroup_group.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/userGroupManage.jsp' btnName='goBack' />
+	<pageflow boId='userGroup_GroupBO' sourcePage='/WEB-INF/pages/sysmanage/userGroup_group.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/userGroupManage.jsp' btnName='save' msgFlag="true"/>
+
+	<!-- 分配视图级权限 -->
+	<pageflow boId='roleBO' sourcePage='/WEB-INF/pages/sysmanage/roleManage.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/viewPermission.jsp' btnName='viewPermission'/>
+	<pageflow boId='roleModuleBO' sourcePage='/WEB-INF/pages/sysmanage/viewPermission.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/roleManage.jsp' btnName='goBack' />
+	<pageflow boId='roleModuleBO' sourcePage='/WEB-INF/pages/sysmanage/viewPermission.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/roleManage.jsp' btnName='saveViewPermission' msgFlag="true"/>
+
+	<!-- 分配操作级权限 -->
+	<pageflow boId='roleBO' sourcePage='/WEB-INF/pages/sysmanage/roleManage.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/optPermission.jsp' btnName='optPermission' />
+	<pageflow boId='roleModuleBO' sourcePage='/WEB-INF/pages/sysmanage/optPermission.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/roleManage.jsp' btnName='goBack'/>
+	<pageflow boId='roleModuleBO' sourcePage='/WEB-INF/pages/sysmanage/optPermission.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/roleManage.jsp' btnName='saveOptPermission' msgFlag="true" />
+
+	<!-- 分配供应商权限 -->
+	<pageflow boId='roleBO' sourcePage='/WEB-INF/pages/sysmanage/roleManage.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/vendorPermission.jsp' btnName='vendorPermission'/>
+	<pageflow boId='roleOrgBO' sourcePage='/WEB-INF/pages/sysmanage/vendorPermission.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/roleManage.jsp' btnName='goBack'/>
+	<pageflow boId='roleOrgBO' sourcePage='/WEB-INF/pages/sysmanage/vendorPermission.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/roleManage.jsp' btnName='save'
+		msgFlag='true' />
+		
+	<!-- 分配采购商权限 -->
+	<pageflow boId='roleBO' sourcePage='/WEB-INF/pages/sysmanage/roleManage.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/buyerPermission.jsp' btnName='buyerPermission'/>
+	<pageflow boId='roleOrgBO' sourcePage='/WEB-INF/pages/sysmanage/buyerPermission.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/roleManage.jsp' btnName='goBack'/>
+	<pageflow boId='roleOrgBO' sourcePage='/WEB-INF/pages/sysmanage/buyerPermission.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/roleManage.jsp' btnName='save'
+		msgFlag='true' />
+
+	<pageflow boId='loginBO' sourcePage='/WEB-INF/pages/system/systemmgt/login.jsp'
+		targetPage='/WEB-INF/pages/system/layout/layout.jsp' btnName='login'/>
+	<pageflow boId='sysRoleBO'
+		sourcePage='/WEB-INF/pages/system/systemmgt/roleSearch.jsp'
+		targetPage='/WEB-INF/pages/system/systemmgt/moduleTree.jsp' btnName='viewPermission'/>
+	<pageflow boId='sysRoleBO'
+		sourcePage='/WEB-INF/pages/system/systemmgt/roleSearch.jsp'
+		targetPage='/WEB-INF/pages/system/systemmgt/roleModuleTree.jsp'
+		btnName='operatePermission'/>
+
+	<!-- 分配用户数据权限 -->
+	<pageflow boId='roleBO' sourcePage='/WEB-INF/pages/sysmanage/roleManage.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/userDataPermission.jsp' btnName='userDataPermission'/>
+	<pageflow boId='roleUserBO' sourcePage='/WEB-INF/pages/sysmanage/userDataPermission.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/roleManage.jsp' btnName='goBack'/>
+	<pageflow boId='roleUserBO' sourcePage='/WEB-INF/pages/sysmanage/userDataPermission.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/roleManage.jsp' btnName='save'
+		msgFlag='true' />
+		
+	<!-- 个性化设置(回复默认设置) -->
+	<pageflow boId='preferenceSetBO' sourcePage='/WEB-INF/pages/sysmanage/preference/themeSet.jsp'
+		targetPage='/WEB-INF/pages/sysmanage/preference/themeSet.jsp?load=onLoad' btnName='replyDefault' />
+</pageflow-list>

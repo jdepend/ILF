@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<!-- 实施配置 -->
+<beans>
+	<!-- MDT 用户信息 -->
+	<bean id="userBOExpend" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.user.common.bo.UserBOExpend" scope="prototype"/>
+	<!-- 项目路径配置 -->
+	<bean id="projectPathBO" class="com.qeweb.framework.impconfig.proresource.bo.ProjectPathBO" scope="prototype"/>
+	<!-- 数据源配置  -->
+	<bean id="dataSourceBO" class="com.qeweb.framework.impconfig.datasource.bo.DataSourceBO" scope="prototype"/>
+	<!-- 项目基本信息配置 -->
+	<bean id="projectInfoBO" class="com.qeweb.framework.impconfig.proresource.bo.ProjectInfoBO" scope="prototype"/>
+	<!-- 项目成员配置 -->
+	<bean id="projectMemberBO" class="com.qeweb.framework.impconfig.promember.bo.ProjectMemberBO" scope="prototype">
+		<property name="projectMemberDao" ref="projectMemberDao"/>
+	</bean>
+	<!-- 项目模块配置 -->
+	<bean id="projectModuleBO" class="com.qeweb.framework.impconfig.promodule.bo.ProjectModuleBO" scope="prototype">
+		<property name="proModuleDao" ref="proModuleDao"/>
+	</bean>
+	<!-- 项目代码信息 -->
+	<bean id="projectCodeBO" class="com.qeweb.framework.impconfig.promodule.bo.ProjectCodeBO" scope="prototype">
+		<property name="proModuleDao" ref="proModuleDao"/>
+	</bean>
+	<!-- 项目模块文件明细配置 -->
+	<bean id="projectModuleItemBO" class="com.qeweb.framework.impconfig.promodule.bo.ProjectModuleItemBO" scope="prototype"/>
+	<!-- 项目成员对应的能够看到的菜单 -->
+	<bean id="impMenuBO" class="com.qeweb.framework.impconfig.promember.bo.ImpMenuBO" scope="prototype">
+		<property name="projectMemberDao" ref="projectMemberDao"/>
+	</bean>
+
+	<!-- DDT相关   start -->
+	<!-- DDT模块管理 -->
+	<bean id="ddtSysModulesBO" class="com.qeweb.framework.impconfig.ddt.manage.bo.DdtSysModulesBO" scope="prototype">
+		<property name="ddtSysModulesDao" ref="ddtSysModulesDao"/>
+	</bean>
+	<!-- DDT页面管理 -->
+	<bean id="ddtSysPagesBO" class="com.qeweb.framework.impconfig.ddt.manage.bo.DdtSysPagesBO" scope="prototype">
+		<property name="ddtSysPagesDao" ref="ddtSysPagesDao"/>
+	</bean>
+	<!-- DDT粗粒度组件管理 -->
+	<bean id="ddtSysContainerBO" class="com.qeweb.framework.impconfig.ddt.manage.bo.DdtSysContainerBO" scope="prototype">
+		<property name="ddtSysContainerDao" ref="ddtSysContainerDao"/>
+	</bean>
+	<!-- DDT解析jsp粗粒度组件bo -->
+	<bean id="analyzeContainerBO" class="com.qeweb.framework.impconfig.ddt.manage.bo.DdtSysAnalyzeContainerBO" scope="prototype"/>
+	<!-- DDT细粒度组件管理 -->
+	<bean id="ddtSysFcBO" class="com.qeweb.framework.impconfig.ddt.manage.bo.DdtSysFcBO" scope="prototype">
+		<property name="ddtSysFcDao" ref="ddtSysFcDao"/>
+	</bean>
+	<!-- DDT解析jsp细粒度组件bo -->
+	<bean id="analyzeFcBO" class="com.qeweb.framework.impconfig.ddt.manage.bo.DdtSysAnalyzeFcBO" scope="prototype"/>
+	<!-- 方案管理 -->
+	<bean id="ddtSchemaBO" class="com.qeweb.framework.impconfig.ddt.config.bo.DdtSchemaBO" scope="prototype">
+		<property name="ddtSchemaDao" ref="ddtSchemaDao"/>
+	</bean>
+	<!-- 应用配置 -->
+	<bean id="ddtAppConfigBO" class="com.qeweb.framework.impconfig.ddt.config.bo.DdtAppConfigBO" scope="prototype"/>
+	<!-- 粗粒度组件配置 -->
+	<bean id="ddtContainerBO" class="com.qeweb.framework.impconfig.ddt.config.bo.DdtContainerBO" scope="prototype">
+		<property name="ddtContainerDao" ref="ddtContainerDao"/>
+	</bean>
+	<bean id="ddtFcBO" class="com.qeweb.framework.impconfig.ddt.config.bo.DdtFcBO" scope="prototype">
+		<property name="ddtFcDao" ref="ddtFcDao"/>
+	</bean>
+	<!-- DDT相关   end -->
+	
+
+	<!-- MDT相关  START -->
+	<!-- 变量管理 -->
+	<bean id="varBO" class="com.qeweb.framework.impconfig.mdt.metadata.var.bo.VarBO" scope="prototype">
+		<property name="varDao" ref="varDao"/>
+	</bean>
+	<!-- 值集管理 -->
+	<bean id="mdtValueSetBO" class="com.qeweb.framework.impconfig.mdt.metadata.valueset.bo.MdtValueSetBO" scope="prototype">
+		<property name="mdtValueSetDao" ref="mdtValueSetDao"/>
+	</bean>
+	<!-- 值管理 -->
+	<bean id="mdtValueBO" class="com.qeweb.framework.impconfig.mdt.metadata.valueset.bo.MdtValueBO" scope="prototype">
+		<property name="mdtValueSetDao" ref="mdtValueSetDao"/>
+	</bean>
+	<!-- 页面流管理 -->
+	<bean id="pageflowFileBO" class="com.qeweb.framework.impconfig.mdt.pageflow.bo.PageflowFileBO" scope="prototype">
+		<property name="proModuleDao" ref="proModuleDao"/>
+		<property name="pageflowManageDao" ref="pageflowManageDao"/>
+	</bean>
+	<!-- 页面流配置 -->
+	<bean id="pageflowConfBO" class="com.qeweb.framework.impconfig.mdt.pageflow.bo.PageflowConfigBO" scope="prototype">
+		<property name="proModuleDao" ref="proModuleDao"/>
+		<property name="pageflowDao" ref="pageflowDao"/>
+	</bean>
+	<!-- 页面流映射管理 -->
+	<bean id="pfv_mainBO" class="com.qeweb.framework.impconfig.mdt.pageflow.bo.PageflowMappingBO" scope="prototype">
+		<property name="pageflowMappingDao" ref="pageflowMappingDao"/>
+		<property name="varDao" ref="varDao"/>
+	</bean>
+	<bean id="pfv_itemBO" class="com.qeweb.framework.impconfig.mdt.pageflow.bo.mapping.MappingConfBO" scope="prototype">
+		<property name="pageflowMappingDao" ref="pageflowMappingDao"/>
+		<property name="varDao" ref="varDao"/>
+	</bean>
+	<bean id="pfv_varBO" class="com.qeweb.framework.impconfig.mdt.pageflow.bo.mapping.MappingVarBO" scope="prototype">
+		<property name="varDao" ref="varDao"/>
+		<property name="mdtValueSetDao" ref="mdtValueSetDao"/>
+	</bean>
+
+	<!-- 物理表管理 -->
+	<bean id="phyAllBO" class="com.qeweb.framework.impconfig.mdt.phymag.bo.PhyAllBO" scope="prototype"/>
+	<bean id="phyTableBO" class="com.qeweb.framework.impconfig.mdt.phymag.bo.PhyTableBO" scope="prototype">
+		<property name="phyTableDao" ref="phyTableDao"></property>
+	</bean>
+	<!-- 物理列管理 -->
+	<bean id="phyColumnBO" class="com.qeweb.framework.impconfig.mdt.phymag.bo.PhyColumnBO" scope="prototype"/>
+	<!-- 主外键设置 -->
+	<bean id="phyKeysBO" class="com.qeweb.framework.impconfig.mdt.phymag.bo.PhyKeySettingBO" scope="prototype"/>
+	
+	<!-- 关联管理-变量-组件关联管理 start -->
+	<bean id="varPageBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.page.bo.VarPageBO" scope="prototype">
+		<property name="varPageDao" ref="varPageDao"/>
+	</bean>
+	<bean id="varPageItemBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.page.bo.VarPageItemBO" scope="prototype">
+		<property name="varPageDao" ref="varPageDao"/>
+	</bean>
+	<bean id="varConfBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.page.bo.VarConfBO" scope="prototype">
+		<property name="varPageDao" ref="varPageDao"/>
+	</bean>
+	<bean id="varVCBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.page.bo.VarVCBO" scope="prototype">
+		<property name="varPageDao" ref="varPageDao"/>
+	</bean>
+	<bean id="sheetBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.page.bo.SheetBO" scope="prototype">
+		<property name="varPageDao" ref="varPageDao"/>
+	</bean>
+	<!-- 关联管理-变量-组件关联管理-jsp解析 -->
+	<bean id="analyzeComponentBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.page.bo.AnalyzeComponentBO" scope="prototype">
+		<property name="analyzeDao" ref="analyzeDao"/>
+	</bean>
+	<bean id="varPageAllBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.page.bo.VarPageAllBO" scope="prototype">
+		<property name="varPageDao" ref="varPageDao"/>
+	</bean>
+	<!-- 关联管理-变量-组件关联管理 end -->
+	
+	<!-- 关联管理-变量-页面流关联管理 start -->
+	<bean id="varPageFlowBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.pageflow.bo.VarPageFlowBO" scope="prototype">
+		<property name="varPageFlowDao" ref="varPageFlowDao"/>
+	</bean>
+	<bean id="analyzeBtnBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.pageflow.bo.AnalyzeBtnBO" scope="prototype"/>
+	<bean id="varPageFlowItemBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.pageflow.bo.VarPageFlowItemBO" scope="prototype">
+		<property name="varPageFlowDao" ref="varPageFlowDao"/>
+	</bean>
+	<bean id="varPageFlowAllBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.pageflow.bo.VarPageFlowAllBO" scope="prototype">
+		<property name="varPageFlowDao" ref="varPageFlowDao"/>
+	</bean>
+	<bean id="varPageFlowRefBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.pageflow.bo.VarPageFlowRefBO" scope="prototype"/>
+	<!-- 关联管理-变量-页面流关联管理 end -->
+
+	<!-- 关联管理-用户-组件关联管理 start -->
+	<!-- 用户关联组件管理 -->
+	<bean id="userPageBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.user.page.bo.UserPageBO" scope="prototype">
+		<property name="userPageDao" ref="userPageDao"/>
+	</bean>
+	<bean id="userPageItemBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.user.page.bo.UserPageItemBO" scope="prototype">
+		<property name="userPageDao" ref="userPageDao"/>
+	</bean>
+	<!-- 选择用户信息 -->
+	<bean id="selectUserBO" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.user.common.bo.SelectUserBO" scope="prototype" />
+	<!-- 关联管理-用户-组件关联管理 end -->
+	
+	<!-- MDT相关   end -->
+	
+	<!-- 执行过程管理 相关 start -->
+	<!-- 变量执行过程管理-页面入口 -->
+	<bean id="pageEntryBO" class="com.qeweb.framework.impconfig.exeprocessmag.page.bo.PageEntryBO" scope="prototype">
+		<property name="pageEntryDao" ref="pageEntryDao"/>
+	</bean>
+	<bean id="pageEntryItemBO" class="com.qeweb.framework.impconfig.exeprocessmag.page.bo.PageEntryItemBO" scope="prototype">
+		<property name="pageEntryDao" ref="pageEntryDao"/>
+	</bean>
+	<!-- 变量执行过程管理-页面流入口 -->
+	<bean id="pfEntryBO" class="com.qeweb.framework.impconfig.exeprocessmag.pageflow.bo.PFEntryBO" scope="prototype">
+		<property name="pfEntryDao" ref="pfEntryDao"/>
+	</bean>
+	<bean id="pfEntryItemBO" class="com.qeweb.framework.impconfig.exeprocessmag.pageflow.bo.PFEntryItemBO" scope="prototype">
+		<property name="pfEntryDao" ref="pfEntryDao"/>
+	</bean>
+	<!-- 执行过程管理 相关 end -->
+</beans>

@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pageflow-list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+          xsi:noNamespaceSchemaLocation="/WEB-INF/dtd/pageflow.xsd">
+          
+	<!-- ################# 物理表管理  start ################# -->
+	<!-- 物理表管理 start -->
+	<!-- 跳转到新增物理表页面 -->
+	<pageflow boId='phyTableBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableList.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableInsert.jsp' btnName='insert' />
+	<!-- 跳转到修改物理表页面 -->
+	<pageflow boId='phyTableBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableList.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableEdit.jsp' btnName='update' />
+	<!-- 从物理表新增页面返回物理表查询页面 -->
+	<pageflow boId='phyAllBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableInsert.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableList.jsp' btnName='goBack' />
+	<!-- 从物理表修改页面返回物理表查询页面 -->
+	<pageflow boId='phyAllBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableEdit.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableList.jsp' btnName='goBack' />
+	<!-- 保存物理表 -->
+	<pageflow boId='phyAllBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableInsert.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableList.jsp' btnName='save' msgFlag='true' />
+	<pageflow boId='phyAllBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableEdit.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableList.jsp' btnName='save' msgFlag='true' />
+	<!-- 查看SQL -->
+	<pageflow boId='phyAllBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableInsert.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/phymanage/viewSql.jsp' btnName='viewCreateSql' 
+		isPopup="true" dialogWidth="500" dialogHeight="400"/>
+	<pageflow boId='phyAllBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableEdit.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/phymanage/viewSql.jsp' btnName='viewAlterSql' 
+		isPopup="true" dialogWidth="500" dialogHeight="400"/>	
+	<!-- 跳转到主外键设置 -->
+	<pageflow boId='phyTableBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/phymanage/phyTableList.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/phymanage/phyKeys.jsp' btnName='keySetting' />
+		
+	<!--  物理表管理 end -->
+	<!-- ################# 物理表管理 相关  end ################# -->
+	
+	<!-- ################# DDT 相关  START ################# -->
+	<!-- DDT模块管理START -->
+	<!-- DDT模块管理 列表到新增模块页面 -->
+	<pageflow boId="ddtSysModulesBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/ddtModuleManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/addDdtModule.jsp"
+		btnName="insert" />
+	<!-- DDT模块管理 列表到编辑模块页面 -->
+	<pageflow boId="ddtSysModulesBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/ddtModuleManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/editDdtModule.jsp"
+		btnName="update" />
+	<!-- DDT模块管理 新增模块页面 保存按钮返回列表 -->
+	<pageflow boId="ddtSysModulesBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/addDdtModule.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/ddtModuleManage.jsp" msgFlag="true"
+		btnName="insert" />
+	<!-- DDT模块管理 新增模块页面返回列表 -->
+	<pageflow boId="ddtSysModulesBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/addDdtModule.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/ddtModuleManage.jsp"
+		btnName="goback" />
+	<!-- DDT模块管理 编辑模块页面 保存按钮返回列表 -->
+	<pageflow boId="ddtSysModulesBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/editDdtModule.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/ddtModuleManage.jsp"
+		btnName="update" />
+	<!-- DDT模块管理 编辑模块页面返回列表 -->
+	<pageflow boId="ddtSysModulesBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/editDdtModule.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/ddtModuleManage.jsp"
+		btnName="goback" />
+	<!-- 弹出选择上级模块页面 -->
+	<pageflow boId='ddtSysModulesBO' sourcePage=''
+		targetPage='/WEB-INF/pages/impconfig/ddt/manage/moduleManage/selectDdtModule.jsp'
+		bopBind='parentModule.moduleName:moduleName;parentModule.id:id'
+		isPopup="true" dialogWidth="500" dialogHeight="400" dialogTitle="选择上级模块页面"/>
+	<!-- DDT模块管理 验证页面是否可以删除 -->
+	<pageflow boId='ddtSysModulesBO'
+		sourcePage='/WEB-INF/pages/impconfig/ddt/manage/moduleManage/ddtModuleManage.jsp'
+		targetPage='/WEB-INF/pages/impconfig/ddt/manage/moduleManage/validateDelete.jsp'
+		btnName="validateDelete"
+		isPopup="true" dialogWidth="500" dialogHeight="168" />
+	<!-- DDT模块面管理 删除确认页面关闭刷新查询页面 -->
+	<pageflow boId='ddtSysModulesBO'
+		sourcePage='/WEB-INF/pages/impconfig/ddt/manage/moduleManage/validateDelete.jsp'
+		btnName="deleteModule" closePage="true" />		
+	<!-- DDT模块管理 确认删除页面-按钮取消关闭页面 -->
+	<pageflow boId='ddtSysModulesBO'
+		sourcePage='/WEB-INF/pages/impconfig/ddt/manage/moduleManage/validateDelete.jsp'
+		btnName="cancel" closePage="true" />		
+	<!-- DDT模块管理END -->
+	
+	<!-- DDT页面管理START -->
+	<!-- DDT页面管理 列表到新增页面页面 -->
+	<pageflow boId="ddtSysPagesBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/ddtPagesManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/addDdtPages.jsp"
+		btnName="insert" />
+	<!-- DDT页面管理 列表到编辑页面页面 -->
+	<pageflow boId="ddtSysPagesBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/ddtPagesManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/editDdtPages.jsp"
+		btnName="update" />
+	<!-- DDT页面管理 新增页面页面 保存按钮返回列表 -->
+	<pageflow boId="ddtSysPagesBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/addDdtPages.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/ddtPagesManage.jsp"
+		btnName="insert" />
+	<!-- DDT页面管理 新增页面页面返回列表 -->
+	<pageflow boId="ddtSysPagesBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/addDdtPages.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/ddtPagesManage.jsp"
+		btnName="goback" />
+	<!-- DDT页面管理 编辑页面页面 保存按钮返回列表 -->
+	<pageflow boId="ddtSysPagesBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/editDdtPages.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/ddtPagesManage.jsp"
+		btnName="update" />
+	<!-- DDT页面管理 编辑页面页面返回列表 -->
+	<pageflow boId="ddtSysPagesBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/editDdtPages.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/ddtPagesManage.jsp"
+		btnName="goback" />
+	<!-- DDT页面管理 验证页面是否可以删除 -->
+	<pageflow boId='ddtSysPagesBO'
+		sourcePage='/WEB-INF/pages/impconfig/ddt/manage/pagesManage/ddtPagesManage.jsp'
+		targetPage='/WEB-INF/pages/impconfig/ddt/manage/pagesManage/validateDelete.jsp'
+		btnName="validateDelete"
+		isPopup="true" dialogWidth="500" dialogHeight="168" />
+	<!-- DDT页面管理 删除确认页面关闭 -->
+	<pageflow boId='ddtSysPagesBO'
+		sourcePage='/WEB-INF/pages/impconfig/ddt/manage/pagesManage/validateDelete.jsp'
+		btnName="deletePage" closePage="true" />
+	<!-- DDT页面管理 确认删除页面-按钮取消关闭页面 -->
+	<pageflow boId='ddtSysPagesBO'
+		sourcePage='/WEB-INF/pages/impconfig/ddt/manage/pagesManage/validateDelete.jsp'
+		btnName="cancel" closePage="true" />
+	<!-- DDT页面管理END -->
+	
+	<!-- DDT粗粒度组件管理START -->
+	<!-- DDT粗粒度组件管理 列表到新增粗粒度组件页面 -->
+	<pageflow boId="ddtSysContainerBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/containerManage/ddtContainerManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/containerManage/addDdtContainer.jsp"
+		btnName="insert" />
+	<!-- DDT粗粒度组件管理 列表到编辑粗粒度组件页面 -->
+	<pageflow boId="ddtSysContainerBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/containerManage/ddtContainerManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/containerManage/editDdtContainer.jsp"
+		btnName="update" />
+	<!-- DDT粗粒度组件管理 新增粗粒度组件页面返回列表 -->
+	<pageflow boId="ddtSysContainerBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/containerManage/addDdtContainer.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/containerManage/ddtContainerManage.jsp"
+		btnName="insert" />
+	<!-- DDT粗粒度组件管理 编辑粗粒度组件页面返回列表 -->
+	<pageflow boId="ddtSysContainerBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/containerManage/editDdtContainer.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/containerManage/ddtContainerManage.jsp"
+		btnName="update" />
+	<!-- DDT粗粒度组件管理 新增粗粒度组件页面返回列表 -->
+	<pageflow boId="ddtSysContainerBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/containerManage/addDdtContainer.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/containerManage/ddtContainerManage.jsp"
+		btnName="goback" />
+	<!-- DDT粗粒度组件管理 编辑粗粒度组件页面返回列表 -->
+	<pageflow boId="ddtSysContainerBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/containerManage/editDdtContainer.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/containerManage/ddtContainerManage.jsp"
+		btnName="goback" />
+	<!-- DDT粗粒度组件管理 验证粗粒度组件是否可以删除 -->
+	<pageflow boId='ddtSysContainerBO'
+		sourcePage='/WEB-INF/pages/impconfig/ddt/manage/containerManage/ddtContainerManage.jsp'
+		targetPage='/WEB-INF/pages/impconfig/ddt/manage/containerManage/deleteDdtContainer.jsp'
+		btnName="validateDelete"
+		isPopup="true" dialogWidth="500" dialogHeight="168" />
+	<!-- DDT粗粒度组件管理 删除确认页面关闭 -->
+	<pageflow boId='ddtSysContainerBO'
+		sourcePage='/WEB-INF/pages/impconfig/ddt/manage/containerManage/deleteDdtContainer.jsp'
+		btnName="deleteContainer" closePage="true" />
+	<!-- DDT粗粒度组件管理 删除粗粒度页面-按钮取消关闭页面 -->
+	<pageflow boId='ddtSysContainerBO'
+		sourcePage='/WEB-INF/pages/impconfig/ddt/manage/containerManage/deleteDdtContainer.jsp'
+		btnName="cancel" closePage="true" />
+	<!-- 弹出选择粗粒度組件页面 -->
+	<pageflow boId='ddtSysContainerBO'
+		sourcePage=''
+		targetPage='/WEB-INF/pages/impconfig/ddt/manage/containerManage/selectDdtContainer.jsp'
+		bopBind='page.name:page.name;page.id:page.id;containerType:containerType;boName:boName;containerId:containerId;containerTypeShow:containerTypeShow' isPopup="true"
+		dialogWidth="700" dialogHeight="450" dialogTitle="选择粗粒度组件页面"/>		
+	<!-- DDT粗粒度组件管理END -->
+	
+	<!-- DDT细粒度组件管理START -->
+	<!-- DDT细粒度组件管理 列表到新增细粒度组件页面 -->
+	<pageflow boId="ddtSysFcBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/fcManage/ddtFcManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/fcManage/addDdtFc.jsp"
+		btnName="insert" />
+	<!-- DDT细粒度组件管理 列表到编辑细粒度组件页面 -->
+	<pageflow boId="ddtSysFcBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/fcManage/ddtFcManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/fcManage/editDdtFc.jsp"
+		btnName="update" />
+	<!-- DDT细粒度组件管理 新增细粒度组件页面返回列表 -->
+	<pageflow boId="ddtSysFcBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/fcManage/addDdtFc.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/fcManage/ddtFcManage.jsp"
+		btnName="insert" />
+	<!-- DDT细粒度组件管理 编辑细粒度组件页面返回列表 -->
+	<pageflow boId="ddtSysFcBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/fcManage/editDdtFc.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/fcManage/ddtFcManage.jsp"
+		btnName="update" />
+	<!-- DDT细粒度组件管理 新增细粒度组件页面返回列表 -->
+	<pageflow boId="ddtSysFcBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/fcManage/addDdtFc.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/fcManage/ddtFcManage.jsp"
+		btnName="goback" />
+	<!-- DDT细粒度组件管理 编辑细粒度组件页面返回列表 -->
+	<pageflow boId="ddtSysFcBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/manage/fcManage/editDdtFc.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/manage/fcManage/ddtFcManage.jsp"
+		btnName="goback" />
+	<!-- DDT细粒度组件管理 验证细粒度组件是否可以删除 -->
+	<pageflow boId='ddtSysFcBO'
+		sourcePage='/WEB-INF/pages/impconfig/ddt/manage/fcManage/ddtFcManage.jsp'
+		targetPage='/WEB-INF/pages/impconfig/ddt/manage/fcManage/deleteDdtFc.jsp'
+		btnName="validateDelete"
+		isPopup="true" dialogWidth="500" dialogHeight="168" />
+	<!-- DDT细粒度组件管理 删除确认页面关闭 -->
+	<pageflow boId='ddtSysFcBO'
+		sourcePage='/WEB-INF/pages/impconfig/ddt/manage/fcManage/deleteDdtFc.jsp'
+		btnName="deleteFc" closePage="true" />
+	<!-- DDT细粒度组件管理 删除细粒度页面-按钮取消关闭页面 -->
+	<pageflow boId='ddtSysFcBO'
+		sourcePage='/WEB-INF/pages/impconfig/ddt/manage/fcManage/deleteDdtFc.jsp'
+		btnName="cancel" closePage="true" />
+	<!-- 弹出选择细粒度組件页面 -->
+	<pageflow boId='ddtSysFcBO'
+		sourcePage=''
+		targetPage='/WEB-INF/pages/impconfig/ddt/manage/fcManage/selectDdtFc.jsp'
+		bopBind='container.id:container.id;container.page.name:page.name;container.containerTypeShow:container.containerTypeShow;container.containerId:container.containerId;container.boName:container.boName;bopname:fc.bopname' isPopup="true"
+		dialogWidth="700" dialogHeight="450" dialogTitle="选择细粒度组件页面"/>		
+	<!-- DDT细粒度组件管理END -->
+	
+	<!-- DDT应用配置START -->
+	<!-- DDT应用配置 列表到新增方案页面 -->
+	<pageflow boId="ddtAppConfigBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/appConfig/ddtAppConfigManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/appConfig/addDdtAppConfig.jsp"
+		btnName="insert" />
+	<!-- DDT应用配置 列表到编辑方案页面 -->
+	<pageflow boId="ddtAppConfigBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/appConfig/ddtAppConfigManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/appConfig/editDdtAppConfig.jsp"
+		btnName="update" />
+	<!-- DDT应用配置 新增方案页面返回列表 -->
+	<pageflow boId="ddtAppConfigBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/appConfig/addDdtAppConfig.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/appConfig/ddtAppConfigManage.jsp"
+		btnName="insert" />
+	<!-- DDT应用配置 编辑方案页面返回列表 -->
+	<pageflow boId="ddtAppConfigBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/appConfig/editDdtAppConfig.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/appConfig/ddtAppConfigManage.jsp"
+		btnName="update" />
+	<!-- DDT应用配置 新增方案页面返回列表 -->
+	<pageflow boId="ddtAppConfigBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/appConfig/addDdtAppConfig.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/appConfig/ddtAppConfigManage.jsp"
+		btnName="goback" />
+	<!-- DDT应用配置 编辑方案页面返回列表 -->
+	<pageflow boId="ddtAppConfigBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/appConfig/editDdtAppConfig.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/appConfig/ddtAppConfigManage.jsp"
+		btnName="goback" />
+	<!-- 弹出选择方案页面 -->
+	<pageflow boId='ddtAppConfigBO'
+		sourcePage=''
+		targetPage='/WEB-INF/pages/impconfig/ddt/config/schemaManage/selectSchemaPage.jsp'
+		bopBind='schemaCode:schemaCode' isPopup="true"
+		dialogWidth="700" dialogHeight="450" dialogTitle="选择方案页面"/>		
+	<!-- 弹出选择用户页面 -->
+	<pageflow boId='ddtAppConfigBO'
+		sourcePage=''
+		targetPage='/WEB-INF/pages/impconfig/ddt/config/appConfig/selectUser.jsp'
+		bopBind='userCode:userCode' isPopup="true"
+		dialogWidth="850" dialogHeight="450" dialogTitle="选择用户页面"/>		
+	<!-- DDT应用配置END -->
+	
+	<!-- DDT粗粒度组件配置START -->
+	<!-- DDT粗粒度组件配置 列表到新增页面 -->
+	<pageflow boId="ddtContainerBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/containerConfig/ddtContainerConfigManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/containerConfig/addDdtContainerConfig.jsp"
+		btnName="insert" />
+	<!-- DDT粗粒度组件配置 列表到编辑页面 -->
+	<pageflow boId="ddtContainerBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/containerConfig/ddtContainerConfigManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/containerConfig/editDdtContainerConfig.jsp"
+		btnName="update" />
+	<!-- DDT粗粒度组件配置 新增页面返回列表 -->
+	<pageflow boId="ddtContainerBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/containerConfig/addDdtContainerConfig.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/containerConfig/ddtContainerConfigManage.jsp"
+		btnName="insert" />
+	<!-- DDT粗粒度组件配置 编辑页面返回列表 -->
+	<pageflow boId="ddtContainerBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/containerConfig/editDdtContainerConfig.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/containerConfig/ddtContainerConfigManage.jsp"
+		btnName="update" />
+	<!-- DDT粗粒度组件配置 新增页面返回列表 -->
+	<pageflow boId="ddtContainerBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/containerConfig/addDdtContainerConfig.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/containerConfig/ddtContainerConfigManage.jsp"
+		btnName="goback" />
+	<!-- DDT粗粒度组件配置 编辑页面返回列表 -->
+	<pageflow boId="ddtContainerBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/containerConfig/editDdtContainerConfig.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/containerConfig/ddtContainerConfigManage.jsp"
+		btnName="goback" />
+	<!-- 弹出选择页面 -->
+	<pageflow boId='ddtContainerBO'
+		sourcePage=''
+		targetPage='/WEB-INF/pages/impconfig/ddt/config/schemaManage/selectSchemaPage.jsp'
+		bopBind='ddtSchemaBO.schemaCode:schemaCode;ddtSchemaBO.schemaName:schemaName;ddtSchemaBO.id:id' isPopup="true"
+		dialogWidth="700" dialogHeight="450" dialogTitle="选择方案页面"/>		
+	<!-- 弹出选择粗粒度组件页面 -->
+	<pageflow boId='ddtContainerBO'
+		sourcePage=''
+		targetPage='/WEB-INF/pages/impconfig/ddt/manage/containerManage/selectContainer.jsp'
+		bopBind='ddtSysContainerBO.page.name:page.name;ddtSysContainerBO.boName:boName;ddtSysContainerBO.containerId:containerId;ddtSysContainerBO.containerTypeShow:containerTypeShow;ddtSysContainerBO.id:id' isPopup="true"
+		dialogWidth="700" dialogHeight="450" dialogTitle="选择粗粒度组件页面"/>		
+	<!-- DDT粗粒度组件配置END -->
+	
+	<!-- DDT细粒度组件配置START -->
+	<!-- DDT细粒度组件配置 列表到新增页面 -->
+	<pageflow boId="ddtFcBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/fcConfig/ddtFcConfigManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/fcConfig/addFcConfig.jsp"
+		btnName="insert" />
+	<!-- DDT细粒度组件配置 列表到编辑页面 -->
+	<pageflow boId="ddtFcBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/fcConfig/ddtFcConfigManage.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/fcConfig/editFcConfig.jsp"
+		btnName="update" />
+	<!-- DDT细粒度组件配置 新增页面返回列表 -->
+	<pageflow boId="ddtFcBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/fcConfig/addFcConfig.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/fcConfig/ddtFcConfigManage.jsp"
+		btnName="insert" />
+	<!-- DDT细粒度组件配置 编辑页面返回列表 -->
+	<pageflow boId="ddtFcBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/fcConfig/editFcConfig.jsp" msgFlag="true"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/fcConfig/ddtFcConfigManage.jsp"
+		btnName="update" />
+	<!-- DDT细粒度组件配置 新增页面返回列表 -->
+	<pageflow boId="ddtFcBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/fcConfig/addFcConfig.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/fcConfig/ddtFcConfigManage.jsp"
+		btnName="goback" />
+	<!-- DDT细粒度组件配置 编辑页面返回列表 -->
+	<pageflow boId="ddtFcBO"
+		sourcePage="/WEB-INF/pages/impconfig/ddt/config/fcConfig/editFcConfig.jsp"
+		targetPage="/WEB-INF/pages/impconfig/ddt/config/fcConfig/ddtFcConfigManage.jsp"
+		btnName="goback" />
+	<!-- 弹出选择粗粒度组件配置页面 -->
+	<pageflow boId='ddtFcBO'
+		sourcePage=''
+		targetPage='/WEB-INF/pages/impconfig/ddt/config/containerConfig/selectContainerConfig.jsp'
+		bopBind='ddtContainerBO.id:id;ddtContainerBO.ddtSysContainerBO.boName:ddtSysContainerBO.boName;ddtContainerBO.ddtSchemaBO.schemaCode:ddtSchemaBO.schemaCode;ddtContainerBO.ddtSchemaBO.schemaName:ddtSchemaBO.schemaName;ddtContainerBO.ddtSysContainerBO.containerTypeShow:ddtSysContainerBO.containerTypeShow;ddtContainerBO.ddtSysContainerBO.containerId:ddtSysContainerBO.containerId;ddtContainerBO.ddtSysContainerBO.page.name:ddtSysContainerBO.page.name;ddtContainerBO.ddtSysContainerBO.page.url:ddtSysContainerBO.page.url;ddtContainerBO.ddtSysContainerBO.id:ddtSysContainerBO.id' isPopup="true"
+		dialogWidth="700" dialogHeight="450" dialogTitle="选择粗粒度组件配置页面"/>		
+	<!-- 弹出选择细粒度组件页面 -->
+	<pageflow boId='ddtFcBO'
+		sourcePage=''
+		targetPage='/WEB-INF/pages/impconfig/ddt/manage/fcManage/selectFc.jsp'
+		bopBind='ddtSysFcBO.bopname:bopname;ddtSysFcBO.id:id;ddtSysFcBO.fcTypeShow:fcTypeShow;ddtSysFcBO.container.id:container.id' isPopup="true"
+		dialogWidth="700" dialogHeight="450" dialogTitle="选择细粒度组件页面"/>		
+	<!-- DDT细粒度组件配置END -->
+	<!-- DDT展示组件管理 -->
+	<!-- ################# DDT 相关  END ################# -->
+
+
+	<!--  #################   项目基本信息管理相关  start    ################# -->
+	<!-- 代码信息管理   START -->
+	<pageflow boId='projectCodeBO' sourcePage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCode.jsp'
+		targetPage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCodeItems.jsp' btnName='srcPackage' 
+		isPopup="true" dialogWidth="700" dialogHeight="450"/>
+	<pageflow boId='projectCodeBO' sourcePage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCode.jsp'
+		targetPage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCodeItems.jsp' btnName='jspPackage' 
+		isPopup="true" dialogWidth="700" dialogHeight="450"/>
+	<pageflow boId='projectCodeBO' sourcePage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCode.jsp'
+		targetPage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCodeItems.jsp' btnName='hbmPackage'
+		isPopup="true" dialogWidth="700" dialogHeight="450"/>
+	<pageflow boId='projectCodeBO' sourcePage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCode.jsp'
+		targetPage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCodeItems.jsp' btnName='springPackage'
+		isPopup="true" dialogWidth="700" dialogHeight="450"/>
+	<pageflow boId='projectCodeBO' sourcePage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCode.jsp'
+		targetPage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCodeItems.jsp' btnName='pageflowPackage' 
+		isPopup="true" dialogWidth="700" dialogHeight="450"/>
+	<pageflow boId='projectCodeBO' sourcePage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCode.jsp'
+		targetPage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCodeItems.jsp' btnName='varPackage'
+		isPopup="true" dialogWidth="700" dialogHeight="450"/>
+	<pageflow boId='projectCodeBO' sourcePage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCode.jsp'
+		targetPage='/WEB-INF/pages/impconfig/proresource/projectCode/projectCodeItems.jsp' btnName='i18nPackage' 
+		isPopup="true" dialogWidth="700" dialogHeight="450"/>
+	<!-- 代码信息管理   END -->
+	<!--  ################# 项目基本信息管理相关 END    ################# -->
+	
+	
+	<!--  ################# MDT管理 START    #################  -->
+	<!--  值集管理 start -->
+	<pageflow boId='mdtValueSetBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/valueset/valueSetManage.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/valueset/valueSetItems.jsp' btnName='itemManage' />
+	<pageflow boId='mdtValueSetBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/valueset/valueSetItems.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/valueset/valueSetManage.jsp' btnName='goback' />
+	<!--  值集管理 end -->
+	<!-- 选择值集 -->
+	<pageflow boId='mdtValueSetBO'
+		sourcePage=''
+		targetPage='/WEB-INF/pages/impconfig/mdt/valueset/selectValueSet.jsp'
+		bopBind='valueSetCode:code' isPopup="true"
+		dialogWidth="700" dialogHeight="450" />		
+	<!-- 变量管理 end  -->
+	
+	<!-- 页面流管理tart -->
+	<!-- 页面流配置 -->
+	<pageflow boId='pageflowConfBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/config/pageflowConfManage.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/pageflow/config/pageflowConfAdd.jsp' btnName='insert' 
+		isPopup="true" dialogWidth="800" dialogHeight="400"/>
+	<pageflow boId='pageflowConfBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/config/pageflowConfAdd.jsp'
+		targetPage='' btnName='insert' closePage="true"/>
+	<pageflow boId='pageflowConfBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/config/pageflowConfManage.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/pageflow/config/pageflowConfView.jsp' btnName='view' 
+		isPopup="true" dialogWidth="800" dialogHeight="400"/>
+	<pageflow boId='pageflowConfBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/config/pageflowConfManage.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/pageflow/config/pageflowConfUpdate.jsp' btnName='update' 
+		isPopup="true" dialogWidth="800" dialogHeight="400"/>
+	<pageflow boId='pageflowConfBO' 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/config/pageflowConfUpdate.jsp'
+		targetPage='' btnName='update' closePage="true"/>
+	<!-- 映射管理 -->
+	<pageflow boId='pageflowConfBO' 
+		bopBind='moduleId:moduleId;boId:boId;btnName:btnName;sourcePage:sourcePage;targetPage:targetPage'
+		targetPage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowConfSelect.jsp?load=toTypeOneAndHasTargetPage'/>
+	<!-- 配置映射 -->
+	<pageflow boId='pfv_mainBO' btnName="referenceTarget"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingMag.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingConfig.jsp'/>	
+	<pageflow boId='pfv_mainBO' btnName="goBack"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingConfig.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingMag.jsp'/>	
+	<pageflow boId='pfv_itemBO' btnName="insert"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingConfig.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingEdit.jsp'/>	
+	<pageflow boId='pfv_itemBO' btnName="update"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingConfig.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingEdit.jsp'/>
+	<pageflow boId='pfv_itemBO' btnName="view"
+		isPopup="true" dialogWidth="800" dialogHeight="500" 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingConfig.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingView.jsp'/>	
+	<!-- 批量添加映射 -->	
+	<pageflow boId='pfv_itemBO' btnName="saveItems" msgFlag='true'
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingEdit.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingConfig.jsp'/>	
+	<pageflow boId='pfv_itemBO' btnName="goBack"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingEdit.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingConfig.jsp'/>
+	<pageflow boId='pfv_varBO' btnName="config" 
+		isPopup="true" dialogWidth="500" dialogHeight="250" 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingEdit.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/configVar.jsp'/>		
+	<pageflow boId='pfv_varBO' btnName="config" closePage="true"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/pageflow/mapping/configVar.jsp'
+		targetVC='table'/>	
+	
+	<pageflow boId='varBO' bopBind='vars:name' dialogHeight="400"
+		targetPage='/WEB-INF/pages/impconfig/mdt/varmanage/varSelect.jsp'/>
+	<!-- 页面流管理END   -->
+	
+	<!-- 关联管理-变量-组件关联管理 strat -->
+	<!-- 选择粗粒度组件 -->
+	<pageflow boId='analyzeComponentBO' bopBind='pageURL:pageURL;containerId:vcId;bind:bind;containerType:vcType'
+		targetPage='/WEB-INF/pages/impconfig/mdt/varpagemanage/selectContainer.jsp' dialogHeight="450" />
+	<!-- 跳转到配置页面 -->
+	<pageflow boId="varPageBO" btnName="toConfig"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageMag.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"/>
+	<pageflow boId="varPageBO" btnName="goBack"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageMag.jsp"/>
+	<!-- 跳转到配置变量与组件映射关系页面 -->
+	<pageflow boId="varPageItemBO" btnName="insert"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingAdd.jsp"/>
+	<pageflow boId="varPageAllBO" btnName="goBack"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingAdd.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"/>
+	<pageflow boId="varPageAllBO" btnName="goBack"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingTabAdd.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"/>
+	<!-- 选择组件 -->
+	<pageflow boId="analyzeComponentBO"	bopBind="vcType:vcType;bind:bind" echo="bind"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/selectComponent.jsp" dialogHeight="400"/>
+	<!-- 新增变量与组件的映射关系 -->
+	<pageflow boId="varPageAllBO" btnName="save"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingAdd.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"/>	
+	<pageflow boId="varPageAllBO" btnName="save"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingTabAdd.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"/>	
+	
+	<!-- 查看变量与组件的映射关系 -->
+	<pageflow boId="varPageItemBO" btnName="view" isPopup="true" dialogHeight="450"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingView.jsp"/>	
+	<pageflow boId="varPageItemBO" btnName="viewTab" isPopup="true" dialogHeight="450"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingTabView.jsp"/>	
+	<!-- 跳转到修改变量与组件的映射关系页面 -->
+	<pageflow boId="varPageItemBO" btnName="update"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingModify.jsp"/>	
+	<pageflow boId="varPageItemBO" btnName="updateTab"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingTabModify.jsp"/>	
+	<!-- 修改变量与组件的映射关系 -->
+	<pageflow boId="varPageAllBO" btnName="save"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingModify.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"/>	
+	<pageflow boId="varPageAllBO" btnName="goBack"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingModify.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"/>
+	<pageflow boId="varPageAllBO" btnName="save"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingTabModify.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"/>	
+	<pageflow boId="varPageAllBO" btnName="goBack"
+		sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingTabModify.jsp"
+		targetPage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp"/>
+	<!-- 关联管理-变量-组件关联管理 end -->
+
+	<!-- 关联管理-变量-页面流关联管理 strat -->
+	<!-- 选择控制组件-->
+	<pageflow boId='analyzeBtnBO' bopBind='boId:boId;btnName:btnName;sourcePage:pageURL'
+		targetPage='/WEB-INF/pages/impconfig/mdt/varpfmanage/analyzeBtn.jsp' dialogHeight="400" />
+	<!-- 跳转到配置页面 -->
+	<pageflow boId='varPageFlowBO' btnName="conf" 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/varpfmanage/varPFManage.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/varpfmanage/varPFConf.jsp'/>
+	<pageflow boId='varPageFlowBO' btnName="goBack" 
+		sourcePage='/WEB-INF/pages/impconfig/mdt/varpfmanage/varPFConf.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/varpfmanage/varPFManage.jsp'/>
+	<!-- 跳转到变量值-页面流关联关系页面 -->
+	<pageflow boId='varPageFlowItemBO' btnName="insert" isPopup="true" dialogHeight="450"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/varpfmanage/varPFConf.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/varpfmanage/varPFReference.jsp'/>
+	<pageflow boId='varPageFlowAllBO' btnName="insert" closePage="true"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/varpfmanage/varPFReference.jsp'/>
+	<!-- 关联管理-变量-页面流关联管理 end -->
+	
+	<!-- 关联管理-用户-组件关联管理 strat -->
+	<!-- 选择粗粒度组件 -->
+	<pageflow boId='vp_analyzeComponentBO' bopBind='pageURL:pageURL;vcId:componentId;bind:bind;vcType:componentType'
+		targetPage='/WEB-INF/pages/impconfig/mdt/varmanage/varpagemanage/selectContainer.jsp' dialogHeight="450" />
+	<!-- 选择用户信息 -->
+	<pageflow boId='selectUserBO' bopBind='userInfo:fullFieldName'
+		targetPage='/WEB-INF/pages/impconfig/mdt/userpagemanage/selectUserInfo.jsp' dialogHeight="450" />
+	<!-- 跳转到用户信息值-组件关联管理页面 -->
+	<pageflow boId='userPageBO' btnName="toUserPageItemMag"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/userpagemanage/userPageMag.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/userpagemanage/userPageItemMag.jsp'/>
+	<pageflow boId='userPageItemBO' btnName="goBack"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/userpagemanage/userPageItemMag.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/userpagemanage/userPageMag.jsp'/>
+	<!-- 关联管理-用户-组件关联管理 strat -->	
+	
+		
+	<!-- ################# MDT管理END    #################  -->
+	
+	<!-- ################# 执行过程管理START    #################  -->
+	<!-- 变量执行过程管理-页面入口 -->
+	<pageflow boId='pageEntryBO' btnName="insert"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/pageEntryMag.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/pageEntryInsert.jsp'/>
+	<pageflow boId='pageEntryBO' btnName="back"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/pageEntryInsert.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/pageEntryMag.jsp'/>
+	<pageflow boId='pageEntryBO' btnName="insert"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/pageEntryInsert.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/pageEntryMag.jsp'/>	
+	<pageflow boId='varPageBO' bopBind="pageURL:pageURL"
+		targetPage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/selectPage.jsp' dialogWidth="850"
+		dialogHeight="400"/>
+	<pageflow boId='pageEntryBO' btnName="view" isPopup="true" dialogHeight="400"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/pageEntryMag.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/pageEntryView.jsp'/>
+	<pageflow boId='pageEntryBO' btnName="update" isPopup="true" dialogHeight="400"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/pageEntryMag.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/pageEntryUpdate.jsp'/>
+	<pageflow boId='pageEntryBO' btnName="update" closePage="true"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/pageEntryUpdate.jsp'/>
+							
+	<!-- 变量执行过程管理-页面流入口 -->						
+	<pageflow boId='pfEntryBO' btnName="insert" dialogHeight="450" dialogWidth="1000"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/pageFlowEntryMag.jsp' isPopup="true"
+		targetPage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/pageFlowEntryInsert.jsp'/>
+	<pageflow boId='pfEntryBO' btnName="insert" closePage="true"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/pageFlowEntryInsert.jsp'/>
+	<pageflow boId='pfEntryBO' btnName="view" isPopup="true" dialogHeight="400"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/pageFlowEntryMag.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/pageFlowEntryView.jsp'/>
+	<pageflow boId='pfEntryBO' btnName="update" isPopup="true"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/pageFlowEntryMag.jsp'
+		targetPage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/pageFlowEntryUpdate.jsp'/>
+	<pageflow boId='pfEntryBO' btnName="update" closePage="true"
+		sourcePage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/pageFlowEntryUpdate.jsp'/> 
+								
+	<pageflow boId='pageEntryBO' btnName="btn1" sourcePage="/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/test.jsp"
+		targetPage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/test.jsp'/>
+	<pageflow boId='pageEntryBO' btnName="btn2" sourcePage="/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/test.jsp"
+		targetPage='/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/test.jsp'/>									
+	<!-- ################# 执行过程管理END    #################  -->
+</pageflow-list>

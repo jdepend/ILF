@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans default-autowire="byName" >
+
+	<!-- dao -->
+	<bean id="IRoleDao" class="com.qeweb.sysmanage.purview.dao.impl.RoleDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="orgDao" class="com.qeweb.sysmanage.purview.dao.impl.OrgDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="IGroupDao" class="com.qeweb.sysmanage.purview.dao.impl.GroupDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+</beans>

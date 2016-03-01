@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customTransaction-list>
+	<customTransaction boId='DemoBO_ShowAllFC' method='execute' readOnly='true'/>
+	<customTransaction boId='DemoBO_ShowAllFC' method='showAll'/>
+</customTransaction-list>

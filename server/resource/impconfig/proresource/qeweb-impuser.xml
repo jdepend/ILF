@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qeweb-impuser><user id="1362619653234" username="邓宏誉" usercode="dhy" password="123456" roles="pm" remark="阿特斯项目经理" deleteFlag="0" />
+<!--
+  NOTE: 该文件用于配置角色, 仅项目经理有权限修改. 角色分为项目经理(pm), 开发人员(dev), 实施人员(imp).
+  三者均属于开发期角色, 游离于运行期的权限管理.
+  拥有这三个角色的用户在登陆时应当没有图形码校验, 在页面上方的logo域显示"开发板"字样, 并显示当前SVN版本号.
+  当项目中有qeweb-impuser.xml文件, 并且用qeweb-impuser.xml中配置的用户登陆后,
+ qeweb-impuser.xml中的菜单会取代数据库中的菜单(运行期菜单).
+-->
+
+	<role rolename="pm" note="项目经理" />
+	<role rolename="dev" note="开发人员" />
+	<role rolename="imp" note="实施人员" />
+	<user id="1358390526425" username="嵇学龙" usercode="jiuelong" password="123456" roles="dev,imp" remark="76675" deleteFlag="0" />
+	<user id="1358390504292" username="李博" usercode="libo" password="123456" roles="imp" remark="" deleteFlag="1" />
+	<user id="1358232619912" username="薛玲君" usercode="xuelingjun" password="123456" roles="imp" remark="xuelingjun" deleteFlag="0" />
+	<user id="1358231002534" username="孙博" usercode="sunbo" password="234" roles="pm,dev" remark="123" deleteFlag="0" />
+	<user id="1" username="魏群" usercode="weiqun" password="123" roles="pm,dev" remark="da" deleteFlag="0" />
+	<user id="2" username="岳麓" usercode="yuelu" password="yuelu" roles="dev,imp" remark="" deleteFlag="0" />
+	<user id="3" username="马仙" usercode="maxian" password="maxian" roles="dev,imp" remark="" deleteFlag="0" />
+	<user id="4" username="李光" usercode="liguang" password="liguang" roles="imp" remark="" deleteFlag="0" />
+
+	<modules>
+		<menu id="9000" name="实施配置" parentId="0" url="" />
+		<menu id="9001" name="项目基本信息管理" parentId="9000" url="" sortIndex="1" />
+		<menu id="900101" name="数据源配置" parentId="9001" url="/WEB-INF/pages/impconfig/datasource/datasource.jsp" sortIndex="1" />
+		<menu id="900102" name="开发路径配置" parentId="9001" url="/WEB-INF/pages/impconfig/proresource/projectPath.jsp" sortIndex="1" />
+		<menu id="900103" name="修改登录密码" parentId="9001" url="/WEB-INF/pages/impconfig/proresource/projectMember/modifyPassword.jsp?load=toModifyPwd" sortIndex="2" />
+		<menu id="900104" name="项目基本信息配置" parentId="9001" url="/WEB-INF/pages/impconfig/proresource/projectInfo.jsp" sortIndex="3" />
+		<menu id="900105" name="项目成员管理" parentId="9001" url="/WEB-INF/pages/impconfig/proresource/projectMember/projectMember.jsp" sortIndex="4" />
+		<menu id="900106" name="模块管理" parentId="9001" url="/WEB-INF/pages/impconfig/proresource/projectModule/projectModule.jsp" sortIndex="5" />
+		<menu id="900107" name="代码信息管理" parentId="9001" url="/WEB-INF/pages/impconfig/proresource/projectCode/projectCode.jsp" sortIndex="6" />
+		<menu id="900108" name="版本监控" parentId="9001" url="/WEB-INF/pages/versionlistener/version.jsp" sortIndex="7" />
+		
+		<menu id="9002" name="MDT管理" parentId="9000" url="" sortIndex="2" />
+		<menu id="900200" name="物理表管理" parentId="9002" url="/WEB-INF/pages/impconfig/mdt/phymanage/phyTableList.jsp" sortIndex="1" />
+		<menu id="900201" name="元数据管理" parentId="9002" url="" sortIndex="2" />
+		<menu id="90020102" name="值集管理" parentId="900201" url="/WEB-INF/pages/impconfig/mdt/valueset/valueSetManage.jsp" sortIndex="1" />
+		<menu id="90020101" name="变量管理" parentId="900201" url="/WEB-INF/pages/impconfig/mdt/varmanage/varManage.jsp" sortIndex="2" />
+		<menu id="900202" name="页面流管理" parentId="9002" url="" sortIndex="2" />
+		<menu id="90020201" name="页面流文件管理" parentId="900202" url="/WEB-INF/pages/impconfig/mdt/pageflow/manage/pageflowFileManage.jsp" sortIndex="1" />
+		<menu id="90020202" name="页面流配置" parentId="900202" url="/WEB-INF/pages/impconfig/mdt/pageflow/config/pageflowConfManage.jsp" sortIndex="2" />
+		<menu id="90020203" name="映射管理" parentId="900202" url="/WEB-INF/pages/impconfig/mdt/pageflow/mapping/pageflowMappingMag.jsp" sortIndex="3" />
+		<menu id="900203" name="关联管理" parentId="9002" url="" sortIndex="3" />
+		<menu id="90020301" name="变量-组件关联管理" parentId="900203" url="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageMag.jsp" sortIndex="1" />
+		<menu id="90020302" name="变量-页面流关联管理" parentId="900203" url="/WEB-INF/pages/impconfig/mdt/varpfmanage/varPFManage.jsp" sortIndex="2" />
+		<menu id="90020303" name="用户-组件关联管理" parentId="900203" url="/WEB-INF/pages/impconfig/mdt/userpagemanage/userPageMag.jsp" sortIndex="3" />
+
+		<menu id="9003" name="DDT管理" parentId="9000" url="" sortIndex="3" />
+		<menu id="900301" name="元组件管理" parentId="9003" url="" sortIndex="1" />
+		<menu id="90030101" name="模块管理" parentId="900301" url="/WEB-INF/pages/impconfig/ddt/manage/moduleManage/ddtModuleManage.jsp" sortIndex="1" />
+		<menu id="90030102" name="页面管理" parentId="900301" url="/WEB-INF/pages/impconfig/ddt/manage/pagesManage/ddtPagesManage.jsp" sortIndex="2" />
+		<menu id="90030103" name="粗粒度组件管理" parentId="900301" url="/WEB-INF/pages/impconfig/ddt/manage/containerManage/ddtContainerManage.jsp" sortIndex="3" />
+		<menu id="90030104" name="细粒度组件管理" parentId="900301" url="/WEB-INF/pages/impconfig/ddt/manage/fcManage/ddtFcManage.jsp" sortIndex="4" />
+		<menu id="900302" name="展示组件配置" parentId="9003" url="" sortIndex="2" />
+		<menu id="90030201" name="方案管理" parentId="900302" url="/WEB-INF/pages/impconfig/ddt/config/schemaManage/ddtSchemaManage.jsp" sortIndex="1" />
+		<menu id="90030202" name="应用配置" parentId="900302" url="/WEB-INF/pages/impconfig/ddt/config/appConfig/ddtAppConfigManage.jsp" sortIndex="2" />
+		<menu id="90030203" name="粗粒度组件配置" parentId="900302" url="/WEB-INF/pages/impconfig/ddt/config/containerConfig/ddtContainerConfigManage.jsp" sortIndex="3" />
+		<menu id="90030204" name="细粒度组件配置" parentId="900302" url="/WEB-INF/pages/impconfig/ddt/config/fcConfig/ddtFcConfigManage.jsp" sortIndex="4" />
+		
+		<menu id="9004" name="执行过程管理" parentId="9000" url="" sortIndex="4" />
+		<menu id="900401" name="变量执行过程管理" parentId="9004" url="" sortIndex="1" />
+		<menu id="90040101" name="页面入口" parentId="900401" url="/WEB-INF/pages/impconfig/mdt/exeprocessmag/page/pageEntryMag.jsp" sortIndex="1" />
+		<menu id="90040102" name="页面流入口" parentId="900401" url="/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/pageFlowEntryMag.jsp" sortIndex="2" />
+		<menu id="90040103" name="test" parentId="900401" url="/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/test.jsp" sortIndex="3" />
+	</modules>
+
+	<pm menus="9000,9001,900101,900102,900103,900104,900105,900106,900107,900108,
+		9002,900200,900201,90020101,90020102,900202,90020201,90020202,90020203,900203,90020301,90020302,90020303,
+		9003,900301,90030101,90030102,90030103,90030104,900302,90030201,90030202,90030203,90030204,
+		9004,900401,90040101,90040102,90040103" />
+	<dev menus="9000,9001,900101,900102,900106,900107,900108,9003,900301,90030101,90030102,90030103,90030104,900302,90030201,90030202,90030203,90030204" />
+	<imp menus="9000,9001,9003,900108" />
+</qeweb-impuser>

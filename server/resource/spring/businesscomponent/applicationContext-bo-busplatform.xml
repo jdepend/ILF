@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- 业务平台流程配置工具 -->
+	<bean id="bp_consoleBO" class="com.qeweb.busplatform.businessseting.console.BusConsoleBO" scope="prototype"/>
+	<bean id="bp_consoleBO_page" class="com.qeweb.busplatform.businessseting.console.BusConsoleBO" scope="prototype">
+		<property name="bp_busConsoleDao" ref="IBusConsoleDao"/>
+	</bean>
+	<bean id="bp_FTPConfBO" class="com.qeweb.busplatform.businessseting.console.FTPConfBO" scope="prototype"/>
+
+	<!-- 采购订单 -->
+	<bean id="importPurchaseOrderBO" class="com.qeweb.busplatform.pomanage.imp.BP_ImpPurchaseOrderBO" scope="prototype"/>
+	<bean id="bp_PurchaseOrderBO" class="com.qeweb.busplatform.pomanage.bo.BP_PurchaseOrderBO" scope="prototype" >
+		<property name="poDownLoadFilter" ref="poDownLoadFilter"/>
+		<property name="downLoadFilterDao" ref="IPODownLoadFilterDao"/>
+	</bean>
+
+	<bean id="bp_page_PurchaseOrderBO" class="com.qeweb.busplatform.pomanage.bo.BP_PurchaseOrderBO" scope="prototype" ></bean>
+	<bean id="bp_PurchaseOrderItemBO" class="com.qeweb.busplatform.pomanage.bo.BP_PurchaseOrderItemBO" scope="prototype" >
+		<property name="purchaseOrderItemDao" ref="IBP_PurchaseOrderItemDao" />
+	</bean>
+	<bean id="bp_PurchaseOrderItemHisBO" class="com.qeweb.busplatform.pomanage.bo.BP_PurchaseOrderItemHisBO" scope="prototype" />
+	<bean id="bp_PurchaseOrderExecutionBO" class="com.qeweb.busplatform.pomanage.bo.BP_PurchaseOrderExecutionBO" scope="prototype">
+		<property name="orderExecutionDao" ref="IBP_PurchaseOrderExecutionDao"/>
+	</bean>
+	<bean id="bp_FeedBackBO" class="com.qeweb.busplatform.pomanage.bo.BP_FeedBackBO" scope="prototype">
+		<property name="feedBackDao" ref="IBP_FeedBackDao"/>
+	</bean>
+	<!-- 供货计划反馈 -->
+	<bean id="GoodsPlanFeedback" class="com.qeweb.busplatform.pomanage.busoperate.postatuschange.pofeedback.GoodsPlanFeedback" scope="prototype"/>
+	<bean id="bp_GoodsPlanFeedBackBO" class="com.qeweb.busplatform.pomanage.bo.BP_FeedBackBO" scope="prototype">
+		<property name="OPT_POFeecback" ref="GoodsPlanFeedback"/>
+		<property name="feedBackDao" ref="IBP_FeedBackDao"/>
+	</bean>
+	<bean id="bp_PurchaseGoodsPlanBO" class="com.qeweb.busplatform.pomanage.bo.BP_PurchaseGoodsPlanBO" scope="prototype" />
+	<bean id="bp_PurchaseGoodsPlanHisBO" class="com.qeweb.busplatform.pomanage.bo.BP_PurchaseGoodsPlanHisBO" scope="prototype" />
+	<bean id="bp_PurchaseOrderStatisticsBO" class="com.qeweb.busplatform.pomanage.bo.BP_PurchaseOrderStatisticsBO" scope="prototype" />
+	<!-- 发货单 -->
+	<bean id="bp_VendorGoodsDeliveryBO" class="com.qeweb.busplatform.goodsdelivery.bo.BP_VendorGoodsDeliveryBO" scope="prototype" />
+	<bean id="bp_page_VendorGoodsDeliveryBO" class="com.qeweb.busplatform.goodsdelivery.bo.BP_VendorGoodsDeliveryBO" scope="prototype" />
+	<bean id="bp_VendorGoodsDeliveryItemBO" class="com.qeweb.busplatform.goodsdelivery.bo.BP_VendorGoodsDeliveryItemBO" scope="prototype" />
+	<!-- 发货看板 -->
+	<bean id="bp_PendingDeliveryBO" class="com.qeweb.busplatform.goodsdelivery.bo.BP_PendingDeliveryBO" scope="prototype">
+		<property name="pendingDeliveryDao" ref="IBP_PendingDeliveryDao"/>
+	</bean>
+	<bean id="bp_PendingDeliveryMaterialBO" class="com.qeweb.busplatform.goodsdelivery.bo.BP_PendingDeliveryMaterialBO" scope="prototype" />
+	<!-- 收货看板 -->
+	<bean id="bp_PendingReceiveBO" class="com.qeweb.busplatform.goodsreceive.bo.BP_PendingReceiveBO" scope="prototype" />
+	<bean id="bp_page_PendingReceiveBO" class="com.qeweb.busplatform.goodsreceive.bo.BP_PendingReceiveBO" scope="prototype" />
+	<!-- 收货单 -->
+	<bean id="bp_BuyerGoodsReceiveBO" class="com.qeweb.busplatform.goodsreceive.bo.BP_BuyerGoodsReceiveBO" scope="prototype">
+		<property name="receiveDownLoadFilter" ref="receiveDownLoadFilter"></property>
+		<property name="receiveDownLoadFilterDao" ref="IReceiveDownLoadFilterDao"/>
+		<property name="goodsReceiveDao" ref="IBP_BuyerGoodsReceiveDao"></property>
+	</bean>
+	<bean id="bp_ImpReceiveOrder" class="com.qeweb.busplatform.goodsreceive.imp.BP_ImpGoodsReceiveOrderBO" scope="prototype"/>
+
+	<bean id="bp_BuyerGoodsReceiveItemBO" class="com.qeweb.busplatform.goodsreceive.bo.BP_BuyerGoodsReceiveItemBO" scope="prototype">
+		<property name="goodsReceiveItemDao" ref="IBP_BuyerGoodsReceiveItemDao"/>
+	</bean>
+
+	<!-- 收货单下载过滤器 -->
+	<bean id="receiveDownLoadFilter" class="com.qeweb.busplatform.goodsreceive.filter.impl.ReceiveDownLoadFilterImpl" scope="prototype">
+		<property name="receiveDownLoadFilterDao" ref="IReceiveDownLoadFilterDao"/>
+	</bean>
+	<!-- 订单下载过滤器 -->
+	<bean id="poDownLoadFilter" class="com.qeweb.busplatform.pomanage.filter.impl.PODownLoadFilterImpl" scope="prototype">
+		<property name="downLoadFilterDao" ref="IPODownLoadFilterDao"/>
+	</bean>
+
+	<!-- 主数据模版 -->
+	<bean id="masterdataTemplateBO" class="com.qeweb.busplatform.masterdata.bo.template.BP_MasterDataTemplateBO" scope="prototype">
+		<property name="meterialTemplateCreater" ref="meterialTemplateCreater"></property>
+		<property name="vendorTemplateCreater" ref="vendorTemplateCreater"></property>
+		<property name="goodsReciveTemplateCreater" ref="goodsReciveTemplateCreater"></property>
+		<property name="purchaseOrderTemplateCreater" ref="purchaseOrderTemplateCreater"></property>
+	</bean>
+	<bean id="meterialTemplateCreater" class="com.qeweb.busplatform.masterdata.template.MeterialTemplateCreater"/>
+	<bean id="vendorTemplateCreater" class="com.qeweb.busplatform.masterdata.template.VendorTemplateCreater"/>
+	<bean id="goodsReciveTemplateCreater" class="com.qeweb.busplatform.masterdata.template.GoodsReciveTemplateCreater"/>
+	<bean id="purchaseOrderTemplateCreater" class="com.qeweb.busplatform.masterdata.template.PurchaseOrderTemplateCreater"/>
+	<!-- 主数据管理 -->
+	<bean id="materialTypeBO" class="com.qeweb.busplatform.masterdata.bo.manage.BP_MaterialTypeBO" scope="prototype">
+		<property name="materialTypeDao" ref="IBP_MaterialTypeDao"/>
+	</bean>
+	<bean id="materialBO" class="com.qeweb.busplatform.masterdata.bo.manage.BP_MaterialBO" scope="prototype"/>
+	<bean id="importMaterialBO" class="com.qeweb.busplatform.masterdata.imp.BP_ImpMaterialBO" scope="prototype"/>
+
+	<bean id="importVendorBO" class="com.qeweb.busplatform.masterdata.imp.BP_ImpVendorBO" scope="prototype"/>
+</beans>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 变量关联页面流: 变量关联页面流是MDT 4+3模型中的变量影响流程. 具体过程如下: 在点击某个按钮时将会执行GA的方法(按钮需要跳转前执行持久化方法, 
+	即能够执行GA的execute方法), 在该方法中可改变变量的值, 根据变量值决定跳转到哪个页面. 如果当前变量值不能匹配目标页面, 则跳转到默认目标页面(页面流配置中的targetPage). 
+	需要注意的是, 是否能够执行跳转, 还需要结合按钮原本的页面流配置, 即qeweb-var_pageflow中仅说明了变量能够改变页面流, 但并未指明目标页面 
+	以何种方式展现(弹出/直接跳转/关闭等). -->
+<qeweb-var-pf>
+	<!-- 该变量是实施配置工具中的变量, 不应删除 -->
+	<relate id="1376029812436" relateName="变量-组件关联管理" vars="qeweb_var_vc_conf_tab" sourcePage="/WEB-INF/pages/impconfig/mdt/varpagemanage/varPageConfig.jsp" boId="varPageItemBO" btnName="insert">
+		<var id="1376029890126" relateName="新增按钮影响流程" group="qeweb_var_vc_conf_tab=tab">
+			<targetPage path="/WEB-INF/pages/impconfig/mdt/varpagemanage/varVCMappingTabAdd.jsp" />
+		</var>
+	</relate>
+
+</qeweb-var-pf>

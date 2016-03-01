@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pageflow-list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+          xsi:noNamespaceSchemaLocation="/WEB-INF/dtd/pageflow.xsd">
+          
+	<pageflow boId="bo1" sourcePage="sp1" targetPage="tp1" btnName="btn1" targetVC="tc1" msgFlag="true" isPopup="true" closePage="false" />
+	<pageflow boId="bo1" btnName="btn1" sourcePage="s1" targetPage="t1" msgFlag="false" isPopup="false" remark="64654" />
+          
+</pageflow-list>

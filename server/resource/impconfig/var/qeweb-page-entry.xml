@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 变量执行过程管理-页面入口, 保存变量在不同页面中的加载策略 . 每个entry表示一组入口, 每个stratety表示一个变量加载策略, 
+	type: 策略类型, 共有3中类型,1.页面加载前恢复初始值;2.页面加载前保持当前值;3.页面加载前使用默认值. defValue: 变量的默认值, 
+	仅当type类型为3是需要填写. --><qeweb-page-entry>
+
+	
+	
+</qeweb-page-entry>

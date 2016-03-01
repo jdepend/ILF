@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<!-- 权限管理 -->
+<beans>
+	<!-- licence -->
+	<bean id="licenceBO" class="com.qeweb.sysmanage.login.licence.LicenceBO" scope="prototype"/>
+	<!-- 组织结构管理(供应商与采购商统一管理)  -->
+	<bean id="organizationBO" class="com.qeweb.sysmanage.purview.bo.OrganizationBO" scope="prototype">
+	    <property name="orgDao" ref="orgDao"/>
+	</bean>
+	<!-- 采购商管理  -->
+	<bean id="buyerBO" class="com.qeweb.sysmanage.purview.bo.org.BuyerBO" scope="prototype"/>
+	<!-- 供应商管理  -->
+	<bean id="vendorBO" class="com.qeweb.sysmanage.purview.bo.org.VendorBO" scope="prototype"/>
+
+	<bean id="userBO" class="com.qeweb.sysmanage.purview.bo.UserBO" scope="prototype"/>
+	<!-- 用户组管理  -->
+	<bean id="userGroupBO" class="com.qeweb.sysmanage.purview.bo.UserGroupBO" scope="prototype"/>
+	<!-- 用户组-角色组  -->
+	<bean id="userGroup_GroupBO" class="com.qeweb.sysmanage.purview.bo.UserGroup_Group_BO" scope="prototype"/>
+	<!-- 用户组-用户  -->
+	<bean id="userGroup_UserBO" class="com.qeweb.sysmanage.purview.bo.UserGroup_User_BO" scope="prototype"/>
+	<!-- 角色管理 -->
+	<bean id="roleBO" class="com.qeweb.sysmanage.purview.bo.RoleBO" scope="prototype">
+		<property name="roleDao" ref="IRoleDao"/>
+	</bean>
+	<!-- 角色组管理  -->
+	<bean id="groupBO" class="com.qeweb.sysmanage.purview.bo.GroupBO" scope="prototype">
+		<property name="groupDao" ref="IGroupDao"/>
+	</bean>
+	<!-- 角色组-角色  -->
+	<bean id="group_RoleBO" class="com.qeweb.sysmanage.purview.bo.Group_Role_BO" scope="prototype"/>
+	<!-- 用户-角色组  -->
+	<bean id="user_GroupBO" class="com.qeweb.sysmanage.purview.bo.User_Group_BO" scope="prototype"/>
+
+
+	<bean id="moduleBO" class="com.qeweb.sysmanage.purview.bo.ModuleBO" scope="prototype"/>
+	<bean id="operateBO" class="com.qeweb.sysmanage.purview.bo.OperateBO" scope="prototype"/>
+	<bean id="roleOrgBO" class="com.qeweb.sysmanage.purview.bo.Role_Org_BO" scope="prototype">
+		<property name="roleDao" ref="IRoleDao"/>
+	</bean>
+	<bean id="vendorPermissionBO" class="com.qeweb.sysmanage.purview.bo.VendorPermissionBO" scope="prototype"/>
+	<bean id="roleUserBO" class="com.qeweb.sysmanage.purview.bo.Role_User_BO" scope="prototype"/>
+	<bean id="userDataPermissionBO" class="com.qeweb.sysmanage.purview.bo.UserDataPermissionBO" scope="prototype"/>
+	<bean id="userTreeBO" class="com.qeweb.sysmanage.purview.bo.UserTreeBO" scope="prototype"/>
+	<bean id="roleModuleBO" class="com.qeweb.sysmanage.purview.bo.Role_Module_BO" scope="prototype"/>
+	<bean id="sysMenuBO" class="com.qeweb.sysmanage.purview.bo.SysMenuBO" scope="prototype"/>
+	<bean id="sysLeftMenuBO" class="com.qeweb.sysmanage.purview.bo.SysLeftMenuBO" scope="prototype"/>
+	<!-- 个性化设置 -->
+	<bean id="preferenceSetBO" class="com.qeweb.sysmanage.preference.bo.PreferenceSetBO" scope="prototype"/>
+	<!-- 终端主题设置 -->
+	<bean id="preferenceSetMobileBO" class="com.qeweb.sysmanage.preference.bo.PreferenceSetMobileBO" scope="prototype"/>
+	<!-- 全局主题设置 -->
+	<bean id="preferenceSetGlobalBO" class="com.qeweb.sysmanage.preference.bo.PreferenceSetGlobalBO" scope="prototype"/>
+	<bean id="onlineUserBO" class="com.qeweb.sysmanage.onlineuser.OnlineUserBO" scope="prototype"/>
+	<bean id="onlineUserMgt" class="com.qeweb.sysmanage.onlineuser.OnlineUserMgt" scope="prototype"/>
+	
+	<bean id="buyerPermissionBO" class="com.qeweb.sysmanage.purview.bo.BuyerPermissionBO" scope="prototype"/>
+</beans>

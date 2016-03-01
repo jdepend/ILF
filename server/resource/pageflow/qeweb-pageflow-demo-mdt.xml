@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pageflow-list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+          xsi:noNamespaceSchemaLocation="/WEB-INF/dtd/pageflow.xsd">
+          
+	<pageflow boId='propertyBO' sourcePage='/WEB-INF/pages/demo/mdt/propertyList.jsp'
+		targetPage='/WEB-INF/pages/demo/mdt/propertyAdd.jsp' btnName='insert'
+		isPopup='true' msgFlag='false' />
+	<pageflow boId='propertyBO' sourcePage='/WEB-INF/pages/demo/mdt/propertyList.jsp'
+		targetPage='/WEB-INF/pages/demo/mdt/propertyView.jsp' btnName='showDesc'
+		isPopup='true' msgFlag='false' dialogHeight='300' dialogWidth='500'/>
+		
+	<pageflow boId='propertyBO' sourcePage='/WEB-INF/pages/demo/mdt/propertyAdd.jsp'
+		targetPage='/WEB-INF/pages/demo/mdt/propertyList.jsp' btnName='save'
+		closePage='true' msgFlag='true' />
+		
+</pageflow-list>

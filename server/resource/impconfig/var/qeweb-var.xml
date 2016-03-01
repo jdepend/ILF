@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 变量信息xml. moduleId:[必填]模块ID name:[必填]变量名称 alias:[必填]变量别名 scop:[必填]作用域, 
+	1:全局,2:局部 enable:[必填]是否启用, 1:启用, 0:禁用 valueset:[必填]值集编码 canmodify:[必填]实施人员是否可修改,0:不可修改, 
+	1:可修改 candelete:[必填]是否可删除,0:不可删除, 1:可删除 defValue: [非必填] 默认值 devSet:[非必填] 
+	默认值集编码 remark:[非必填] 备注 --><qeweb-vars>
+	<!-- 该变量是实施配置工具中的变量, 不应删除 -->
+	<var id="1" moduleId="1358389821981" name="qeweb_var_vc_conf_tab" alias="系统变量" scop="2" enable="1" valueset="tab" defValue="" canmodify="1" candelete="0" deleteFlag="0" />
+</qeweb-vars>

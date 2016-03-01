@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- scop相关配置信息 -->
+<struts>
+	<!--系统管理 -->
+	<package name="system" namespace="/system" extends="qeweb">
+		<interceptors>
+			<!-- licence 认证 -->
+			<interceptor name="licenceInterceptor" class="com.qeweb.framework.app.interfactor.LicenceInterceptor"/>
+			<!-- 开发模式 认证 -->
+			<interceptor name="impConfInterceptor" class="com.qeweb.framework.app.interfactor.ImpConfIntercepter"/>
+			<!-- session拦截器，处理窜session问题-->
+			<interceptor name="sessionInterceptor" class="com.qeweb.framework.app.interfactor.SessionInterceptor"/>
+		</interceptors>
+
+		<global-results>
+			<result name="goLoginPass">/WEB-INF/pages/common/loginPass.jsp</result>
+			<result name="disallow">/WEB-INF/pages/common/403.jsp</result>
+			<result name="exception">/WEB-INF/pages/common/exception.jsp</result>
+		</global-results>
+
+		<!-- 平台的所有示例 -->
+		<action name="index">
+			<result>/WEB-INF/pages/index.jsp</result>
+		</action>
+
+		<!-- 登录 start -->
+		<action name="login" class="loginAC">
+			<result name="extlogin">/WEB-INF/pages/sysmanage/login/ext/login.jsp</result> 
+			<result name="extlayout_frame_leftmenu">/WEB-INF/pages/sysmanage/login/ext/framelayout/leftmenu/layout.jsp</result>
+			<result name="extlayout_frame_topmenu">/WEB-INF/pages/sysmanage/login/ext/framelayout/topmenu/layout.jsp</result>
+			<result name="extlayout_border">/WEB-INF/pages/sysmanage/login/ext/borderlayout/layout.jsp</result>
+			<result name="extlayout_desktop">/WEB-INF/pages/sysmanage/login/ext/desktop/layout.jsp</result>
+			<result name="mobileLogin">/WEB-INF/pages/sysmanage/login/mobile/mobileLogin.jsp</result>
+			<result name="padLogin">/WEB-INF/pages/sysmanage/login/pad/padLogin.jsp</result>
+			<result name="extlayout">/WEB-INF/pages/sysmanage/login/ext/layout.jsp</result>
+			<result name="mobileLayout">/WEB-INF/pages/sysmanage/login/mobile/mobileIndex.jsp</result>
+			<result name="padLayout">/WEB-INF/pages/sysmanage/login/pad/padIndex.jsp</result>
+			<result name="input">/WEB-INF/pages/common/error.jsp</result>
+		</action>
+
+		<action name="loginMain" class="loginAC" method="login">
+			<result name="extlayout_frame_leftmenu">/WEB-INF/pages/sysmanage/login/ext/framelayout/leftmenu/layout.jsp</result>
+			<result name="extlayout_frame_topmenu">/WEB-INF/pages/sysmanage/login/ext/framelayout/topmenu/layout.jsp</result>
+			<result name="extlayout_border">/WEB-INF/pages/sysmanage/login/ext/borderlayout/layout.jsp</result>
+			<result name="extlayout_desktop">/WEB-INF/pages/sysmanage/login/ext/desktop/layout.jsp</result>
+			<result name="mobileLayout">/WEB-INF/pages/sysmanage/login/mobile/mobileIndex.jsp</result>
+			<result name="padLayout">/WEB-INF/pages/sysmanage/login/pad/padIndex.jsp</result>
+			<result name="input">/WEB-INF/pages/common/error.jsp</result>
+			<result name="licenceError">/WEB-INF/pages/common/licenceError.jsp</result>
+			<result name="impLogin">/WEB-INF/pages/sysmanage/login/impconfig/layout.jsp</result>
+
+			<interceptor-ref name="licenceInterceptor"/>
+			<interceptor-ref name="impConfInterceptor"/>
+			<interceptor-ref name="qewebStack"/>
+		</action>
+		<!-- 登录 end -->
+
+
+		<!-- 浏览器端的登录后的布局 start -->
+		<!-- frame leftmenu 布局  start-->
+		<action name="top_frame">
+			<result>/WEB-INF/pages/sysmanage/login/ext/framelayout/leftmenu/top.jsp</result>
+		</action>
+		<action name="bottom_frame">
+			<result>/WEB-INF/pages/sysmanage/login/ext/framelayout/leftmenu/bottom.jsp</result>
+		</action>
+		<action name="menu_frame">
+			<result>/WEB-INF/pages/sysmanage/login/ext/framelayout/leftmenu/menu.jsp</result>
+		</action>
+		<!-- frame leftmenu布局  end-->
+		
+		<!-- frame topmenu 布局  start-->
+		<action name="top_frame_top">
+			<result>/WEB-INF/pages/sysmanage/login/ext/framelayout/topmenu/top.jsp</result>
+		</action>
+		<action name="topMenu_frame_top">
+			<result>/WEB-INF/pages/sysmanage/login/ext/framelayout/topmenu/topMenu.jsp</result>
+		</action>
+		<action name="bottom_frame_top">
+			<result>/WEB-INF/pages/sysmanage/login/ext/framelayout/topmenu/bottom.jsp</result>
+		</action>
+		<action name="menu_frame_top">
+			<result>/WEB-INF/pages/sysmanage/login/ext/framelayout/topmenu/menu.jsp</result>
+		</action>
+		<!-- frame topmenu布局  end-->
+		
+		<!-- border 布局  start -->
+		<!-- 工作台 -->
+		<action name="workbench">
+		    <result>/WEB-INF/pages/sysmanage/login/ext/borderlayout/workbench.jsp</result>
+		</action>
+		<!-- 修改密码 -->
+		<action name="modifyPwd">
+			<interceptor-ref name="sessionInterceptor"></interceptor-ref>
+		    <result>/WEB-INF/pages/sysmanage/preference/modifyPwd2.jsp</result>
+		</action>
+		<!-- 系统解锁 -->
+		<action name="unlockSystem" class="unlockSystem">
+		    <interceptor-ref name="sessionInterceptor"></interceptor-ref>
+		</action>
+		<!-- border 布局  end -->
+		
+		<!-- 浏览器端的登录后的布局 end -->
+			
+		<!-- 实施人员配置工具 -->
+		<action name="imptop">
+			<result>/WEB-INF/pages/sysmanage/login/impconfig/top.jsp</result>
+		</action>
+		<action name="impmenu">
+			<result>/WEB-INF/pages/sysmanage/login/impconfig/menu.jsp</result>
+		</action>
+		<action name="middle">
+			<result>/WEB-INF/pages/sysmanage/login/ext/middle.jsp</result>
+		</action>
+	</package>
+</struts>

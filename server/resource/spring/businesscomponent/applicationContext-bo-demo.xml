@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<!-- 首页菜单树 -->
+	<bean id="demoMenuBO" class="com.qeweb.demo.DemoMenuBO" scope="prototype">
+		<property name="demoMenuDao" ref="demoMenuDao"></property>
+	</bean>
+	<bean id="demoMenuDao" class="com.qeweb.demo.DemoMenuDaoImpl" scope="prototype"/>
+	
+	<bean id="demoPurchaseOrderBO" class="com.qeweb.demo.common.bo.DemoPurchaseOrderBO" scope="prototype"/>
+	<bean id="demoOrgBO" class="com.qeweb.demo.common.bo.DemoOrgBO" scope="prototype"/>
+	
+	<!-- ########################### 装载 start ########################### -->
+	<bean id="demoFormBO" class="com.qeweb.demo.load.container.form.bo.DemoFormBO" scope="prototype"/>
+	<bean id="demoTableBO" class="com.qeweb.demo.load.container.table.bo.DemoTableBO" scope="prototype"/>
+	<bean id="demoTableBO3" class="com.qeweb.demo.load.container.table.bo.DemoTableBO_3" scope="prototype"/>
+	<bean id="demoTableBO5" class="com.qeweb.demo.load.container.table.bo.DemoTableBO_5" scope="prototype"/>
+	<bean id="demoTableBO6" class="com.qeweb.demo.load.container.table.bo.DemoTableBO_6" scope="prototype"/>
+	<bean id="demoTableBO7" class="com.qeweb.demo.load.container.table.bo.DemoTableBO_7" scope="prototype"/>
+	<bean id="demoTableBO8" class="com.qeweb.demo.load.container.table.bo.DemoTableBO_8" scope="prototype"/>
+	<bean id="demoTableBO9" class="com.qeweb.demo.load.container.table.bo.DemoTableBO_9" scope="prototype"/>
+	<bean id="demoTableBO10" class="com.qeweb.demo.load.container.table.bo.DemoTableBO_10" scope="prototype"/>
+	<bean id="demoTreeBO" class="com.qeweb.demo.load.container.tree.bo.DemoTreeBO" scope="prototype">
+		<property name="demoMenuDao" ref="demoMenuDao"></property>
+	</bean>
+	<bean id="demoTreeBO2" class="com.qeweb.demo.load.container.tree.bo.DemoTreeBO_2" scope="prototype">
+		<property name="demoMenuDao" ref="demoMenuDao"></property>
+	</bean>
+	<bean id="demoTreeBO_2_radio" class="com.qeweb.demo.load.container.tree.bo.DemoTreeBO_2_radio" scope="prototype">
+		<property name="demoMenuDao" ref="demoMenuDao"></property>
+	</bean>
+	<bean id="demoTreeBO_2_check_singleOpt" class="com.qeweb.demo.load.container.tree.bo.DemoTreeBO_2_check_singleOpt" scope="prototype">
+		<property name="demoMenuDao" ref="demoMenuDao"></property>
+	</bean>
+	<bean id="demoTreeBO_2_radio_singleOpt" class="com.qeweb.demo.load.container.tree.bo.DemoTreeBO_2_radio_singleOpt" scope="prototype">
+		<property name="demoMenuDao" ref="demoMenuDao"></property>
+	</bean>
+	<bean id="demoTreeBO_2_check_noCascade" class="com.qeweb.demo.load.container.tree.bo.DemoTreeBO_2_check_noCascade" scope="prototype">
+		<property name="demoMenuDao" ref="demoMenuDao"></property>
+	</bean>
+	<bean id="demoTreeBO5" class="com.qeweb.demo.load.container.tree.bo.DemoTreeBO_5" scope="prototype"/>
+	<bean id="demoButtonBO" class="com.qeweb.demo.load.button.bo.DemoButtonBO" scope="prototype"/>
+	<bean id="demoButtonBO2" class="com.qeweb.demo.load.button.bo.DemoButtonBO_2" scope="prototype"/>
+	<bean id="demoAnchorBO" class="com.qeweb.demo.load.fc.bo.DemoAnchorBO" scope="prototype"/>
+	<bean id="demoImageBO" class="com.qeweb.demo.load.fc.bo.DemoImageBO" scope="prototype"/>
+	<bean id="demoUploadBO" class="com.qeweb.demo.load.fc.bo.DemoUploadBO" scope="prototype"/>
+	<bean id="demoDownloadBO" class="com.qeweb.demo.load.fc.bo.DemoDownloadBO" scope="prototype"/>
+	<bean id="demoDateBO" class="com.qeweb.demo.load.fc.bo.DemoDateBO" scope="prototype"/>
+	<bean id="demoTabBO" class="com.qeweb.demo.load.container.tab.bo.DemoTabBO" scope="prototype"/>
+	<bean id="demoLocalizationBO" class="com.qeweb.demo.load.localization.bo.DemoLocalizationBO" scope="prototype"/>
+	<!-- ########################### 装载 end ########################### -->
+	
+	<!-- ########################### 交互 start ########################### -->
+	<bean id="demoValidationBO1" class="com.qeweb.demo.interaction.validation.bo.DemoValidationBO_1" scope="prototype"/>
+	<bean id="demoValidationBO2" class="com.qeweb.demo.interaction.validation.bo.DemoValidationBO_2" scope="prototype"/>
+	<bean id="demoValidationBO3" class="com.qeweb.demo.interaction.validation.bo.DemoValidationBO_3" scope="prototype"/>
+	  
+	<bean id="demoFCRelationBO" class="com.qeweb.demo.interaction.relation.bo.DemoFCRelationBO" scope="prototype"/>
+	<bean id="demoConRelationBO" class="com.qeweb.demo.interaction.relation.bo.DemoConRelationBO" scope="prototype"/>
+	<bean id="demoConRelationBO2" class="com.qeweb.demo.interaction.relation.bo.DemoConRelationBO_2" scope="prototype"/>
+	<bean id="demoConRelationBO3" class="com.qeweb.demo.interaction.relation.bo.DemoConRelationBO_3" scope="prototype"/>
+	<bean id="demoConRealation_TargetBO_3" class="com.qeweb.demo.interaction.relation.bo.DemoConRealation_TargetBO_3" scope="prototype"/>
+	
+	<bean id="demoPopSelectBO1" class="com.qeweb.demo.interaction.popselect.bo.DemoPopSelectBO_1" scope="prototype"/>
+	<bean id="demoPopSelectBO2" class="com.qeweb.demo.interaction.popselect.bo.DemoPopSelectBO_2" scope="prototype"/>
+	<bean id="demoPopSelectBO3" class="com.qeweb.demo.interaction.popselect.bo.DemoPopSelectBO_3" scope="prototype"/>
+	<bean id="demoPopSelect_PO3" class="com.qeweb.demo.interaction.popselect.bo.DemoPoBO" scope="prototype"/>
+	
+	<bean id="demoPopPageBO1" class="com.qeweb.demo.interaction.poppage.bo.DemoPopPageBO_1" scope="prototype"/>
+	<bean id="demoPopPageBO2" class="com.qeweb.demo.interaction.poppage.bo.DemoPopPageBO_2" scope="prototype"/>
+	<bean id="demoPopPageBO3" class="com.qeweb.demo.interaction.poppage.bo.DemoPopPageBO_3" scope="prototype"/>
+	<bean id="demoPopPageBO4" class="com.qeweb.demo.interaction.poppage.bo.DemoPopPageBO_4" scope="prototype"/>
+	<bean id="demoPopPageBO5" class="com.qeweb.demo.interaction.poppage.bo.DemoPopPageBO_5" scope="prototype"/>
+	<bean id="demoPopPageBO6" class="com.qeweb.demo.interaction.poppage.bo.DemoPopPageBO_6" scope="prototype"/>
+	<bean id="demoPopPageBO7" class="com.qeweb.demo.interaction.poppage.bo.DemoPopPageBO_7" scope="prototype"/>
+	<bean id="demoSelectOrgBO1" class="com.qeweb.demo.interaction.poppage.bo.DemoSelectOrgBO_1" scope="prototype"/>
+	
+	<bean id="demExeJsBO1" class="com.qeweb.demo.interaction.exejs.bo.DemExeJsBO_1" scope="prototype"/>
+	
+	<bean id="demoTipMsgPopBO" class="com.qeweb.demo.interaction.tipmessage.DemoTipMsgPopBO" scope="prototype"/>
+	<bean id="demoTipMessageBO1" class="com.qeweb.demo.interaction.tipmessage.DemoTipMessageBO_1" scope="prototype"/>
+	<bean id="demoTipMessageBO2" class="com.qeweb.demo.interaction.tipmessage.DemoTipMessageBO_2" scope="prototype"/>
+	
+	<bean id="demoPageflowBO1" class="com.qeweb.demo.interaction.pageflow.DemoPageflowBO_1" scope="prototype"/>
+	<!-- ########################### 交互 end ########################### -->
+ 
+	<!-- ########################### 持久化 start ########################### --> 
+	<bean id="demoPresistenceBO1" class="com.qeweb.demo.persistence.general.bo.DemoPresistenceBO_1" scope="prototype"/>
+	<bean id="demoPresistenceBO2" class="com.qeweb.demo.persistence.general.bo.DemoPresistenceBO_2" scope="prototype"/>
+	<bean id="demoPresistenceBO3" class="com.qeweb.demo.persistence.general.bo.DemoPresistenceBO_3" scope="prototype"/>
+	<bean id="demoBtnModeBO1" class="com.qeweb.demo.persistence.btnmod.bo.DemoBtnModeBO_1" scope="prototype"/>
+	<bean id="demoBtnModeBO2" class="com.qeweb.demo.persistence.btnmod.bo.DemoBtnModeBO_2" scope="prototype"/>
+	<bean id="demoBtnModeBO3" class="com.qeweb.demo.persistence.btnmod.bo.DemoBtnModeBO_3" scope="prototype"/>
+	<bean id="demoBtnMod1_Pop_1" class="com.qeweb.demo.persistence.btnmod.bo.DemoBtnMod1_Pop_1" scope="prototype"/>
+	<bean id="demoExpBO" class="com.qeweb.demo.persistence.exp.bo.DemoExpBO" scope="prototype"/>
+	<!-- ########################### 持久化 end ########################### -->
+	
+	
+	<!-- mobile demo -->
+	<bean id="DemoMobileMessageBO" class="com.qeweb.demo.mobile.bo.DemoMobileMessageBO" scope="prototype"/>
+	<bean id="DemoMobileWorkPlanBO" class="com.qeweb.demo.mobile.bo.DemoMobileWorkPlanBO" scope="prototype"/>
+	<bean id="DemoMobileShowCaseBO" class="com.qeweb.demo.mobile.bo.DemoMobileShowCaseBO" scope="prototype"/>
+	<bean id="DemoMobileShopStoreBO" class="com.qeweb.demo.mobile.bo.DemoMobileShopStoreBO" scope="prototype"/>
+	<bean id="DemoMobileTabBO" class="com.qeweb.demo.mobile.bo.tab.DemoMobileTabBO" scope="prototype"/>
+	<bean id="ComeInShopBO" class="com.qeweb.demo.mobile.bo.ComeInShopBO" scope="prototype"/>
+	<bean id="LeaveOutShopBO" class="com.qeweb.demo.mobile.bo.LeaveOutShopBO" scope="prototype"/>
+	<bean id="DemoMobileSalesclerkWorkplaceBO" class="com.qeweb.demo.mobile.bo.DemoMobileSalesclerkWorkplaceBO" scope="prototype"/>
+	<bean id="DemoMobileClockingInBO" class="com.qeweb.demo.mobile.bo.DemoMobileClockingInBO" scope="prototype"/>
+	<bean id="DemoMobileInfoFeedbackBO" class="com.qeweb.demo.mobile.bo.DemoMobileInfoFeedbackBO" scope="prototype"/>
+	<bean id="DemoMobileMaterialManagementBO" class="com.qeweb.demo.mobile.bo.DemoMobileMaterialManagementBO" scope="prototype"/>
+	<bean id="DemoMobilePromotionManagementBO" class="com.qeweb.demo.mobile.bo.DemoMobilePromotionManagementBO" scope="prototype"/>
+	<bean id="DemoMobileShopSalesBO" class="com.qeweb.demo.mobile.bo.DemoMobileShopSalesBO" scope="prototype"/>
+	<bean id="DemoMobileSecondMenuBO" class="com.qeweb.demo.mobile.bo.DemoMobileSecondMenuBO" scope="prototype"/>
+	<bean id="DemoMobileVistorMonthReportBO" class="com.qeweb.demo.mobile.bo.DemoMobileVistorMonthReportBO" scope="prototype"/>
+	<bean id="DemoMobileInventoryBO" class="com.qeweb.demo.mobile.bo.DemoMobileInventoryBO" scope="prototype"/>
+	<bean id="ShopBO" class="com.qeweb.demo.mobile.bo.ShopBO" scope="prototype"/>
+	<bean id="DemoMobileVistorLevelBO" class="com.qeweb.demo.mobile.bo.DemoMobileVistorLevelBO" scope="prototype"/>
+	<bean id="DemoMobileCalligateBO" class="com.qeweb.demo.mobile.bo.tab.DemoMobileCalligateBO" scope="prototype"/>
+
+	<bean id="retryBrokenUploadBO" class="com.qeweb.framework.frameworkbo.RetryBrokenUploadBO" scope="prototype"/>
+	<bean id="mobileLevelUpBO" class="com.qeweb.framework.frameworkbo.MobileLevelUpBO" scope="prototype"/>
+
+	<bean id="demoMobileBaseDao" class="com.qeweb.demo.mobile.dao.impl.DemoMobileBaseDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+</beans>

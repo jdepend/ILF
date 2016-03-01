@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 业务设置项 boId: BO的标识, 在BusSettingConstants中配置; paramName: 业务操作名称, 在BusSettingConstants中配置;
+	moduleName: 模块名称, 在BusSettingConstants中配置. 可以根据boId、moduleName、paramName确定paramValue，从而得到具体的业务操作配置。 --><setting-list>
+	<!-- 订单管理 -->
+	<setting boId="purchaseOrder" moduleName="purchase" paramName="impExl" paramValue="2" desc="订单导入方式" remark="1:从Excel导入,2:从接口导入" />
+	<setting boId="purchaseOrder" moduleName="purchase" paramName="poImpIA" paramValue="1" desc="接口类型" remark="1:从FTP导入,2:从Web Service导入,3:从其它系统接口导入" />
+	<setting boId="purchaseOrder" moduleName="purchase" paramName="publishMode" paramValue="2" desc="发布方式" remark="1:手动发布,2:自动发布" />
+	<setting boId="purchaseOrder" moduleName="purchase" paramName="closeMode" paramValue="3" desc="关闭方式" remark="1:手动,2:自动,3:ERP同步" />
+	<setting boId="purchaseOrder" moduleName="purchase" paramName="closeStatus" paramValue="1" desc="订单主信息是否支持部分关闭" remark="1:是,0:否" />
+	<setting boId="purchaseOrder" moduleName="purchase" paramName="lockStatus" paramValue="1" desc="订单是否支持手动锁定" remark="1:是,0:否" />
+	<setting boId="purchaseOrder" moduleName="purchase" paramName="poConfirm" paramValue="1" desc="订单确认方式" remark="1:整单确认,2:按订单行确认" />
+	<setting boId="purchaseOrder" moduleName="purchase" paramName="poFeedback" paramValue="1" desc="订单反馈方式" remark="1:整单反馈,2:按订单行反馈" />
+	<setting boId="purchaseOrder" moduleName="purchase" paramName="poGoodsPlan" paramValue="1" desc="拆分供货计划" remark="1:是,0:否" />
+	<setting boId="purchaseOrder" moduleName="purchase" paramName="poConfirmPlan" paramValue="1" desc="订单明细行中批量确认供货计划" remark="1:是,0:否" />
+
+	<!-- 物流管理 -->
+	<setting boId="vendorGoodsDelivery" moduleName="delivery" paramName="deliveryMode" paramValue="1" desc="供应商发货类型" remark="1:按供货计划发货 ,2:按物料发货" />
+	<setting boId="vendorGoodsDelivery" moduleName="delivery" paramName="deliveryNO" paramValue="D%yyyyMMdd%3" desc="发货单号配置:(单号前缀+年月日+流水号size)" remark="例:M%yyyyMMdd%3" />
+	<setting boId="vendorGoodsDelivery" moduleName="delivery" paramName="deliverySameOrder" paramValue="0" desc="每张发货单只发同一订单的货" remark="1:是,0:否" />
+	<setting boId="vendorGoodsDelivery" moduleName="delivery" paramName="excessDelivery" paramValue="0" desc="是否允许超量发货" remark="1:是,0:否" />
+	<setting boId="vendorGoodsDelivery" moduleName="delivery" paramName="deliveryFIFO" paramValue="1" desc="按先进先出原则发货" remark="1:是,0:否" />
+	<setting boId="vendorGoodsDelivery" moduleName="delivery" paramName="verifyDelivery" paramValue="1" desc="发货单是否需要审核" remark="0:无需审批 ,1:审批" />
+	<setting boId="vendorGoodsDelivery" moduleName="delivery" paramName="printDlvBarcode" paramValue="0" desc="是否打印发货单条码" remark="1:是,0:否" />
+
+	<setting boId="goodsReceive" moduleName="receive" paramName="impExl" paramValue="0" desc="收货单是否支持excel导入" remark="1:是,0:否" />
+
+	<!-- 主数据管理 -->
+	<setting boId="material" moduleName="masterData" paramName="impExl" paramValue="0" desc="物料管理是否支持excel导入" remark="1:是,0:否" />
+
+	<!-- 系统管理 -->
+	<setting boId="organization" moduleName="sysManage" paramName="vendorMagType" paramValue="1" desc="供应商和采购商是否统一管理" remark="1:是,0:否" />
+
+	<!-- 价格预警-->
+	<setting boId="sysBusiness" moduleName="masterData" paramName="pricewarnMaterial" paramValue="10" desc="物料价格预警比例%" remark="" />
+</setting-list>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans default-autowire="byName" >
+	<!-- 实施配置dao实现 -->
+	<bean id="phyTableDao" class="com.qeweb.framework.impconfig.mdt.phymag.dao.impl.PhyTableDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="phyColumnDao" class="com.qeweb.framework.impconfig.mdt.phymag.dao.impl.PhyColumnDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="ddtSysModulesDao" class="com.qeweb.framework.impconfig.ddt.manage.dao.impl.DdtSysModulesDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="ddtSysPagesDao" class="com.qeweb.framework.impconfig.ddt.manage.dao.impl.DdtSysPagesDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="ddtSysContainerDao" class="com.qeweb.framework.impconfig.ddt.manage.dao.impl.DdtSysContainerDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="ddtSysFcDao" class="com.qeweb.framework.impconfig.ddt.manage.dao.impl.DdtSysFcDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="ddtSchemaDao" class="com.qeweb.framework.impconfig.ddt.config.dao.impl.DdtSchemaDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="ddtContainerDao" class="com.qeweb.framework.impconfig.ddt.config.dao.impl.DdtContainerDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	<bean id="ddtFcDao" class="com.qeweb.framework.impconfig.ddt.config.dao.impl.DdtFcDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	
+	<bean id="varDao" class="com.qeweb.framework.impconfig.mdt.metadata.var.dao.impl.VarDaoImpl" scope="prototype"/>
+	<bean id="mdtValueSetDao" class="com.qeweb.framework.impconfig.mdt.metadata.valueset.dao.impl.MdtValueSetDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory_bis" />
+	</bean>
+	
+	<bean id="userPageDao" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.user.page.dao.impl.UserPageDaoImpl" scope="prototype"/>
+	<bean id="varPageDao" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.page.dao.impl.VarPageDaoImpl" scope="prototype"/>
+	<bean id="varPageUseDao" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.page.dao.impl.VarPageUseDaoImpl" scope="prototype"/>
+	<bean id="projectMemberDao" class="com.qeweb.framework.impconfig.promember.dao.impl.ProjectMemberDaoImpl" scope="prototype"/>
+	<bean id="pageflowDao" class="com.qeweb.framework.impconfig.mdt.pageflow.dao.impl.PageflowConfDaoImpl" scope="prototype"/>
+	<bean id="pageflowManageDao" class="com.qeweb.framework.impconfig.mdt.pageflow.dao.impl.PageflowManageDaoImpl" scope="prototype"/>
+	<bean id="pageflowMappingDao" class="com.qeweb.framework.impconfig.mdt.pageflow.dao.impl.PageflowMappingDaoImpl" scope="prototype"/>
+	<bean id="proModuleDao" class="com.qeweb.framework.impconfig.promodule.dao.impl.ProModuleDaoImpl" scope="prototype"/>
+	<bean id="analyzeDao" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.page.dao.impl.AnalyzeDaoImpl" scope="prototype"/>
+	<bean id="pageEntryDao" class="com.qeweb.framework.impconfig.exeprocessmag.page.dao.impl.PageEntryDaoImpl" scope="prototype"/>
+	<bean id="pfEntryDao" class="com.qeweb.framework.impconfig.exeprocessmag.pageflow.dao.impl.PFEntryDaoImpl" scope="prototype"/>
+	<bean id="varPageFlowDao" class="com.qeweb.framework.impconfig.mdt.metadata.mapping.var.pageflow.dao.impl.VarPageFlowDaoImpl" scope="prototype"/>
+</beans>

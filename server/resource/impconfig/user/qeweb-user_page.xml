@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 用户关联页面: 1.用户可影响页面组件的值/状态/范围,页面组件即jsp页面标签代表的组件. 2.每个relate节点代表一组关联关系; 
+	3.vctype表示组件类型,21:表单,22:表格,23,tab; --><qeweb-user-vc>
+	<relate id="1372224940906" page="/WEB-INF/pages/impconfig/mdt/exeprocessmag/pageflow/test.jsp" vcId="pageEntryForm" bind="pageEntryBO" vcType="21" userInfo="userName,userCode" relateName="r1">
+		<userInfo id="1372225444281" group="userName=v2;userCode=001" relateName="文本框显示">
+			<fc id="1" bind="pageURL" vctype="1" hidden="false" />
+			<fc id="2" bind="pageURL2" vctype="1" hidden="false" />
+			<fc id="3" bind="pageURL3" vctype="1" hidden="false" />
+		</userInfo>
+		
+	</relate>
+</qeweb-user-vc>

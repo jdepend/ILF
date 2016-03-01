@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans default-autowire="byName" default-lazy-init="false">
+	<!-- 用户登陆 -->
+	<bean id="loginAC" class="com.qeweb.sysmanage.login.LoginAC" scope="prototype">
+		<property name="DDTAppConfigCreator" ref="DDTAppConfigCreator"></property>
+	</bean>
+	
+	<!-- 系统解锁 -->
+	<bean id="unlockSystem" class="com.qeweb.sysmanage.login.UnLockSystem" scope="prototype">
+		<property name="userCtx" ref="userCtx"></property>	    	
+	</bean>
+</beans>
