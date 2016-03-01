@@ -50,6 +50,7 @@
                         <li><a href="#" id="bop_rel1">BOP 关联</a></li>
                         <li><a href="#" id="bop_form">表单展示</a></li>
                         <li><a href="#" id="bop_grouplist">组列表展示</a></li>
+                        <li><a href="#" id="bop_table">表格展示</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -99,6 +100,11 @@
         $("#bop_grouplist").click(
                 function(){
                     requestFirstPage("<%=basePath%>/vsr/page/init/groupList?displayType=bootstrap");
+                }
+        );
+        $("#bop_table").click(
+                function(){
+                    requestFirstPage("<%=basePath%>/system/generalredirectAC.action?redirectStr=/WEB-INF/pages/demo/load/container/table/demoTable_1.jsp?pathType=menu?timestemp=1456819048221&sessionTicket=null&tokenTicket=9d390f18-0f0f-4790-a3dc-bfb50faeb91f");
                 }
         );
         //例子

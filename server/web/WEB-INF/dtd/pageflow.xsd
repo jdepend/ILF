@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"  
+elementFormDefault="qualified" attributeFormDefault="qualified">
+	<!-- pageflow 属性声明 -->
+    <xsd:attributeGroup name="contactAttribs">
+		<xsd:attribute name="boId" type="xsd:string" use="required">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				必填，为业务对象在spring注入的名称。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="bopBind" type="xsd:string">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				当开发人员需要实现弹出页面选择数据回填到父页面指定的文本框时，需要配置bopbind。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="sourcePage" type="xsd:string">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				非必填，源页面的路径。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="targetVC" type="xsd:string">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				刷新目标页面或源页面的组件. 格式:targetVCId1.method1,targetVCId2.method2.
+				1.如果弹出页面的页面流节点指定了targetVC, 当弹出页面关闭时, 将按顺序执行源页面的targetVCId1.method1和targetVCId2.method2,并按顺序刷新targetVCId1和targetVCId2对应的组件;
+				如果仅指定了targetVCId1, 则默认执行targetVCId1的query方法.
+				如果不指定targetVC, 则默认执行弹出目标页面按钮所在组件的query方法并刷新该组件.
+				2.如果源页面的页面流节点指定了targetVC, 当点击按钮后, 将按顺序执行源页面的targetVCId1.method1和targetVCId2.method2,并按顺序刷新targetVCId1和targetVCId2对应的组件;
+				如果仅指定了targetVCId1, 则默认执行targetVCId1的query方法.
+				如果不指定targetVC, 不执行任何操作.
+				3.如果想刷新源页面的全局按钮, 需要在源页面的page标签中添加bind属性,并在弹出页面的页面流节点的targetVC中添加"page.yourMethod", page不支持query方法.
+				4.targetVC和targetPage是互斥的, 如果指定了targetPage, 则targetVC失效.
+				5.在弹出页面中, 如果targetVC="empty", 则点击按钮关闭弹出页面后, 不刷新父页面组件.
+				6.在源页面中,  如果targetVC="empty", 则不执行任何操作.
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="closeTargetVC" type="xsd:string">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				点击弹出页面的关闭按钮后,刷新目标页面的组件. 格式:closeTargetVCId1.method1,closeTargetVCId2.method2.
+				当弹出页面关闭时, 将把弹出页面的所有数据形成boList, 按顺序执行源页面的closeTargetVCd1.method1(List boList)和closeTargetVCId2.method2(List boList),
+				并按顺序刷新closeTargetVCId1和closeTargetVCd2对应的组件;
+				如果仅指定了closeTargetVCId1, 则默认执行closeTargetVCId1的query方法.
+				如果不指定closeTargetVC, 则点击关闭后仅关闭该页面，不执行其它操作.
+				需要注意的是, closeTargetVC 需要配置在源页面的页面流节点中.
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="targetPage" type="xsd:string">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				目标页面的路径。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="btnName" type="xsd:string">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				按钮的名称，对应jsp按钮的name。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="isPopup" type="v_boolean">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				跳转的页面是否以弹出框显示,默认false。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="hasCloseBtn" type="v_boolean">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				弹出页面是否有"关闭"按钮, 默认值根据全局配置而定. hasCloseBtn仅在isPopup=true时有效.
+				如果配置了hasCloseBtn, 则hasCloseBtn优先于全局配置.
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="msgFlag" type="v_boolean">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				页面跳转后，按钮操作后的提示是否需要显示，默认为false。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="dialogTitle" type="xsd:string">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				当页面以弹出框显示时,弹出框的标题。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="dialogIcon" type="xsd:string">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				当页面以弹出框显示时,弹出框的图标。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="dialogHeight" type="xsd:int">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				当页面以弹出框显示时,弹出框的高度。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="dialogWidth" type="xsd:int">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				当页面以弹出框显示时,弹出框的宽度。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="closePage" type="v_boolean">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				弹出页面执行操作后是否关闭页面，默认false
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="remark" type="xsd:string">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				备注。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="echo" type="xsd:string">
+	        <xsd:annotation>
+		      <xsd:documentation>
+				echo表示重复者判断列，仅对表格的弹出回填有效。回填值以echo指定的bop为准，判断是否重复，如果重复则不回填到源组件，如果不指定echo，则不判断重复。
+		      </xsd:documentation>
+		    </xsd:annotation>
+		</xsd:attribute>
+	</xsd:attributeGroup>
+	
+	<!-- 属性枚举值声明 -->
+	<xsd:simpleType name="v_boolean">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="true" />
+            <xsd:enumeration value="false" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+	<!-- 元素结构声明 -->
+    <xsd:element name="pageflow-list">  
+       <xsd:complexType> 
+         <xsd:sequence>
+			<xsd:element name="pageflow" maxOccurs="unbounded">  
+			<xsd:complexType>  
+			        <xsd:attributeGroup ref="contactAttribs" />  
+			</xsd:complexType>  
+			</xsd:element>
+         </xsd:sequence>  
+      </xsd:complexType>  
+    </xsd:element>
+</xsd:schema>

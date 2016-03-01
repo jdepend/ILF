@@ -4,9 +4,20 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>classpath:spring-core.xml</param-value>-->
+    <!--</context-param>-->
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring-core.xml</param-value>
+        <param-value>
+            classpath:spring/applicationContext.xml
+        </param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>messages</param-value>
     </context-param>
 
     <listener>
@@ -66,6 +77,51 @@
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- 解决hibernate在action层时延迟加载的问题 -->
+    <!--
+        1.  singleSession = false，会在view期间每一次访问数据时，使用当前事务的session， 并且会延迟关闭session（不利于做子事务），造成connection占用。
+        2.  flush = AUTO，会根据当前上下文（是否只读事务），进行flush操作，即便是query操作。
+        所以一般情况下不需要 singleSession=false，flush=AUTO，如果没有特殊情况（即在openSessionInView期间有更新对象的操作，此期间也应该不要设计写操作），
+        可配置为 singleSession=true,flushMode=NEVER
+     -->
+    <filter>
+        <filter-name>hibernateFilter</filter-name>
+        <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+        <init-param>
+            <param-name>singleSession</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>sessionFactoryBeanName</param-name>
+            <param-value>sessionFactory_bis</param-value>
+        </init-param>
+        <init-param>
+            <param-name>flushMode</param-name>
+            <param-value>AUTO</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>hibernateFilter</filter-name>
+        <url-pattern>*.action</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>hibernateFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
+    <!-- QewebPrepareAndExecuteFilter -->
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>com.qeweb.framework.app.filter.QewebPrepareAndExecuteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>*.action</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
 
     <!-- 配置缓存过滤器 -->

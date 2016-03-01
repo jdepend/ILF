@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<qeweb:page>
+<qeweb:page onLoad="queryInfoBO.xxx">
     <qeweb:navbar text="组列表页面"/>
     <qeweb:title bind="queryInfoBO">
         <qeweb:icon bind="icon"/>
@@ -11,7 +11,7 @@
             <qeweb:label id="userCount" bind="userCount"/>
         </qeweb:group_title>
         <qeweb:list>
-            <qeweb:list_element bind="userBO" queryRange="true" layout="3:4:4:1">
+            <qeweb:list_element bind="userBO2" queryRange="true" layout="3:4:4:1">
                 <qeweb:hidden id="id" bind="id"/>
                 <qeweb:image id="avatar" bind="avatar"/>
                 <qeweb:block layout="2:1">

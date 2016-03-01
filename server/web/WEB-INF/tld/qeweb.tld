@@ -1,0 +1,1373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+    "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<short-name>scop</short-name>
+	<uri>/WEB-INF/taglib/qeweb</uri>
+	<description>
+		qeweb标签
+	</description>
+
+	<!-- page -->
+	<tag>
+		<name>page</name>
+		<tag-class>com.qeweb.framework.app.tag.PageTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>页面整体布局标签--page标签</description>
+		<attribute>
+			<name>layout</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				布局管理器,负责粗粒度组件的布局,
+				&lt;ul&gt;格式示例:3;C2(con1,con2),C3(con3), 默认三列布局, con1和con2合并两列, con3合并3列.
+				&lt;p&gt;注: 第一个数字字符不是必须的, 如果去掉, 则默认列数为1; 也可以去掉组件布局而仅保留每行展示的组件个数. 
+			</description>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				样式管理器, 可在此处添加css样式. 例:form=background-color:white可使该页面所有表单的背景色变为白色, 通常在编辑页面使用.
+			</description>
+		</attribute>
+		<attribute>
+			<name>bind</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>page标签绑定的bo</description>
+		</attribute>
+		<attribute>
+			<name>onLoad</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				当页面全部加载完成后将执行onLoad中指定的方法, 通常指定查询操作.
+				&lt;li&gt;onLoad的两种常见的型式是: vcId.query 和 vcId.sysFresh.
+				&lt;li&gt;onLoad也可以指定多个组件, 其格式型如: vcId1.query;vcId2.query;vcId3.sysFresh
+			</description>
+		</attribute>
+		<attribute>
+			<name>param</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>页面初始加载时,用来判断page组件是否需要参数,可选值:required,
+			param通常用来设置全局按钮的状态
+			</description>
+		</attribute>
+		<attribute>
+			<name>title</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>页面标题</description>
+		</attribute>
+		<attribute>
+			<name>level</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>页面层级，终端展示时使用，当level为0时title不显示后退按钮；
+			否则显示后退按钮
+			</description>
+		</attribute>
+		<attribute>
+			<name>displayType</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>显示类型, 可选值: ext, html. 当设置该属性时, 表示强制指定pl层的类型.
+			目前仅对menu标签起作用,当menu标签的menuType属性为top(下拉结构, 通常在页面顶部使用)时, 设定该属性为html.
+			</description>
+		</attribute>
+	</tag>
+
+	<!-- group -->
+	<tag>
+		<name>group</name>
+		<tag-class>com.qeweb.framework.app.tag.GroupTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>强制绑定的粗粒度关联--group标签</description>
+		<attribute>
+			<name>relations</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定粗粒度的关联
+						 格式:
+						 name1:name2,name3;name2:name3
+						 当name1提交时将刷新name2和name3;当name2提交时将刷新name3
+			</description>
+		</attribute>
+	</tag>
+
+	<!-- form -->
+	<tag>
+		<name>form</name>
+		<tag-class>com.qeweb.framework.app.tag.coarsegrained.FormTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>粗粒度组件--form标签</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bo对象名称</description>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>form的id属性</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>queryRange</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>true or false, default is false; 是否启用"查询用范围", 默认的"查询范围"是将所有BOP的必填项去掉.</description>
+		</attribute>
+		<attribute>
+			<name>enableBopRelation</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>true or false, default is true; 是否启用bop关联,false将所有BOP的关联去掉.</description>
+		</attribute>
+		<attribute>
+			<name>layout</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				布局管理器, 负责细粒度组件布局.
+				&lt;ul&gt; 示例:
+				&lt;li&gt; 1. 3;C2(bop1,bop2),C3(bop3)或3;C2(bop1),C2(bop2),C3(bop3), 默认3列, bop1,bop2合并两列, bop3合并3列;
+				&lt;li&gt; 2. 3;R2(C2(bop1,bop2)),R3(bop3), bop1,bop2合并两列两行, bop3合并3行;
+				&lt;p&gt;注: 第一个数字字符不是必须的, 如果去掉, 默认参照全局配置; 也可以去掉组件布局而仅保留每行展示的组件个数. 
+			</description>
+		</attribute>
+		<attribute>
+			<name>param</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>页面初始加载时，用来判断粗粒度组件是否需要参数,可选值:required</description>
+		</attribute>
+		<attribute>
+			<name>icon</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组件的图标,在WebContet/css/projectStyle.css中定义</description>
+		</attribute>
+		<attribute>
+			<name>header</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>是否显示头部,true or false 默认true</description>
+		</attribute>
+	</tag>
+
+	<!-- table -->
+	<tag>
+		<name>table</name>
+		<tag-class>com.qeweb.framework.app.tag.coarsegrained.TableTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>粗粒度组件--table标签</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bo对象名称</description>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>form的name属性</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>display</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>table的显示字段,其格式是：field1=table:edit,insert,update,view;field2=insert
+						&lt;li&gt;
+						含义：field1在table中可编辑, 在增、改、查看的弹出框包含field1；field2仅在insert中可见。
+						&lt;li&gt;
+						如果不指定display属性，默认为table每列都不可编辑，增、改、查看弹出框包含所有字段
+			</description>
+		</attribute>
+		<attribute>
+			<name>editCell</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>table的可编辑单元格列表, 其格式型如: field1,field2
+						&lt;li&gt;
+						含义: field1和field2在表格中可编辑.
+						&lt;li&gt;
+						editCell提供了一种设置可编辑单元格的快捷方式, 与display中设置的结果取并集.
+			</description>
+		</attribute>
+		<attribute>
+			<name>layout</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>表头的布局管理器, &lt;ul&gt;格式示例1:
+				&lt;li&gt; 3;[title1](bop1, bop2),[title2](bop3, bop4), 含义:每行展示3个表格级按钮;bop1,bop2合并,合并后的title为title1; bop3,bop4合并,合并后的title为title2
+				&lt;ul&gt;格式示例2:
+				&lt;li&gt; 4;[title2](bop4, [title1](bop1, bop2, bop3)), 含义: 每行展示4个表格级按钮;bop1,bop2,bop3合并,合并后的title为title1; title1与bop4合并,合并后的title为title2
+				&lt;p&gt; 根据此规则, 可以构造更复杂的布局:3;[title2]([title1](bop1, bop2, bop3, [title0](bop01, bop02)), bop4), [title4]([title3](bop5, bop6))
+				&lt;p&gt;注1: title应当是国际化标识, 不能包含以下字符: 左右中括号[] 逗号, 左右小括号() 分号; 但对应的国际化资源中可以包含这些符号. 
+				&lt;p&gt;注2: 第一个数字字符不是必须的, 如果去掉, 默认参照全局配置; 也可以去掉列头布局而仅保留每行展示的按钮个数. 
+				&lt;p&gt;注3: 如果不使用layout, 则每行的按钮个数使用全局配置中的数据.
+				&lt;p&gt;注4: 序号行和按钮行也需要合并时, 可使用no和btn占位, 例: [title](no, btn, bop1, bop2).
+			</description>
+		</attribute>
+		<attribute>
+			<name>addLayout</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>弹出新增框的布局管理器,负责细粒度组件布局, 格式: 3;C2(f1,f2),C3(f3)</description>
+		</attribute>
+		<attribute>
+			<name>editLayout</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>弹出编辑框的布局管理器, 负责细粒度组件布局, 格式: 3;C2(f1,f2),C3(f3)</description>
+		</attribute>
+		<attribute>
+			<name>viewLayout</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>弹出查看框的布局管理器, 负责细粒度组件布局, 格式: 3;C2(f1,f2),C3(f3)</description>
+		</attribute>
+		<attribute>
+			<name>param</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>页面初始加载时，用来判断粗粒度组件是否需要参数,可选值:required</description>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				页面初始加载时，用来定义表格数据列显示高度.
+				当显示的数据列总高超过表格设定高度时，表格中会出现纵向滚动条.
+			</description>
+		</attribute>
+		<attribute>
+			<name>maxHeight</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				表格数据列显示的最大高度.
+				&lt;ul&gt;
+				如果设置了maxHeight, 则:
+				&lt;li&gt;
+				1.表格依据列数自动计算的高度将 不大于maxHeight;
+				&lt;li&gt;
+				2.如果同时设置了height, 应maxHeight >= height;
+				&lt;li&gt;
+				3.如果不设置height, 在依据列数自动计算的高度小于maxHeight时, 表格高度自动计算;
+				&lt;li&gt;
+				4.如果maxHeight的值为bodyHeight, 则maxHeight的实际值是整个主操作区域的高度.
+			</description>
+		</attribute>
+		<attribute>
+			<name>hasBbar</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>表格是否需要分页，可选值:true, false;默认true.</description>
+		</attribute>
+		<attribute>
+			<name>hideHeaders</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>true表示为隐藏表格的头部（默认为false）</description>
+		</attribute>
+		<attribute>
+			<name>autoScroll</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				&lt;ul&gt;
+				页面初始加载时，用来定义表格列宽是否自适应显示宽度
+				&lt;li&gt;
+				当表格无翻页时必须设定表格高度才能生效；
+				&lt;li&gt;
+				当不自适应显示宽度时，列宽超过显示宽度会出现横向滚动条，列宽小于显示宽度时会出现显示空白；
+				&lt;li&gt;
+				当自适应显示宽度时，无论列宽长/短均会被压缩/拉伸至显示宽度，不会出现横向滚动条或显示空白；
+				&lt;li&gt;
+				可选值:true, false，通常默认为false，当表格包含的任意细粒度组件或行级控制组件设置width属性时默认为true.
+			</description>
+		</attribute>
+		<attribute>
+			<name>pageSize</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>表格展示列数</description>
+		</attribute>
+		<attribute>
+			<name>sort</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				列头排序定义,其格式是：sort:field1,field2,feild3;nosort:feild4.
+				&lt;li&gt;
+				含义：field1、field2、feild3可在表格中排序，field4在表格中不能排序。
+				&lt;li&gt;
+				如果不指定sort属性，table每列是否排序先根据bop中的属性定义,如bop中未定义则根据全局设置决定.
+			</description>
+		</attribute>
+		<attribute>
+			<name>sm</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				选择模式, 可选值: checkbox, radio, empty, 默认checkbox
+			</description>
+		</attribute>
+		<attribute>
+			<name>win</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				定义系统自带（新增、修改、删除）弹出框的大小
+				&lt;li&gt;
+				其格式是：add:width=600,height=300;update:width=700,height=400;view:width=800,height=500
+				&lt;li&gt;
+				含义：新增弹出框宽度600，高度300；修改弹出框宽度700，高度400，查看弹出框宽度800，高度500
+				&lt;li&gt;
+				注：弹出框宽度默认为500，弹出框高度无默认值
+			</description>
+		</attribute>
+		<attribute>
+			<name>rememberChecked</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				是否开启记忆选择行功能, 默认不开启. 
+				如果开启, 将记住每页选择的id, 在翻页后自动勾选.该选项仅在sm是checkbox时有效.
+			</description>
+		</attribute>
+		<attribute>
+			<name>icon</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组件的图标,在WebContet/css/projectStyle.css中定义</description>
+		</attribute>
+		<attribute>
+			<name>header</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>是否显示头部,true or false 默认true</description>
+		</attribute>
+	</tag>
+	
+	<!-- textField -->
+	<tag>
+		<name>textField</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.TextFieldTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>细粒度组件--文本框标签</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>groupName</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组名, 按钮可以和细粒度组件依据groupName分组, 每个组中必须仅包含1个按钮和至少1个细粒度组件.
+			当点击按钮后, 产生的结果将作用于同组的细粒度组件. 该属性通常用于终端功能.
+			</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+	</tag>
+
+	<!-- editor -->
+	<tag>
+		<name>editor</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.EditorTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>细粒度组件--富文本编辑器</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>groupName</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组名, 按钮可以和细粒度组件依据groupName分组, 每个组中必须仅包含1个按钮和至少1个细粒度组件.
+			当点击按钮后, 产生的结果将作用于同组的细粒度组件. 该属性通常用于终端功能.
+			</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组高宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+	</tag>
+	
+	<!-- img -->
+	<tag>
+		<name>img</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.ImgTag</tag-class>
+		<body-content>empty</body-content>
+		<description>细粒度组件--文本框标签</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>groupName</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组名, 按钮可以和细粒度组件依据groupName分组, 每个组中必须仅包含1个按钮和至少1个细粒度组件.
+			当点击按钮后, 产生的结果将作用于同组的细粒度组件. 该属性通常用于终端功能.
+			</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为center</description>
+		</attribute>
+	</tag>
+
+
+	<!-- file -->
+	<tag>
+		<name>fileField</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.FileFieldTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>细粒度组件--文件选择标签</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>groupName</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组名, 按钮可以和细粒度组件依据groupName分组, 每个组中必须仅包含1个按钮和至少1个细粒度组件.
+			当点击按钮后, 产生的结果将作用于同组的细粒度组件. 该属性通常用于终端功能.
+			</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>operate</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>自定义上传文件处理方法名称, 默认为空. 系统的FileBOP默认的operate方法名为upload.
+				当设置了 operate为upload或其它自定义方法时, 文件控件将出现上传按钮.
+			</description>
+		</attribute>
+		<attribute>
+			<name>operateText</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>自定义上传按钮名称</description>
+		</attribute>
+		<attribute>
+			<name>download</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>是否显示下载文件，可选值:true,false,默认为true.</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+		<attribute>
+			<name>showRange</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>展示上传限制，可选值:true,false,默认为flase.</description>
+		</attribute>
+	</tag>
+
+	<!-- hidden -->
+	<tag>
+		<name>hidden</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.HiddenTag</tag-class>
+		<body-content>empty</body-content>
+		<description>细粒度组件--隐藏域标签</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>groupName</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组名, 按钮可以和细粒度组件依据groupName分组, 每个组中必须仅包含1个按钮和至少1个细粒度组件.
+			当点击按钮后, 产生的结果将作用于同组的细粒度组件. 该属性通常用于终端功能.
+			</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+	</tag>
+	<!-- label -->
+	<tag>
+		<name>label</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.LabelTag</tag-class>
+		<body-content>empty</body-content>
+		<description>细粒度组件--label</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式,可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+		<attribute>
+			<name>translate</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>默认为false.
+			当translate为true时, 将字符串翻译成html展现元素, 这通常用于展现通过editor控件提交的内容.
+			例: &amp;lt;FONT color=#ff0000&amp;gt;将会被解释为html的红色字体.</description>
+		</attribute>
+	</tag>
+	<!-- dateField -->
+	<tag>
+		<name>dateField</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.DateFieldTag</tag-class>
+		<body-content>empty</body-content>
+		<description>细粒度组件--日期文本框标签</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+	</tag>
+
+	<!-- select -->
+	<tag>
+		<name>select</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.SelectTag</tag-class>
+		<body-content>empty</body-content>
+		<description>细粒度组件--下拉列表</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+	</tag>
+
+	<!-- radio -->
+	<tag>
+		<name>radio</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.RadioTag</tag-class>
+		<body-content>empty</body-content>
+		<description>细粒度组件--单选按钮组</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+		<attribute>
+			<name>columns</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+			使用自动布局显示 checkbox/radio 组的时候使用的列的数目，这个配置选项可以有多种不同的类型的值。 
+			'auto' : 
+			渲染的时候，组件会一列挨着一列，每一列的宽度按照整行的宽度均分。默认的是auto 
+			int : 
+			如果你指定了一个像 3 这样的数字，那么将会创建指定的数目的列，包含的组建将会根据vertical的值 自动的分发。
+			</description>
+		</attribute>
+	</tag>
+
+	<!-- checkBox -->
+	<tag>
+		<name>checkBox</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.CheckBoxTag</tag-class>
+		<body-content>empty</body-content>
+		<description>细粒度组件--多选按钮组</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+		<attribute>
+			<name>columns</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				使用自动布局显示 checkbox/radio 组的时候使用的列的数目，这个配置选项可以有多种不同的类型的值。 
+				'auto' : 
+				渲染的时候，组件会一列挨着一列，每一列的宽度按照整行的宽度均分。默认的是auto 
+				int : 
+				如果你指定了一个像 3 这样的数字，那么将会创建指定的数目的列，包含的组建将会根据vertical的值 自动的分发。
+			</description>
+		</attribute>
+	</tag>
+
+	<!-- textArea -->
+	<tag>
+		<name>textArea</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.TextAreaTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>细粒度组件--文本域</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>多行文本域高度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+	</tag>
+
+	<!-- OptionTranserSelect -->
+	<tag>
+		<name>optionTranserSelect</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.OptionTranserSelectTag</tag-class>
+		<body-content>empty</body-content>
+		<description>细粒度组件--双向选择</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件高度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+	</tag>
+	<!-- password -->
+	<tag>
+		<name>password</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.PasswordTag</tag-class>
+		<body-content>empty</body-content>
+		<description>细粒度组件--密码文本框标签</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+	</tag>
+
+	<!-- Anchor -->
+	<tag>
+		<name>anchor</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.AnchorTag</tag-class>
+		<body-content>empty</body-content>
+		<description>细粒度组件--超链接标签</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为center</description>
+		</attribute>
+		<attribute>
+			<name>target</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>设置打开链接方式，_self为自身跳转，_blank为新窗口打开链接，默认为_blank</description>
+		</attribute>
+	</tag>
+
+	<!-- source -->
+	<tag>
+		<name>source</name>
+		<tag-class>com.qeweb.framework.app.tag.SourceTag</tag-class>
+		<body-content>empty</body-content>
+		<description>细粒度组件的子标签,用于展示弹出框按钮,并负责定义弹出框的返回值</description>
+		<attribute>
+			<name>bindBo</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>目标页面绑定的bo对象名称</description>
+		</attribute>
+		<attribute>
+			<name>bindBop</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bo对象名称,其格式为:sbop1:tbop1;sbop2:tbop2,表示弹出框中的tbop1/tbop2将分别赋值到sbop1/sbop2</description>
+		</attribute>
+		<attribute>
+			<name>editAble</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>可编辑的 bop, 其格式为:tbop1,tbop2,tbop3, 表示tbop1,tbop2,tbop3三个组件的状态为可编辑(默认为只读) </description>
+		</attribute>
+		<attribute>
+			<name>sm</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>弹出框的selectionModel,可选值:radio/checkbox,默认为radio</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>弹出框的国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>pageParam</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>查找弹出页面的参数,可选值:true, false;默认false. 如果pageParam=false, 则页面流中仅需要根据bindBo,bindBop查找;
+						 如果pageParam=rue, 则页面流中需要根据bindBo,bindBop及当前页面路径共同查找.
+			</description>
+		</attribute>
+		<attribute>
+			<name>operate</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>弹出页面执行的方法, 格式bo1.method1,bo2.method2.
+			当弹出页面的组件接收参数时, 将会执行operate指定的方法; 如果operate为空且弹出页面的组件接收参数, 则执行组件绑定BO的query方法. 
+			</description>
+		</attribute>
+	</tag>
+	
+	<!-- 扩展标签 -->
+	<tag>
+		<name>expend</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.ExpandTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>扩展标签,如果日期控件用expend修饰,则展示范围型日期;
+			如果talbe中的按钮组件用expend修饰,则按钮属于table的行级按钮
+		</description>
+	</tag>
+	
+	<!-- CommandButton -->
+	<tag>
+		<name>commandButton</name>
+		<tag-class>com.qeweb.framework.app.tag.control.CommandButtonTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>控制组件--普通按钮</description>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>文本文字</description>
+		</attribute>
+		<attribute>
+			<name>operate</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>按钮绑定的boMethod,该属性非必填. 
+			格式: method,bo1.method1,bo2.method2 其含义是当点击按钮时,先执行按钮所属bo的method方法,
+			跳转到其它页面后再执行目标页面的bo1.method1和bo2.method2</description>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度标识</description>
+		</attribute>
+		<attribute>
+			<name>groupName</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组名, 按钮可以和细粒度组件依据groupName分组, 每个组中必须仅包含1个按钮和至少1个细粒度组件.
+			当点击按钮后, 产生的结果将作用于同组的细粒度组件. 该属性通常用于终端功能.
+			</description>
+		</attribute>		
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>按钮宽度</description>
+		</attribute>
+		<attribute>
+			<name>icon</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>按钮的图标,在WebContet/css/projectStyle.css中定义</description>
+		</attribute>
+	</tag>
+	<!-- Tree -->
+	<tag>
+		<name>tree</name>
+		<tag-class>com.qeweb.framework.app.tag.coarsegrained.TreeTag</tag-class>
+		<body-content>empty</body-content>
+		<description>树组件</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bo对象名称</description>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>param</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>页面初始加载时，用来判断粗粒度组件是否需要参数,可选值:required</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>icon</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组件的图标,在WebContet/css/projectStyle.css中定义</description>
+		</attribute>
+		<attribute>
+			<name>header</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>是否显示头部,true or false 默认true</description>
+		</attribute>
+	</tag>
+	<!-- 菜单树 -->
+	<tag>
+		<name>menu</name>
+		<tag-class>com.qeweb.framework.app.tag.coarsegrained.MenuTag</tag-class>
+		<body-content>empty</body-content>
+		<description>菜单组件</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bo对象名称</description>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>target</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>
+				目标frame的id.
+				menu标签要和frameset联合使用，frameset中应至少包含两个frame：菜单树frame和目标区域frame.
+				当点击某个菜单叶子节点时，将根据该叶子节点的展示视图信息刷新目标区域frame.
+			</description>
+		</attribute>
+		<attribute>
+			<name>param</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>页面初始加载时，用来判断粗粒度组件是否需要参数,可选值:required</description>
+		</attribute>
+		<attribute>
+			<name>menuType</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>菜单类型. 
+				&lt;ul&gt;可选的类型有:
+				&lt;li&gt;simple(树形结构)
+				&lt;li&gt;level(层级结构)
+				&lt;li&gt;top(下拉结构, 通常在页面顶部使用) 
+				&lt;p&gt;
+				默认值与全局设定中的菜单类型相同.如果设置该属性,则个人设置和全局设置中的菜单样式失效.
+			</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>icon</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组件的图标,在WebContet/css/projectStyle.css中定义</description>
+		</attribute>
+		<attribute>
+			<name>header</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>是否显示头部,true or false 默认true</description>
+		</attribute>
+		<attribute>
+			<name>expandAll</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>是否在加载时全部展开,该属性仅对simple类型菜单有效, true or false 默认false</description>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组件高度</description>
+		</attribute>
+	</tag>
+	<!-- checkTree -->
+	<tag>
+		<name>checkTree</name>
+		<tag-class>com.qeweb.framework.app.tag.coarsegrained.CheckTreeTag</tag-class>
+		<description>复选框树组件</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bo对象名称</description>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>param</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>页面初始加载时，用来判断粗粒度组件是否需要参数,可选值:required</description>
+		</attribute>
+		<attribute>
+			<name>icon</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组件的图标,在WebContet/css/projectStyle.css中定义</description>
+		</attribute>
+		<attribute>
+			<name>header</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>是否显示头部,true or false 默认true</description>
+		</attribute>
+	</tag>
+
+	<!-- tab标签 -->
+	<tag>
+		<name>tab</name>
+		<tag-class>com.qeweb.framework.app.tag.coarsegrained.tab.TabTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>tab组件--粗粒度组件标签</description>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<description>组件id</description>
+		</attribute>
+		<attribute>
+			<name>bind</name>
+			<required>false</required>
+			<description>组件绑定的bo</description>
+		</attribute>
+		<attribute>
+			<name>param</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>页面初始加载时，用来判断粗粒度组件是否需要参数,可选值:required</description>
+		</attribute>
+	</tag>
+	<!-- sheet标签 -->
+	<tag>
+		<name>sheet</name>
+		<tag-class>com.qeweb.framework.app.tag.coarsegrained.tab.SheetTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>tab组件的子标签</description>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<description>组件唯一标识</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<description>国际化标识</description>
+		</attribute>
+	</tag>
+	
+	<!-- blank标签 -->
+	<tag>
+		<name>blank</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.BlankTag</tag-class>
+		<body-content>empty</body-content>
+		<description>细粒度组件--blank</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>空格标识，如果在同一个粗粒度组件中使用多个blank, 则各blank的bind不可重复</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+	</tag>
+	
+	<!-- Spinner -->
+	<tag>
+		<name>spinner</name>
+		<tag-class>com.qeweb.framework.app.tag.finegrained.SpinnerTag</tag-class>
+		<body-content>scriptless</body-content>
+		<description>细粒度组件--数字型微调控件,提供自动键击过滤和数字校验.Spinner绑定的bop仅能使用一个连续型范围</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bop对象名称</description>
+		</attribute>
+		<attribute>
+			<name>groupName</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组名, 按钮可以和细粒度组件依据groupName分组, 每个组中必须仅包含1个按钮和至少1个细粒度组件.
+			当点击按钮后, 产生的结果将作用于同组的细粒度组件. 该属性通常用于终端功能.
+			</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件宽度</description>
+		</attribute>
+		<attribute>
+			<name>align</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>细粒度组件在表格中单元格中的对齐方式，可选值:left,center,right,默认为left,StatusBOP类型默认为center.</description>
+		</attribute>
+	</tag>
+	
+	<!-- 登陆后的主菜单 -->
+	<tag>
+		<name>mainMenu</name>
+		<tag-class>com.qeweb.framework.app.tag.MainMenuTag</tag-class>
+		<body-content>empty</body-content>
+		<description>登陆后的主菜单</description>
+		<attribute>
+			<name>bind</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>绑定的bo对象名称</description>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>menuType</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>菜单类型. 可选的类型有simple(树形结构)和level(层级结构), 默认值与全局设定中的菜单类型相同.
+				如果设置该属性,则个人设置和全局设置中的菜单样式失效.
+			</description>
+		</attribute>
+		<attribute>
+			<name>southHeight</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>sourth区域的高度</description>
+		</attribute>
+		<attribute>
+			<name>northHeight</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>north区域的高度</description>
+		</attribute>
+		<attribute>
+			<name>westWidth</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>west区域的宽度</description>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>国际化资源标识</description>
+		</attribute>
+		<attribute>
+			<name>icon</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>组件的图标,在WebContet/css/projectStyle.css中定义</description>
+		</attribute>
+		<attribute>
+			<name>expandAll</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>是否在加载时全部展开,该属性仅对simple类型菜单有效, true or false 默认false</description>
+		</attribute>
+	</tag>
+</taglib>
