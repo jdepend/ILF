@@ -92,6 +92,8 @@ public abstract class VCFactory {
 			vc = createEditor();
         else if(Navbar.class.isAssignableFrom(vcType))
             vc = createNavbar();
+        else if(Title.class.isAssignableFrom(vcType))
+            vc = createTitle();
 		else
 			vc = null;
 
@@ -165,4 +167,5 @@ public abstract class VCFactory {
 	abstract protected Spinner createNumberField();
 	abstract protected Editor createEditor();
     abstract protected Navbar createNavbar();
+    abstract protected Title createTitle();
 }

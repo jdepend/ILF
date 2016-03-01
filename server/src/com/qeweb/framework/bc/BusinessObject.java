@@ -63,7 +63,7 @@ public class BusinessObject extends BusinessComponent implements Serializable {
 	public BusinessObject() {
 		setLocalName(BOHelper.getLocalizationBOName(getSearchClass()));
         //通过配置文件初始化Bop
-        BOHelper.initBop(this,BOPConfigMgr.getInstance().getConfig(this.getClass().getName()));
+//        BOHelper.initBop(this,BOPConfigMgr.getInstance().getConfig(this.getClass().getName()));
 	}
 
 	/**

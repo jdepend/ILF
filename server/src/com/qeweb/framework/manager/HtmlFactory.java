@@ -185,4 +185,9 @@ public class HtmlFactory extends VCFactory {
     protected Navbar createNavbar() {
         return null;
     }
+
+    @Override
+    protected Title createTitle() {
+        return null;
+    }
 }

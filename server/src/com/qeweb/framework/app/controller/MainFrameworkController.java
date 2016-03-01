@@ -1,4 +1,4 @@
-package com.rofine.platform.web.controller;
+package com.qeweb.framework.app.controller;
 
 import com.qeweb.framework.app.handler.BOPRelation;
 import com.qeweb.framework.common.Constant;

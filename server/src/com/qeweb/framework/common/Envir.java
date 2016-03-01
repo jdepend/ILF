@@ -48,7 +48,12 @@ public class Envir {
 //		else
 //			return ServletActionContext.getServletContext();
 
-        return getRequest().getServletContext();
+        HttpServletRequest request = getRequest();
+        if(request == null){
+            return null;
+        }else {
+            return request.getServletContext();
+        }
 	}
 
 	final public static String getFileUploadPath(){
@@ -57,7 +62,11 @@ public class Envir {
 
 	final public static HttpServletRequest getRequest() {
 //		return ServletActionContext.getRequest(); wangdg
-        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        if(RequestContextHolder.getRequestAttributes() == null){
+            return null;
+        }else {
+            return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        }
 
     }
 
@@ -98,7 +107,6 @@ public class Envir {
 
 	/**
 	 * 获取ip地址
-	 * @param request
 	 * @return
 	 */
 	final public static String getIp() {

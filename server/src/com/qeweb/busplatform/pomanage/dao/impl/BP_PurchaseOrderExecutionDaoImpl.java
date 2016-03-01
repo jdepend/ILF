@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.springframework.orm.hibernate3.HibernateCallback;
+import org.springframework.orm.hibernate4.HibernateCallback;
 
 import com.qeweb.busplatform.pomanage.bo.BP_PurchaseOrderStatisticsBO;
 import com.qeweb.busplatform.pomanage.dao.ia.IBP_PurchaseOrderExecutionDao;
@@ -62,13 +62,12 @@ public class BP_PurchaseOrderExecutionDaoImpl extends BaseDaoHibImpl implements 
 	@Override
 	public void flush() {
 		super.getHibernateTemplate().execute(new HibernateCallback() {
-			@Override
-			public Object doInHibernate(Session session)
-					throws HibernateException, SQLException {
-				session.flush();
-				session.clear();
-				return null;
-			}
-		});
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException {
+                session.flush();
+                session.clear();
+                return null;
+            }
+        });
 	}
 }

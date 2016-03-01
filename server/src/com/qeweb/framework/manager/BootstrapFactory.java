@@ -14,7 +14,9 @@ import com.qeweb.framework.pal.finegrained.text.*;
 import com.qeweb.framework.pl.bootstrap.BootstrapPage;
 import com.qeweb.framework.pl.bootstrap.coarsegrained.BootstrapForm;
 import com.qeweb.framework.pl.bootstrap.coarsegrained.BootstrapNavbar;
+import com.qeweb.framework.pl.bootstrap.coarsegrained.BootstrapTitle;
 import com.qeweb.framework.pl.bootstrap.control.BootstrapCommandButton;
+import com.qeweb.framework.pl.bootstrap.finegrained.text.BootstrapLabel;
 import com.qeweb.framework.pl.bootstrap.finegrained.text.BootstrapRadio;
 import com.qeweb.framework.pl.bootstrap.finegrained.text.BootstrapTextArea;
 import com.qeweb.framework.pl.bootstrap.finegrained.text.BootstrapTextField;
@@ -99,7 +101,7 @@ public class BootstrapFactory extends VCFactory {
 
 	@Override
 	protected Label createLabel() {
-		return new HTMLLabel();
+		return new BootstrapLabel();
 	}
 
 	@Override
@@ -170,5 +172,10 @@ public class BootstrapFactory extends VCFactory {
     @Override
     protected Navbar createNavbar() {
         return new BootstrapNavbar();
+    }
+
+    @Override
+    protected Title createTitle() {
+        return new BootstrapTitle();
     }
 }

@@ -14,8 +14,8 @@ import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.qeweb.framework.base.QewebDetachedCriteria;
 import com.qeweb.framework.base.ia.IBaseDao;
@@ -140,7 +140,7 @@ public class BaseDaoHibImpl extends HibernateDaoSupport implements IBaseDao {
 	 */
 	public Object createQueryUniqueResult(final String sql){        
         return (Object) getHibernateTemplate().execute(new HibernateCallback() {  
-            public Object doInHibernate(Session session) throws HibernateException, SQLException {  
+            public Object doInHibernate(Session session) throws HibernateException {
                 SQLQuery q = session.createSQLQuery(sql);  
                   
                 return q.uniqueResult();  
@@ -156,7 +156,7 @@ public class BaseDaoHibImpl extends HibernateDaoSupport implements IBaseDao {
 	@SuppressWarnings("rawtypes")
 	public List createQuery(final String sql){
         return (List) getHibernateTemplate().execute(new HibernateCallback() {  
-            public Object doInHibernate(Session session) throws HibernateException, SQLException {  
+            public Object doInHibernate(Session session) throws HibernateException {
                 SQLQuery q = session.createSQLQuery(sql);  
                   
                 return q.list();  
@@ -298,7 +298,7 @@ public class BaseDaoHibImpl extends HibernateDaoSupport implements IBaseDao {
 	public void executeSql(final String sql, final Object[] parameters){
 		getHibernateTemplate().execute(
 				new HibernateCallback(){
-					public Object doInHibernate(Session session) throws HibernateException, SQLException {
+					public Object doInHibernate(Session session) throws HibernateException {
 						Query query= session.createSQLQuery(sql);
 						if(parameters != null){
 							for (int i = 0 ; i < parameters.length ; i++) {

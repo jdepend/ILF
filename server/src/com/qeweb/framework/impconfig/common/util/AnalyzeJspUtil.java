@@ -45,6 +45,7 @@ public class AnalyzeJspUtil {
 	final static public String DOC_GROUP = "qeweb-group";
 	final static public String DOC_EXPEND = "qeweb-expend";
 
+    final static public String DOC_TITLE = "qeweb-title";
     final static public String DOC_NAVBAR = "qeweb-navbar";
 	final static public String DOC_FORM = "qeweb-form";
 	final static public String DOC_TABLE = "qeweb-table";
@@ -224,6 +225,11 @@ public class AnalyzeJspUtil {
             container = navbar;
             containerBean = new ContainerBean();
             containerHandler = new ContainerInitHandler();
+        }else if(isTitleEl((element))){
+            Title title = (Title)AppManager.createVC(Title.class);
+            container = title;
+            containerBean = new ContainerBean();
+            containerHandler = new ContainerInitHandler();
         }
 
 		if(container == null)
@@ -252,6 +258,15 @@ public class AnalyzeJspUtil {
 		}
 		return container;
 	}
+
+    /**
+     * element 是否是title element
+     * @param element
+     * @return
+     */
+    private static boolean isTitleEl(Element element) {
+        return StringUtils.isEqualIgnoreCase(DOC_TITLE, element.getName());
+    }
 
     /**
      * element 是否是narbar element

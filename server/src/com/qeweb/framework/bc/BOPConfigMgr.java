@@ -64,7 +64,10 @@ public class BOPConfigMgr {
 
                         config.put(name, object);
                     }
-                    configs.put(fileName.substring(0, fileName.indexOf(".xml")), config);
+                    int pos = fileName.indexOf(".xml");
+                    if(pos != -1) {
+                        configs.put(fileName.substring(0, pos), config);
+                    }
                 }
             }else{
 
