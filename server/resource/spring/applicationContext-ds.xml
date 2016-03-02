@@ -69,7 +69,7 @@
 	</bean>
 
 	<bean id="hibernateTemplate_bis"
-		class="org.springframework.orm.hibernate3.HibernateTemplate">
+		class="org.springframework.orm.hibernate4.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory_bis" />
 	</bean>
 	
