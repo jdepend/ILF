@@ -9,11 +9,7 @@ import com.qeweb.framework.pal.finegrained.enumcomp.CheckBox;
 import com.qeweb.framework.pal.finegrained.enumcomp.OptionTranserSelect;
 import com.qeweb.framework.pal.finegrained.enumcomp.Radio;
 import com.qeweb.framework.pal.finegrained.enumcomp.Select;
-import com.qeweb.framework.pal.finegrained.other.Anchor;
-import com.qeweb.framework.pal.finegrained.other.Blank;
-import com.qeweb.framework.pal.finegrained.other.DateField;
-import com.qeweb.framework.pal.finegrained.other.FileField;
-import com.qeweb.framework.pal.finegrained.other.Image;
+import com.qeweb.framework.pal.finegrained.other.*;
 import com.qeweb.framework.pal.finegrained.text.Editor;
 import com.qeweb.framework.pal.finegrained.text.Hidden;
 import com.qeweb.framework.pal.finegrained.text.Label;
@@ -191,6 +187,11 @@ public class ExtFactory extends VCFactory {
 
     @Override
     protected Title createTitle() {
+        return null;
+    }
+
+    @Override
+    protected Icon createIcon() {
         return null;
     }
 }

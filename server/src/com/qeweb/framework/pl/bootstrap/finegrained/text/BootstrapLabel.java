@@ -11,14 +11,16 @@ public class BootstrapLabel extends Label{
 			StringBuilder sbr = new StringBuilder();
 			BOProperty bop = getBc();
 
-			HTMLWebHelper.appendHead(sbr, this);
-			HTMLWebHelper.appendStartTag(sbr, "span");
-			HTMLWebHelper.appendAttr(sbr, "name", getName());
-			HTMLWebHelper.appendStatus(sbr, bop.getStatus());
-			HTMLWebHelper.appendEndTag(sbr);
-			HTMLWebHelper.appendContent(sbr, bop.toText());
-			HTMLWebHelper.appendEndTag(sbr, "span");
-			HTMLWebHelper.appendTail(sbr);
+            sbr.append("<span>" + bop.getValue().getValue()+ "</span>");
+
+//			HTMLWebHelper.appendHead(sbr, this);
+//			HTMLWebHelper.appendStartTag(sbr, "span");
+//			HTMLWebHelper.appendAttr(sbr, "name", getName());
+//			HTMLWebHelper.appendStatus(sbr, bop.getStatus());
+//			HTMLWebHelper.appendEndTag(sbr);
+//			HTMLWebHelper.appendContent(sbr, bop.toText());
+//			HTMLWebHelper.appendEndTag(sbr, "span");
+//			HTMLWebHelper.appendTail(sbr);
 
 			getPageContextInfo().write(sbr.toString());
 		} catch (Exception e) {

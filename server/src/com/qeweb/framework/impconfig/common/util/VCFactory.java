@@ -1,5 +1,6 @@
 package com.qeweb.framework.impconfig.common.util;
 
+import com.qeweb.framework.pal.finegrained.other.Icon;
 import org.jdom.Element;
 
 import com.qeweb.framework.common.utils.StringUtils;
@@ -54,6 +55,9 @@ class VCFactory {
 		else if(StringUtils.isEqualIgnoreCase(AnalyzeJspUtil.DOC_CHECKBOX, fcType)) {
 			fc = (CheckBox) AppManager.createVC(CheckBox.class);
 		}
+        else if(StringUtils.isEqualIgnoreCase(AnalyzeJspUtil.DOC_ICON, fcType)) {
+            fc = (Icon) AppManager.createVC(Icon.class);
+        }
 
 		return fc;
 	}

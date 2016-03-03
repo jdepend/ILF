@@ -16,6 +16,7 @@ import com.qeweb.framework.pl.bootstrap.coarsegrained.BootstrapForm;
 import com.qeweb.framework.pl.bootstrap.coarsegrained.BootstrapNavbar;
 import com.qeweb.framework.pl.bootstrap.coarsegrained.BootstrapTitle;
 import com.qeweb.framework.pl.bootstrap.control.BootstrapCommandButton;
+import com.qeweb.framework.pl.bootstrap.finegrained.other.BootstrapIcon;
 import com.qeweb.framework.pl.bootstrap.finegrained.text.BootstrapLabel;
 import com.qeweb.framework.pl.bootstrap.finegrained.text.BootstrapRadio;
 import com.qeweb.framework.pl.bootstrap.finegrained.text.BootstrapTextArea;
@@ -177,5 +178,10 @@ public class BootstrapFactory extends VCFactory {
     @Override
     protected Title createTitle() {
         return new BootstrapTitle();
+    }
+
+    @Override
+    protected Icon createIcon() {
+        return new BootstrapIcon();
     }
 }

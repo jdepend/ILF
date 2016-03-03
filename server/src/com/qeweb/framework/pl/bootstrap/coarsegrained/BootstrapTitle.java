@@ -16,16 +16,14 @@ public class BootstrapTitle extends Title {
     @Override
     public void paint() {
         PageContextInfo out = getPageContextInfo();
-        StringBuilder sbr = new StringBuilder();
 
-        sbr.append("<div class=\"row\" id=\"lt_title\">\n");
-        sbr.append("<div class=\"col-xs-12\" style=\"height:30px; padding-top: 5px; padding-left: 5px;\">\n");
+        out.write("<div class=\"row\" id=\"lt_title\">\n");
+        out.write("<div class=\"col-xs-12\" style=\"height:30px; padding-top: 5px; padding-left: 5px;\">\n");
 
         paintFCList();
 
-        sbr.append("</div>\n");
-        sbr.append("</div>");
-        out.write(sbr.toString());
+        out.write("</div>\n");
+        out.write("</div>");
     }
 
     private void paintFCList() {

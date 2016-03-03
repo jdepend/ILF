@@ -11,11 +11,7 @@ import com.qeweb.framework.pal.finegrained.enumcomp.CheckBox;
 import com.qeweb.framework.pal.finegrained.enumcomp.OptionTranserSelect;
 import com.qeweb.framework.pal.finegrained.enumcomp.Radio;
 import com.qeweb.framework.pal.finegrained.enumcomp.Select;
-import com.qeweb.framework.pal.finegrained.other.Anchor;
-import com.qeweb.framework.pal.finegrained.other.Blank;
-import com.qeweb.framework.pal.finegrained.other.DateField;
-import com.qeweb.framework.pal.finegrained.other.FileField;
-import com.qeweb.framework.pal.finegrained.other.Image;
+import com.qeweb.framework.pal.finegrained.other.*;
 import com.qeweb.framework.pal.finegrained.text.Editor;
 import com.qeweb.framework.pal.finegrained.text.Hidden;
 import com.qeweb.framework.pal.finegrained.text.Label;
@@ -94,6 +90,8 @@ public abstract class VCFactory {
             vc = createNavbar();
         else if(Title.class.isAssignableFrom(vcType))
             vc = createTitle();
+        else if(Icon.class.isAssignableFrom(vcType))
+            vc = createIcon();
 		else
 			vc = null;
 
@@ -168,4 +166,5 @@ public abstract class VCFactory {
 	abstract protected Editor createEditor();
     abstract protected Navbar createNavbar();
     abstract protected Title createTitle();
+    abstract protected Icon createIcon();
 }

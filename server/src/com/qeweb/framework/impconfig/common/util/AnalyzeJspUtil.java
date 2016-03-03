@@ -62,6 +62,7 @@ public class AnalyzeJspUtil {
 	final static public String DOC_SELECT = "qeweb-select";
 	final static public String DOC_RADIO = "qeweb-radio";
 	final static public String DOC_CHECKBOX = "qeweb-checkBox";
+    final static public String DOC_ICON = "qeweb-icon";
 
 	//页面标签的开始和结束标志
 	final static public String START = "<qeweb:page";

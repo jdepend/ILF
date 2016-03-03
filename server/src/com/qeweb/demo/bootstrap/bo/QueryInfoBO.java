@@ -16,7 +16,7 @@ public class QueryInfoBO extends BusinessObject implements Serializable {
     private String info;
 
     public QueryInfoBO(){
-        getBOP("info").setValue("2015年2季度21周（05-18至05-24）");
+        getBOP("icon").setValue("glyphicon-calendar");
         getBOP("info").setValue("2015年2季度21周（05-18至05-24）");
     }
 
