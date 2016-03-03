@@ -49,7 +49,7 @@
                         <li><a href="#" id="html_create">Html生成</a></li>
                         <li><a href="#" id="bop_rel1">BOP 关联</a></li>
                         <li><a href="#" id="bop_form">表单展示</a></li>
-                        <li><a href="#" id="bop_grouplist">组列表展示</a></li>
+                        <li><a href="#" id="bop_list">列表展示</a></li>
                         <li><a href="#" id="bop_form_old">原始表单展示</a></li>
                         <li><a href="#" id="bop_table">表格展示</a></li>
                     </ul>
@@ -98,9 +98,9 @@
                     requestFirstPage("<%=basePath%>/vsr/page/init/vendorManage2?displayType=bootstrap");
                 }
         );
-        $("#bop_grouplist").click(
+        $("#bop_list").click(
                 function(){
-                    requestFirstPage("<%=basePath%>/vsr/page/init/groupList?displayType=bootstrap");
+                    requestFirstPage("<%=basePath%>/vsr/page/init/list?displayType=bootstrap");
                 }
         );
         $("#bop_form_old").click(

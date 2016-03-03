@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<qeweb:page onLoad="queryInfoBO.xxx">
+    <qeweb:navbar text="组列表页面"/>
+    <qeweb:title bind="queryInfoBO">
+        <qeweb:icon bind="icon"/>
+        <qeweb:label bind="info"/>
+    </qeweb:title>
+    <qeweb:list>
+        <qeweb:list_element bind="deptBO" queryRange="true" layout="3:9">
+            <qeweb:hidden id="id" bind="id"/>
+            <qeweb:image id="name" bind="name"/>
+            <qeweb:block layout="2:1">
+                <qeweb:block layout="1:3">
+                    <qeweb:label text="科室人数："/>
+                    <qeweb:progressbar id="userCount" bind="userCount"/>
+                    <qeweb:label id="userCount2" bind="userCount"/>
+                </qeweb:block>
+                <qeweb:block layout="1:3">
+                    <qeweb:label text="工作纪实数量："/>
+                    <qeweb:progressbar id="workCount" bind="workCount"/>
+                    <qeweb:label id="workCount2" bind="workCount"/>
+                </qeweb:block>
+            </qeweb:block>
+        </qeweb:list_element>
+    </qeweb:list>
+</qeweb:page>
+
