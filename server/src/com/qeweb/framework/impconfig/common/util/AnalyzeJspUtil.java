@@ -45,6 +45,8 @@ public class AnalyzeJspUtil {
 	final static public String DOC_GROUP = "qeweb-group";
 	final static public String DOC_EXPEND = "qeweb-expend";
 
+    final static public String DOC_LISTELEMENT = "qeweb-list_element";
+    final static public String DOC_LIST = "qeweb-list";
     final static public String DOC_TITLE = "qeweb-title";
     final static public String DOC_NAVBAR = "qeweb-navbar";
 	final static public String DOC_FORM = "qeweb-form";
@@ -231,6 +233,16 @@ public class AnalyzeJspUtil {
             container = title;
             containerBean = new ContainerBean();
             containerHandler = new ContainerInitHandler();
+        }else if(isListEl((element))){
+            com.qeweb.framework.pal.coarsegrained.List list = (com.qeweb.framework.pal.coarsegrained.List)AppManager.createVC(com.qeweb.framework.pal.coarsegrained.List.class);
+            container = list;
+            containerBean = new ContainerBean();
+            containerHandler = new ContainerInitHandler();
+        }else if(isListElementEl((element))){
+            ListElement list = (ListElement)AppManager.createVC(ListElement.class);
+            container = list;
+            containerBean = new ContainerBean();
+            containerHandler = new ContainerInitHandler();
         }
 
 		if(container == null)
@@ -259,6 +271,24 @@ public class AnalyzeJspUtil {
 		}
 		return container;
 	}
+
+    /**
+     * element 是否是title element
+     * @param element
+     * @return
+     */
+    private static boolean isListElementEl(Element element) {
+        return StringUtils.isEqualIgnoreCase(DOC_LISTELEMENT, element.getName());
+    }
+
+    /**
+     * element 是否是title element
+     * @param element
+     * @return
+     */
+    private static boolean isListEl(Element element) {
+        return StringUtils.isEqualIgnoreCase(DOC_LIST, element.getName());
+    }
 
     /**
      * element 是否是title element

@@ -194,4 +194,14 @@ public class ExtFactory extends VCFactory {
     protected Icon createIcon() {
         return null;
     }
+
+    @Override
+    protected List createList() {
+        return null;
+    }
+
+    @Override
+    protected ListElement createListElement() {
+        return null;
+    }
 }

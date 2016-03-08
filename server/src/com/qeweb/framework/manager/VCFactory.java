@@ -92,6 +92,10 @@ public abstract class VCFactory {
             vc = createTitle();
         else if(Icon.class.isAssignableFrom(vcType))
             vc = createIcon();
+        else if(List.class.isAssignableFrom(vcType))
+            vc = createList();
+        else if(ListElement.class.isAssignableFrom(vcType))
+            vc = createListElement();
 		else
 			vc = null;
 
@@ -167,4 +171,6 @@ public abstract class VCFactory {
     abstract protected Navbar createNavbar();
     abstract protected Title createTitle();
     abstract protected Icon createIcon();
+    abstract protected List createList();
+    abstract protected ListElement createListElement();
 }

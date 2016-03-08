@@ -12,9 +12,7 @@ import com.qeweb.framework.pal.finegrained.enumcomp.Select;
 import com.qeweb.framework.pal.finegrained.other.*;
 import com.qeweb.framework.pal.finegrained.text.*;
 import com.qeweb.framework.pl.bootstrap.BootstrapPage;
-import com.qeweb.framework.pl.bootstrap.coarsegrained.BootstrapForm;
-import com.qeweb.framework.pl.bootstrap.coarsegrained.BootstrapNavbar;
-import com.qeweb.framework.pl.bootstrap.coarsegrained.BootstrapTitle;
+import com.qeweb.framework.pl.bootstrap.coarsegrained.*;
 import com.qeweb.framework.pl.bootstrap.control.BootstrapCommandButton;
 import com.qeweb.framework.pl.bootstrap.finegrained.other.BootstrapIcon;
 import com.qeweb.framework.pl.bootstrap.finegrained.text.BootstrapLabel;
@@ -183,5 +181,15 @@ public class BootstrapFactory extends VCFactory {
     @Override
     protected Icon createIcon() {
         return new BootstrapIcon();
+    }
+
+    @Override
+    protected List createList() {
+        return new BootstrapList();
+    }
+
+    @Override
+    protected ListElement createListElement() {
+        return new BootstrapListElement();
     }
 }
