@@ -51,7 +51,9 @@
                         <li><a href="#" id="bop_form">表单展示</a></li>
                         <li><a href="#" id="bop_list">列表展示</a></li>
                         <li><a href="#" id="bop_form_old">原始表单展示</a></li>
-                        <li><a href="#" id="bop_table">表格展示</a></li>
+                        <li><a href="#" id="bop_table">原始表格展示</a></li>
+                        <li><a href="#" id="bootstrap_table">表格展示</a></li>
+
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -105,12 +107,17 @@
         );
         $("#bop_form_old").click(
                 function(){
-                    requestFirstPage("<%=basePath%>/system/generalredirectAC.action?redirectStr=/WEB-INF/pages/demo/load/container/form/demoForm_1.jsp?pathType=menu?timestemp=1456819048221&sessionTicket=null&tokenTicket=9d390f18-0f0f-4790-a3dc-bfb50faeb91f");
+                    requestFirstPage("<%=basePath%>/system/generalredirectAC.action?redirectStr=/WEB-INF/pages/demo/load/container/form/demoForm_1.jsp&displayType=ext");
                 }
         );
         $("#bop_table").click(
                 function(){
-                    requestFirstPage("<%=basePath%>/system/generalredirectAC.action?redirectStr=/WEB-INF/pages/demo/load/container/table/demoTable_1.jsp?pathType=menu?timestemp=1456819048221&sessionTicket=null&tokenTicket=9d390f18-0f0f-4790-a3dc-bfb50faeb91f");
+                    requestFirstPage("<%=basePath%>/system/generalredirectAC.action?redirectStr=/WEB-INF/pages/demo/interaction/validation/demoValidation_3.jsp&displayType=ext");
+                }
+        );
+        $("#bootstrap_table").click(
+                function(){
+                    requestFirstPage("<%=basePath%>/vsr/page/init/demoTable?displayType=bootstrap");
                 }
         );
         //例子
