@@ -326,7 +326,9 @@ public class BaseDaoHibImpl extends HibernateDaoSupport implements IBaseDao {
 				Object totalObj = ci.setProjection(Projections.rowCount()).uniqueResult();
 				int totalCount = 0;
 				if (totalObj != null)
-					totalCount = (Integer) totalObj;
+					//totalCount = (Integer) totalObj;
+                    // update yuanbz 2016 long 无法强转 int
+                    totalCount = (Integer) Integer.parseInt(totalObj.toString());
 				
 				return totalCount;
 			}
