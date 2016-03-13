@@ -15,7 +15,7 @@ public class BootstrapTextField extends TextField {
         StringBuilder sbr = new StringBuilder();
         BOProperty bop = getBc();
 
-        String id = this.getParent().getBcId() + "." + getId();
+        String id = getId();
         String name = getName();
 
         sbr.append("<input class=\"form-control\"");

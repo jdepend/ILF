@@ -54,6 +54,8 @@ public class BootstrapHTMLPrinter implements HTMLPagePrinter {
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/ilf-form.js\"></script>");
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources/js/mlt.js\"></script>");
 
+        printViewComportResource(pageContextInfo);
+
         pageContextInfo.write("<script src=\"" + Envir.getContextPath() + "/resources2/vsr/common.js\"></script>");
 //        List<String> javascriptFiles = this.javascripts.get(file.getName().substring(0, file.getName().indexOf(".")));
         if (javascriptFiles != null && javascriptFiles.size() > 0) {
@@ -71,6 +73,110 @@ public class BootstrapHTMLPrinter implements HTMLPagePrinter {
     }
 
     private void paintFooter(PageContextInfo pageContextInfo) {
+
+    }
+
+
+    private void printViewComportResource(PageContextInfo pageContextInfo) {
+
+        String ctx = Envir.getContextPath();
+        String ajaxTimeout = AppConfig.getPropValue(AppConfig.AJAX_TIMEOUT);
+        String optRemember = AppConfig.getPropValue(AppConfig.OPT_OPTREMEMBER);
+        boolean isAutoSearch = AppConfig.isAutoSearch();
+
+        pageContextInfo.write("<script type=\"text/javascript\">\n");
+
+        pageContextInfo.write("var appConfig = {\n");
+        pageContextInfo.write("ctx : '" + ctx + "',\n");
+        pageContextInfo.write("ajaxTimeout : '" + ajaxTimeout + "',\n");
+        pageContextInfo.write("//记忆操作(弹出确认信息和提示信息)\n");
+        pageContextInfo.write("optRemember : '" + optRemember + "',\n");
+        pageContextInfo.write("//使用查询条件时是否自动触发查询\n");
+        pageContextInfo.write("isAutoSearch : " + isAutoSearch + ",\n");
+        pageContextInfo.write("//终端使用百度地图\n");
+        pageContextInfo.write("isBaiduMap : " + AppConfig.isBaiduMap() + ",\n");
+        pageContextInfo.write("//弹出框是否默认带有关闭按钮\n");
+        pageContextInfo.write("hasCloseBtn : " + AppConfig.hasCloseBtn() + ",\n");
+        pageContextInfo.write("//如果在没有配置粗粒度组件布局的情况下, 最后一个组件是表格, 则表格高度撑满剩余区域\n");
+        pageContextInfo.write("isTableHeightFull : " + AppConfig.isTableHeightFull() + ",\n");
+        pageContextInfo.write("//当行级按钮全部隐藏时, 操作列是否自动隐藏 \n");
+        pageContextInfo.write("isTableAutoHideOptCol : " + AppConfig.isTableAutoHideOptCol() + "\n");
+        pageContextInfo.write("}; ");
+
+        pageContextInfo.write("</script>\n");
+
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/qewebi18n-zh_CN.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/jquery/jquery.xml2json.pack.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/extends.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/stringUtils.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/constant/param.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/constant/actionURL.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/dataisland/xmlDataIsland.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/dataisland/XMLDomFactory.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/CommonUtils.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/dataisland/TransToDataIslandDom.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/constant/BoFinalMethod.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/dataisland/bindData.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/constant/constantJSON.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/NumberUtil.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/Observable.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/Observer.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/baseExpand.js\"></script>\n");
+
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/common/dataIslandToDOM.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/common/commonDom.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/coarsegrained/handler/htmlPageBar.js\"></script>\n");
+        //pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/framework/js/framework/html/load/htmlTreeLoad.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/coarsegrained/ContainerHandlerFactory.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/coarsegrained/handler/ContainerHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/coarsegrained/handler/PageHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/coarsegrained/handler/FormHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/coarsegrained/handler/TableHelper.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/coarsegrained/handler/TableHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/coarsegrained/handler/SysAddRowHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/finegrained/handler/BOPSubmit.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/finegrained/fcHandlerFactory.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/finegrained/handler/FCHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/finegrained/handler/LabelHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/finegrained/handler/TextHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/finegrained/handler/SelectHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/finegrained/handler/RadioHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/finegrained/handler/CheckboxHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/finegrained/handler/ImgHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/finegrained/handler/OptionTranserSelectHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/dataisland/TransToDataIslandDom.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/common/constant/BoFinalMethod.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/ButtonEvent.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/BtnJSEvent.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/Confirm.js\"></script>\n");
+
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/PageFlow.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/ResultMsg.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/BtnExeEvent.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/form/BtnFormExeEvent.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/form/BtnFormQueryEvent.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/form/BtnFormExportEvent.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/form/BtnFormClearEvent.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/table/BtnTableExeEvent.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/table/BtnSysAddRowEvent.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/btnEvent/page/BtnPageExeEvent.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/ButtonHandler.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/load.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/html/date/WdatePicker.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/common/commonDomUtil.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/common/returnMsg.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/common/showMsg.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/common/showTips.js\"></script>\n");
+
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/observable/ContainerObservable.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/framework/js/framework/bootstrap/control/observer/ContainerObserver.js\"></script>\n");
+        pageContextInfo.write("<script type=\"text/javascript\" src=\"" + Envir.getContextPath() + "/resources2/js/projectStyle.js\"></script>\n");
+
+
+        pageContextInfo.write("<script type=\"text/javascript\">\n");
+        pageContextInfo.write("var observableArr = new Array();");
+        pageContextInfo.write("</script>\n");
+        pageContextInfo.write("\n");
 
     }
 
