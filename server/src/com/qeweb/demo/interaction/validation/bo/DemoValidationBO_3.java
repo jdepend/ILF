@@ -25,7 +25,7 @@ public class DemoValidationBO_3 extends DemoPurchaseOrderBO {
 		super();
 		//publishStatus和purchaseNo启用了查询时范围
 		addBOP("publishStatus", new DemoPublishStatusQueryBOP());
-		addBOP("purchaseNo", new NotEmptyBopDec(new DemoPoNoQueryBOP()));
+		//addBOP("purchaseNo", new NotEmptyBopDec(new DemoPoNoQueryBOP()));
 		getBO("vendor").addBOP("orgCode", new NotEmptyBop());
 	}
 
