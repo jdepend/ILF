@@ -24,8 +24,8 @@ public class BootstrapForm extends Form {
         HTMLWebHelper.appendAttr(sbr, "id", getId());
         HTMLWebHelper.appendAttr(sbr, "name", getName());
         HTMLWebHelper.appendAttr(sbr, "class", "form-horizontal");
-        HTMLWebHelper.appendAttr(sbr, "action", out.getContextPath()
-                + ConstantURL.CONTAINER_SUBMIT);
+//        HTMLWebHelper.appendAttr(sbr, "action", out.getContextPath()
+//                + ConstantURL.CONTAINER_SUBMIT);
         if (getBc().getStatus().isHidden()) {
             HTMLWebHelper.appendAttr(sbr, "style", "display:none");
         }else{
