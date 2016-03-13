@@ -69,11 +69,12 @@ public class XMLPageUtil {
         //添加粗粒度组件
         page.setContainerList(containerList);
 
-        List<String> relationList = new ArrayList<String>();
-        String relations = element.getAttributeValue("relations");
-        if(!StringUtils.isEmpty(relations)){
-            relationList.add(relations);
-        }
+//        List<String> relationList = new ArrayList<String>();
+//        String relations = element.getAttributeValue("relations");
+//        if(!StringUtils.isEmpty(relations)){
+//            relationList.add(relations);
+//        }
+        List<String> relationList=AnalyzeJspUtil.loadRelationList(element);
         //添加粗粒度组件关联
         page.setContainerRelationGroup(new ContainerRelationGroup(relationList));
 

@@ -1,5 +1,6 @@
 package com.qeweb.framework.impconfig.common.util;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -492,6 +493,26 @@ public class AnalyzeJspUtil {
 
 		return sbr.toString();
 	}
+
+    /**
+     * 提取Relation by yuanbz 2016
+     */
+    final public static   List<String> loadRelationList(Element element){
+        List<String> relationList = new ArrayList<String>();
+        for (Element element1 : (List<Element>) element.getChildren()) {
+            if(isGroupEl(element1)){
+                relationList.add(element1.getAttributeValue("relations"));
+            }
+        }
+        return relationList;
+    }
+
+    /**
+     * 判断是否为group by yuanbz 2016
+     */
+    private static boolean isGroupEl(Element element) {
+        return StringUtils.isEqualIgnoreCase(DOC_GROUP, element.getName());
+    }
 
 	/**
 	 * xml操作通用DAO
