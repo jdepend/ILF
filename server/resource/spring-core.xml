@@ -28,7 +28,4 @@
         <property name="location" value="classpath:cache.properties" />
     </bean>
 
-    <bean id="ctx" class="com.qeweb.framework.common.SpringConstant"/>
-    <import resource="spring-bo.xml"/>
-    <import resource="spring-bo-demo.xml"/>
 </beans>
