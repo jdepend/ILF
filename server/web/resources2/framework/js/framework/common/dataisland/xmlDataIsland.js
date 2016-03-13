@@ -161,7 +161,8 @@ var DISLAND = {
 	 */
 	addBO : function(bo){
 		//兼容ie ，ie下xml格式字符串使用$()转xml对象不成功
-		if($.browser.msie)
+		//if($.browser.msie)
+        if(window.ActiveXObject)
 			this.getDataIsland().append(bo);
 		else
 			this.getDataIsland().append($(xmlToString(bo)));

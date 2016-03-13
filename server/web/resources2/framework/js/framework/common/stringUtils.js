@@ -71,20 +71,22 @@ function isInArray(array, str) {
  */
 function xmlToString(xmlObj) {
 	var result = "";
+
 	if(typeof(xmlObj) == "object") {
 		if(!xmlObj.get()[0])
 			return "";
-		
+
 		//兼容IE浏览器
-		if($.browser.msie)
+        //$.browser.msie
+		if(window.ActiveXObject)
 			result = xmlObj.get()[0].xml;
-		else 
+		else {
 			result = new XMLSerializer().serializeToString(xmlObj.get()[0]);
+        }
 	}
 	else if(typeof(xmlObj) == "string") {
 		result = xmlObj;
 	}
-		
 	return replaceAll(result, "&lt;,&gt;", "<,>");
 }
 
@@ -190,8 +192,9 @@ String.prototype.format = function(){
 function getXmlNoteText(note){
 	var value = "";
 	//TODO bopDom.text()<![CDATA[1122]]>一般情况取得的值是1122 ，有时取得的是<![CDATA[1122]]>带有CDATA，所以需要替换掉。根本原因没找到。
-	if($.browser.msie)
-		value = note.text().replace("<![CDATA[", "").replace("]]>", "");
+	//if($.browser.msie)
+	if(window.ActiveXObject)
+			value = note.text().replace("<![CDATA[", "").replace("]]>", "");
 	//而执行table翻页bopDom的innerHTML不存在，所以也需判断innerHTML是否存在。
 	else if(note[0] && note[0].innerHTML && note.html().indexOf("<!--[CDATA[") != -1)
 		value = note.html().replace("<!--[CDATA[", "").replace("]]-->", "");

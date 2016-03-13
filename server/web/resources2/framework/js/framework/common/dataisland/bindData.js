@@ -25,7 +25,7 @@ var BINDDATA = {
 				return true;
 
 			var bopValue = trim(fcHandler.getValue());
-			
+
 			//如果fc不存在并且bopValue值为空，则去数据岛里找出对应的数据填充
 			if(!fcHandler.fc && !bopValue) {
 				bopValue = DISLAND.getValue(bop);
