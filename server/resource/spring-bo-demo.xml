@@ -15,10 +15,6 @@
 
     <description>Spring bo demo 配置</description>
 
-    <bean id="demoValidationBO1" class="com.qeweb.demo.interaction.validation.bo.DemoValidationBO_1" scope="prototype"/>
-    <bean id="demoValidationBO2" class="com.qeweb.demo.interaction.validation.bo.DemoValidationBO_2" scope="prototype"/>
-    <bean id="demoValidationBO3" class="com.qeweb.demo.interaction.validation.bo.DemoValidationBO_3" scope="prototype"/>
-
     <bean id="queryInfoBO" class="com.qeweb.demo.bootstrap.bo.QueryInfoBO" scope="prototype"/>
     <bean id="deptBO" class="com.qeweb.demo.bootstrap.bo.DeptBO" scope="prototype"/>
     <bean id="userBO2" class="com.qeweb.demo.bootstrap.bo.UserBO" scope="prototype"/>

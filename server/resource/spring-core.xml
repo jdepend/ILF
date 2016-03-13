@@ -28,4 +28,6 @@
         <property name="location" value="classpath:cache.properties" />
     </bean>
 
+    <import resource="spring-bo-demo.xml"/>
+
 </beans>
