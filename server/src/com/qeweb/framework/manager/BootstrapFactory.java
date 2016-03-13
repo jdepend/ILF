@@ -90,7 +90,7 @@ public class BootstrapFactory extends VCFactory {
 	
 	@Override
 	protected Table createTable() {
-		return new HTMLTable();
+		return new BootstrapTable();
 	}
 
 	@Override
