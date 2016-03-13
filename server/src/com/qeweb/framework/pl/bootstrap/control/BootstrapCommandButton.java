@@ -11,13 +11,13 @@ public class BootstrapCommandButton extends CommandButton {
 		StringBuilder sbr = new StringBuilder();
 
 
-        sbr.append("<button class=\"btn btn-primary\" style=\"width:20%\"");
+        sbr.append("<a class=\"btn btn-primary\" style=\"width:100\"");
         HTMLWebHelper.appendAttr(sbr, "id", getId());
         HTMLWebHelper.appendAttr(sbr, "name", getName());
         HTMLWebHelper.appendAttr(sbr, "type", "button");
         HTMLWebHelper.appendAttr(sbr, "operate", getOperate());
         HTMLWebHelper.appendEndTag(sbr);
-        sbr.append(getText()+"</button>\n");
+        sbr.append(getText()+"</a>\n");
 
     	getPageContextInfo().write(sbr.toString());
 	}
